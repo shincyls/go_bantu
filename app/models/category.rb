@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
-    validates :name, uniqueness: {message: "Category Must Be Unique"}
-    has_many :dresses
+    #Project to Category Association
+    has_many :project_category_joins
+    has_many :projects, through: :project_category_joins
 end

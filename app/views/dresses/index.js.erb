@@ -1,7 +1,0 @@
-$('#search').append("<%= j (render 'show') %>");
-$('.pagination a').attr('data-remote', 'true');
-<% if @dresses.next_page %>
-    $('#load-more').html('<%= link_to 'Click To Load More', dresses_path(:page => @dresses.next_page), class: "btn btn-outline-primary btn-lg", remote: true %>');
-<% else %>
-    $('#load-more').html('<div class="alert alert-primary alert-dismissible fade show text-center mt-5" role="alert">No More Records, This Is The Bottom of Search!</div>');
-<% end %>

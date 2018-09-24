@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = current_users
-    @dresses = Dress.all
+    @projects = Dress.all
   end
 
   # GET /users/:id
@@ -24,8 +24,8 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(user_params)
-    if @user.save
+    @project = Project.new(user_params)
+    if @project.save
       session[:user_id] = @user.id
       redirect_to @user, flash: { success: 'User was successfully created.' }
     else
