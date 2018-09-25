@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_21_065630) do
+ActiveRecord::Schema.define(version: 2018_09_25_042047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(version: 2018_09_21_065630) do
     t.index ["user_id"], name: "index_organizers_on_user_id"
   end
 
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
+  end
+
   create_table "professions", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -96,27 +105,30 @@ ActiveRecord::Schema.define(version: 2018_09_21_065630) do
   end
 
   create_table "projects", force: :cascade do |t|
-    t.bigint "volunteer_id"
     t.string "title", limit: 128
     t.text "project_desc"
     t.text "requirement_desc"
-    t.integer "type", default: 0
-    t.float "fund_amount", default: 0.0
-    t.string "skill"
-    t.string "profession"
+    t.bigint "category_id", default: 1
     t.string "contact_person_1"
     t.string "contact_number_1"
     t.string "contact_person_2"
     t.string "contact_number_2"
-    t.string "address_1", limit: 32
-    t.string "address_2", limit: 32
+    t.string "address_1", limit: 64
+    t.string "address_2", limit: 64
     t.string "postcode", limit: 5
     t.string "city"
     t.string "state"
     t.string "country"
+    t.string "start_date"
+    t.string "end_date"
+    t.float "fund_amount", default: 0.0
+    t.boolean "volunteer", default: true
+    t.boolean "finance_donate", default: true
+    t.boolean "material_donate", default: false
+    t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["volunteer_id"], name: "index_projects_on_volunteer_id"
+    t.index ["category_id"], name: "index_projects_on_category_id"
   end
 
   create_table "skills", force: :cascade do |t|
@@ -153,6 +165,7 @@ ActiveRecord::Schema.define(version: 2018_09_21_065630) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "images"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
