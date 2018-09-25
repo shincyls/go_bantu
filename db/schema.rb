@@ -66,8 +66,6 @@ ActiveRecord::Schema.define(version: 2018_09_25_042047) do
     t.string "email"
     t.string "phone_number1"
     t.string "phone_number2"
-    t.date "date_start"
-    t.date "date_end"
     t.string "address_1", limit: 32
     t.string "address_2", limit: 32
     t.string "postcode", limit: 5
@@ -119,8 +117,8 @@ ActiveRecord::Schema.define(version: 2018_09_25_042047) do
     t.string "city"
     t.string "state"
     t.string "country"
-    t.string "start_date"
-    t.string "end_date"
+    t.date "start_date", default: "2018-01-01"
+    t.date "end_date", default: "2020-12-31"
     t.float "fund_amount", default: 0.0
     t.boolean "volunteer", default: true
     t.boolean "finance_donate", default: true

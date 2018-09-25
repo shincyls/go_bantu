@@ -21,8 +21,8 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :country #select option
 
       ## Campaign Date, Project Page will only show >start_date and <end_date
-      t.string :start_date
-      t.string :end_date
+      t.date :start_date, default: "2018-01-01"
+      t.date :end_date, default: "2020-12-31"
 
       ## Funding Amount
       t.float :fund_amount, default: 0
