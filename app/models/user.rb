@@ -19,4 +19,9 @@ class User < ApplicationRecord
     has_many :user_cause_joins
     has_many :causes, through: :user_cause_joins
 
+    ##### admin panel custom label ######
+    def custom_label
+        "#{self.username}"
+    end
+
 end

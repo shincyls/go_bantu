@@ -77,6 +77,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  #better rails console print
+  gem 'pry-rails'
+  #chorme inspect panel tool
+  gem 'meta_request'
 end
 
 group :test do

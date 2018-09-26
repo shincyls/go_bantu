@@ -4,4 +4,8 @@ class Donor < ApplicationRecord
     #Volunteer to Project Association
     has_many :donor_project_joins
     has_many :projects, through: :donor_project_joins
+
+    def custom_label
+        "#{self.user.username}"
+    end
 end

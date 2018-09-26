@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_042047) do
     t.string "title", limit: 128
     t.text "project_desc"
     t.text "requirement_desc"
-    t.bigint "category_id", default: 1
+    t.bigint "category_id"
     t.string "contact_person_1"
     t.string "contact_number_1"
     t.string "contact_person_2"

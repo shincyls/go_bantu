@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.text :requirement_desc
 
       ## Enum for Project Type (personal? home? organization?)
-      t.references :category, default: 1
+      t.references :category, index: true
 
       ## Contact and Location (temporary allow to key anything)
       t.string :contact_person_1
