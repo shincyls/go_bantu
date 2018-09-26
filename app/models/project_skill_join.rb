@@ -1,0 +1,2 @@
+class ProjectSkillJoin < ApplicationRecord
+end

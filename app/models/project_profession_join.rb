@@ -1,0 +1,2 @@
+class ProjectProfessionJoin < ApplicationRecord
+end

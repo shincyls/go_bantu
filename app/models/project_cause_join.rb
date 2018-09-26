@@ -1,0 +1,2 @@
+class ProjectCauseJoin < ApplicationRecord
+end
