@@ -13,5 +13,4 @@ class Organizer < ApplicationRecord
     def custom_label
         "#{self.company_name}"
     end
-
 end
