@@ -61,19 +61,19 @@ Category.create!([
 
 # 2.2 User Section and Role
 Project.create!([
-    {title: "Home Project 1", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1000},
-    {title: "Home Project 2", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 0},
-    {title: "Community Project 1", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 300},
-    {title: "Community Project 2", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 200},
-    {title: "Organization Project 1", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
-    {title: "Organization Project 2", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 900},
-    {title: "Home Project 3", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 800},
-    {title: "Home Project 4", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 600},
-    {title: "Community Project 1", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
-    {title: "Community Project 2", category_id: 3,  project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 2000},
-    {title: "Organization Project 3", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1200},
-    {title: "Organization Project 4", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"},
-    {title: "Organization Project 5", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need xxxxxxx for yyyyyyyy", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"}
+    {title: "Home Project 1", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 11111 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1000},
+    {title: "Home Project 2", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 22222 for bbbbb", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 0},
+    {title: "Community Project 1", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 33333 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 300},
+    {title: "Community Project 2", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 44444 for ddddd", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 200},
+    {title: "Organization Project 1", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 55555 for eeeee", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
+    {title: "Organization Project 2", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 66666 for fffff", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 900},
+    {title: "Home Project 3", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 77777 for ggggg", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 800},
+    {title: "Home Project 4", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 88888 for hhhhh", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 600},
+    {title: "Community Project 1", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 99999 for iiiii", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
+    {title: "Community Project 2", category_id: 3,  project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 00000 for jjjjj", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 2000},
+    {title: "Organization Project 3", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 10101 for kkkkk", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1200},
+    {title: "Organization Project 4", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 20202 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"},
+    {title: "Organization Project 5", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"}
 ])
 
 # ####################################################
@@ -100,7 +100,8 @@ Profession.create!([
     {name: "Musician"},
     {name: "Accountant"},
     {name: "Artist"},
-    {name: "Web Developer"}
+    {name: "Web Developer"},
+    {name: "Web Marketer"}
 ])
 
 Cause.create!([
@@ -122,23 +123,143 @@ Cause.create!([
 # 4.0 Join Tables for easier query and database auditable
 # ####################################################
 
-ProjectCategoryJoin.create!([])
+ProjectCategoryJoin.create!([
+    {project_id: 1, category_id: 2},
+    {project_id: 2, category_id: 2},
+    {project_id: 3, category_id: 3},
+    {project_id: 4, category_id: 3},
+    {project_id: 5, category_id: 4},
+    {project_id: 6, category_id: 4},
+    {project_id: 7, category_id: 2},
+    {project_id: 8, category_id: 2},
+    {project_id: 9, category_id: 3},
+    {project_id: 10, category_id: 3},
+    {project_id: 11, category_id: 4},
+    {project_id: 12, category_id: 4},
+    {project_id: 13, category_id: 4}
+])
 
-OrganizerProjectJoin.create!([])
+OrganizerProjectJoin.create!([
+    {organizer_id: 1, project_id: 1},
+    {organizer_id: 1, project_id: 2},
+    {organizer_id: 2, project_id: 3},
+    {organizer_id: 2, project_id: 4},
+    {organizer_id: 3, project_id: 5},
+    {organizer_id: 3, project_id: 6},
+    {organizer_id: 1, project_id: 7},
+    {organizer_id: 1, project_id: 8},
+    {organizer_id: 2, project_id: 9},
+    {organizer_id: 2, project_id: 10},
+    {organizer_id: 3, project_id: 11},
+    {organizer_id: 3, project_id: 12},
+    {organizer_id: 3, project_id: 13}
+])
 
-VolunteerProjectJoin.create!([])
+VolunteerProjectJoin.create!([
+    {volunteer_id: 1, project_id: 1},
+    {volunteer_id: 1, project_id: 2},
+    {volunteer_id: 2, project_id: 3},
+    {volunteer_id: 2, project_id: 4},
+    {volunteer_id: 3, project_id: 5},
+    {volunteer_id: 3, project_id: 6},
+    {volunteer_id: 1, project_id: 7},
+    {volunteer_id: 1, project_id: 8},
+    {volunteer_id: 2, project_id: 9},
+    {volunteer_id: 2, project_id: 10},
+    {volunteer_id: 3, project_id: 11},
+    {volunteer_id: 3, project_id: 12},
+    {volunteer_id: 3, project_id: 13}
+])
 
-DonorProjectJoin.create!([])
+DonorProjectJoin.create!([
+    {donor_id: 1, project_id: 1, amount: 1000},
+    {donor_id: 2, project_id: 3, amount: 200},
+    {donor_id: 2, project_id: 4, amount: 100},
+    {donor_id: 3, project_id: 5, amount: 500},
+    {donor_id: 3, project_id: 6, amount: 900},
+    {donor_id: 1, project_id: 7, amount: 400},
+    {donor_id: 1, project_id: 8, amount: 100},
+    {donor_id: 2, project_id: 9, amount: 300},
+    {donor_id: 2, project_id: 10, amount: 1100},
+    {donor_id: 3, project_id: 11, amount: 1200}
+])
 
 # For Searching or Matching
 
-UserCauseJoin.create!([])
+UserCauseJoin.create!([
+    {user_id: 3, cause_id: 1},
+    {user_id: 3, cause_id: 2},
+    {user_id: 3, cause_id: 3},
+    {user_id: 4, cause_id: 4},
+    {user_id: 4, cause_id: 5},
+    {user_id: 4, cause_id: 6},
+    {user_id: 5, cause_id: 7},
+    {user_id: 5, cause_id: 8},
+    {user_id: 5, cause_id: 9}
+])
 
 # Volunteer
 
-VolunteerSkillJoin.create!([])
+VolunteerSkillJoin.create!([
+    {volunteer_id: 1, skill_id: 1},
+    {volunteer_id: 1, skill_id: 2},
+    {volunteer_id: 1, skill_id: 3},
+    {volunteer_id: 2, skill_id: 4},
+    {volunteer_id: 2, skill_id: 5},
+    {volunteer_id: 2, skill_id: 6},
+    {volunteer_id: 3, skill_id: 7},
+    {volunteer_id: 3, skill_id: 8},
+    {volunteer_id: 3, skill_id: 9},
+    {volunteer_id: 4, skill_id: 2},
+    {volunteer_id: 4, skill_id: 4},
+    {volunteer_id: 4, skill_id: 6},
+    {volunteer_id: 4, skill_id: 8}
+])
 
-VolunteerProfessionJoin.create!([])
+VolunteerProfessionJoin.create!([
+    {volunteer_id: 1, profession_id: 1},
+    {volunteer_id: 2, profession_id: 4},
+    {volunteer_id: 3, profession_id: 6},
+    {volunteer_id: 4, profession_id: 9}
+])
+
+
+# Project
+ProjectCauseJoin.create!([
+    {project_id: 3, cause_id: 1},
+    {project_id: 3, cause_id: 2},
+    {project_id: 3, cause_id: 3},
+    {project_id: 4, cause_id: 4},
+    {project_id: 4, cause_id: 5},
+    {project_id: 4, cause_id: 6},
+    {project_id: 5, cause_id: 7},
+    {project_id: 5, cause_id: 8},
+    {project_id: 5, cause_id: 9}
+])
+
+ProjectSkillJoin.create!([
+    {project_id: 3, skill_id: 1},
+    {project_id: 3, skill_id: 2},
+    {project_id: 3, skill_id: 3},
+    {project_id: 4, skill_id: 4},
+    {project_id: 4, skill_id: 5},
+    {project_id: 4, skill_id: 6},
+    {project_id: 5, skill_id: 7},
+    {project_id: 5, skill_id: 8},
+    {project_id: 5, skill_id: 9}
+])
+
+ProjectProfessionJoin.create!([
+    {project_id: 1, profession_id: 1},
+    {project_id: 2, profession_id: 2},
+    {project_id: 3, profession_id: 3},
+    {project_id: 4, profession_id: 4},
+    {project_id: 5, profession_id: 5},
+    {project_id: 6, profession_id: 6},
+    {project_id: 7, profession_id: 7},
+    {project_id: 8, profession_id: 8},
+    {project_id: 9, profession_id: 9}
+])
 
 
 

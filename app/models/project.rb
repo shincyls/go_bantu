@@ -1,18 +1,26 @@
 class Project < ApplicationRecord
 
 
-    #Project to Organizer Association
+    # Project to Organizer Association
     has_many :organizer_project_joins
     has_many :organizers, through: :organizer_project_joins
-    #Project to Donor Association
+    # Project to Donor Association
     has_many :donor_project_joins
     has_many :donors, through: :donor_project_joins
-    #Project to Volunteer Association
+    # Project to Volunteer Association
     has_many :volunteer_project_joins
     has_many :volunteers, through: :volunteer_project_joins
-    #Project to Category Association
+    # Project to Category Association
     has_many :project_category_joins
     has_many :categories, through: :project_category_joins
+    # Project to Skill/Causes/Professions Association 
+    has_many :project_skill_joins
+    has_many :skills, through: :project_skill_joins
+    has_many :project_profession_joins
+    has_many :professions, through: :project_profession_joins
+    has_many :project_cause_joins
+    has_many :causes, through: :project_cause_joins
+
     # validations
     
     validates :title, presence: true
@@ -33,38 +41,7 @@ class Project < ApplicationRecord
     end
 
 
-    # scopes for search fields #
-    def self.current_date
-    current_date = DateTime.now
-    Reservation.where("reservation_date >= ?", current_date)
-    end
-
-    def self.past_date
-    current_date = DateTime.now
-    Reservation.where("reservation_date < ?", current_date)
-    end
-
-    def self.stylist_name(stylist)
-    Reservation.where("stylist_id = ?", stylist)
-    end
-
-    def self.date_range(minimum_date,max_date)
-    Reservation.where("reservation_date >= ? AND reservation_date <= ?" ,minimum_date,max_date)
-    end
-
-    def self.service_name(service)
-    Reservation.where("service_id = ?", service)
-    end
-
-    # title to create relation for booking appointment
-    def self.stylist
-        User.where(role: :admin)
-    end
-
-    # scope to find customers 
-    def self.client
-        User.where(role: :customer)
-    end
+ 
         
 
 end

@@ -24,6 +24,9 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.date :start_date, default: "2018-01-01"
       t.date :end_date, default: "2020-12-31"
 
+      ## Number of Volunteer Needed
+      t.integer :voulunteer_number, default: 0
+
       ## Funding Amount
       t.float :fund_amount, default: 0
 
