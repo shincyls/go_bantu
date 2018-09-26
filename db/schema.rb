@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_25_042047) do
+ActiveRecord::Schema.define(version: 2018_09_27_042047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,33 @@ ActiveRecord::Schema.define(version: 2018_09_25_042047) do
     t.index ["project_id"], name: "index_project_category_joins_on_project_id"
   end
 
+  create_table "project_cause_joins", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "cause_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cause_id"], name: "index_project_cause_joins_on_cause_id"
+    t.index ["project_id"], name: "index_project_cause_joins_on_project_id"
+  end
+
+  create_table "project_profession_joins", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "profession_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profession_id"], name: "index_project_profession_joins_on_profession_id"
+    t.index ["project_id"], name: "index_project_profession_joins_on_project_id"
+  end
+
+  create_table "project_skill_joins", force: :cascade do |t|
+    t.bigint "project_id"
+    t.bigint "skill_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_skill_joins_on_project_id"
+    t.index ["skill_id"], name: "index_project_skill_joins_on_skill_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "title", limit: 128
     t.text "project_desc"
@@ -119,6 +146,7 @@ ActiveRecord::Schema.define(version: 2018_09_25_042047) do
     t.string "country"
     t.date "start_date", default: "2018-01-01"
     t.date "end_date", default: "2020-12-31"
+    t.integer "voulunteer_number", default: 0
     t.float "fund_amount", default: 0.0
     t.boolean "volunteer", default: true
     t.boolean "finance_donate", default: true
