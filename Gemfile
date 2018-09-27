@@ -58,6 +58,9 @@ gem 'rails-erd', '~> 1.5', '>= 1.5.2'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'braintree', '~> 2.90'
 
+# Geolocation Mapping
+gem 'geocoder', '~> 1.5'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

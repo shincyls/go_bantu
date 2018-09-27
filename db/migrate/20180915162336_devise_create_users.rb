@@ -21,6 +21,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :city #free to key-in
       t.string :state #select option
       t.string :country #select option
+      t.float :latitude
+      t.float :longitude
 
       ## Website Role Admin/User
       t.integer :role, default: 1
