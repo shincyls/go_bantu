@@ -10,8 +10,9 @@ class UsersController < ApplicationController
 
   # GET /users
   def index
-    @users = current_users
-    @projects = Dress.all
+    
+    # @users = current_user
+    # @projects = Dress.all
   end
 
   # GET /users/:id
