@@ -133,7 +133,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "title", limit: 128
     t.text "project_desc"
     t.text "requirement_desc"
-    t.bigint "category_id", default: 1
     t.string "contact_person_1"
     t.string "contact_number_1"
     t.string "contact_person_2"
@@ -154,7 +153,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_projects_on_category_id"
   end
 
   create_table "skills", force: :cascade do |t|

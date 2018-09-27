@@ -61,19 +61,19 @@ Category.create!([
 
 # 2.2 User Section and Role
 Project.create!([
-    {title: "Home Project 1", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 11111 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1000},
-    {title: "Home Project 2", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 22222 for bbbbb", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 0},
-    {title: "Community Project 1", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 33333 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 300},
-    {title: "Community Project 2", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 44444 for ddddd", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 200},
-    {title: "Organization Project 1", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 55555 for eeeee", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
-    {title: "Organization Project 2", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 66666 for fffff", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 900},
-    {title: "Home Project 3", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 77777 for ggggg", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 800},
-    {title: "Home Project 4", category_id: 2, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 88888 for hhhhh", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 600},
-    {title: "Community Project 1", category_id: 3, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 99999 for iiiii", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
-    {title: "Community Project 2", category_id: 3,  project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 00000 for jjjjj", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 2000},
-    {title: "Organization Project 3", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 10101 for kkkkk", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1200},
-    {title: "Organization Project 4", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 20202 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"},
-    {title: "Organization Project 5", category_id: 4, project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"}
+    {title: "Home Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 11111 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1000},
+    {title: "Home Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 22222 for bbbbb", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 0},
+    {title: "Community Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 33333 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 300},
+    {title: "Community Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 44444 for ddddd", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 200},
+    {title: "Organization Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 55555 for eeeee", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
+    {title: "Organization Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 66666 for fffff", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 900},
+    {title: "Home Project 3", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 77777 for ggggg", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 800},
+    {title: "Home Project 4", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 88888 for hhhhh", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 600},
+    {title: "Community Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 99999 for iiiii", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 500},
+    {title: "Community Project 2",  project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 00000 for jjjjj", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 2000},
+    {title: "Organization Project 3", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 10101 for kkkkk", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", fund_amount: 1200},
+    {title: "Organization Project 4", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 20202 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"},
+    {title: "Organization Project 5", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia"}
 ])
 
 # ####################################################

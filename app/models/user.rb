@@ -16,11 +16,17 @@ class User < ApplicationRecord
     mount_uploader :avatar, AvatarUploader
 
     # General Association
-    has_many :user_cause_joins
-    has_many :causes, through: :user_cause_joins
-
     has_one :organizer
     has_one :volunteer
     has_one :donor
+    has_many :user_cause_joins
+    has_many :causes, through: :user_cause_joins
+
+
+    ##### admin panel custom label ######
+    def custom_label
+        "#{self.username}"
+    end
+
 
 end

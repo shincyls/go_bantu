@@ -1,25 +1,25 @@
 RailsAdmin.config do |config|
 
-  ### Popular gems integration
 
   ## == Devise ==
   # config.authenticate_with do
   #   warden.authenticate! scope: :user
   # end
   # config.current_user_method(&:current_user)
-  config.parent_controller = "::ApplicationController"
 
-  config.authorize_with do |controller|
-    unless current_user && current_user.admin?
-      redirect_to(
-        main_app.root_path,
-        flash: {alert: "You are not permitted to view this page"}
-      )
-    end
-  end
+  # uncomment this section
+  # config.parent_controller = "::ApplicationController"
 
-  ## == Cancan ==
-  # config.authorize_with :cancan
+  # config.authorize_with do |controller|
+  #   unless current_user && current_user.admin?
+  #     redirect_to(
+  #       main_app.root_path,
+  #       flash: {alert: "You are not permitted to view this page"}
+  #     )
+  #   end
+  # end
+
+
 
   ## == Will Paginate ==
   if defined?(WillPaginate)
@@ -35,17 +35,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  ## == Pundit ==
-  # config.authorize_with :pundit
 
-  ## == PaperTrail ==
-  # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
-
-  ### More at https://github.com/sferik/rails_admin/wiki/Base-configuration
-
-  ## == Gravatar integration ==
-  ## To disable Gravatar integration in Navigation Bar set to false
-  # config.show_gravatar = true
 
   config.actions do
     dashboard                     # mandatory
@@ -56,10 +46,127 @@ RailsAdmin.config do |config|
     show
     edit
     delete
-    show_in_app
+    ####### modify action in admin panel #########
+    show_in_app 
 
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
   end
+
+    ######## remove models from navigation pane #######
+  exclusions = ['ProjectCauseJoin','ProjectProfessionJoin','ProjectSkillJoin','DonorProjectJoin','OrganizerProjectJoin','VolunteerSkillJoin','VolunteerProjectJoin','VolunteerProfessionJoin','UserCauseJoin','ProjectCategoryJoin']  
+  exclusions.each do |x|
+  config.excluded_models << x
+  end
+
+  ####### config User model ##########
+  config.model User do
+    navigation_label 'User Section'
+    object_label_method do
+      :custom_label
+    end
+    update do
+      exclude_fields :password, :password_confirmation
+    end
+
+    
+  end
+  ####### config Organizer model ##########
+  config.model Organizer do
+    navigation_label 'User Section'
+    object_label_method do
+      :custom_label
+    end
+  end
+
+  ####### config Volunteer model ##########
+  config.model Volunteer do
+    navigation_label 'User Section'
+    object_label_method do
+      :custom_label
+    end
+  end
+
+  ####### config Donor model ##########
+  config.model Donor do
+    navigation_label 'User Section'
+    object_label_method do
+      :custom_label
+    end
+  end
+
+  ####### config Project model ##########
+  config.model Project do
+    navigation_label 'User Section'
+    object_label_method do
+      :custom_label
+    end
+  end
+
+
+  # --------- TAGS GROUP -----------------
+   ######## config Cause model ##########
+  config.model Cause do
+    navigation_label 'Tags'
+    object_label_method do
+      :custom_label
+    end
+  end
+   ######## config Skill model ##########
+  config.model Skill do
+    navigation_label 'Tags'
+    object_label_method do
+      :custom_label
+    end
+  end
+   ######## config Category model ##########
+  config.model Category do
+    navigation_label 'Tags'
+    object_label_method do
+      :custom_label
+    end
+  end
+   ######## config Profession model ##########
+  config.model Profession do
+    navigation_label 'Tags'
+    object_label_method do
+      :custom_label
+    end
+  end
+
+
+
+
 end
+
+
+
+
+  #---------- JOINS TABLES -------------------------
+  ######## config donor_project_join model ##########
+  # config.model DonorProjectJoin do
+  #   navigation_label 'Joins Tables'
+  # end
+  #   ######## config organizer_project_join model ##########
+  # config.model OrganizerProjectJoin do
+  #   navigation_label 'Joins Tables'
+  # end
+  #   ######## config project_category_join model ##########
+  # config.model ProjectCategoryJoin do
+  #   navigation_label 'Joins Tables'
+  # end
+  #   ######## config user_cause_join model ##########
+  # config.model UserCauseJoin do
+  #   navigation_label 'Joins Tables'
+  # end
+  #   ######## config volunteer_profession_join model ##########
+  # config.model VolunteerProfessionJoin do
+  #   navigation_label 'Joins Tables'
+  # end
+  #   ######## config volunteer_project_join model ##########
+  # config.model VolunteerProjectJoin do
+  #   navigation_label 'Joins Tables'
+  # end
+  #   ######## config volunteer_skill_join model ##########
+  # config.model VolunteerSkillJoin do
+  #   navigation_label 'Joins Tables'
+  # end
+  #---------- !JOINS TABLES -------------------------

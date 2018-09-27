@@ -1,6 +1,5 @@
 class Project < ApplicationRecord
-    #validates :code, uniqueness: {message: "Dresscode already exists!"}, presence: {message: "Please enter dress code."}
-    #validates :color, presence: {message: "Please enter dress color."}
+
 
     # Project to Organizer Association
     has_many :organizer_project_joins
@@ -14,7 +13,6 @@ class Project < ApplicationRecord
     # Project to Category Association
     has_many :project_category_joins
     has_many :categories, through: :project_category_joins
-
     # Project to Skill/Causes/Professions Association 
     has_many :project_skill_joins
     has_many :skills, through: :project_skill_joins
@@ -22,6 +20,11 @@ class Project < ApplicationRecord
     has_many :professions, through: :project_profession_joins
     has_many :project_cause_joins
     has_many :causes, through: :project_cause_joins
+
+    # validations
+    
+    validates :title, presence: true
+
     
     # Gem pg_search for searhable columns
     include PgSearch
@@ -30,5 +33,15 @@ class Project < ApplicationRecord
     self.per_page = 8
     # CarrierWave Uploader
     mount_uploader :images, ImageUploader
+
+
+    ##### admin panel custom label ######
+    def custom_label
+        "#{self.title}"
+    end
+
+
+ 
+        
 
 end
