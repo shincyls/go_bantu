@@ -33,7 +33,7 @@ Organizer.create!([
 
 # 1.3 When User Volunteered a project, he/she become volunteer
 Volunteer.create!([
-    {user_id: 3, linked_in_url: "www.google.com"}, #volunteer_id: 1
+    {user_id: 1, linked_in_url: "www.google.com"}, #volunteer_id: 1
     {user_id: 6, linked_in_url: "www.google.com"}, #volunteer_id: 2
     {user_id: 7, linked_in_url: "www.google.com"}, #volunteer_id: 3
     {user_id: 9, linked_in_url: "www.google.com"} #volunteer_id: 4
@@ -187,7 +187,7 @@ DonorProjectJoin.create!([
 # For Searching or Matching
 
 UserCauseJoin.create!([
-    {user_id: 3, cause_id: 1},
+    {user_id: 1, cause_id: 1},
     {user_id: 3, cause_id: 2},
     {user_id: 3, cause_id: 3},
     {user_id: 4, cause_id: 4},
@@ -226,9 +226,9 @@ VolunteerProfessionJoin.create!([
 
 # Project
 ProjectCauseJoin.create!([
-    {project_id: 3, cause_id: 1},
+    {project_id: 1, cause_id: 1},
     {project_id: 3, cause_id: 2},
-    {project_id: 3, cause_id: 3},
+    {project_id: 3, cause_id: 1},
     {project_id: 4, cause_id: 4},
     {project_id: 4, cause_id: 5},
     {project_id: 4, cause_id: 6},
@@ -238,7 +238,7 @@ ProjectCauseJoin.create!([
 ])
 
 ProjectSkillJoin.create!([
-    {project_id: 3, skill_id: 1},
+    {project_id: 1, skill_id: 1},
     {project_id: 3, skill_id: 2},
     {project_id: 3, skill_id: 3},
     {project_id: 4, skill_id: 4},
@@ -252,7 +252,7 @@ ProjectSkillJoin.create!([
 ProjectProfessionJoin.create!([
     {project_id: 1, profession_id: 1},
     {project_id: 2, profession_id: 2},
-    {project_id: 3, profession_id: 3},
+    {project_id: 3, profession_id: 1},
     {project_id: 4, profession_id: 4},
     {project_id: 5, profession_id: 5},
     {project_id: 6, profession_id: 6},
