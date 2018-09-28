@@ -10,6 +10,8 @@ class Volunteer < ApplicationRecord
     has_many :volunteer_profession_joins
     has_many :professions, through: :volunteer_profession_joins
 
+    accepts_nested_attributes_for :volunteer_skill_joins, allow_destroy: true, reject_if: proc { |attributes| attributes['skill_id'] == "0" }
+
     def custom_label
         "#{self.user.username}"
     end

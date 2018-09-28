@@ -1,0 +1,18 @@
+<%= simple_form_for(@volunteer) do |f| %>
+
+  <br><br><br><br><br>
+  <%= f.input :user_id, placeholder: "User ID" %>
+  <%= f.input :cv_file, placeholder: "Upload CV File" %>
+  <%= f.input :linked_in_url, placeholder: "LinkedIn URL" %>
+
+  <div>
+    <% Skill.all.each_with_index do |skill, index| %>
+    <%= check_box_tag "volunteer[volunteer_skill_joins_attributes][#{index}][skill_id]", skill.id, @volunteer.skills.include?(skill), id: dom_id(skill) %>
+    <%= label_tag dom_id(skill), skill.name %>
+    <% end %>
+  </div>
+
+
+  <%= f.submit "Submit" %>
+  
+<% end %>
