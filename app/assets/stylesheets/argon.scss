@@ -5736,7 +5736,7 @@ input[type='button'].btn-block
 
 .card-body-area
 {
-    padding: 1.5rem;
+    padding: 0.2rem;
 }
 
 .card-title
@@ -14868,7 +14868,12 @@ a.btn-icon-only
 .card-lift--hover:hover
 {
     transition: all .15s ease; 
-    transform: translateY(-1rem);
+    transform: translateY(-0.5rem);
+}
+.card-highlight--hover:hover
+{
+    transition: all .15s ease; 
+    box-shadow: 0 1px 3px rgba(50, 50, 93, .15), 0 1px 0 rgba(0, 0, 0, .02);
 }
 @media screen and (prefers-reduced-motion: reduce)
 {

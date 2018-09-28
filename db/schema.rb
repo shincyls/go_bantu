@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.bigint "donor_id"
     t.bigint "project_id"
     t.float "amount"
-    t.string "payment_status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["donor_id"], name: "index_donor_project_joins_on_donor_id"
@@ -147,7 +147,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.float "longitude"
     t.date "start_date", default: "2018-01-01"
     t.date "end_date", default: "2020-12-31"
-    t.integer "voulunteer_number", default: 0
+    t.integer "status", default: 0
+    t.integer "volunteer_number", default: 0
     t.float "fund_amount", default: 0.0
     t.boolean "volunteer", default: true
     t.boolean "finance_donate", default: true
@@ -213,7 +214,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "volunteer_project_joins", force: :cascade do |t|
     t.bigint "volunteer_id"
     t.bigint "project_id"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_volunteer_project_joins_on_project_id"

@@ -1,6 +1,5 @@
 class Project < ApplicationRecord
 
-
     # Project to Organizer Association
     has_many :organizer_project_joins
     has_many :organizers, through: :organizer_project_joins
@@ -21,15 +20,15 @@ class Project < ApplicationRecord
     has_many :project_cause_joins
     has_many :causes, through: :project_cause_joins
 
+
+    enum status: ["applied", "pending", "validated"]
+
     # validations
-    
     validates :title, presence: true
 
     # gecode required to set latitude and logitude
     geocoded_by :address
     after_validation :geocode, :if => :address_changed?
-
-
     
     # Gem pg_search for searhable columns
     include PgSearch
@@ -38,6 +37,16 @@ class Project < ApplicationRecord
     self.per_page = 8
     # CarrierWave Uploader
     mount_uploader :images, ImageUploader
+
+    ##### custom methods for view purposes ######
+
+    def fund_progress
+        progress = (self.donor_project_joins.sum(:amount) / self.fund_amount) * 100
+    end
+
+    def volunteer_progress
+        progress = (self.volunteer_project_joins.count.to_f / self.volunteer_number.to_f) * 100
+    end
 
 
     ##### admin panel custom label ######
@@ -48,12 +57,12 @@ class Project < ApplicationRecord
 
     # create string from form inputs to use with geocode
     def address
-    [address_1, city, state, country].compact.join(', ')
+        [address_1, city, state, country].compact.join(', ')
     end
 
     # if address changed update geocode
     def address_changed?
-    address_1? || city_changed? || state_changed? || country_changed?
+        address_1? || city_changed? || state_changed? || country_changed?
     end
 
 

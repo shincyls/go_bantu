@@ -1,4 +1,4 @@
-$('#search').html("<%= j (render 'show') %>");
+$('#search').html("<%= j (render 'card') %>");
 $('.pagination a').attr('data-remote', 'true');
 <% if @projects.next_page %>
     $('#load-more').html('<%= link_to 'Click To Load More', projects_path(:page => @projects.next_page), class: "btn btn-outline-primary btn-lg", remote: true %>');
