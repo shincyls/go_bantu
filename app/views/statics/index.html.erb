@@ -10,6 +10,18 @@
     </script>
     
     <style media="screen">
+
+       
+        #search_button{
+          border: 2px solid #12e2a3;
+          border-left: none;
+          margin-right:50px;
+          float:right;
+          background: transparent;
+          background-color: white;
+          padding-right:15px;
+          border-radius: 0 50px 50px 0;
+        }
        .background1{
         max-width: 100vw;
         height: 110vh;
@@ -191,27 +203,30 @@
 
      <!-- Vix added background here -->
          <%# <div class="background1"><p>BUILDING COMMUNITIES, LEAVING AN IMPACT</p></div> %>
-         <div class="background1">
          
+         <div class="background1">
             <div class="animated fadeInUp text-center" id="slogan">
                <p class="text-white mb-0">BUILDING COMMUNITIES</p>
                <p class="text-white mb-0">LEAVING AN IMPACT</p>
                 <div class="row">
                   <div class="col-md-8 mx-auto">
-                    <div class="form-group ml-4">
-                      <%= form_tag card_projects_path, remote: true, method: 'get' do %>
+                    <div class="form-group ml-4" >
+                      <%= form_with(url:card_projects_path, remote: true, method: :get)  do |form| %>
                         <div class="input-group mb-4">
-                          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Project" %>
-                            <%= submit_tag "Search", name: nil, class: "btn btn-icon btn-2 btn-neutral" %>
-                             <%# <span class="btn-inner--icon"><i class="ni ni-zoom-split-in"></i></span> %>
+                          <%= form.text_field :query,value:params[:query], class: "form-control",style:"border-radius: 50px 0 0 50px;", placeholder: "Search a Project" %>
+                            <%= form.button :submit, name: nil,id:"search_button" do %>
+                                 <%# <i class="ni ni-zoom-split-in"></i> %>
+                                 <i class="fab fa-searchengin"></i>
+                           <% end %>
                         </div>
                       <% end %>
-                                 
                     </div>
                   </div>
                 </div>
             </div>
         </div>
+  
+                                 
 
              
   <!-- -->
