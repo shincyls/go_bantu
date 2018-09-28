@@ -198,8 +198,8 @@
                <p class="text-white mb-0">LEAVING AN IMPACT</p>
                 <div class="row">
                   <div class="col-md-8 mx-auto">
-                    <div class="form-group">
-                      <%= form_tag search_projects_path, remote: true, method: 'get' do %>
+                    <div class="form-group ml-4">
+                      <%= form_tag card_projects_path, remote: true, method: 'get' do %>
                         <div class="input-group mb-4">
                           <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Project" %>
                             <%= submit_tag "Search", name: nil, class: "btn btn-icon btn-2 btn-neutral" %>

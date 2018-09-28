@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.text :requirement_desc
 
       ## Enum for Project Type (personal? home? organization?)
-      t.references :category, default: 1
+       # t.references :category, index: true
 
       ## Contact and Location (temporary allow to key anything)
       t.string :contact_person_1
@@ -19,10 +19,18 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :city #free to key-in
       t.string :state #select option
       t.string :country #select option
+      t.float :latitude
+      t.float :longitude
 
       ## Campaign Date, Project Page will only show >start_date and <end_date
       t.date :start_date, default: "2018-01-01"
       t.date :end_date, default: "2020-12-31"
+
+       ## Number of Volunteer Needed
+       t.integer :status, default: 0
+
+      ## Number of Volunteer Needed
+      t.integer :volunteer_number, default: 0
 
       ## Funding Amount
       t.float :fund_amount, default: 0

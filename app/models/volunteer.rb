@@ -9,4 +9,8 @@ class Volunteer < ApplicationRecord
     has_many :skills, through: :volunteer_skill_joins
     has_many :volunteer_profession_joins
     has_many :professions, through: :volunteer_profession_joins
+
+    def custom_label
+        "#{self.user.username}"
+    end
 end

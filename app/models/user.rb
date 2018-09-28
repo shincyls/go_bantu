@@ -16,7 +16,32 @@ class User < ApplicationRecord
     mount_uploader :avatar, AvatarUploader
 
     # General Association
+    has_one :organizer
+    has_one :volunteer
+    has_one :donor
     has_many :user_cause_joins
     has_many :causes, through: :user_cause_joins
+
+    # gecode required to set latitude and logitude
+    geocoded_by :address
+    after_validation :geocode, :if => :address_changed?
+
+
+    # create string from form inputs to use with geocode
+    def address
+    [address_1, city, state, country].compact.join(', ')
+    end
+
+    # if address changed update geocode
+    def address_changed?
+    address_1? || city_changed? || state_changed? || country_changed?
+    end
+
+
+    ##### admin panel custom label ######
+    def custom_label
+        "#{self.username}"
+    end
+
 
 end

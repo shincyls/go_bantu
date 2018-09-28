@@ -1,0 +1,83 @@
+<% @projects.each do |p| %>
+    <div class="col-sm-2 col-md-4">
+        <div class="card card-highlight--hover shadow mb-3", id="project-<%=p.id%>">
+            <% if p.images_url %>
+            <%= image_tag(p.images_url, class: "img-fluid rounded shadow") %>
+            <% else %>
+            <%= image_tag("brand/coverphoto.svg") %>
+            <% end %>
+            <div class="card-body">
+                <div class="card-body-area">
+                    <%= link_to p.title, project_path(p.id), target:"_blank" %>
+                    <p class="small"><%= p.project_desc %></p>
+
+                    <% if p.volunteer && p.volunteer_number != 0 %>
+                    <div id="donation-section">
+                        <div class="progress-wrapper">
+                            <div class="progress-info">
+                                <div>
+                                <% if p.volunteer_progress >= 100 %>
+                                    <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
+                                <% else %>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, "#", class: "badge badge-primary"%>
+                                <% end %>
+                                </div>
+                                <div class="progress-percentage">
+                                    <span><%=p.volunteer_progress.round%>%</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= p.volunteer_progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= p.volunteer_progress %>%;"></div>
+                            </div>
+                            <div class="criteria">
+                                <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
+                                <% p.skills.each do |s| %>
+                                    <span class="badge badge-pill badge-primary"><%= s.name %></span>
+                                <% end %>
+                                </p>
+                                <p class="display-6"><span class="badge badge-pill badge-secondary">Professions</span>
+                                <% p.professions.each do |p| %>
+                                    <span class="badge badge-pill badge-info"><%= p.name %></span>
+                                <% end %>
+                                </p>
+                                <p class="display-6"><span class="badge badge-pill badge-secondary">Causes</span>
+                                <% p.causes.each do |c| %>
+                                    <span class="badge badge-pill badge-default"><%= c.name %></span>
+                                <% end %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+
+                    <% if p.finance_donate && p.fund_amount != 0 %>
+                    <div id="donation-section">
+                        <div class="progress-wrapper">
+                            <div class="progress-info">
+                                <div>
+                                <% if p.fund_progress >= 100 %>
+                                    <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
+                                <% else %>
+                                    <%= link_to "Raised RM" + p.donor_project_joins.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
+                                <% end %>
+                                </div>
+                                <div class="progress-percentage">
+                                    <span><%=p.fund_progress.round%>%</span>
+                                </div>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= p.fund_progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= p.fund_progress %>%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
+
+
+
+

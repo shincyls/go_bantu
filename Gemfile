@@ -58,6 +58,9 @@ gem 'rails-erd', '~> 1.5', '>= 1.5.2'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'braintree', '~> 2.90'
 
+# Geolocation Mapping
+gem 'geocoder', '~> 1.5'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -77,6 +80,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  #better rails console print
+  gem 'pry-rails'
+  #chorme inspect panel tool
+  gem 'meta_request'
 end
 
 group :test do
