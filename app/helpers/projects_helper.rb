@@ -61,6 +61,7 @@ module ProjectsHelper
       @matched_projects = Project.where(:id => matched_skills)
     else
       return @matched_projects # 50% match only
+    end
   end
 
   # find projects withing distance from volunteer
@@ -70,6 +71,7 @@ module ProjectsHelper
       @matched_projects = matched_projects # 100% match
     else
       return @matched_projects # 75% match
+    end
   end
 
   ######## Project page automatching #####################
@@ -145,6 +147,7 @@ module ProjectsHelper
       @matched_volunteers = Volunteer.where(:id => matched_skills)
     else
       return @matched_volunteers # 50% match only
+    end
   end
 
   
