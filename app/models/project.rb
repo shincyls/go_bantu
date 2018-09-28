@@ -25,6 +25,11 @@ class Project < ApplicationRecord
     
     validates :title, presence: true
 
+    # gecode required to set latitude and logitude
+    geocoded_by :address
+    after_validation :geocode, :if => :address_changed?
+
+
     
     # Gem pg_search for searhable columns
     include PgSearch
@@ -41,7 +46,15 @@ class Project < ApplicationRecord
     end
 
 
- 
-        
+    # create string from form inputs to use with geocode
+    def address
+    [address_1, city, state, country].compact.join(', ')
+    end
+
+    # if address changed update geocode
+    def address_changed?
+    address_1? || city_changed? || state_changed? || country_changed?
+    end
+
 
 end

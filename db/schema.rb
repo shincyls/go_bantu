@@ -143,6 +143,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "city"
     t.string "state"
     t.string "country"
+    t.float "latitude"
+    t.float "longitude"
     t.date "start_date", default: "2018-01-01"
     t.date "end_date", default: "2020-12-31"
     t.integer "voulunteer_number", default: 0
@@ -185,6 +187,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "city"
     t.string "state"
     t.string "country"
+    t.float "latitude"
+    t.float "longitude"
     t.integer "role", default: 1
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
