@@ -26,7 +26,6 @@ class User < ApplicationRecord
     geocoded_by :address
     after_validation :geocode, :if => :address_changed?
 
-
     # create string from form inputs to use with geocode
     def address
     [address_1, city, state, country].compact.join(', ')
