@@ -1,0 +1,17 @@
+<div class="container ml-4 mr-4">
+<%= form_for(@organizer) do |f| %>
+
+  <br><br><br><br><br>
+  <h4>Organizer Information</h4>
+  <%= f.text_field :user_id, placeholder: "will be hidden_field current_user.id" %>
+  <%= f.text_field :company_name, placeholder: "Company Name" %>
+  <%= f.text_field :email, placeholder: "Email" %>
+  <%= f.text_field :phone_number1, placeholder: "Phone Number 1" %>
+  <%= f.text_field :phone_number2, placeholder: "Phone Number 2" %>
+  
+  <div class="mx-auto">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
+  
+<% end %>
+</div>

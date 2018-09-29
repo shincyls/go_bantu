@@ -20,8 +20,12 @@ class Project < ApplicationRecord
     has_many :project_cause_joins
     has_many :causes, through: :project_cause_joins
 
+    accepts_nested_attributes_for :project_skill_joins, allow_destroy: true
+    accepts_nested_attributes_for :project_profession_joins, allow_destroy: true
+    accepts_nested_attributes_for :project_cause_joins, allow_destroy: true
+    accepts_nested_attributes_for :project_category_joins, allow_destroy: true
 
-    enum status: ["applied", "pending", "validated"]
+    enum status: ["applied", "pending", "validated", "rejected"]
 
     # validations
     validates :title, presence: true
