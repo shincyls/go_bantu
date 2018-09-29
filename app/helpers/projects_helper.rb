@@ -83,7 +83,7 @@ module ProjectsHelper
   def nearby_projects(projects,latitude,longitude)
     @projects_seventy_five = @matched_projects
     # to remove duplicates from array
-    @projects_fifty = @projects_seventy_five
+    @projects_fifty = @projects_seventy_five - @projects_fifty
     @seventy_five = false
     @hundred = false
     matched_projects = projects.near([latitude, longitude], 50, units: :km)  # within 50 kilometres of user address
@@ -99,7 +99,7 @@ module ProjectsHelper
 
   
 
-  ######## Project page automatching #####################
+######## Project page automatching #####################
 
   def matched_volunteers(project_id)
     # set the project
@@ -109,42 +109,52 @@ module ProjectsHelper
     project_matched_cause(project)
 
     # narrow down volunteers based on profession
+    if @matched_volunteers.count > 0
     project_matched_profession(@matched_volunteers,project)
+    end
 
     # narrow down volunteers based on skills
+    if @twenty_five == false
     project_matched_skills(@matched_volunteers,project)
-
+    end
     # find volunteers within distance
-    nearby_volunteers(@matched_volunteers,lat,long)
+    if @fifty == false
+    nearby_volunteers(@matched_volunteers,project.latitude,project.longitude)
+    end
   end
 
+  # narrows array of matched volunteers based on cause
   def project_matched_cause(project)
     matched_users = []
     matched_cause = []
-
+    #find users with matched causes
     project.causes.each do |project_cause|
       User.joins(:causes).where("causes.id = ?", project_cause.id).each do |user|
         matched_users << user.id
       end
     end
 
-    if matched_user.count > 0
+    if matched_users.count > 0
       potentials = User.where(:id => matched_users)
     else
-      return "No Volunteers currently match your criteria."
+      @matched_volunteers = []
     end
 
+    #narrow to those that are volunteers
     potentials.each do |x|
       if x.volunteer
         matched_cause << x.volunteer.id
       else
-        return "No Volunteers currently match your criteria."
+        @matched_volunteers = []
       end  
     end
     @matched_volunteers = Volunteer.where(:id => matched_cause)
   end
 
+  # narrows array of matched volunteers based on profession
   def project_matched_profession(matched_volunteers,project)
+    @volunteers_twentyfive = @matched_volunteers
+    @twenty_five = false
     matched_profession = []
 
     project.professions.each do |project_profession|
@@ -156,11 +166,16 @@ module ProjectsHelper
     if matched_profession.count > 0
       @matched_volunteers = Volunteer.where(:id => matched_profession)
     else
-      return @matched_volunteers # 25% match only
+      @twentyfive = true # 25% match only
     end
   end
 
+  # narrows array of matched volunteers based on skills
   def project_matched_skills(matched_volunteers,project)
+    @volunteers_fifty = matched_volunteers
+    # to remove duplicates from array
+    @volunteers_twentyfive = (@volunteers_fifty - @volunteers_twentyfive) 
+    @fifty = false   
     matched_skills = []
     project.skills.each do |project_skill|
         @matched_volunteers.joins(:skills).where("skills.id = ?", project_skill.id).each do |volunteer|
@@ -171,26 +186,34 @@ module ProjectsHelper
     if matched_skills.count > 0 
       @matched_volunteers = Volunteer.where(:id => matched_skills)
     else
-      return @matched_volunteers # 50% match only
+      @fifty = true #50% match only
     end
   end
 
-  
+  # narrows volunteers within a distance from project
   def nearby_volunteers(volunteers,latitude, longitude)
+    @volunteers_seventy_five = @matched_volunteers
+    # to remove duplicates from array
+    @volunteers_fifty = @volunteers_seventy_five - @volunteers_fifty
+    @seventy_five = false
+    @hundred = false    
     users = []
     volunteers.each do |volunteer|
       users << volunteer.user.id
     end
+    # finde users geolacation to compare
     users = User.where(:id => users)
     matched_volunteers = users.near([latitude, longitude], 50, units: :km)  # within 50 kilometres of user address
 
     if matched_volunteers.size > 0
-      @matched_volunteers = matched_volunteers # 100% match
+      @matched_volunteers = matched_volunteers
+      # to remove duplicates from array
+      @volunteers_seventy_five = (@matched_volunteers - @volunteers_seventy_five)
+      @hundred = true # 100% match
     else
-      return @matched_volunteers # 75% match
+      @seventy_five = true # 75% match
     end
   end
-
 end
 
 

@@ -1,0 +1,42 @@
+<% @matched_volunteers.each do |v| %>
+    <div class="col-sm-2 col-md-4">
+        <div class="card card-highlight--hover shadow pt-3 mb-3", id="volunteer-<%=v.id%>">
+            <center>
+            <a href="#">
+                <% if v.user.avatar? %>
+                    <%= image_tag(v.user.avatar_url, class: "rounded-circle", style: "height: 200px;width:200px;") %>
+                <% else %>
+                    <%= image_tag "theme/default.jpg", class: "rounded-circle" ,style: "height: 200px;width:200px;" %>
+                <% end %>
+            </a>
+            </center>
+            <div class="card-body">
+                <div class="card-body-area">
+                    <h4 class="text-center text-uppercase font-weight-bold text-dark"><%= link_to v.user.first_name, user_path(v.user.id), target:"_blank" %></h4>
+
+                    <div class="criteria">
+                        <span class="badge badge-pill badge-secondary">Profession:</span>
+                        <p class="display-6">
+                        <% v.professions.each do |p| %>
+                            <span class="badge badge-pill badge-info"><%= p.name %></span>
+                        <% end %>
+                        </p>
+                        <span class="badge badge-pill badge-secondary">Skills:</span>
+                        <p class="display-6">
+                        <% v.skills.each do |s| %>
+                            <span class="badge badge-pill badge-primary"><%= s.name %></span>
+                        <% end %>
+                        </p>
+
+                        <span class="badge badge-pill badge-secondary">Causes:</span>
+                        <p class="display-6">
+                        <% v.user.causes.each do |c| %>
+                            <span class="badge badge-pill badge-default"><%= c.name %></span>
+                        <% end %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>
