@@ -1,18 +1,35 @@
-<%= simple_form_for(@volunteer) do |f| %>
+<div class="container ml-4 mr-4">
+<%= form_for(@volunteer) do |f| %>
 
   <br><br><br><br><br>
-  <%= f.input :user_id, placeholder: "User ID" %>
-  <%= f.input :cv_file, placeholder: "Upload CV File" %>
-  <%= f.input :linked_in_url, placeholder: "LinkedIn URL" %>
+  <h4>Volunteer Information</h4>
+  <%= f.text_field :user_id, placeholder: "will be hidden_field current_user.id" %>
+  <%= f.text_field :cv_file, placeholder: "Upload CV File" %>
+  <%= f.text_field :linked_in_url, placeholder: "LinkedIn URL" %>
 
-  <div>
+  <h4>Skills</h4>
+  <div class="row">
     <% Skill.all.each_with_index do |skill, index| %>
+    <div class="col-3">
     <%= check_box_tag "volunteer[volunteer_skill_joins_attributes][#{index}][skill_id]", skill.id, @volunteer.skills.include?(skill), id: dom_id(skill) %>
     <%= label_tag dom_id(skill), skill.name %>
+    </div>
     <% end %>
   </div>
 
+  <h4>Professions</h4>
+  <div class="row">
+    <% Profession.all.each_with_index do |profession, index| %>
+    <div class="col-3">
+    <%= check_box_tag "profession[volunteer_profession_joins_attributes][#{index}][profession_id]", profession.id, @volunteer.professions.include?(profession), id: dom_id(profession) %>
+    <%= label_tag dom_id(profession), profession.name %>
+    </div>
+    <% end %>
+  </div>
 
-  <%= f.submit "Submit" %>
+  <div class="mx-auto">
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  </div>
   
 <% end %>
+</div>

@@ -22,7 +22,8 @@ class VolunteersController < ApplicationController
 
     def volunteer_params
         params.require(:volunteer).permit(:user_id, :cv_file, :linked_in_url, 
-            volunteer_skill_joins_attributes: [:volunteer_id, :skill_id]
+            volunteer_skill_joins_attributes: [:volunteer_id, :skill_id],
+            volunteer_profession_joins_attributes: [:volunteer_id, :profession_id]
         )
     end
 

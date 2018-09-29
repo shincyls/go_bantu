@@ -1,4 +1,5 @@
 class Volunteer < ApplicationRecord
+    validates :user_id, uniqueness: {message: "is already a volunteer!"}
     #General Association
     belongs_to :user
     #Volunteer to Project Association
@@ -10,7 +11,8 @@ class Volunteer < ApplicationRecord
     has_many :volunteer_profession_joins
     has_many :professions, through: :volunteer_profession_joins
 
-    accepts_nested_attributes_for :volunteer_skill_joins, allow_destroy: true, reject_if: proc { |attributes| attributes['skill_id'] == "0" }
+    accepts_nested_attributes_for :volunteer_skill_joins, allow_destroy: true
+    accepts_nested_attributes_for :volunteer_profession_joins, allow_destroy: true
 
     def custom_label
         "#{self.user.username}"
