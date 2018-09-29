@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+  include ProjectsHelper
   require 'will_paginate/array'
 
   def index
@@ -10,6 +10,22 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    matched_volunteers(@project.id)
+        # set percent match for user
+    if @hundred
+      @matched_volunteers
+      @match_percent = "100%"
+    elsif @seventy_five
+      @match_percent = "75%"
+    elsif @fifty
+      @match_percent = "50%"
+    elsif @twenty_five
+      @match_percent = "25%"
+    else 
+      # for empty array to pass message on user show
+      @matched_volunteers
+    end
+
   end
 
   def card

@@ -19,96 +19,98 @@
   </section>
 
   <!-- message notifiying user of currently matched/unmatched projects -->
-  <center>
-    <h4 class="text-uppercase text-bold">
-      <% if @projects == [] %>
-        There are currently no projects matching your criteria. Please try updating your profile or try again later.
-      <% else %>
-        You have projects matching <%= @match_percent %> of your criteria.
-      <% end %>
-    </h4>
-  </center>
+  <% if current_user.id == @user.id %>
+    <center>
+      <h4 class="text-uppercase text-bold">
+        <% if @projects == [] %>
+          There are currently no projects matching your criteria. Please try updating your profile or try again later.
+        <% else %>
+          You have projects matching <%= @match_percent %> of your criteria.
+        <% end %>
+      </h4>
+    </center>
 
-  <!-- 100% projects match  -->
-  <% if !@hundred.nil? %>
-    <section class="section section-lg pt-lg-0">
-      <div class="container">
-        <center>
-          <h5 class="text-uppercase text-bold">
-            Projects with 100% match
-          </h5>
-        </center>
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="row row-grid" id="search">
-              <%= render partial: 'projects/card' %>
+    <!-- 100% projects match  -->
+    <% if !@hundred.nil? && @hundred != false %>
+      <section class="section section-lg pt-lg-0">
+        <div class="container">
+          <center>
+            <h5 class="text-uppercase text-bold">
+              Projects with 100% match
+            </h5>
+          </center>
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="row row-grid" id="search">
+                <%= render partial: 'projects/card' %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  <% end %>
+      </section>
+    <% end %>
 
-  <!-- 75% projects match  -->
-  <% @projects = @projects_seventy_five %>
-  <% if !@projects.nil? && @projects.count > 0 %>
-    <section class="section section-lg pt-lg-0">
-      <div class="container">
-        <center>
-          <h5 class="text-uppercase text-bold">
-            Projects with 75% match
-          </h5>
-        </center>
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="row row-grid" id="search">
-              <%= render partial: 'projects/card' %>
+    <!-- 75% projects match  -->
+    <% @projects = @projects_seventy_five %>
+    <% if !@projects.nil? && @projects.count > 0 %>
+      <section class="section section-lg pt-lg-0">
+        <div class="container">
+          <center>
+            <h5 class="text-uppercase text-bold">
+              Projects with 75% match
+            </h5>
+          </center>
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="row row-grid" id="search">
+                <%= render partial: 'projects/card' %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  <% end %>
+      </section>
+    <% end %>
 
-  <!-- 50% projects match  -->
-  <% @projects = @projects_fifty %>
-  <% if !@projects.nil? && @projects.count > 0 %>
-    <section class="section section-lg pt-lg-0">
-      <div class="container">
-        <center>
-          <h5 class="text-uppercase text-bold">
-            Projects with 50% match
-          </h5>
-        </center>
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="row row-grid" id="search">
-              <%= render partial: 'projects/card' %>
+    <!-- 50% projects match  -->
+    <% @projects = @projects_fifty %>
+    <% if !@projects.nil? && @projects.count > 0 %>
+      <section class="section section-lg pt-lg-0">
+        <div class="container">
+          <center>
+            <h5 class="text-uppercase text-bold">
+              Projects with 50% match
+            </h5>
+          </center>
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="row row-grid" id="search">
+                <%= render partial: 'projects/card' %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  <% end %>
+      </section>
+    <% end %>
 
-  <!-- 25% projects match  -->
-  <% @projects = @projects_twentyfive %>
-  <% if !@projects.nil? && @projects.count > 0 %>
-    <section class="section section-lg pt-lg-0">
-      <div class="container">
-        <center>
-          <h5 class="text-uppercase text-bold">
-            Projects with 25% match
-          </h5>
-        </center>
-        <div class="row justify-content-center">
-          <div class="col-lg-12">
-            <div class="row row-grid" id="search">
-              <%= render partial: 'projects/card' %>
+    <!-- 25% projects match  -->
+    <% @projects = @projects_twentyfive %>
+    <% if !@projects.nil? && @projects.count > 0 %>
+      <section class="section section-lg pt-lg-0">
+        <div class="container">
+          <center>
+            <h5 class="text-uppercase text-bold">
+              Projects with 25% match
+            </h5>
+          </center>
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <div class="row row-grid" id="search">
+                <%= render partial: 'projects/card' %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    <% end %>
   <% end %>
 </main>
