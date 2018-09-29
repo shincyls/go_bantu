@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except:[:index, :show, :new, :create]
 
+  include ProjectsHelper
+  require 'will_paginate/array'
+  
   # When registering for new user
   def new
     @user = User.new
@@ -11,11 +14,28 @@ class UsersController < ApplicationController
   # GET /users
   def index
     @users = current_users
-    @projects = Dress.all
   end
 
   # GET /users/:id
   def show
+    # from ProjectsHelper for automatching projects
+    matched_projects(@user.id)
+
+    # set percent match for user
+    if @hundred
+      @projects = @matched_projects
+      @match_percent = "100%"
+    elsif @seventy_five
+      @match_percent = "75%"
+    elsif @fifty
+      @match_percent = "50%"
+    elsif @twenty_five
+      @match_percent = "25%"
+    else 
+      # for empty array to pass message on user show
+      @projects = @matched_projects
+    end
+
   end
 
   # GET /users/:id/edit

@@ -8,35 +8,45 @@ module ProjectsHelper
     matched_cause(volunteer)
 
     # narrow down based on project required professions
-    matched_profession(volunteer,@matched_projects)
-
+    if @matched_projects.count > 0
+      matched_profession(volunteer,@matched_projects)
+    end
+    
     # narrow down based on project required skills
-    matched_skills(volunteer,@matched_projects)
+    if @twenty_five == false
+      matched_skills(volunteer,@matched_projects)
+    end
 
-    # locate projects near user location
-    nearby_projects(@matched_projects, volunteer.user.latitude, volunteer.user.longitude)
+    # # locate projects near user location
+    if @fifty == false
+      nearby_projects(@matched_projects, volunteer.user.latitude, volunteer.user.longitude)
+    end
 
-    # volunteers personilzed matched projects
-    personlized_projects = @matched_projects
   end
 
   ######## Volunteer page automatching #####################
 
+  # creates an array of matched projects that are validated based on cause
   def matched_cause(volunteer)
     matched_cause = []
     volunteer.user.causes.each do |volunteer_cause|
-      Cause.find_by(id: volunteer_cause.id).projects.each do |project|
+      Cause.find_by(id: volunteer_cause.id).projects.where(status: 'validated').each do |project|
           matched_cause << project.id
       end
     end
+
     if matched_cause.count > 0
       @matched_projects = Project.where(:id => matched_cause)
     else
-      return "No Projects currently match your criteria."
+      @matched_projects = []
     end
+
   end
 
+  # narrows array of matched projects based on profession
   def matched_profession(volunteer,matched_projects)
+    @projects_twentyfive = @matched_projects
+    @twenty_five = false
     matched_profession = []
     volunteer.professions.each do |volunteer_profession|
       matched_projects.joins(:professions).where("professions.id = ?", volunteer_profession.id).each do |project|
@@ -46,11 +56,16 @@ module ProjectsHelper
     if matched_profession.count > 0
       @matched_projects = Project.where(:id => matched_profession)
     else 
-      return @matched_projects # 25% match only    
+      @twentyfive = true # 25% match only    
     end
   end 
 
-  def matched_skills(volunteer,matched_projects) 
+  # narrows array of matched projects based on skills
+  def matched_skills(volunteer,matched_projects)
+    @projects_fifty = matched_projects
+    # to remove duplicates from array
+    @projects_twentyfive = (@projects_fifty - @projects_twentyfive) 
+    @fifty = false
     matched_skills = []
     volunteer.skills.each do |volunteer_skill|
       matched_projects.joins(:skills).where("skills.id = ?", volunteer_skill.id).each do |project|
@@ -60,19 +75,29 @@ module ProjectsHelper
     if matched_skills.count > 0
       @matched_projects = Project.where(:id => matched_skills)
     else
-      return @matched_projects # 50% match only
+      @fifty = true #50% match only
     end
   end
 
-  # find projects withing distance from volunteer
+  # narrows projects within a distance from volunteer
   def nearby_projects(projects,latitude,longitude)
+    @projects_seventy_five = @matched_projects
+    # to remove duplicates from array
+    @projects_fifty = @projects_seventy_five
+    @seventy_five = false
+    @hundred = false
     matched_projects = projects.near([latitude, longitude], 50, units: :km)  # within 50 kilometres of user address
-    if matched_projects.count > 0
-      @matched_projects = matched_projects # 100% match
+    if matched_projects.size > 0
+      @matched_projects = matched_projects
+      # to remove duplicates from array
+      @projects_seventy_five = (@matched_projects - @projects_seventy_five)
+      @hundred = true # 100% match
     else
-      return @matched_projects # 75% match
+      @seventy_five = true # 75% match
     end
   end
+
+  
 
   ######## Project page automatching #####################
 
@@ -159,7 +184,7 @@ module ProjectsHelper
     users = User.where(:id => users)
     matched_volunteers = users.near([latitude, longitude], 50, units: :km)  # within 50 kilometres of user address
 
-    if matched_volunteers.count > 0
+    if matched_volunteers.size > 0
       @matched_volunteers = matched_volunteers # 100% match
     else
       return @matched_volunteers # 75% match
