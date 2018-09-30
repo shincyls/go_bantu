@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'braintree/new'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'statics#index'
