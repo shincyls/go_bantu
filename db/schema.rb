@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "donor_project_joins", force: :cascade do |t|
+  create_table "donations", force: :cascade do |t|
     t.bigint "donor_id"
     t.bigint "project_id"
     t.float "amount"
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["donor_id"], name: "index_donor_project_joins_on_donor_id"
-    t.index ["project_id"], name: "index_donor_project_joins_on_project_id"
+    t.index ["donor_id"], name: "index_donations_on_donor_id"
+    t.index ["project_id"], name: "index_donations_on_project_id"
   end
 
   create_table "donors", force: :cascade do |t|

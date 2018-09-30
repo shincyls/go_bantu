@@ -5,8 +5,7 @@
     	</div>
 		<div class="card col-md-4 mt-4">
 			<div class="demo-frame">
-
-			 	<%= form_for :checkout_form, html: { id: "cardForm"} do |form| %>
+        <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "cardForm"} do |form| %>
 
 				    <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>
 				    <div id="card-number" class="hosted-field"></div>
@@ -18,8 +17,10 @@
 				    <div id="cvv" class="hosted-field"></div>
 
 				    <%= form.hidden_field "payment_method_nonce" %>
-				   <!-- form.hidden_field "amount", value: @project.total %>  added to form to gather params at braintree checkout -->
-    			    <!-- form.hidden_field "reservation", value: @project.id %>  added to form to gather params at braintree checkout -->
+				    <%= form.text_area "amount" %>  
+            <!-- added to form to gather params at braintree checkout -->
+    			  <%= form.hidden_field "project", value: @project.id %>  
+            <!-- added to form to gather params at braintree checkout -->
 
               		<div class="button-container pull-right mb-3">
               		<%= form.submit "Submit", disabled: true, class: "btn btn-success pull-right ml-2", id: "submit-payment-btn" %> 

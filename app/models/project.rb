@@ -4,8 +4,8 @@ class Project < ApplicationRecord
     has_many :organizer_project_joins
     has_many :organizers, through: :organizer_project_joins
     # Project to Donor Association
-    has_many :donor_project_joins
-    has_many :donors, through: :donor_project_joins
+    has_many :donations
+    has_many :donors, through: :donations
     # Project to Volunteer Association
     has_many :volunteer_project_joins
     has_many :volunteers, through: :volunteer_project_joins
@@ -45,7 +45,7 @@ class Project < ApplicationRecord
     ##### custom methods for view purposes ######
 
     def fund_progress
-        progress = (self.donor_project_joins.sum(:amount) / self.fund_amount) * 100
+        progress = (self.donations.sum(:amount) / self.fund_amount) * 100
     end
 
     def volunteer_progress

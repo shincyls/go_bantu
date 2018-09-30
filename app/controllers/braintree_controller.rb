@@ -1,14 +1,16 @@
 class BraintreeController < ApplicationController
  
   def new
-  # @project = Project.find(params[:id])
-  @project = Project.find(1)
-  # @client_token = Braintree::ClientToken.generate
+  @project = Project.find(params[:id])
+  @client_token = Braintree::ClientToken.generate
   end
 
 	def checkout
 	  nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
-
+	  donation_amount = params["checkout_form"]["amount"].to_f
+	  project_id = params["checkout_form"]["project"] #params passed from checkout form 
+	  
+	  
 	  result = Braintree::Transaction.sale(
 	   :amount => params["checkout_form"]["amount"].to_s, #params passed from checkout form 
 	   :payment_method_nonce => nonce_from_the_client,
@@ -18,17 +20,15 @@ class BraintreeController < ApplicationController
 	   )
 
 	  if result.success?
-	  	project_id = params["checkout_form"]["project"] #params passed from checkout form 
-	  	project = Project.find(project_id)
-	  	project.status = 1 #change status to booked after payment
-	  	project.save
-	  	host = project.listing.user.id
-	  	# ReservationMailer.booking_email(current_user,booking, host).deliver
-		# ReservationJob.perform_later(current_user,booking, host) # Job to multithread system
-	    redirect_to project_url(project_id), :flash => { :notice => "Transaction successful!" }# back to reservation page
+	  	if !current_user.donor
+	  		donor = Donor.new(user_id: current_user.id).save
+	  	end
+	  	donation = Donation.new(donor_id: current_user.id, project_id: project_id, amount: donation_amount).save
+	    redirect_to project_url(project_id), :flash => { :notice => "Transaction successful!" }
 	  else
-	    redirect_to :root, :flash => { :notice => "Transaction failed. Please try again." }
+	    redirect_to 'projects/#{project_id}/donation/transaction', :flash => { :notice => "Transaction failed. Please try again." }
 	  end
+
 	end
 
 end

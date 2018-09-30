@@ -17,7 +17,7 @@
                             <% if @project.volunteer_progress >= 100 %>
                                 <span class="badge badge-success">Successfully Volunteered! <%=@project.volunteer_number%></span>
                             <% else %>
-                                <%= link_to "Volunteered " + @project.volunteer_project_joins.count.to_s + " / " + @project.volunteer_number.to_s, "#", class: "badge badge-primary"%>
+                                <%= link_to "Volunteer " + @project.volunteer_project_joins.count.to_s + " / " + @project.volunteer_number.to_s, "#", class: "badge badge-primary"%>
                             <% end %>
                             </div>
                             <div class="progress-percentage">
@@ -56,7 +56,12 @@
                             <% if @project.fund_progress >= 100 %>
                                 <span class="badge badge-success">Successfully raised! RM<%=@project.fund_amount.round%></span>
                             <% else %>
-                                <%= link_to "Raised RM" + @project.donor_project_joins.sum(:amount).round.to_s + " / RM" + @project.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
+                                <p class="text-uppercase font-weight-bold">Raised RM<%= @project.donations.sum(:amount).round.to_s %>/ RM <%= @project.fund_amount.round.to_s %></p>
+                                <% if signed_in? %>
+                                <%= link_to "Donate Now", new_donation_url, class: "btn btn-danger"%>
+                                <% else %>
+                                <button class="btn btn-danger">Sign in to Donate</button>
+                                <%end %>
                             <% end %>
                             </div>
                             <div class="progress-percentage">

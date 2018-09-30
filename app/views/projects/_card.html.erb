@@ -58,7 +58,7 @@
                                 <% if p.fund_progress >= 100 %>
                                     <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                 <% else %>
-                                    <%= link_to "Raised RM" + p.donor_project_joins.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
+                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
                                 <% end %>
                                 </div>
                                 <div class="progress-percentage">
