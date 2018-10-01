@@ -19,7 +19,7 @@
                                 <% if p.volunteer_progress >= 100 %>
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, "#", class: "badge badge-primary"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
                                 <% end %>
                                 </div>
                                 <div class="progress-percentage">
@@ -58,7 +58,7 @@
                                 <% if p.fund_progress >= 100 %>
                                     <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                 <% else %>
-                                    <%= link_to "Raised RM" + p.donor_project_joins.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
+                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
                                 <% end %>
                                 </div>
                                 <div class="progress-percentage">

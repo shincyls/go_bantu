@@ -1,6 +1,6 @@
-class CreateDonorProjectJoins < ActiveRecord::Migration[5.2]
+class CreateDonations < ActiveRecord::Migration[5.2]
   def change
-    create_table :donor_project_joins do |t|
+    create_table :donations do |t|
       t.references :donor, index: true
       t.references :project, index: true
       t.float :amount
