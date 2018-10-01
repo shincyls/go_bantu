@@ -1,4 +1,5 @@
 module ProjectsHelper
+  
   ##### personalized projects for volunteers #########
   def matched_projects(user_id)
     # set the volunteer by user_id
