@@ -39,10 +39,10 @@ gem 'mini_magick', '~> 4.8'
 
 # Vix laptop couldnt use
 # gem 'bootstrap', '~> 4.1', '>= 4.1.3'
-gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+
 
 # Styling Libraries
-
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'jquery-turbolinks', '~> 2.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.1'

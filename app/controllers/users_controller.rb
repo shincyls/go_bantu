@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except:[:index, :show, :new, :create]
+  # skip_before_action :verify_authenticity_token
+  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_user!, except:[:index, :show, :new, :create]
 
   include ProjectsHelper
   require 'will_paginate/array'
@@ -12,11 +12,16 @@ class UsersController < ApplicationController
   end
 
   # GET /users
-  def index
-    @users = current_users
+    if current_user 
+      render :index
+    else
+        redirect_to new_user_session_path, info: 'Sign in to view your profile.'
+    end
   end
+   
 
   # GET /users/:id
+  # Get profile
   def show
     # from ProjectsHelper for automatching projects
     matched_projects(@user.id)

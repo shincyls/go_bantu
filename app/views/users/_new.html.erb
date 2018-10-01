@@ -1,5 +1,6 @@
 <% @user = User.new %>
-<%= form_for @user, id: 'signup'  do |f| %>
+<%= form_for user_session_path, id: 'signup'  do |f| %>
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -36,15 +37,7 @@
     </div>
   </div>
 
-  <div class="form-group focused">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
-      </div>
-      <%= f.text_field :birthday, value: "Birthday", class: "form-control datepicker" %>
-    </div>
-  </div>
-
+ 
   <div class="form-group">
     <div class="input-group input-group-alternative">
       <div class="input-group-prepend">

@@ -1,3 +1,193 @@
+
+  <head>
+   
+
+    <script type="text/javascript">
+    $(window).scroll(function(){
+      $('.background1').bgscroll({direction: 'top'});
+      $('.background2').bgscroll({direction: 'top'});
+    })
+    </script>
+    
+    <style media="screen">
+
+       
+        #search_button{
+          border: 2px solid #12e2a3;
+          border-left: none;
+          margin-right:50px;
+          float:right;
+          background: transparent;
+          background-color: white;
+          padding-right:15px;
+          border-radius: 0 50px 50px 0;
+        }
+       .background1{
+        max-width: 100vw;
+        height: 110vh;
+        background-image: url('https://wcswr.org/wp-content/uploads/2018/01/iStock_000015133180_Large.jpg');
+        /* background-image: url('https://sll-cdn.azureedge.net/2018/03/construction-volunteers-feature.jpg'); */
+        overflow: hidden;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFF;
+        margin-top:14vh;
+
+      
+       
+      
+
+      }
+     
+      .background2{
+        width: 100%;
+        height: 50vh;
+        background-image: url('https://sll-cdn.azureedge.net/2018/03/construction-volunteers-feature.jpg');
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFF;
+      }
+
+      .background3{
+        width: 100%;
+        height: 70vh;
+        background-image: url('https://images.unsplash.com/photo-1491772135384-20292e4b5ea1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=111ee66d6a3cf0d92fb1bb9db9e1486d&auto=format&fit=crop&w=1568&q=80');
+        background-repeat: no-repeat;
+        background-position: 50% 0%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFF;
+      }
+
+      .overlay {
+          position: absolute;
+          width: 100%;
+          height: 30vh;
+          background: #000;
+          opacity: 0.3;
+          transition: all 0.2s ease-out;
+          margin-top: 32vh;
+      }
+      .overlay1 {
+          position: absolute;
+          width: 100%;
+          height: 50vh;
+          background: #000;
+          opacity: 0.5;
+          transition: all 0.2s ease-out;
+       
+      }
+
+      .background1 p, .background2 p{
+        border-radius: 10px;
+        font-size: 3.3rem;
+        font-weight: 400;
+        line-height: 1.5;
+        
+      }
+
+      .a{
+        height: 500px;
+      }
+
+    .has-cards{
+      
+
+    position: relative;
+
+    overflow: hidden;
+
+    margin-top: -420px;
+    padding-top: 500px;
+
+    pointer-events: none; 
+
+    background: transparent;
+
+
+}
+
+.has-cards:before
+{
+    position: absolute;
+    top: 800px;
+    right: 0;
+    left: 0;
+    height: 2000px;
+
+    content: '';
+    transform: skew(0, -8deg); 
+
+
+  background: #DAE2F8;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+   
+
+      /* Responsive */
+     @media only screen and (max-width: 768px) {
+     .background1 p, .background2 p{
+       font-size: 6vw;
+        
+      }
+        
+      #slogan {
+       font-size: 6vw;
+        
+      }
+}
+
+
+/* Animation */
+
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0,40px,0)
+    }
+
+    to {
+        transform: translate3d(0,0,0);
+        opacity: 1
+    }
+}
+
+.animated {
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-fill-mode: both
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+</style>
+
+</head>
 <style>
 #map {
     min-height: 20rem;
@@ -10,35 +200,36 @@
   }
 </style>
 
-<main>
-    <div class="position-relative">
-      <section class="section section-lg section-hero section-shaped">
-        <div class="shape shape-style-1 shape-primary">
-        </div>
-        <div class="container shape-container d-flex align-items-center py-lg">
-          <div class="col px-0">
-            <div class="row justify-content-center">
-              <div class="col-lg-10 text-center" id="slogan">
-                <h1 class="text-white display-1">BUILDING COMMUNITIES, LEAVING AN IMPACT</h1>
-                 <div class="row">
+
+     <!-- Vix added background here -->
+         <%# <div class="background1"><p>BUILDING COMMUNITIES, LEAVING AN IMPACT</p></div> %>
+         
+         <div class="background1">
+            <div class="animated fadeInUp text-center" id="slogan">
+               <p class="text-white mb-0">BUILDING COMMUNITIES</p>
+               <p class="text-white mb-0">LEAVING AN IMPACT</p>
+                <div class="row">
                   <div class="col-md-8 mx-auto">
-                    <div class="form-group ml-4">
-                      <%= form_tag card_projects_path, remote: true, method: 'get' do %>
+                    <div class="form-group ml-4" >
+                      <%= form_with(url:card_projects_path, remote: true, method: :get)  do |form| %>
                         <div class="input-group mb-4">
-                          <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Project" %>
-                          <%= submit_tag "Search", name: nil, class: "btn btn-sm btn-white" %>
+                          <%= form.text_field :query,value:params[:query], class: "form-control",style:"border-radius: 50px 0 0 50px;", placeholder: "Search a Project" %>
+                            <%= form.button :submit, name: nil,id:"search_button" do %>
+                                 <%# <i class="ni ni-zoom-split-in"></i> %>
+                                 <i class="fab fa-searchengin"></i>
+                           <% end %>
                         </div>
                       <% end %>
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </section>
-    </div>
+  
+                                 
 
+             
+  <!-- Intro -->
     <section class="section pb-0 section-components">
       <div class="container">
         <div class="row">
@@ -51,35 +242,133 @@
             <%= image_tag "landing/help1.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
             <h4 class="text-black font-weight-light">Volunteer</h4>
             <p class="text-black font-weight-light">Lend us your strength and skill, contribute to the community!</p>
-            <%= button_tag "Be a Volunteer", class: "btn btn-primary" %>
+            <%= button_tag "Be a Volunteer", class: "btn btn-1 btn-outline-primary" %>
           </div>
           <div class="col-md-4">
             <%= image_tag "landing/help2.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
             <h4 class="text-black font-weight-light">Crowd Funding</h4>
             <p class="text-black font-weight-light">Support our project financial and help those needed!</p>
-            <%= button_tag "Donate to Project", class: "btn btn-primary"%>
+            <%= button_tag "Donate to Project", class: "btn btn-1 btn-outline-info"%>
           </div>
           <div class="col-md-4">
             <%= image_tag "landing/help3.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
             <h4 class="text-black font-weight-light">Partner With Us</h4>
             <p class="text-black font-weight-light">Want to help your organization? Create your project.</p>
-            <%= button_tag "Host a Home", class: "btn btn-primary"%>
+            <%= button_tag "Host a Project!", class: "btn btn-1 btn-outline-danger"%>
           </div>
         </div>
       </div>
       <br><br><br>
     </section>
 
-    <section class="section section-shaped">
-      <div class="shape shape-style-1 shape-default">
+
+ 
+           
+  
+ <div class="position-relative">
+                      <h2 class="text-black text-center">Past Projects</h2>
+      <!-- shape Hero -->
+      <section class="section section-lg section-shaped pb-250">
+        <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
+        </div>
+
+
+         <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+          </svg>
+        </div>
+      </section>
+    </div>
+      <!-- Cards -->
+
+      
+      <!-- Cards for volunteer -->
+    <section class="section section-lg pt-lg-0 mt--200">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="row row-grid">
+
+
+          <!-- Card 1 -->
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body py-5">
+                    <div class="card-profile-image rounded-circle mb-4">
+                      <%= image_tag "theme/team-4-800x800.jpg", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);",alt: "First slide" %>
+                    </div>
+                    <h6 class="text-primary text-uppercase">Download Argon</h6>
+                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                    <div>
+                      <span class="badge badge-pill badge-danger">design</span>
+                      <span class="badge badge-pill badge-danger">system</span>
+                      <span class="badge badge-pill badge-danger">creative</span>
+                    </div>
+                    <a href="#" class="btn btn-danger mt-4 ">Learn more</a>
+                  </div>
+                </div>
+              </div>
+
+          <!-- Card 2 -->
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body py-5">
+                    <div class="card-profile-image rounded-circle mb-4">
+                      <%= image_tag "landing/team1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
+                    </div>
+                    <h6 class="text-primary text-uppercase">Build Something</h6>
+                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                    <div>
+                      <span class="badge badge-pill badge-success">business</span>
+                      <span class="badge badge-pill badge-success">vision</span>
+                      <span class="badge badge-pill badge-success">success</span>
+                    </div>
+                    <a href="#" class="btn btn-success mt-4 ">Learn more</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0">
+                  <div class="card-body py-5">
+                   <div class="card-profile-image rounded-circle mb-4">
+                      <%= image_tag "landing/event1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
+                    </div>
+                    <h6 class="text-primary text-uppercase">Prepare Launch</h6>
+                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
+                    <div>
+                      <span class="badge badge-pill badge-warning">marketing</span>
+                      <span class="badge badge-pill badge-warning">product</span>
+                      <span class="badge badge-pill badge-warning">launch</span>
+                    </div>
+                    <a href="#" class="btn btn-warning mt-4 ">Learn more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+     <div class="background2">
+      <div class="overlay1"></div>
+    </div>
+
+
+    <!-- -->
+      <section class="section section-shaped">
+    <div class="shape shape-style-1 shape-dark">
+    </div>
       <div class="container py-md">
         <div class="row justify-content-between align-items-center">
           <div class="col-lg-6 mb-lg-0">
-            <h1 class="text-white font-weight-light">Pre-Wedding Photoshooting</h1>
-            <p class="lead text-white mt-4">Rent affordable Projects and save your budjet for Oversea Photoshooting!</p>
+            <h1 class="text-white font-weight-light">Our Projects</h1>
+            <h4 class="lead text-white mt-4">Rent affordable Projects and save your budjet for Oversea Photoshooting!</h4>
             <%= link_to "Visit album", projects_path, class: "btn btn-white mt-4 mb-4" %>
           </div>
+
           <div class="col-lg-6 mb-lg-auto">
             <div class="rounded shadow-lg overflow-hidden">
               <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -90,7 +379,7 @@
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <%= image_tag "brand/carousell1.jpg", class: "img-fluid", alt: "First slide" %>
+                    <%= image_tag "brand/carousell1.jpg", class: "img-fluid", alt: "Raised circle image" %>
                   </div>
                   <div class="carousel-item">
                     <%= image_tag "brand/carousell2.jpg", class: "img-fluid", alt: "Second slide" %>
@@ -112,10 +401,20 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
+     <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew zindex-100">
+          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+          </svg>
+        </div>
+      </section>
+    </div>
+    <!-- -->
+  
 
-    <section class="section pb-0 section-components">
-      <div class="container py-md">
+    <section class="section pb-0 section-components has-cards">
+        <div class="container py-md">
         <div class="row justify-content-between align-items-center">
           <div class="col-lg-5 mb-5 mb-lg-0">
             <div class="rounded shadow-lg overflow-hidden">
@@ -150,8 +449,10 @@
           </div>
         </div>
       </div>
-    </section>
+   
+</section>
 
+  <!-- -->
     <section class="section section-shaped">
       <div class="shape shape-style-1 shape-default">
       </div>
@@ -189,7 +490,3 @@
 
     </section>
 
-
-  </main>
-
-  
