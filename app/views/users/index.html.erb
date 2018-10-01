@@ -71,6 +71,8 @@
                        <% end %>
                 <!-- User's age -->
                     <span class="font-weight-light">, 27</span>
+                    <div class="h6 mt-4">Joined: <%= current_user.created_at.strftime("%B %Y") %></div>
+
                   </h3>
                 <!-- location -->
                   <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Bucharest, Romania</div>
@@ -118,13 +120,7 @@
 
 
                                   <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
-                                      <p class="description">Name :</p>
-                                      <p class="description">Age :</p>
-                                      <p class="description">Skill : Plumbing</p>
-                                      <p class="description">Causes : Something</p>
-                                      <p class="description"></p>
-                                      <p class="description"></p>
-                                      <p class="description"></p>
+                                     
 
 
                                 </div>
@@ -222,6 +218,7 @@
     
   </main>
 <style>
+
 @media (min-width: 1200px)
 {
     
