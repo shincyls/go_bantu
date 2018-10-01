@@ -3,6 +3,7 @@ class CreateProjectProfessionJoins < ActiveRecord::Migration[5.2]
     create_table :project_profession_joins do |t|
       t.references :project, index: true
       t.references :profession, index: true
+      t.string :remarks
       t.timestamps
     end
   end

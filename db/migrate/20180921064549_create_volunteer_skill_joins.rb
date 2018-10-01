@@ -3,6 +3,7 @@ class CreateVolunteerSkillJoins < ActiveRecord::Migration[5.2]
     create_table :volunteer_skill_joins do |t|
       t.references :volunteer, index: true
       t.references :skill, index: true
+      t.string :remarks
       t.timestamps
     end
   end

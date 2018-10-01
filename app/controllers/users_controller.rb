@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   end
 
   # GET /users
-  # Get profile
   def index
     set_user
     if user_signed_in? 
@@ -53,8 +52,8 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @project = Project.new(user_params)
-    if @project.save
+    @user = User.new(user_params)
+    if @user.save
       session[:user_id] = @user.id
       redirect_to @user, flash: { success: 'User was successfully created.' }
     else

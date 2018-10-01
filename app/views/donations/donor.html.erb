@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="card shadow">
+    <table class="table table-striped">
+      <thead>
+        <tr class="text-uppercase">
+          <th class='font-weight-bold'>Donor</th>
+          <th class='font-weight-bold'>Project</th>
+          <th class='font-weight-bold'>Amount</th>
+          <th class='font-weight-bold'>Date</th>
+          <th class='font-weight-bold'>Status</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @donor.donations.each do |donation| %>
+          <tr>
+            <td><%= link_to donation.donor.user.first_name, donation.donor.user %></td>
+            <td><%= link_to donation.project.title, donation.project %></td>
+            <td><%= donation.amount %> RM</td>
+            <td><%= donation.created_at.strftime("%d/%m/%y") %></td>
+            
+            <% if donation.submitted? %><td class='text-warning font-weight-bold text-uppercase blink'>
+            <% else %>
+              <td class='text-success font-weight-bold text-uppercase'>
+            <%end%>
+            <%= donation.status %></td>
+              
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
