@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # skip_before_action :verify_authenticity_token
-  # before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   # before_action :authenticate_user!, except:[:index, :show, :new, :create]
 
   include ProjectsHelper
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users
+  def index
     if current_user 
       render :index
     else
@@ -49,8 +50,8 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @project = Project.new(user_params)
-    if @project.save
+    @user = User.new(user_params)
+    if @user.save
       session[:user_id] = @user.id
       redirect_to @user, flash: { success: 'User was successfully created.' }
     else

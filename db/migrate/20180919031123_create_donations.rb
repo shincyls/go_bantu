@@ -4,7 +4,7 @@ class CreateDonations < ActiveRecord::Migration[5.2]
       t.references :donor, index: true
       t.references :project, index: true
       t.float :amount
-      t.integer :status #enums holding, processed
+      t.integer :status, default: 0 #enums holding, processed
       t.timestamps
     end
   end
