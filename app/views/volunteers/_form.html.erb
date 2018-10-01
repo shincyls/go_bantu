@@ -1,6 +1,6 @@
 <%= form_for(@volunteer) do |f| %>
 
-  <%= f.hidden_field %>
+  <%= f.hidden_field, value: current_user.id %>
 
   <div class="form-inputs">
   </div>
