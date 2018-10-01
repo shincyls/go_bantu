@@ -15,8 +15,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.date :birthday
 
       ## Location (temporary allow to key anything)
-      t.string :address_1, limit: 32
-      t.string :address_2, limit: 32
+      t.string :address_1, limit: 64
+      t.string :address_2, limit: 64
       t.string :postcode, limit: 5
       t.string :city #free to key-in
       t.string :state #select option

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end
 
   # GET /users
+  def index
     if current_user 
       render :index
     else
