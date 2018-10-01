@@ -11,9 +11,9 @@ class User < ApplicationRecord
 
     #Validate The Format and Presence of Required Information
     validates :email, uniqueness: {message: "Account already exists!"}, format: {with: /.+@.+\..+/, message: ": Please enter a valid email address."}, presence: {message: ": Please enter your email address."}
-	validates :username, uniqueness: {message: ": Username already exists!"}, presence: {message: ": Please enter your username."}
-    validates :first_name, presence: {message: ": Please enter your first name."}
-    validates :last_name, presence: {message: ": Please enter your last name."}
+	# validates :username, uniqueness: {message: ": Username already exists!"}, presence: {message: ": Please enter your username."}
+ #    validates :first_name, presence: {message: ": Please enter your first name."}
+ #    validates :last_name, presence: {message: ": Please enter your last name."}
 
     enum role: ["admin", "user"]
 
@@ -29,7 +29,6 @@ class User < ApplicationRecord
     # gecode required to set latitude and logitude
     geocoded_by :address
     after_validation :geocode, :if => :address_changed?
-
 
     # create string from form inputs to use with geocode
     def address

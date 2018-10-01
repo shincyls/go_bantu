@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-
+  include ProjectsHelper
   require 'will_paginate/array'
 
   def index
@@ -8,8 +8,37 @@ class ProjectsController < ApplicationController
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
   end
 
+  def new
+    @project = Project.new
+  end
+
+  def create
+    @project = Project.new(project_params)
+    if @project.save
+      redirect_to @project, flash: { success: 'Project was successfully created.' }
+    else
+      redirect_to root_url, flash: { danger: @project.errors.full_messages[0] }
+    end
+  end
+
   def show
     @project = Project.find(params[:id])
+    matched_volunteers(@project.id)
+        # set percent match for user
+    if @hundred
+      @matched_volunteers
+      @match_percent = "100%"
+    elsif @seventy_five
+      @match_percent = "75%"
+    elsif @fifty
+      @match_percent = "50%"
+    elsif @twenty_five
+      @match_percent = "25%"
+    else 
+      # for empty array to pass message on user show
+      @matched_volunteers
+    end
+
   end
 
   def card
@@ -24,6 +53,21 @@ class ProjectsController < ApplicationController
       end
     end
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
+  end
+
+  private
+
+  def project_params
+    params.require(:project).permit(:organizer_id, :title, :project_desc, 
+      :requirement_desc, :contact_person1, :contact_number1, :contact_person2, :contact_number2,
+      :address_1, :address_2, :postcode, :city, :state, :country,
+      :latitude, :longitude, :start_date, :end_date, :volunteer_number, :fund_amount,
+      :volunteer, :finance_donate,
+      project_skill_joins_attributes: [:project_id, :skill_id],
+      project_profession_joins_attributes: [:project_id, :profession_id],
+      project_cause_joins_attributes: [:project_id, :cause_id],
+      project_category_joins_attributes: [:project_id, :category_id]
+    )
   end
 
 end
