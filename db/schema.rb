@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.bigint "donor_id"
     t.bigint "project_id"
     t.float "amount"
-    t.integer "status"
     t.boolean "anonymous", default: false
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["donor_id"], name: "index_donations_on_donor_id"
