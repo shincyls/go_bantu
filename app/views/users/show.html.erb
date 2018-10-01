@@ -141,15 +141,16 @@
 
   <!-- message notifiying user of currently matched/unmatched projects -->
   <% if signed_in? %>
-  <% if current_user == @user %>
+  <% if current_user == @user && @user.volunteer %>
     <center>
-      <h4 class="text-uppercase text-bold">
+      <h5 class="text-uppercase text-bold">
         <% if @projects == [] %>
-          There are currently no projects matching your criteria. Please try updating your profile or try again later.
+          There are currently no projects matching your criteria. <br>
+          Please try updating your profile or try again later.
         <% else %>
           You have projects matching <%= @match_percent %> of your criteria.
         <% end %>
-      </h4>
+      </h5>
     </center>
 
     <!-- 100% projects match  -->

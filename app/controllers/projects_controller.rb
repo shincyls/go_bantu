@@ -38,7 +38,7 @@ class ProjectsController < ApplicationController
       # for empty array to pass message on user show
       @matched_volunteers
     end
-
+    @verify_organizers = @project.organizers.where(user_id: current_user.id).exists?
   end
 
   def card
@@ -53,6 +53,40 @@ class ProjectsController < ApplicationController
       end
     end
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
+  end
+
+  def confirmations
+    @projects = Project.where(status: 'pending')
+  end
+
+  def status_change
+    @project = Project.find(params[:id])
+
+    if @project.pending?
+      @project.status = 'validated'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Project was approved.'
+    else
+      @project.status = 'pending'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
+    end
+
+  end
+
+  def status_deny
+    @project = Project.find(params[:id])
+
+    if @project.pending?
+      @project.status = 'rejected'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Project was denied.'
+    else
+      @project.status = 'pending'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
+    end
+
   end
 
   private
