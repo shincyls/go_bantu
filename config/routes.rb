@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'users/profile/:id' => 'users#show' , :as => "user_profile"
 
 
+
   # resources :sessions
   resources :projects do
     collection do

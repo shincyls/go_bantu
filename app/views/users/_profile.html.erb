@@ -6,9 +6,9 @@
         <div class="card-profile-image">
           <a href="#">
           <% if @user.avatar? %>
-            <%= image_tag(@user.avatar_url, class: "rounded-circle") %>
+            <%= image_tag(@user.avatar_url, class: "img-fluid rounded-circle") %>
           <% else %>
-            <%= image_tag "theme/default.jpg", class: "rounded-circle" %>
+            <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle" %>
           <% end %>
           </a>
         </div>
@@ -22,19 +22,38 @@
         <% end %>
       </div>
 
-      <div class="col-lg-4 order-lg-1">
-        <h5 class="text-primary mt-3 text-center">GoBantu Projects</h5>
-        <div class="card-profile-stats d-flex justify-content-center">
-        
-        </div>
-      </div>
-    </div>
+       <div class="col-lg-4 order-lg-1">
+                    <div class="card-profile-stats d-flex justify-content-center">
 
+                      <div>
+                        <% if @user.volunteer.nil? %>
+                          <span class="heading">0</span>
+                          <% else %>
+                          <span class="heading"><%= @user.volunteer.projects.count %></span>
+                        <% end %>
+                        <span class="description">Volunteered</span>
+                      </div>
+                      
+                      <div>                 
+                        <% if @user.organizer.nil? %>
+                          <span class="heading">0</span>
+                          <% else %>
+                          <span class="heading"><%= @user.organizer.projects.count %></span>
+                        <% end %>
+                        <span class="description">Projects</span>
+                      </div>
+                </div>
+              </div>
+            </div>
+
+                      
     <div class="text-center mt-5">
-      <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+      <!-- User's full name -->
+      <h3><%= @user.full_name %>
+       <!-- User's age -->
+       <span class="font-weight-light"><%= @user.birthday %></span>
+      </h3>
       <div class="h6 font-weight-300">Username: <%= @user.username %></div>
-      <div class="h6 mt-4">Email: <%= @user.email %></div>
-      <div class="h6 mt-4">Birthday: <%= @user.birthday %></div>
       <div class="h6 mt-4">Joined: <%= @user.created_at.strftime("%B %Y") %></div>
     </div>
 
@@ -45,6 +64,8 @@
         </div>
       </div>
     </div>
-
-  </div>
+ </div>
 </div>
+                    
+
+
