@@ -9,12 +9,16 @@
               <div class="row">
                 <div class="col-md-8 mx-auto">
                   <div class="form-group ml-4 mr-4">
-                    <%= form_tag card_projects_path, remote: true, method: 'get' do %>
-                      <div class="input-group mb-4">
-                        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Project" %>
-                        <%= submit_tag "Search", name: nil, class: "btn btn-sm btn-white" %>
-                      </div>
-                    <% end %>
+                    <%= form_with(url:card_projects_path, remote: true, method: :get)  do |form| %>
+                        <div class="input-group mb-4">
+                          <%= form.text_field :query,value:params[:query], class: "form-control",style:"border-radius: 50px 0 0 50px;", placeholder: "Search a Project" %>
+                            <%= form.button :submit, name: nil,id:"search_button" do %>
+                                 <%# <i class="ni ni-zoom-split-in"></i> %>
+                                 <%# <i class="fab fa-searchengin"></i> %>
+                                 <i class="fas fa-search"></i>
+                           <% end %>
+                        </div>
+                      <% end %>
                   </div>
                 </div>
               </div>

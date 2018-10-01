@@ -5,193 +5,18 @@
     <script type="text/javascript">
     $(window).scroll(function(){
       $('.background1').bgscroll({direction: 'top'});
-      $('.background2').bgscroll({direction: 'top'});
     })
     </script>
     
-    <style media="screen">
+<style media="screen">
 
-       
-        #search_button{
-          border: 2px solid #12e2a3;
-          border-left: none;
-          margin-right:50px;
-          float:right;
-          background: transparent;
-          background-color: white;
-          padding-right:15px;
-          border-radius: 0 50px 50px 0;
-        }
-       .background1{
-        max-width: 100vw;
-        height: 110vh;
-        background-image: url('https://wcswr.org/wp-content/uploads/2018/01/iStock_000015133180_Large.jpg');
-        /* background-image: url('https://sll-cdn.azureedge.net/2018/03/construction-volunteers-feature.jpg'); */
-        overflow: hidden;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: 50% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #FFF;
-      
-
-      
-       
-      
-
-      }
-     
-      .background2{
-        width: 100%;
-        height: 50vh;
-        background-image: url('https://sll-cdn.azureedge.net/2018/03/construction-volunteers-feature.jpg');
-        background-repeat: no-repeat;
-        background-position: 50% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #FFF;
-      }
-
-      .background3{
-        width: 100%;
-        height: 70vh;
-        background-image: url('https://images.unsplash.com/photo-1491772135384-20292e4b5ea1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=111ee66d6a3cf0d92fb1bb9db9e1486d&auto=format&fit=crop&w=1568&q=80');
-        background-repeat: no-repeat;
-        background-position: 50% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #FFF;
-      }
-
-      .overlay {
-          position: absolute;
-          width: 100%;
-          height: 30vh;
-          background: #000;
-          opacity: 0.3;
-          transition: all 0.2s ease-out;
-          margin-top: 32vh;
-      }
-      .overlay1 {
-          position: absolute;
-          width: 100%;
-          height: 50vh;
-          background: #000;
-          opacity: 0.5;
-          transition: all 0.2s ease-out;
-       
-      }
-
-      .background1 p, .background2 p{
-        border-radius: 10px;
-        font-size: 3.3rem;
-        font-weight: 400;
-        line-height: 1.5;
-        
-      }
-
-      .a{
-        height: 500px;
-      }
-
-      .carous{
-        width: auto;
-        height: 400px;
-        max-height: 400px;
-        overflow:hidden;
-      }
-
-    .has-cards{
-      
-
-    position: relative;
-
-    overflow: hidden;
-
-    margin-top: -420px;
-    padding-top: 500px;
-
-    pointer-events: none; 
-
-    background: transparent;
-
-
-}
-
-.has-cards:before
-{
-    position: absolute;
-    top: 800px;
-    right: 0;
-    left: 0;
-    height: 2000px;
-
-    content: '';
-    transform: skew(0, -8deg); 
-
-
-  background: #A1FFCE;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-}
-   
-
-      /* Responsive */
-     @media only screen and (max-width: 768px) {
-     .background1 p, .background2 p{
-       font-size: 6vw;
-        
-      }
-        
-      #slogan {
-       font-size: 6vw;
-        
-      }
-}
-
-
-/* Animation */
-
-@keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-@-webkit-keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-.animated {
-    animation-duration: 2s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-fill-mode: both
-}
-
-.fadeInUp {
-    opacity: 0;
-    animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;
-}
+  
+  #search_button{
+    border: 2px solid #12e2a3;
+    border-left: none;
+    
+  }
+  
 
 </style>
 
@@ -236,16 +61,38 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
         </div>
   
                                  
+<!-- Intro title heading -->
+                   
+          <section class="section section-shaped pb-0"> 
+
+          <div class="position-relative">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="d-flex px-3">
+                        <h4 class="display-3 text-uppercase text-white" style="text-shadow: 1px 1px 1px black;">Welcome to GoBantu Malaysia!</h4>
+                      </div> <!-- flex -->
+                    </div>
+                </div>
+                  
+                    <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);">
+                      </div>
+                <!-- SVG separator -->
+                  <div class="separator separator-bottom separator-skew">
+                    <svg x="0" y="0" viewBox="0 0 2600 110" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                      <polygon class="fill-white" points="2600 0 2600 110 0 110"></polygon>
+                    </svg>
+                  </div>
+                </section>
+            </div>
+            
+               
+    
+
 
              
   <!-- Intro -->
-    <section class="section pb-0 section-components">
+    <section class="section pb-0 pt-0 section-components">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="text-black font-weight-light">Welcome to GoBantu Malaysia!</h2>
-          </div>
-        </div>
         <div class="row text-center mt-3">
           <div class="col-md-4">
             <%= image_tag "landing/help1.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
@@ -274,10 +121,26 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
  
            
   
- <div class="position-relative">
-                      <h2 class="text-black text-center"> Our Past Projects</h2>
       <!-- shape Hero -->
-      <section class="section section-lg section-shaped pb-250">
+      <section class="section section-lg section-shaped pb-300 pt-4">
+       <div class="container ">
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+             <div>
+                <div class="icon icon-shape bg-gradient-danger rounded-circle text-white">
+                  <i class="ni ni-bulb-61"></i>
+                </div>
+            </div>
+            <div class="pl-4">
+              <h5 class="heading-title text-white pb-3">Our Past Projects</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+
+   
+            
         <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
         </div>
 
@@ -345,59 +208,120 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
       </div>
     </section>
 
-    <!-- Volunteer bg  -->
-      
-    <!-- -->
-      <section class="section section-shaped">
-    <div class="shape shape-style-1 shape-dark">
-    </div>
-      <div class="container py-md">
-        <div class="row justify-content-between align-items-center">
-          <div class="col-lg-6 mb-lg-0">
-            <h1 class="text-white font-weight-light">Our Projects</h1>
-            <h4 class="lead text-white mt-4">Rent affordable Projects and save your budjet for Oversea Photoshooting!</h4>
-            <%= link_to "Visit album", projects_path, class: "btn btn-white mt-4 mb-4" %>
-          </div>
+    
+     
+     <section class="section section-lg pb-0 bg-gradient-info">
+      <div class="container">
+        <div class="row row-grid align-items-center">
 
-          <div class="col-lg-6 mb-lg-auto">
-            <div class="rounded shadow-lg overflow-hidden">
-              <div id="carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel_example" data-slide-to="1"></li>
-                  <li data-target="#carousel_example" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <%= image_tag "brand/carousell1.jpg", class: "img-fluid", alt: "Raised circle image" %>
-                  </div>
-                  <div class="carousel-item">
-                    <%= image_tag "brand/carousell2.jpg", class: "img-fluid", alt: "Second slide" %>
-                  </div>
-                  <div class="carousel-item">
-                    <%= image_tag "brand/carousell3.jpg", class: "img-fluid", alt: "third slide" %>
-                  </div>
+        <!--To right -->
+          <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="position-relative pl-md-5">
+              <img src="https://images.unsplash.com/photo-1531816494000-90d3ae302088?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9282c24f85ff91a21774f542aafbc4d6&auto=format&fit=crop&w=750&q=80" class="img-center img-fluid">
+            </div>
+          </div>
+          
+        <!--To left -->
+          <div class="col-lg-6 order-lg-1">
+
+            <div class="d-flex px-3">
+              <div>
+                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                  <i class="ni ni-building text-primary"></i>
                 </div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
+              </div>
+              <div class="pl-4">
+                <h4 class="display-3 text-white">Modern Interface</h4>
+                <p class="text-white">The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+              </div>
+            </div> <!-- flex -->
+
+
+
+            <div class="card shadow shadow-lg--hover mt-5">
+              <div class="card-body">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                      <i class="ni ni-satisfied"></i>
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title text-success">Awesome Support</h5>
+                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+                 
+                  </div>
+
+                </div> <!-- d-flex -->
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+
+    
+        </div> <!-- -->
+      </div> <!-- -->
+    
+
+
+    <div class="container pb-100">
+      <div class="row row-grid align-items-center">
+        <!--To right -->
+        
+        <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="card shadow shadow-lg mt-5">
+              <div class="card-body">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-danger rounded-circle text-white">
+                      <i class="ni ni-active-40"></i>
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title text-warning">Modular Components</h5>
+                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws every summer, and that process will continue whatever.</p>
+            
+                  </div>
+
+                 </div> <!-- d-flex -->
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+            
+
+          <div class="col-lg-6 order-lg-1">
+            <div class="position-relative pl-md-5">
+              <div class="d-flex px-3">
+                <div class="pr-4">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b73302ddf5fabf9285df2da9c462efbb&auto=format&fit=crop&w=750&q=80" class="img-center img-fluid">
+                </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
-    </div>
-      </section>
-    </div>
-    <!-- -->
-   
   
 
+
+    <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+
+
+   
+    
+            
+
+             
+           
+
+    <!-- Volunteer bg  -->
     <section class="section pb-0 section-components has-cards">
         <div class="container py-md">
         <div class="row justify-content-between align-items-center">
