@@ -18,7 +18,7 @@ class BraintreeController < ApplicationController
 	      :submit_for_settlement => true
 	    }
 	   )
-	  byebug
+
 	  if result.success?
 	  	if !current_user.donor
 	  		donor = Donor.new(user_id: current_user.id)
