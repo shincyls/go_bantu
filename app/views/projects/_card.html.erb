@@ -4,7 +4,7 @@
             <% if p.images_url %>
             <%= image_tag(p.images_url, class: "img-fluid rounded shadow") %>
             <% else %>
-            <%= image_tag("brand/coverphoto.svg") %>
+            <%= image_tag("brand/carousel" + rand(1..3).to_s + ".png", style: "width:100%;height:100%;") %>
             <% end %>
             <div class="card-body">
                 <div class="card-body-area">
@@ -58,7 +58,7 @@
                                 <% if p.fund_progress >= 100 %>
                                     <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                 <% else %>
-                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
+                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-primary", target: "_blank" %>
                                 <% end %>
                                 </div>
                                 <div class="progress-percentage">
