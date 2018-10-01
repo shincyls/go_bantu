@@ -171,7 +171,7 @@ VolunteerProjectJoin.create!([
     {volunteer_id: 3, project_id: 13}
 ])
 
-DonorProjectJoin.create!([
+Donation.create!([
     {donor_id: 1, project_id: 1, amount: 1000},
     {donor_id: 2, project_id: 3, amount: 200},
     {donor_id: 2, project_id: 4, amount: 100},

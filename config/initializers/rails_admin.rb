@@ -52,7 +52,7 @@ RailsAdmin.config do |config|
   end
 
     ######## remove models from navigation pane #######
-  exclusions = ['ProjectCauseJoin','ProjectProfessionJoin','ProjectSkillJoin','DonorProjectJoin','OrganizerProjectJoin','VolunteerSkillJoin','VolunteerProjectJoin','VolunteerProfessionJoin','UserCauseJoin','ProjectCategoryJoin']  
+  exclusions = ['ProjectCauseJoin','ProjectProfessionJoin','ProjectSkillJoin','OrganizerProjectJoin','VolunteerSkillJoin','VolunteerProjectJoin','VolunteerProfessionJoin','UserCauseJoin','ProjectCategoryJoin']  
   exclusions.each do |x|
   config.excluded_models << x
   end
@@ -141,8 +141,8 @@ end
 
 
   #---------- JOINS TABLES -------------------------
-  ######## config donor_project_join model ##########
-  # config.model DonorProjectJoin do
+  ######## config donation model ##########
+  # config.model Donation do
   #   navigation_label 'Joins Tables'
   # end
   #   ######## config organizer_project_join model ##########

@@ -2,24 +2,29 @@ module ProjectsHelper
   ##### personalized projects for volunteers #########
   def matched_projects(user_id)
     # set the volunteer by user_id
-    volunteer = Volunteer.find_by(user_id: user_id)
+    profile_user = User.find(user_id)
+    if !profile_user.volunteer
+      @matched_projects = []
+    else
+      volunteer = Volunteer.find_by(user_id: user_id)
 
-    # find projects that fit volunteers causes
-    matched_cause(volunteer)
+      # find projects that fit volunteers causes
+      matched_cause(volunteer)
 
-    # narrow down based on project required professions
-    if @matched_projects.count > 0
-      matched_profession(volunteer,@matched_projects)
-    end
-    
-    # narrow down based on project required skills
-    if @twenty_five == false
-      matched_skills(volunteer,@matched_projects)
-    end
+      # narrow down based on project required professions
+      if @matched_projects.count > 0
+        matched_profession(volunteer,@matched_projects)
+      end
+      
+      # narrow down based on project required skills
+      if @twenty_five == false
+        matched_skills(volunteer,@matched_projects)
+      end
 
-    # # locate projects near user location
-    if @fifty == false
-      nearby_projects(@matched_projects, volunteer.user.latitude, volunteer.user.longitude)
+      # # locate projects near user location
+      if @fifty == false
+        nearby_projects(@matched_projects, volunteer.user.latitude, volunteer.user.longitude)
+      end
     end
 
   end
@@ -136,19 +141,18 @@ module ProjectsHelper
 
     if matched_users.count > 0
       potentials = User.where(:id => matched_users)
+      #narrow to those that are volunteers
+      potentials.each do |x|
+        if x.volunteer
+          matched_cause << x.volunteer.id
+        else
+          @matched_volunteers = []
+        end  
+      end
+      @matched_volunteers = Volunteer.where(:id => matched_cause)
     else
       @matched_volunteers = []
     end
-
-    #narrow to those that are volunteers
-    potentials.each do |x|
-      if x.volunteer
-        matched_cause << x.volunteer.id
-      else
-        @matched_volunteers = []
-      end  
-    end
-    @matched_volunteers = Volunteer.where(:id => matched_cause)
   end
 
   # narrows array of matched volunteers based on profession
