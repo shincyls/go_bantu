@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.bigint "donor_id"
     t.bigint "project_id"
     t.float "amount"
+    t.boolean "anonymous", default: false
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -53,7 +54,9 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "organizer_project_joins", force: :cascade do |t|
     t.bigint "organizer_id"
     t.bigint "project_id"
-    t.string "status"
+    t.integer "status"
+    t.string "remarks"
+    t.string "admin_remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organizer_id"], name: "index_organizer_project_joins_on_organizer_id"
@@ -96,6 +99,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "project_category_joins", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "category_id"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_project_category_joins_on_category_id"
@@ -105,6 +109,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "project_cause_joins", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "cause_id"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cause_id"], name: "index_project_cause_joins_on_cause_id"
@@ -114,6 +119,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "project_profession_joins", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "profession_id"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profession_id"], name: "index_project_profession_joins_on_profession_id"
@@ -123,6 +129,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "project_skill_joins", force: :cascade do |t|
     t.bigint "project_id"
     t.bigint "skill_id"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_project_skill_joins_on_project_id"
@@ -168,6 +175,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "user_cause_joins", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "cause_id"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cause_id"], name: "index_user_cause_joins_on_cause_id"
@@ -182,8 +190,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "last_name", limit: 64
     t.string "phone_number", limit: 16
     t.date "birthday"
-    t.string "address_1", limit: 32
-    t.string "address_2", limit: 32
+    t.string "address_1", limit: 64
+    t.string "address_2", limit: 64
     t.string "postcode", limit: 5
     t.string "city"
     t.string "state"
@@ -205,6 +213,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "volunteer_profession_joins", force: :cascade do |t|
     t.bigint "volunteer_id"
     t.bigint "profession_id"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profession_id"], name: "index_volunteer_profession_joins_on_profession_id"
@@ -215,6 +224,8 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.bigint "volunteer_id"
     t.bigint "project_id"
     t.integer "status"
+    t.string "remarks"
+    t.string "admin_remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["project_id"], name: "index_volunteer_project_joins_on_project_id"
@@ -224,6 +235,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
   create_table "volunteer_skill_joins", force: :cascade do |t|
     t.bigint "volunteer_id"
     t.bigint "skill_id"
+    t.string "remarks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_id"], name: "index_volunteer_skill_joins_on_skill_id"

@@ -4,6 +4,8 @@ class CreateVolunteerProjectJoins < ActiveRecord::Migration[5.2]
       t.references :volunteer, index: true
       t.references :project, index: true
       t.integer :status #enums interested, applied, matched, contacted, assigned
+      t.string :remarks
+      t.string :admin_remarks
       t.timestamps
     end
   end
