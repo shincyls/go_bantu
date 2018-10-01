@@ -35,7 +35,7 @@
         align-items: center;
         justify-content: center;
         color: #FFF;
-        margin-top:14vh;
+      
 
       
        
@@ -98,6 +98,13 @@
         height: 500px;
       }
 
+      .carous{
+        width: auto;
+        height: 400px;
+        max-height: 400px;
+        overflow:hidden;
+      }
+
     .has-cards{
       
 
@@ -127,9 +134,10 @@
     transform: skew(0, -8deg); 
 
 
-  background: #DAE2F8;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #D6A4A4, #DAE2F8);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #D6A4A4, #DAE2F8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #A1FFCE;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 
 }
    
@@ -216,7 +224,8 @@
                           <%= form.text_field :query,value:params[:query], class: "form-control",style:"border-radius: 50px 0 0 50px;", placeholder: "Search a Project" %>
                             <%= form.button :submit, name: nil,id:"search_button" do %>
                                  <%# <i class="ni ni-zoom-split-in"></i> %>
-                                 <i class="fab fa-searchengin"></i>
+                                 <%# <i class="fab fa-searchengin"></i> %>
+                                 <i class="fas fa-search"></i>
                            <% end %>
                         </div>
                       <% end %>
@@ -266,7 +275,7 @@
            
   
  <div class="position-relative">
-                      <h2 class="text-black text-center">Past Projects</h2>
+                      <h2 class="text-black text-center"> Our Past Projects</h2>
       <!-- shape Hero -->
       <section class="section section-lg section-shaped pb-250">
         <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
@@ -295,18 +304,12 @@
           <!-- Card 1 -->
               <div class="col-lg-4">
                 <div class="card card-lift--hover shadow border-0">
-                  <div class="card-body py-5">
+                  <div class="card-body">
                     <div class="card-profile-image rounded-circle mb-4">
-                      <%= image_tag "theme/team-4-800x800.jpg", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);",alt: "First slide" %>
+                      <%= image_tag "https://scontent.fkul13-1.fna.fbcdn.net/v/t1.0-9/42770975_1257972507678283_27658219291672576_n.jpg?_nc_cat=108&oh=5b2274986cc3c553cc61bc918e03bbf4&oe=5C59A466", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);",alt: "First slide" %>
                     </div>
-                    <h6 class="text-primary text-uppercase">Download Argon</h6>
-                    <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                    <div>
-                      <span class="badge badge-pill badge-danger">design</span>
-                      <span class="badge badge-pill badge-danger">system</span>
-                      <span class="badge badge-pill badge-danger">creative</span>
-                    </div>
-                    <a href="#" class="btn btn-danger mt-4 ">Learn more</a>
+                    <h6 class="text-primary text-uppercase">First Volunteering project by the team at Calvaryland</h6>
+                    <p class="description mt-3">Calvaryland Social Care Centre Papaya Plantation. Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
                   </div>
                 </div>
               </div>
@@ -314,35 +317,25 @@
           <!-- Card 2 -->
               <div class="col-lg-4">
                 <div class="card card-lift--hover shadow border-0">
-                  <div class="card-body py-5">
+                  <div class="card-body">
                     <div class="card-profile-image rounded-circle mb-4">
                       <%= image_tag "landing/team1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
                     </div>
-                    <h6 class="text-primary text-uppercase">Build Something</h6>
+                    <h6 class="text-primary text-uppercase">THE GOBANTU FOUNDERS</h6>
                     <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                    <div>
-                      <span class="badge badge-pill badge-success">business</span>
-                      <span class="badge badge-pill badge-success">vision</span>
-                      <span class="badge badge-pill badge-success">success</span>
-                    </div>
-                    <a href="#" class="btn btn-success mt-4 ">Learn more</a>
+                    
                   </div>
                 </div>
               </div>
               <div class="col-lg-4">
                 <div class="card card-lift--hover shadow border-0">
-                  <div class="card-body py-5">
+                  <div class="card-body">
                    <div class="card-profile-image rounded-circle mb-4">
                       <%= image_tag "landing/event1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
                     </div>
-                    <h6 class="text-primary text-uppercase">Prepare Launch</h6>
+                    <h6 class="text-primary text-uppercase">INTERVIEW WITH WELFARE HOME MALAYSIA</h6>
                     <p class="description mt-3">Argon is a great free UI package based on Bootstrap 4 that includes the most important components and features.</p>
-                    <div>
-                      <span class="badge badge-pill badge-warning">marketing</span>
-                      <span class="badge badge-pill badge-warning">product</span>
-                      <span class="badge badge-pill badge-warning">launch</span>
-                    </div>
-                    <a href="#" class="btn btn-warning mt-4 ">Learn more</a>
+                    
                   </div>
                 </div>
               </div>
@@ -352,11 +345,8 @@
       </div>
     </section>
 
-     <div class="background2">
-      <div class="overlay1"></div>
-    </div>
-
-
+    <!-- Volunteer bg  -->
+      
     <!-- -->
       <section class="section section-shaped">
     <div class="shape shape-style-1 shape-dark">
@@ -402,15 +392,10 @@
         </div>
       </div>
     </div>
-     <!-- SVG separator -->
-        <div class="separator separator-bottom separator-skew zindex-100">
-          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-          </svg>
-        </div>
       </section>
     </div>
     <!-- -->
+   
   
 
     <section class="section pb-0 section-components has-cards">
@@ -423,14 +408,16 @@
                   <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
                   <li data-target="#carousel_example" data-slide-to="1"></li>
                 </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" %>
+                  <div class="carousel-inner">
+                    <div class="carous">
+                    <div class="carousel-item active">
+                      <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: auto;"%>
+                    </div>
+                    <div class="carousel-item">
+                      <%= image_tag "https://scontent.fkul8-1.fna.fbcdn.net/v/t1.0-9/42319585_1253288171480050_6140791940280483840_n.jpg?_nc_cat=108&oh=503398df5d0cf65a5f028a9a9509bf8b&oe=5C608268", class: "img-fluid", alt: "Second slide" ,style:"width: 100%; height: auto;"%>
+                    </div>
                   </div>
-                  <div class="carousel-item">
-                    <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "Second slide" %>
-                  </div>
-                </div>
+               </div>
                 <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
@@ -451,42 +438,3 @@
       </div>
    
 </section>
-
-  <!-- -->
-    <section class="section section-shaped">
-      <div class="shape shape-style-1 shape-default">
-      </div>
-      <div class="container py-md">
-        <div class="row justify-content-between align-items-center">
-          <div class="col-lg-6 mb-lg-0">
-            <h1 class="text-white font-weight-light">Schedule Your Fitting Session With Us Today!</h1>
-            <p class="lead text-white mt-4">We serve by appointment to ensure your best experience with us!</p>
-            <p class="lead text-white mt-4">You can drop a message to us in Facebook clicking the button on the right bottom.</p>
-          </div>
-          <div class="col-lg-6 mb-lg-auto">
-            <div id="map"></div>
-          </div>
-        </div>
-      </div>
-
-      <script>
-        function initMap() {
-        var myLatLng = {lat: 3.0385907, lng: 101.7841042};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Wedding Ideas!'
-        });
-        }
-      </script>
-
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap" type="text/javascript"></script>
-
-    </section>
-

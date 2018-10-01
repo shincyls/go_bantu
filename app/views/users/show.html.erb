@@ -17,3 +17,42 @@
       </div>
     </section>
   </main>
+
+  <!-- Map -->
+    <section class="section section-shaped">
+      <div class="shape shape-style-1 shape-default">
+      </div>
+      <div class="container py-md">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-6 mb-lg-0">
+            <h1 class="text-white font-weight-light">Schedule Your Fitting Session With Us Today!</h1>
+            <p class="lead text-white mt-4">We serve by appointment to ensure your best experience with us!</p>
+            <p class="lead text-white mt-4">You can drop a message to us in Facebook clicking the button on the right bottom.</p>
+          </div>
+          <div class="col-lg-6 mb-lg-auto">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        function initMap() {
+        var myLatLng = {lat: 3.0385907, lng: 101.7841042};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Wedding Ideas!'
+        });
+        }
+      </script>
+
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap" type="text/javascript"></script>
+
+    </section>
+

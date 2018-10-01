@@ -1,15 +1,10 @@
-<% @user = User.new %>
-<%= form_for user_session_path, id: 'signup'  do |f| %>
 
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-      <ul>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(:user,id: 'signup', url: registration_path(:user)) do |f| %>
 
-  <div class="form-group mb-3">
+
+  <%= f.error_notification %>
+       
+      <div class="form-group mb-3">
     <div class="input-group input-group-alternative">
       <div class="input-group-prepend">
         <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
