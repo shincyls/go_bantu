@@ -1,6 +1,6 @@
 <div class="card card-highlight--hover shadow mb-3", id="project-<%=@project.id%>">
-    <% if @project.images_url %>
-        <%= image_tag(@project.images_url, class: "img-fluid rounded shadow") %>
+    <% if @project.image_url %>
+        <%= image_tag(@project.image_url, class: "img-fluid rounded shadow") %>
     <% else %>
         <%= image_tag("brand/coverphoto.svg") %>
     <% end %>
