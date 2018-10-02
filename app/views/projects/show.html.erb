@@ -78,7 +78,7 @@
     </div>
 </div>
 
-<% if @project.organizers.includes current_user %>
+<% if @verify_organizers %>
     <% if !@hundred.nil? && @hundred != false %>
     <section class="section section-lg pt-lg-0">
         <div class="container">
