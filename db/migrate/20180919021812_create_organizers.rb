@@ -5,8 +5,13 @@ class CreateOrganizers < ActiveRecord::Migration[5.2]
       t.references :user, index: true
       t.string :company_name
       t.string :email
+      t.string :description
       t.string :phone_number1
       t.string :phone_number2
+      t.integer :type #community, home, organization
+
+      ## Organization Link (if any)
+      t.string :website_link
       t.string :facebook_link
       t.string :instagram_link
       t.string :twitter_link

@@ -67,8 +67,15 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.bigint "user_id"
     t.string "company_name"
     t.string "email"
+    t.string "description"
     t.string "phone_number1"
     t.string "phone_number2"
+    t.integer "type"
+    t.string "website_link"
+    t.string "facebook_link"
+    t.string "instagram_link"
+    t.string "twitter_link"
+    t.string "linkedin_link"
     t.string "address_1", limit: 32
     t.string "address_2", limit: 32
     t.string "postcode", limit: 5

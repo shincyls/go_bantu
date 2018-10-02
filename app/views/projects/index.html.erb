@@ -14,6 +14,14 @@
                         <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Project" %>
                         <%= submit_tag "Search", name: nil, class: "btn btn-sm btn-white" %>
                       </div>
+                      <div class="custom-control custom-checkbox d-inline">
+                        <%= check_box_tag :volunteer, 1, true, class: "checkbox-gobantu" %>
+                        <%= label_tag :volunteer, "Volunteer", class: "badge badge-gobantu" %>
+                      </div>
+                      <div class="custom-control custom-checkbox d-inline">
+                        <%= check_box_tag :donate, 1, true, class: "checkbox-gobantu" %>
+                        <%= label_tag :donate, "Donation", class: "badge badge-gobantu" %>  
+                      </div>
                     <% end %>
                   </div>
                 </div>

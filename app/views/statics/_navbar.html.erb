@@ -49,11 +49,11 @@
               <div class="dropdown-menu dropdown-menu-right row" aria-labelledby="navbar-primary_dropdown_1">
                 <%= link_to 'Profile', user_profile_path(current_user.id), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
-                <% if current_user.volunteer.present? %>
+                <% if !current_user.volunteer.present? %>
                 <%= link_to 'Be a Volunteer', new_volunteer_path, class: "dropdown-item" %>
                 <% end %>
                 <div class="dropdown-divider"></div>
-                <% if current_user.organizer.present? %>
+                <% if !current_user.organizer.present? %>
                 <%= link_to 'Be an Organizer', new_organizer_path, class: "dropdown-item" %>
                 <% else %>
                 <%= link_to 'Start a Project', new_project_path, class: "dropdown-item" %>
