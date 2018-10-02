@@ -241,8 +241,9 @@ a
 {
     text-decoration: none;
 
-    color: #ccae62;
+    color: #007bff;
     background-color: transparent;
+    
 
     -webkit-text-decoration-skip: objects;
 }
@@ -250,7 +251,7 @@ a:hover
 {
     text-decoration: none; 
 
-    color: #233dd2;
+    color: #9d901d;
 }
 
 a:not([href]):not([tabindex])
@@ -3041,7 +3042,7 @@ fieldset:disabled a.btn
 {
     color: #fff;
     border-color: #ffe121; 
-    background-color: #5e72e4;
+    background-color:  #fbd341;
 }
 .btn-bantu:focus,
 .btn-bantu.focus
@@ -3553,16 +3554,16 @@ fieldset:disabled a.btn
 
 .btn-outline-bantu
 {
-    color: #ffe121;
+    color: black;
     border-color: #ffe121; 
-    background-color: transparent;
+    background-color: rgba(254, 211, 48,0.2);
     background-image: none;
 }
 .btn-outline-bantu:hover
 {
-    color: #fff;
+    color: black;
     border-color: #ffe121; 
-    background-color: #ffe121;
+    background-color:  #ffd615;
 }
 .btn-outline-bantu:focus,
 .btn-outline-bantu.focus
@@ -12430,13 +12431,13 @@ a.text-primary:focus
 
 .text-bantu
 {
-    color: #ffe121 !important;
+    color: #f7aa00 !important;
 }
 
 a.text-bantu:hover,
 a.text-bantu:focus
 {
-    color: #fbd341 !important;
+    color: #ff8000 !important;
 }
 
 
