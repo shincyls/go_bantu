@@ -13,9 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name, limit: 64
       t.string :phone_number, limit: 16
       t.date :birthday
-      t.string :facebook_link, unique: true
-      t.string :instagram_link, unique: true
-      t.string :linkedin_link, unique: true
+    
       # friendly_id
       t.string :slug, unique: true
 
@@ -41,6 +39,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       ## Images
       t.string :images
+      
+      ## Avatar
+      t.string :avatar
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

@@ -1,12 +1,14 @@
 class User < ApplicationRecord
+include OmniauthAttributesConcern
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, authentication_keys: [:login]
+         :recoverable, :rememberable, :validatable,:omniauthable, authentication_keys: [:login]
 
         #  for username and email login
-              attr_writer :login
-
+        attr_writer :login
+        
+    #  for friendly id
     extend FriendlyId
     friendly_id :full_name, use: :slugged
     
@@ -30,6 +32,9 @@ class User < ApplicationRecord
     has_one :donor
     has_many :user_cause_joins
     has_many :causes, through: :user_cause_joins
+
+    has_many :user_authentications
+    
 
     # gecode required to set latitude and logitude
     geocoded_by :address
@@ -80,6 +85,11 @@ class User < ApplicationRecord
         if User.where(email: username).exists?
             errors.add(:username, :invalid)
         end
+    end
+
+    #   omniauth
+    def self.create_from_omniauth(params)
+        self.send(params.provider,params)
     end
 
         

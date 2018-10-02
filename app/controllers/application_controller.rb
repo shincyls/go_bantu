@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   protected
 
       def configure_permitted_parameters
-        added_attrs = [:first_name, :last_name,:avatar,:username,:email]
+        added_attrs = [:first_name, :last_name,:avatar,:username,:email,{images: []}]
         devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
         devise_parameter_sanitizer.permit :account_update, keys: added_attrs
       end
@@ -26,5 +26,14 @@ class ApplicationController < ActionController::Base
       # :user is the scope we are authenticating
       store_location_for(:user, request.fullpath)
     end
-     
+
+  protected  
+
+  def after_sign_in_path_for(resource)
+      user_profile_path(resource)
+
+  end
+      
 end
+
+     

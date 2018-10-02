@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_02_135547) do
+ActiveRecord::Schema.define(version: 2018_10_02_144616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentication_providers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_name_on_authentication_providers"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -184,6 +191,30 @@ ActiveRecord::Schema.define(version: 2018_10_02_135547) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "social_accounts", force: :cascade do |t|
+    t.string "token"
+    t.string "secret"
+    t.bigint "user_id"
+    t.bigint "authentication_provider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authentication_provider_id"], name: "index_social_accounts_on_authentication_provider_id"
+    t.index ["user_id"], name: "index_social_accounts_on_user_id"
+  end
+
+  create_table "user_authentications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "authentication_provider_id"
+    t.string "uid"
+    t.string "token"
+    t.datetime "token_expires_at"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authentication_provider_id"], name: "index_user_authentications_on_authentication_provider_id"
+    t.index ["user_id"], name: "index_user_authentications_on_user_id"
+  end
+
   create_table "user_cause_joins", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "cause_id"
@@ -202,9 +233,6 @@ ActiveRecord::Schema.define(version: 2018_10_02_135547) do
     t.string "last_name", limit: 64
     t.string "phone_number", limit: 16
     t.date "birthday"
-    t.string "facebook_link"
-    t.string "instagram_link"
-    t.string "linkedin_link"
     t.string "slug"
     t.string "address_1", limit: 64
     t.string "address_2", limit: 64
@@ -219,6 +247,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_135547) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "images"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -267,4 +296,6 @@ ActiveRecord::Schema.define(version: 2018_10_02_135547) do
     t.index ["user_id"], name: "index_volunteers_on_user_id"
   end
 
+  add_foreign_key "social_accounts", "authentication_providers"
+  add_foreign_key "social_accounts", "users"
 end
