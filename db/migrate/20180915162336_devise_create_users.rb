@@ -13,6 +13,11 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name, limit: 64
       t.string :phone_number, limit: 16
       t.date :birthday
+      t.string :facebook_link, unique: true
+      t.string :instagram_link, unique: true
+      t.string :linkedin_link, unique: true
+      # friendly_id
+      t.string :slug, unique: true
 
       ## Location (temporary allow to key anything)
       t.string :address_1, limit: 64

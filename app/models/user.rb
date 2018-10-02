@@ -5,7 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
         #  for username and email login
-     attr_writer :login
+              attr_writer :login
+
+    extend FriendlyId
+    friendly_id :full_name, use: :slugged
     
 
     #Validate The Format and Presence of Required Information
