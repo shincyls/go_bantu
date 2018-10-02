@@ -1,5 +1,8 @@
 class Project < ApplicationRecord
-
+    validates :title, presence: {message: " must presence"}
+    validates :project_desc, presence: {message: " must presence"}
+    validates :fund_amount, numericality: { less_than_or_equal_to: 5000, message: " exceeded allowed funding amount." }
+    validates :volunteer_number, numericality: { less_than_or_equal_to: 10, only_integer: true, message: " exceeded allowed number of volunteer." }
     # Project to Organizer Association
     has_many :organizer_project_joins
     has_many :organizers, through: :organizer_project_joins
