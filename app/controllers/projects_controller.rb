@@ -38,7 +38,9 @@ class ProjectsController < ApplicationController
       # for empty array to pass message on user show
       @matched_volunteers
     end
+    if signed_in?
     @verify_organizers = @project.organizers.where(user_id: current_user.id).exists?
+    end
   end
 
   def card

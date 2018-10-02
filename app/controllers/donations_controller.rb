@@ -1,10 +1,13 @@
 class DonationsController < ApplicationController
 	def project
 		@project = Project.find(params[:id])
-		
-		if !@project.organizers.where(user_id: current_user.id).exists?
+		if signed_in?
+			if !@project.organizers.where(user_id: current_user.id).exists?
+				redirect_to root_path
+			end	
+		else
 			redirect_to root_path
-		end	
+		end
 	end
 
 	def donor
