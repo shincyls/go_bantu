@@ -4,7 +4,7 @@
             <% if p.images_url %>
             <%= image_tag(p.images_url, class: "img-fluid rounded shadow") %>
             <% else %>
-            <%= image_tag("brand/coverphoto.svg") %>
+            <%= image_tag("brand/carousel" + rand(1..3).to_s + ".png", style: "width:100%;height:100%;") %>
             <% end %>
             <div class="card-body">
                 <div class="card-body-area">
@@ -19,7 +19,13 @@
                                 <% if p.volunteer_progress >= 100 %>
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
+                                    <% if signed_in? && current_user.volunteer.present? %>
                                     <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <% elsif signed_in? && !current_user.volunteer.present? %>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <% else %>
+                                    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.count.to_s%> / <%=p.volunteer_number.to_s%></span>
+                                    <% end %>
                                 <% end %>
                                 </div>
                                 <div class="progress-percentage">
@@ -58,7 +64,11 @@
                                 <% if p.fund_progress >= 100 %>
                                     <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                 <% else %>
-                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, "#", class: "badge badge-primary"%>
+                                    <% if signed_in? %>
+                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-primary", target: "_blank" %>
+                                    <% else %>
+                                    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Donate">Raised RM <%=p.donations.sum(:amount).round.to_s%> / RM <%=p.fund_amount.round.to_s%> </span>
+                                    <% end %>
                                 <% end %>
                                 </div>
                                 <div class="progress-percentage">

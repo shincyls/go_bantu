@@ -3,7 +3,7 @@
 
   <br><br><br><br><br>
   <h4>Volunteer Information</h4>
-  <%= f.text_field :user_id, placeholder: "will be hidden_field current_user.id" %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.text_field :cv_file, placeholder: "Upload CV File" %>
   <%= f.text_field :linked_in_url, placeholder: "LinkedIn URL" %>
 

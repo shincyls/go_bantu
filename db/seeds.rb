@@ -85,7 +85,8 @@ Donor.create!([
     {user_id: 5}, #donor_id: 1
     {user_id: 7}, #donor_id: 2
     {user_id: 8}, #donor_id: 3
-    {user_id: 9} #donor_id: 4
+    {user_id: 9}, #donor_id: 4
+    {user_id: 18}
 ])
 
 # ####################################################
@@ -268,7 +269,10 @@ Donation.create!([
     {donor_id: 1, project_id: 8, amount: 100},
     {donor_id: 2, project_id: 9, amount: 300},
     {donor_id: 2, project_id: 10, amount: 1100},
-    {donor_id: 3, project_id: 11, amount: 1200}
+    {donor_id: 3, project_id: 11, amount: 1200},
+    {donor_id: 5, project_id: 10, amount: 100, status: 1},
+    {donor_id: 5, project_id: 10, amount: 100, status: 1},
+    {donor_id: 5, project_id: 10, amount: 100, status: 1}
 ])
 
 # For Searching or Matching
@@ -282,7 +286,8 @@ UserCauseJoin.create!([
     {user_id: 4, cause_id: 6},
     {user_id: 5, cause_id: 7},
     {user_id: 5, cause_id: 8},
-    {user_id: 5, cause_id: 9}
+    {user_id: 5, cause_id: 9},
+    {user_id: 18, cause_id: 1}
 ])
 
 # Volunteer
@@ -352,7 +357,8 @@ ProjectCauseJoin.create!([
     {project_id: 4, cause_id: 6},
     {project_id: 5, cause_id: 7},
     {project_id: 5, cause_id: 8},
-    {project_id: 5, cause_id: 9}
+    {project_id: 5, cause_id: 9},
+    {project_id: 16, cause_id: 1}
 ])
 
 ProjectSkillJoin.create!([

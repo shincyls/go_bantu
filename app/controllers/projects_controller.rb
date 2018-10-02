@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
     respond_to :html, :js
     @projects = Array.new
     if params[:query].empty? || params[:query] == "all"
-      @projects = Project.all.order("created_at desc")
+      @projects = Project.all.where(status: 2).order("created_at desc")
     else
       result = PgSearch.multisearch(params[:query])
       result.each do |r|
