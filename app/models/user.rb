@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
         #  for username and email login
      attr_writer :login
-     after_initialize :create_login, :if => :new_record?
+    
 
     #Validate The Format and Presence of Required Information
     validates :email, uniqueness: {message: "Account already exists!"}, format: {with: /.+@.+\..+/, message: ": Please enter a valid email address."}, presence: {message: ": Please enter your email address."}
@@ -59,17 +59,6 @@ class User < ApplicationRecord
     end
      
 
-    def create_login
-        if self.username.blank?
-        email = self.email.split(/@/)
-        login_taken = Pro.where(:username => email[0]).first
-        unless login_taken
-            self.username = email[0]
-        else    
-            self.username = self.email
-        end   
-        end     
-    end
 
     def self.find_first_by_auth_conditions(warden_conditions)
         conditions = warden_conditions.dup
@@ -83,7 +72,7 @@ class User < ApplicationRecord
             end
         end
     end
-  
+    
     def validate_username
         if User.where(email: username).exists?
             errors.add(:username, :invalid)
