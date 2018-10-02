@@ -15,12 +15,15 @@
       </div>
 
       <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-        <% if current_user.id == @user.id %>
           <div class="card-profile-actions py-4 mt-lg-0 mb-3">
-            <%= link_to "Edit Profile", edit_user_registration_path(@user.id), class: "btn btn-sm btn-info mr-4", local: true %>
-          </div>
+        <% if current_user.id == @user.id %>
+            <%= link_to "Edit Profile", edit_user_registration_path(@user.id), class: "btn btn-sm btn-info ml-5" %>
         <% end %>
+          </div>
       </div>
+
+        
+            
 
        <div class="col-lg-4 order-lg-1">
                     <div class="card-profile-stats d-flex justify-content-center">
@@ -31,7 +34,7 @@
                           <% else %>
                           <span class="heading"><%= @user.volunteer.projects.count %></span>
                         <% end %>
-                        <span class="description">Volunteered</span>
+                        <span class="text-default font-weight-bold text-uppercase">Volunteered</span>
                       </div>
                       
                       <div>                 
@@ -40,7 +43,7 @@
                           <% else %>
                           <span class="heading"><%= @user.organizer.projects.count %></span>
                         <% end %>
-                        <span class="description">Projects</span>
+                        <span class="text-default font-weight-bold text-uppercase">Projects</span>
                       </div>
                 </div>
               </div>

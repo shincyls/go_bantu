@@ -14892,7 +14892,8 @@ a.btn-icon-only
 
 .profile-page .card-profile
 {
-    margin-top: -70px;
+  margin-top: -150px;
+  z-index:999;
 }
 .profile-page .card-profile .card-profile-image
 {
