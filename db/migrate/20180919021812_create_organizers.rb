@@ -16,6 +16,9 @@ class CreateOrganizers < ActiveRecord::Migration[5.2]
       t.string :state #select option
       t.string :country #select option
       
+      #image
+      t.string :logo
+      
       t.timestamps
     end
   end

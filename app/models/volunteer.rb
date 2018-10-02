@@ -14,6 +14,9 @@ class Volunteer < ApplicationRecord
     accepts_nested_attributes_for :volunteer_skill_joins, allow_destroy: true
     accepts_nested_attributes_for :volunteer_profession_joins, allow_destroy: true
 
+    # CarrierWave Uploader
+    mount_uploader :cv_file, AttachmentUploader
+
     def custom_label
         "#{self.user.username}"
     end

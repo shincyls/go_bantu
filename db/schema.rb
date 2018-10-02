@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "city"
     t.string "state"
     t.string "country"
+    t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_organizers_on_user_id"
@@ -152,6 +153,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "country"
     t.float "latitude"
     t.float "longitude"
+    t.string "image"
     t.date "start_date", default: "2018-01-01"
     t.date "end_date", default: "2020-12-31"
     t.integer "status", default: 0
@@ -202,7 +204,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "images"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
