@@ -9802,6 +9802,12 @@ button.bg-darker:focus
     margin-bottom: 3rem !important;
 }
 
+.mb-8,
+.my-8
+{
+    margin-bottom: 8rem !important;
+}
+
 .ml-5,
 .mx-5
 {
@@ -13111,7 +13117,7 @@ button.bg-lighter:focus
 
 .bg-gradient-success
 {
-    background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important;
+    background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%) !important;
 }
 
 .bg-gradient-info
@@ -13351,7 +13357,7 @@ button.section-darker:focus
 
 .bg-gradient-neutral
 {
-    background: linear-gradient(87deg, #fff 0, white 100%) !important;
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%) !important;
 }
 
 .bg-gradient-darker
