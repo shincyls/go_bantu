@@ -140,7 +140,8 @@
 
 
   <!-- message notifiying user of currently matched/unmatched projects -->
-  <% if current_user.id == @user.id %>
+  <% if signed_in? %>
+  <% if current_user == @user %>
     <center>
       <h4 class="text-uppercase text-bold">
         <% if @projects == [] %>
@@ -233,6 +234,7 @@
         </div>
       </section>
     <% end %>
+  <% end %>
   <% end %>
 </main>
 

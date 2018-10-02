@@ -17,11 +17,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :volunteers
+  resources :volunteers 
   resources :organizers
+  resources :donations
+  get 'projects/:id/donations' => "donations#project", as: :project_donations
+  get 'users/:id/donations' => "donations#donor", as: :donor_donations
 
   # path to pass params to braintree payment
-  get 'projects/:id/donation/transaction' => "braintree#new", as: :new_donation
+  get 'projects/:id/donations/transaction' => "braintree#new", as: :make_donation
   #braintree system
   get 'braintree/new'
   post 'braintree/checkout'

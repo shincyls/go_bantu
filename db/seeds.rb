@@ -12,6 +12,7 @@
 
 # 1.1 User Section and Role
 User.create!([
+    # Scenario Testing Users
     {username: "admin", first_name: "Admin", last_name: "Im", email: "admin@gobantu.com", password: "qwerasdf", role: 0},
     {username: "manager", first_name: "Manager", last_name: "Im", email: "company@gobantu.com", password: "qwerasdf", role: 0},
     {username: "volunteer", first_name: "Volunteer", last_name: "Im", email: "user1@gobantu.com", password: "qwerasdf", role: 1},
@@ -20,15 +21,41 @@ User.create!([
     {username: "vol_org", first_name: "Volunteer", last_name: "Orgnizer", email: "user4@gobantu.com", password: "qwerasdf", role: 1},
     {username: "vol_donor", first_name: "Volunteer", last_name: "Donor", email: "user5@gobantu.com", password: "qwerasdf", role: 1},
     {username: "org_donor", first_name: "Organizer", last_name: "Donor", email: "user6@gobantu.com", password: "qwerasdf", role: 1},
-    {username: "anyuser", first_name: "Any", last_name: "User", email: "user7@gobantu.com", password: "qwerasdf", role: 1}
+    {username: "anyuser", first_name: "Any", last_name: "User", email: "user7@gobantu.com", password: "qwerasdf", role: 1},
+    # ID: 10 - 22 are actual volunteers
+    {username: "leonell", first_name: "Leonell", last_name: "Subramaniam", email: "volunteer1@gobantu.com", password: "qwerasdf", phone_number: "6012-6247XXX", birthday: "1998-01-01", role: 1},
+    {username: "pangjm", first_name: "Pang", last_name: "Jie Min", email: "volunteer2@gobantu.com", password: "qwerasdf", phone_number: "6017-7232XXX", birthday: "1998-01-01", role: 1},
+    {username: "nessalee", first_name: "Nessa Lee", last_name: "Ni Xuan", email: "volunteer3@gobantu.com", password: "qwerasdf", phone_number: "6011-1092XXX", birthday: "1997-01-01", role: 1},
+    {username: "nurkayfah", first_name: "Nurkayfah Raina", last_name: "Khairul Anuar", email: "volunteer4@gobantu.com", password: "qwerasdf", phone_number: "6017-6705XXX", birthday: "1999-01-01", role: 1},
+    {username: "erlina", first_name: "Erlina", last_name: "Saiful Anwar", email: "volunteer5@gobantu.com", password: "qwerasdf",phone_number: "6012-1234XXX", birthday: "1990-01-01", role: 1},
+    {username: "teohjs", first_name: "Teoh", last_name: "Jun Seong", email: "volunteer6@gobantu.com", password: "qwerasdf", phone_number: "6012-3337XXX", birthday: "1986-01-01", role: 1},
+    {username: "chongsy", first_name: "Chong", last_name: "Shin Yit", email: "volunteer7@gobantu.com", password: "qwerasdf", phone_number: "6012-2089XXX", birthday: "1999-01-01", role: 1},
+    {username: "aishah", first_name: "Aishah Rohaiza", last_name: "HJ Abu Bakar", email: "volunteer8@gobantu.com", password: "qwerasdf", phone_number: "6012-2059XXX", birthday: "1986-01-01", role: 1},
+    {username: "dayvenn", first_name: "Dayvenn Khaw", last_name: "Ming Li", email: "volunteer9@gobantu.com", password: "qwerasdf", phone_number: "6012-5353XXX", birthday: "1986-01-01", role: 1},
+    {username: "bernadette", first_name: "Bernadette", last_name: "Jamai", email: "volunteer10@gobantu.com", password: "qwerasdf", phone_number: "6011-2603XXX", birthday: "1998-01-01", role: 1},
+    {username: "arinah", first_name: "Arinah", last_name: "Zainordin", email: "volunteer11@gobantu.com", password: "qwerasdf", phone_number: "6019-6587XXX", birthday: "1988-01-01", role: 1},
+    {username: "maple", first_name: "Maple", last_name: "Lim", email: "volunteer12@gobantu.com", password: "qwerasdf", phone_number: "6012-9875XXX", birthday: "1995-01-01", role: 1},
+    {username: "gabrielle", first_name: "Gabrielle", last_name: "Lim", email: "volunteer13@gobantu.com", password: "qwerasdf", phone_number: "6016-2637XXX", birthday: "1998-01-01", role: 1},
+    # ID: 23 - 26 are actual organizers
+    {username: "sunwaygospel", first_name: "Sunway", last_name: "Gospel", email: "orgnizer1@gobantu.com", password: "qwerasdf", phone_number: "6011-2234XXX", birthday: "1998-01-01", role: 1},
+    {username: "kalsom", first_name: "Kalsom", last_name: "Movement", email: "orgnizer2@gobantu.com", password: "qwerasdf", phone_number: "6019-4456XXX", birthday: "1988-01-01", role: 1},
+    {username: "calvalry", first_name: "Calvalry", last_name: "Land", email: "orgnizer3@gobantu.com", password: "qwerasdf", phone_number: "6012-7733XXX", birthday: "1995-01-01", role: 1},
+    {username: "shelter", first_name: "Shelter", last_name: "Home", email: "orgnizer4@gobantu.com", password: "qwerasdf", phone_number: "6016-3388XXX", birthday: "1998-01-01", role: 1}
+
   ])
+
 
 # 1.2 When User hosted a project, he/she become organizer
 Organizer.create!([
-    {user_id: 4, company_name: "Indegenious Community", email: "company1@gmail.com"}, #organizer_id: 1
+    {user_id: 4, company_name: "Let's Do It", email: "company1@gmail.com"}, #organizer_id: 1
     {user_id: 6, company_name: "Saving Environment", email: "company2@gmail.com"}, #organizer_id: 2
     {user_id: 8, company_name: "Helpful People", email: "company3@gmail.com"}, #organizer_id: 3
-    {user_id: 9, company_name: "Helpful Charity", email: "company4@gmail.com"} #organizer_id: 4
+    {user_id: 9, company_name: "Helpful Charity", email: "company4@gmail.com"}, #organizer_id: 4
+    # ID: 5-8 are actual organizers
+    {user_id: 23, company_name: "Sunway Gospel", email: "orgnizer1@gobantu.com"},
+    {user_id: 24, company_name: "KALSOM Movement", email: "orgnizer2@gobantu.com"},
+    {user_id: 25, company_name: "Calvalry Land", email: "orgnizer3@gobantu.com"},
+    {user_id: 26, company_name: "Shelter", email: "orgnizer4@gobantu.com"}
 ])
 
 # 1.3 When User Volunteered a project, he/she become volunteer
@@ -36,7 +63,21 @@ Volunteer.create!([
     {user_id: 1, linked_in_url: "www.google.com"}, #volunteer_id: 1
     {user_id: 6, linked_in_url: "www.google.com"}, #volunteer_id: 2
     {user_id: 7, linked_in_url: "www.google.com"}, #volunteer_id: 3
-    {user_id: 9, linked_in_url: "www.google.com"} #volunteer_id: 4
+    {user_id: 9, linked_in_url: "www.google.com"}, #volunteer_id: 4
+    # ID: 5 - 17 are actual volunteers
+    {user_id: 10, linked_in_url: "www.google.com"},
+    {user_id: 11, linked_in_url: "www.google.com"},
+    {user_id: 12, linked_in_url: "www.google.com"},
+    {user_id: 13, linked_in_url: "www.google.com"},
+    {user_id: 14, linked_in_url: "www.google.com"},
+    {user_id: 15, linked_in_url: "www.google.com"},
+    {user_id: 16, linked_in_url: "www.google.com"},
+    {user_id: 17, linked_in_url: "www.google.com"},
+    {user_id: 18, linked_in_url: "www.google.com"},
+    {user_id: 19, linked_in_url: "www.google.com"},
+    {user_id: 20, linked_in_url: "www.google.com"},
+    {user_id: 21, linked_in_url: "www.google.com"},
+    {user_id: 22, linked_in_url: "www.google.com"}
 ])
   
 # 1.4 When User Donate a project, he/she become donor
@@ -73,7 +114,12 @@ Project.create!([
     {title: "Community Project 2",  project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 00000 for jjjjj", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 2000, status: 2},
     {title: "Organization Project 3", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 10101 for kkkkk", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 1200, status: 2},
     {title: "Organization Project 4", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 20202 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 1},
-    {title: "Organization Project 5", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 0}
+    {title: "Organization Project 5", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 0},
+    # ID 14-17 are actual projects
+    {title: "English Tutor for Children", project_desc: "Bandar Sunway Gospel Centre is looking 2 English Tutor", requirement_desc: "We need english tutor 2h for every saturday", volunteer_number: 2, city: "Subang", state: "Selangor", country: "Malaysia", status: 2},
+    {title: "Auditor for KALSOM Movement", project_desc: "KALSOM Movement is looking for Auditor/Accountant", requirement_desc: "We need an Auditor/Accountant to help audit our account", volunteer_number: 1, city: "Subang", state: "Selangor", country: "Malaysia", status: 2},
+    {title: "Calvalry Land", project_desc: "Looking for Agriculture Expert to cultivate our land", requirement_desc: "We need a Agriculture Expert for consultation", volunteer_number: 1, city: "Sepang", state: "Selangor", country: "Malaysia", status: 2},
+    {title: "Digital Marketer Shelter Home", project_desc: "We are looking for Digital Marketer to help us promote our goal and mission", requirement_desc: "We are looking for peoples to improve", volunteer_number: 2, city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 2}
 ])
 
 # ####################################################
@@ -81,27 +127,57 @@ Project.create!([
 # ####################################################
 
 Skill.create!([
-    {name: "Cooking"},
-    {name: "Medical"},
-    {name: "Electrical"},
-    {name: "Plumbing"},
-    {name: "Mechanical"},
-    {name: "Digital Marketing"},
-    {name: "Marketing"},
-    {name: "Accounting"},
-    {name: "Music"}
+    {name: "Accounting"}, #1
+    {name: "Agriculture"}, #2
+    {name: "Cooking"}, #3
+    {name: "Chess"}, #4
+    {name: "Computer"}, #5
+    {name: "Dancing"}, #6
+    {name: "Electrical"}, #7
+    {name: "Healthcare"}, #8
+    {name: "Financing"}, #9
+    {name: "Marketing"}, #10
+    {name: "Mechanical"}, #11
+    {name: "Medical"}, #12
+    {name: "Music Instrumenting"}, #13
+    {name: "Motivator"}, #14
+    {name: "Programming"}, #15
+    {name: "Plumbing"}, #16
+    {name: "Teaching"}, #17
+    {name: "Training"}, #18
+    {name: "Digital Marketing"}, #19
+    {name: "Others"} #20
 ])
 
 Profession.create!([
-    {name: "Doctor"},
-    {name: "Dentist"},
-    {name: "Nurse"},
-    {name: "Teacher"},
-    {name: "Musician"},
-    {name: "Accountant"},
-    {name: "Artist"},
-    {name: "Web Developer"},
-    {name: "Web Marketer"}
+    {name: "Accountant"}, #1
+    {name: "Actuarial Science"}, #2
+    {name: "Agriculturist"}, #3
+    {name: "Auditor"}, #4
+    {name: "Artist"}, #5
+    {name: "Business"}, #6
+    {name: "Consultant"}, #7
+    {name: "Carpenter"}, #8
+    {name: "Finance"}, #9
+    {name: "Doctor"}, #10
+    {name: "Dentist"}, #11
+    {name: "Engineer"}, #12
+    {name: "Emcee"}, #13
+    {name: "Farmer"}, #14
+    {name: "Human Resources"}, #15
+    {name: "Lawyer"}, #16
+    {name: "Musician"}, #17
+    {name: "Mathematician"}, #18
+    {name: "Nurse"}, #19
+    {name: "Public Relation"}, #20
+    {name: "Physiotheraphy"}, #21
+    {name: "Programmer"}, #22
+    {name: "Singer"}, #23
+    {name: "Student"}, #24
+    {name: "Teacher"}, #25
+    {name: "Web Developer"}, #26
+    {name: "Web Marketer"}, #27
+    {name: "Others"} #28
 ])
 
 Cause.create!([
@@ -136,7 +212,12 @@ ProjectCategoryJoin.create!([
     {project_id: 10, category_id: 3},
     {project_id: 11, category_id: 4},
     {project_id: 12, category_id: 4},
-    {project_id: 13, category_id: 4}
+    {project_id: 13, category_id: 4},
+    # Actual Projects
+    {project_id: 14, category_id: 4},
+    {project_id: 15, category_id: 4},
+    {project_id: 16, category_id: 4},
+    {project_id: 17, category_id: 4}
 ])
 
 OrganizerProjectJoin.create!([
@@ -152,7 +233,13 @@ OrganizerProjectJoin.create!([
     {organizer_id: 2, project_id: 10},
     {organizer_id: 3, project_id: 11},
     {organizer_id: 3, project_id: 12},
-    {organizer_id: 3, project_id: 13}
+    {organizer_id: 3, project_id: 13},
+    # Actual Projects
+    {organizer_id: 5, project_id: 14},
+    {organizer_id: 6, project_id: 15},
+    {organizer_id: 7, project_id: 16},
+    {organizer_id: 8, project_id: 17}
+
 ])
 
 VolunteerProjectJoin.create!([
@@ -213,14 +300,45 @@ VolunteerSkillJoin.create!([
     {volunteer_id: 4, skill_id: 2},
     {volunteer_id: 4, skill_id: 4},
     {volunteer_id: 4, skill_id: 6},
-    {volunteer_id: 4, skill_id: 8}
+    {volunteer_id: 4, skill_id: 8},
+    # Actual Volunteers
+    {volunteer_id: 5, skill_id: 17, remarks: "Mathematics and Chess"},
+    {volunteer_id: 6, skill_id: 17, remarks: ""},
+    {volunteer_id: 7, skill_id: 17, remarks: "English and Math"},
+    {volunteer_id: 8, skill_id: 17, remarks: "Teaching for ?"},
+    {volunteer_id: 8, skill_id: 18, remarks: "Training for ?"},
+    {volunteer_id: 9, skill_id: 1, remarks: "Accounting and Auditor"},
+    {volunteer_id: 10, skill_id: 17, remarks: "Motivational Speech"},
+    {volunteer_id: 11, skill_id: 17, remarks: "English, Strategy Development"},
+    {volunteer_id: 12, skill_id: 2, remarks: "Common plantations and Agriculture consultant"},
+    {volunteer_id: 13, skill_id: 17, remarks: "Teacher"},
+    {volunteer_id: 14, skill_id: 19, remarks: "Digital Marketing Facebook, Ad Words, etc"},
+    {volunteer_id: 15, skill_id: 8, remarks: "Physiotheraphy"},
+    {volunteer_id: 15, skill_id: 12, remarks: "Physiotheraphy"},
+    {volunteer_id: 16, skill_id: 17, remarks: "Languages and Mathematics"}
+
 ])
 
 VolunteerProfessionJoin.create!([
     {volunteer_id: 1, profession_id: 1},
     {volunteer_id: 2, profession_id: 4},
     {volunteer_id: 3, profession_id: 6},
-    {volunteer_id: 4, profession_id: 9}
+    {volunteer_id: 4, profession_id: 9},
+    # Actual Volunteers
+    {volunteer_id: 5, profession_id: 2, remarks: "Actuarial Science"},
+    {volunteer_id: 6, profession_id: 16, remarks: "Lawyer"},
+    {volunteer_id: 7, profession_id: 24, remarks: "Biomedical Student"},
+    {volunteer_id: 8, profession_id: 15, remarks: "Human Resources"},
+    {volunteer_id: 9, profession_id: 1, remarks: "Auditor"},
+    {volunteer_id: 9, profession_id: 4, remarks: "Accounting"},
+    {volunteer_id: 10, profession_id: 24, remarks: "Civil Engineering"},
+    {volunteer_id: 11, profession_id: 7, remarks: "Strategy Consultant"},
+    {volunteer_id: 12, profession_id: 3, remarks: "Agriculturist"},
+    {volunteer_id: 13, profession_id: 16, remarks: "Lawyer"},
+    {volunteer_id: 14, profession_id: 16, remarks: "Lawyer"},
+    {volunteer_id: 15, profession_id: 27, remarks: "Digital Marketer"},
+    {volunteer_id: 16, profession_id: 21, remarks: "Physiotheraphy"},
+    {volunteer_id: 17, profession_id: 16, remarks: "Lawyer"}
 ])
 
 
@@ -246,7 +364,12 @@ ProjectSkillJoin.create!([
     {project_id: 4, skill_id: 6},
     {project_id: 5, skill_id: 7},
     {project_id: 5, skill_id: 8},
-    {project_id: 5, skill_id: 9}
+    {project_id: 5, skill_id: 9},
+    # Actual Projects
+    {project_id: 14, skill_id: 17, remarks: "Teacher"},
+    {project_id: 15, skill_id: 1, remarks: "Accounting / Auditor"},
+    {project_id: 16, skill_id: 2, remarks: "Farmer / Agriculturist / Consultant"},
+    {project_id: 17, skill_id: 19, remarks: "Digital Marketing"}
 ])
 
 ProjectProfessionJoin.create!([
@@ -258,7 +381,12 @@ ProjectProfessionJoin.create!([
     {project_id: 6, profession_id: 6},
     {project_id: 7, profession_id: 7},
     {project_id: 8, profession_id: 8},
-    {project_id: 9, profession_id: 9}
+    {project_id: 9, profession_id: 9},
+    # Actual Projects
+    {project_id: 14, profession_id: 25, remarks: "English"},
+    {project_id: 15, profession_id: 4, remarks: "Accounting / Auditor"},
+    {project_id: 16, profession_id: 3, remarks: "Farmer / Agriculturist / Consultant"},
+    {project_id: 17, profession_id: 27, remarks: "Digital Marketing"}
 ])
 
 

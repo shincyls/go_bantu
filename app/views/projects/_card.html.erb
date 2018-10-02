@@ -72,6 +72,10 @@
                     </div>
                     <% end %>
 
+                    <% if p.organizers %>
+                        <p>By: <%=p.organizers.first.company_name%></p>
+                    <% end %>
+
                 </div>
             </div>
         </div>

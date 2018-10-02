@@ -3,6 +3,7 @@ class CreateVolunteerProfessionJoins < ActiveRecord::Migration[5.2]
     create_table :volunteer_profession_joins do |t|
       t.references :volunteer, index: true
       t.references :profession, index: true
+      t.string :remarks
       t.timestamps
     end
   end
