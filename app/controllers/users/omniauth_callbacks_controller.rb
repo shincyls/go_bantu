@@ -3,7 +3,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
  
     include OmniConcern
-    %w[facebook gplus].each do |meth|
+    %w[facebook google].each do |meth|
       define_method(meth) do
         create
       end

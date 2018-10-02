@@ -5,8 +5,8 @@ include OmniauthAttributesConcern
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,:omniauthable, authentication_keys: [:login]
 
-        #  for username and email login
-        attr_writer :login
+    #  for username and email login
+    attr_writer :login
         
     #  for friendly id
     extend FriendlyId
@@ -33,7 +33,7 @@ include OmniauthAttributesConcern
     has_many :user_cause_joins
     has_many :causes, through: :user_cause_joins
 
-    has_many :user_authentications
+    has_many :user_authentications, dependent: :destroy
     
 
     # gecode required to set latitude and logitude

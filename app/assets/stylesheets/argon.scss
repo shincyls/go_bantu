@@ -101,6 +101,13 @@ section
     font-family: 'Raleway', sans-serif;
 }
 
+@media (min-width: 768px)
+{
+   #edit_form{
+    max-width:60vh;
+}
+
+}
 
 body
 {

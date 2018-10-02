@@ -10,9 +10,9 @@
                                 email: params['info']['email'],
                                 first_name: params['info']['name'].split(' ').first,
                                 last_name: params['info']['name'].split(' ').last,
-                                username: params['info']['username'],
+                                password: Devise.friendly_token,
                                 avatar: params['info']['image'],
-                                password: Devise.friendly_token
+                                username: params['info']['username']
                             }
                 create(attributes)
             end
