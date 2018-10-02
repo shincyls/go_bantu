@@ -14,6 +14,13 @@ class Volunteer < ApplicationRecord
     accepts_nested_attributes_for :volunteer_skill_joins, allow_destroy: true
     accepts_nested_attributes_for :volunteer_profession_joins, allow_destroy: true
 
+    include PgSearch
+    pg_search_scope :search_volunteers, associated_against: { 
+        user: [:username, :first_name, :last_name, :email, :city, :state, :country],
+        skills: [:name, :description],
+        professions: [:name, :description]},
+        using: [:tsearch]
+
     def custom_label
         "#{self.user.username}"
     end

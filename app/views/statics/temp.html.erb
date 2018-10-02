@@ -27,10 +27,7 @@
             </li>
             <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'Talents', volunteers_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              
+              <%= link_to 'Profile', user_profile_path(current_user.id), class: "nav-link" %>
             </li>
             <% if current_user.admin? %>
             <li class="nav-item">
@@ -47,19 +44,25 @@
             <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="navbar-primary_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
               <div class="dropdown-menu dropdown-menu-right row" aria-labelledby="navbar-primary_dropdown_1">
-                <%= link_to 'Profile', user_profile_path(current_user.id), class: "dropdown-item" %>
+                <div class="col-4">
+                  <h5>Volunteer</h5>
+                  <% if current_user.volunteer.present? %>
+                  <%= link_to 'Be a Volunteer', new_volunteer_path, class: "dropdown-item" %>
+                  <% end %>
+                </div>
                 <div class="dropdown-divider"></div>
-                <% if current_user.volunteer.present? %>
-                <%= link_to 'Be a Volunteer', new_volunteer_path, class: "dropdown-item" %>
-                <% end %>
+                <div class="col-4">
+                  <h5>Project</h5>
+                  <% if current_user.organizer.present? %>
+                  <%= link_to 'Be an Organizer', new_organizer_path, class: "dropdown-item" %>
+                  <% else %>
+                  <%= link_to 'Start a Project', new_project_path, class: "dropdown-item" %>
+                  <% end %>
+                </div>
                 <div class="dropdown-divider"></div>
-                <% if current_user.organizer.present? %>
-                <%= link_to 'Be an Organizer', new_organizer_path, class: "dropdown-item" %>
-                <% else %>
-                <%= link_to 'Start a Project', new_project_path, class: "dropdown-item" %>
-                <% end %>
-                <div class="dropdown-divider"></div>
-                <%= link_to 'Logout as ' + current_user.username, destroy_user_session_path, method: :delete ,class: "dropdown-item" %>
+                <div class="col-4">
+                  <%= link_to 'Logout as ' + current_user.username, destroy_user_session_path, method: :delete ,class: "dropdown-item" %>
+                </div>
               </div>
             </li>
             <% end %>

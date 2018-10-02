@@ -1,0 +1,48 @@
+<% @volunteers.each do |v| %>
+    <div class="col-sm-2 col-md-3">
+        <div class="card card-highlight--hover shadow mb-3", id="volunteer-<%=v.id%>">
+            
+            <div class="card-body-area row">
+                <div class="mx-auto mt-3">
+                    <% if v.user.avatar? %>
+                    <%= image_tag(v.user.avatar_url, class: "img-fluid rounded-circle", style: "width:6rem;height:6rem") %>
+                    <% else %>
+                    <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle", style: "width:6rem;height:6rem" %>
+                    <% end %>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <div class="card-body-area">
+                    <div>
+                        <%= link_to v.user.username, user_path(v.user.id), target:"_blank" %>
+                        <p class="small"><%= v.user.email %></p>
+                        <p class="small"><%= v.user.city %>Subang, Selangor<%= v.user.state %></p>
+                    </div>
+                    <div class="criteria">
+                        <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
+                        <div><% v.skills.each do |s| %>
+                        <span class="badge badge-pill badge-primary"><%= s.name %></span>
+                        <% end %></div>
+                        </p>
+                        <p class="display-6"><span class="badge badge-pill badge-secondary">Professions</span>
+                        <div><% v.professions.each do |p| %>
+                        <span class="badge badge-pill badge-info"><%= p.name %></span>
+                        <% end %></div>
+                        </p>
+                        <!-- p class="display-6"><span class="badge badge-pill badge-secondary">Causes</span>
+                        <div><% v.user.causes.each do |c| %>
+                        <span class="badge badge-pill badge-default"><%= c.name %></span>
+                        <% end %></div -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<% end %>
+
+
+
+
