@@ -7,6 +7,10 @@ class CreateOrganizers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :phone_number1
       t.string :phone_number2
+      t.string :facebook_link
+      t.string :instagram_link
+      t.string :twitter_link
+      t.string :linkedin_link
 
       ## Location (temporary allow to key anything)
       t.string :address_1, limit: 32

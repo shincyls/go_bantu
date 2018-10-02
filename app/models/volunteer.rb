@@ -17,6 +17,14 @@ class Volunteer < ApplicationRecord
     # CarrierWave Uploader
     mount_uploader :cv_file, AttachmentUploader
 
+    include PgSearch
+    pg_search_scope :search_volunteers, associated_against: { 
+        user: [:username, :first_name, :last_name, :email, :city, :state, :country],
+        skills: [:name, :description],
+        professions: [:name, :description]},
+        using: [:tsearch]
+
+
     def custom_label
         "#{self.user.username}"
     end

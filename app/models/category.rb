@@ -4,9 +4,9 @@ class Category < ApplicationRecord
     has_many :projects, through: :project_category_joins
     # validations
     validates_uniqueness_of :name
-  	validates :name, presence: true
+    validates :name, presence: true
 
-  	 ##### admin panel custom label ######
+  	##### admin panel custom label ######
     def custom_label
         "#{self.name}"
     end

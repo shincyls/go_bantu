@@ -49,10 +49,7 @@ class ProjectsController < ApplicationController
     if params[:query].empty? || params[:query] == "all"
       @projects = Project.all.where(status: 2).order("created_at desc")
     else
-      result = PgSearch.multisearch(params[:query])
-      result.each do |r|
-        @projects << Project.find(r.searchable_id)
-      end
+      @projects = Project.search_projects(params[:query])
     end
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
   end
@@ -65,7 +62,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.pending?
-      @project.status = 'validated'
+      @project.status = 'approved'
       @project.save
       redirect_to confirmations_projects_path, notice: 'Project was approved.'
     else
