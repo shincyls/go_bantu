@@ -21,6 +21,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :country #select option
       t.float :latitude
       t.float :longitude
+      t.string :image
 
       ## Campaign Date, Project Page will only show >start_date and <end_date
       t.date :start_date, default: "2018-01-01"

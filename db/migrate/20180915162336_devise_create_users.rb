@@ -34,8 +34,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Rememberable
       t.datetime :remember_created_at
 
-      ## Images
-      t.string :images
+      ## avatar
+      t.string :avatar
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

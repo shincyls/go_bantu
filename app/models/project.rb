@@ -47,7 +47,7 @@ class Project < ApplicationRecord
     # Ge will_paginate for infiniate scrolling
     self.per_page = 8
     # CarrierWave Uploader
-    mount_uploader :images, ImageUploader
+    mount_uploader :image, ImageUploader
 
     ##### custom methods for view purposes ######
 
