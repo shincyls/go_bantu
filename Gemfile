@@ -36,7 +36,8 @@ gem 'oauth2', '~> 1.4'
 # Use ActiveStorage variant
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem 'mini_magick', '~> 4.8'
-
+gem "fog-google"
+gem "mime-types"
 # Vix laptop couldnt use
 # gem 'bootstrap', '~> 4.1', '>= 4.1.3'
 

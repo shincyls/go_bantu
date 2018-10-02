@@ -25,7 +25,7 @@ class Project < ApplicationRecord
     accepts_nested_attributes_for :project_cause_joins, allow_destroy: true
     accepts_nested_attributes_for :project_category_joins, allow_destroy: true
 
-    enum status: ["applied", "pending", "validated", "rejected"]
+    enum status: ["applied", "pending", "approved", "rejected"]
 
     # validations
     validates :title, presence: true
@@ -36,11 +36,18 @@ class Project < ApplicationRecord
     
     # Gem pg_search for searhable columns
     include PgSearch
-    multisearchable :against => [:title, :project_desc, :requirement_desc]
+    pg_search_scope :search_projects, against: [:title, :project_desc, :requirement_desc],
+    associated_against: { 
+        skills: [:name, :description],
+        professions: [:name, :description],
+        causes: [:name, :description],
+        categories: [:name, :description]},
+    using: [:tsearch]
+
     # Ge will_paginate for infiniate scrolling
     self.per_page = 8
     # CarrierWave Uploader
-    mount_uploader :images, ImageUploader
+    mount_uploader :image, ImageUploader
 
     ##### custom methods for view purposes ######
 

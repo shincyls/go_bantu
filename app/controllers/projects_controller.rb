@@ -38,21 +38,54 @@ class ProjectsController < ApplicationController
       # for empty array to pass message on user show
       @matched_volunteers
     end
-
+    if signed_in?
+    @verify_organizers = @project.organizers.where(user_id: current_user.id).exists?
+    end
   end
 
   def card
     respond_to :html, :js
     @projects = Array.new
     if params[:query].empty? || params[:query] == "all"
-      @projects = Project.all.order("created_at desc")
+      @projects = Project.all.where(status: 2).order("created_at desc")
     else
-      result = PgSearch.multisearch(params[:query])
-      result.each do |r|
-        @projects << Project.find(r.searchable_id)
-      end
+      @projects = Project.search_projects(params[:query])
     end
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
+  end
+
+  def confirmations
+    @projects = Project.where(status: 'pending')
+  end
+
+  def status_change
+    @project = Project.find(params[:id])
+
+    if @project.pending?
+      @project.status = 'approved'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Project was approved.'
+    else
+      @project.status = 'pending'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
+    end
+
+  end
+
+  def status_deny
+    @project = Project.find(params[:id])
+
+    if @project.pending?
+      @project.status = 'rejected'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Project was denied.'
+    else
+      @project.status = 'pending'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
+    end
+
   end
 
   private

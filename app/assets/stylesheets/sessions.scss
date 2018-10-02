@@ -1,3 +1,63 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// for profile of user
+
+
+
+@media (min-width: 1200px)
+{
+    
+  .img_box{
+    margin-bottom:25px;
+    }
+}
+
+.img_box{
+  
+  display: flex;
+  align-items: center;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+}
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #000;
+  margin:0;
+}
+
+.box:hover .overlay {
+  opacity: 0.7;
+}
+
+.text {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  margin-top:7vh;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  heigh: auto;  */
+    /* white-space: nowrap;   */
+}

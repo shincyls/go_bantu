@@ -1,6 +1,6 @@
 <div class="card card-highlight--hover shadow mb-3", id="project-<%=@project.id%>">
-    <% if @project.images_url %>
-        <%= image_tag(@project.images_url, class: "img-fluid rounded shadow") %>
+    <% if @project.image_url %>
+        <%= image_tag(@project.image_url, class: "img-fluid rounded shadow") %>
     <% else %>
         <%= image_tag("brand/coverphoto.svg") %>
     <% end %>
@@ -58,7 +58,7 @@
                             <% else %>
                                 <p class="text-uppercase font-weight-bold">Raised RM<%= @project.donations.sum(:amount).round.to_s %>/ RM <%= @project.fund_amount.round.to_s %></p>
                                 <% if signed_in? %>
-                                <%= link_to "Donate Now", new_donation_url, class: "btn btn-danger"%>
+                                <%= link_to "Donate Now", make_donation_url, class: "btn btn-danger"%>
                                 <% else %>
                                 <button class="btn btn-danger">Sign in to Donate</button>
                                 <%end %>
@@ -77,43 +77,44 @@
         </div>
     </div>
 </div>
-
-<% if @project.organizers.includes current_user %>
-    <% if !@hundred.nil? && @hundred != false %>
-    <section class="section section-lg pt-lg-0">
-        <div class="container">
-            <center>
-                <h5 class="text-uppercase font-weight-bold">
-                  Volunteers with a 100% match for your project.
-                </h5>
-            </center>
-            <div class="row justify-content-center mt-4">
-                <div class="col-lg-12">
-                  <div class="row row-grid" id="search">
-                    <%= render partial: 'users/user_card' %>
-                  </div>
+<% if signed_in? %>
+    <% if @verify_organizers %>
+        <% if !@hundred.nil? && @hundred != false %>
+        <section class="section section-lg pt-lg-0">
+            <div class="container">
+                <center>
+                    <h5 class="text-uppercase font-weight-bold">
+                      Volunteers with a 100% match for your project.
+                    </h5>
+                </center>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-12">
+                      <div class="row row-grid" id="search">
+                        <%= render partial: 'users/user_card' %>
+                      </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <% end %>
-    <% @matched_volunteers = @volunteers_seventy_five %>
-    <% if !@matched_volunteers.nil? && @matched_volunteers.count > 0 %>
-    <section class="section section-lg pt-lg-0">
-        <div class="container">
-            <center>
-                <h5 class="text-uppercase font-weight-bold">
-                  Volunteers with a 75% match for your project.
-                </h5>
-            </center>
-            <div class="row justify-content-center mt-4">
-                <div class="col-lg-12">
-                  <div class="row row-grid" id="search">
-                    <%= render partial: 'users/user_card' %>
-                  </div>
+        </section>
+        <% end %>
+        <% @matched_volunteers = @volunteers_seventy_five %>
+        <% if !@matched_volunteers.nil? && @matched_volunteers.count > 0 %>
+        <section class="section section-lg pt-lg-0">
+            <div class="container">
+                <center>
+                    <h5 class="text-uppercase font-weight-bold">
+                      Volunteers with a 75% match for your project.
+                    </h5>
+                </center>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-12">
+                      <div class="row row-grid" id="search">
+                        <%= render partial: 'users/user_card' %>
+                      </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        <% end %>
     <% end %>
 <% end %>

@@ -1,38 +1,73 @@
 
-<div class="container mt-4">
-    <div class="row">
-    	<div class="col-md-4">
-    	</div>
-		<div class="card col-md-4 mt-4">
-			<div class="demo-frame">
+
+<br><br><br>
+<div class="container p-4 shadow border border border-success rounded mt-5 mb-5">
+
+  <div class=row">
+    <h3 class="text-center text-uppercase"><%=@project.title%> donation form</h3>
+  </div>
+  <div class="row">
+    <!-- donor information and donation amount -->
+    <!-- added to form to gather params at braintree checkout -->
+  	<div class="col-md-4 mt-4">
+      <div class="demo-frame">
+  
         <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "cardForm"} do |form| %>
+        <h5 class="text-center text-uppercase">Donor Info</h5>
+          Donation Amount
+          <%= form.text_field "amount", placeholder: "$50.00", type: "number", min: "10.00", max: "1000.00", step: ".25", label: "Donation Amount", class:"text-center form-control amount-field", style: "color: green;" %>           
+          Email Address 
+          <%= form.text_field "Email", class: "hosted-field form-control pt-1" %>
+          First Name 
+          <%= form.text_field "First", class: "hosted-field form-control pt-1" %>
+          Last Name 
+          <%= form.text_field "Last", class: "hosted-field form-control pt-1" %>
 
-				    <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>
-				    <div id="card-number" class="hosted-field"></div>
+      </div>
+  	</div>
 
-				    <%= form.label :expiration_date, "Expiration Date", html: {class: "hosted-fields--label"} %>
-				    <div id="expiration-date" class="hosted-field"></div>
+    <!-- billing address information -->
+    <!-- added to form to gather params at braintree checkout -->
+    <div class="col-md-4 mt-4">
+      <div class="demo-frame">
 
-				    <%= form.label :cvv, "CVV", html: {class: "hosted-fields--label"} %>
-				    <div id="cvv" class="hosted-field"></div>
+        <h5 class="text-center text-uppercase">Billing Address</h5>
+        Street
+        <%= form.text_field "Address", class: "hosted-field form-control pt-1" %>
+        City
+        <%= form.text_field "City", class: "hosted-field form-control pt-1" %>
+        State
+        <%= form.text_field "State", class: "hosted-field form-control pt-1" %>
+        Postal Code
+        <%= form.text_field "Postal", class: "hosted-field form-control pt-1" %>
 
-				    <%= form.hidden_field "payment_method_nonce" %>
-				    <%= form.text_area "amount" %>  
-            <!-- added to form to gather params at braintree checkout -->
-    			  <%= form.hidden_field "project", value: @project.id %>  
-            <!-- added to form to gather params at braintree checkout -->
-
-              		<div class="button-container pull-right mb-3">
-              		<%= form.submit "Submit", disabled: true, class: "btn btn-success pull-right ml-2", id: "submit-payment-btn" %> 
-              		<%= link_to 'Back', project_url(@project.id), class: "btn btn-secondary ml-2" %> <!-- added to form to return to reservation-->
-              		</div>
-			  	<% end %>
-
-			</div>
-		</div>
-		<div class="col-md-4">
-    	</div>
+      </div>
     </div>
+
+    <!-- credit card information and buttons -->
+		<div class="col-md-4 mt-4">
+			<div class="demo-frame">
+
+        <h5 class="text-center text-uppercase">Credit card</h5>
+		    <%= form.label :card_number, "Credit Card Number", html: {class: "hosted-fields--label"} %>
+		    <div id="card-number" class="hosted-field"></div>
+		    <%= form.label :expiration_date, "Expiration Date", html: {class: "hosted-fields--label"} %>
+		    <div id="expiration-date" class="hosted-field"></div>
+		    <%= form.label :cvv, "CVV", html: {class: "hosted-fields--label"} %>
+		    <div id="cvv" class="hosted-field"></div>
+		    <%= form.hidden_field "payment_method_nonce" %>
+        <!-- added to form to gather params at braintree checkout -->
+			  <%= form.hidden_field "project", value: @project.id %>  
+    		<div class="button-container mb-3">
+          <row>
+            <%= link_to 'Cancel', project_url(@project.id), class: "btn btn-danger mr-2" %> <!-- added to form to return to reservation-->    
+        		<%= form.submit "Submit", disabled: true, class: "btn btn-success ml-2", id: "submit-payment-btn" %> 
+          <% end %>	
+          </row>
+    		</div>
+	 		</div>
+	  </div>
+  </div>
 </div>
 
 <!-- Load the Client component. -->
@@ -82,6 +117,7 @@ braintree.client.create({
         selector: '#expiration-date',
         placeholder: '10/2019'
       }
+
     }
   }, function (hostedFieldsErr, hostedFieldsInstance) {
     if (hostedFieldsErr) {

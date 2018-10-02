@@ -1,5 +1,10 @@
 module ProjectsHelper
-  
+
+  def approved
+    self.approved?
+  end
+
+
   ##### personalized projects for volunteers #########
   def matched_projects(user_id)
     # set the volunteer by user_id
@@ -32,11 +37,11 @@ module ProjectsHelper
 
   ######## Volunteer page automatching #####################
 
-  # creates an array of matched projects that are validated based on cause
+  # creates an array of matched projects that are approved based on cause
   def matched_cause(volunteer)
     matched_cause = []
     volunteer.user.causes.each do |volunteer_cause|
-      Cause.find_by(id: volunteer_cause.id).projects.where(status: 'validated').each do |project|
+      Cause.find_by(id: volunteer_cause.id).projects.where(status: 'approved').each do |project|
           matched_cause << project.id
       end
     end
