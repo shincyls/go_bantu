@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, flash: { success: 'Project was successfully created.' }
+      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval of projects within 5 days.' }
     else
-      redirect_to root_url, flash: { danger: @project.errors.full_messages[0] }
+      redirect_to new_project_path, flash: { danger: @project.errors.full_messages[0] }
     end
   end
 
@@ -51,6 +51,11 @@ class ProjectsController < ApplicationController
     else
       @projects = Project.search_projects(params[:query])
     end
+    # Checkbox to filter volunteer and donation
+    @projects = @projects.where(volunteer_number: 0) if !params[:volunteer] # if empty, don't want show volunteer > 0 or select only volunteer = 0
+    @projects = @projects.where(fund_amount: 0) if !params[:donate] # if empty, don't want show fund > 0 or select only fund = 0
+
+    # Final Result
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
   end
 
