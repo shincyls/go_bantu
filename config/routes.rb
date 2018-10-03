@@ -5,13 +5,19 @@ Rails.application.routes.draw do
 
   root 'statics#index'
 
+
+  devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
+  
+  # RIP DONT REPEAT URSELF
+  # resources :users do
+  #   get :show
+  # end
+
   devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations'}
   get 'users/profile/:id' => 'users#show' , :as => "user_profile"
 
 
-  resources :users do
-    get :show
-  end
+  get 'users/profile/:id' => 'users#show' , :as => "user_profile"
   # resources :sessions
 
   resources :projects do
@@ -22,6 +28,7 @@ Rails.application.routes.draw do
       post :status_change
     end
   end
+
   post '/projects/status_deny/:id' => "projects#status_deny", as: :status_rejected
   post '/projects/status_change/:id' => "projects#status_change", as: :status_approve
   
@@ -33,6 +40,7 @@ Rails.application.routes.draw do
 
   resources :organizers
   resources :donations
+  
   get 'projects/:id/donations' => "donations#project", as: :project_donations
   get 'users/:id/donations' => "donations#donor", as: :donor_donations
 

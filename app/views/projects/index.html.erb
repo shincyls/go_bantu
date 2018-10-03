@@ -1,15 +1,5 @@
-<style>
-.btn-yellow{
-    margin-left: -20px;
-    color: #f8ca23;;
-}
-.btn {
-    font-size: 1.25rem!important;
-    height: 45.5px!important;
-    margin-top: .5px!important;
-    padding-top: 7px!important;
-}
-</style>
+<!-- Added in argon.css -->
+
   <main>
     <div class="position-relative">
       <section class="section section-lg section-shaped pb-250">
@@ -21,13 +11,15 @@
               <div class="row">
                 <div class="col-md-8 mx-auto">
                   <div class="form-group ml-4 mr-4">
+                  
                     <%= form_tag card_projects_path, remote: true, method: 'get' do %>
                       <div class="input-group mb-4">
-                        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Project" %>
-                        <button class="btn btn-yellow" type="submit">
+                        <%= text_field_tag :query, params[:query], class: "form-control",id:"rounded-form", placeholder: "Search a Project" %>
+                        <button class="btn" id="search_button" type="submit">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
+
                       <div class="custom-control custom-checkbox d-inline">
                         <%= check_box_tag :volunteer, 1, true, class: "checkbox-gobantu" %>
                         <%= label_tag :volunteer, "Volunteer", class: "badge badge-gobantu" %>

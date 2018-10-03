@@ -1,198 +1,21 @@
 
-  <head>
-   
-
-    <script type="text/javascript">
-    $(window).scroll(function(){
-      $('.background1').bgscroll({direction: 'top'});
-      $('.background2').bgscroll({direction: 'top'});
-    })
-    </script>
+<script type="text/javascript">
+$(window).scroll(function(){
+  $('.background1').bgscroll({direction: 'top'});
+})
+</script>
     
-    <style media="screen">
+<style media="screen">
 
-       
-        #search_button{
-          border: 2px solid #12e2a3;
-          border-left: none;
-          margin-right:50px;
-          float:right;
-          background: transparent;
-          background-color: white;
-          padding-right:15px;
-          border-radius: 0 50px 50px 0;
-        }
-       .background1{
-        max-width: 100vw;
-        height: 110vh;
-        background-image: url('https://wcswr.org/wp-content/uploads/2018/01/iStock_000015133180_Large.jpg');
-        /* background-image: url('https://sll-cdn.azureedge.net/2018/03/construction-volunteers-feature.jpg'); */
-        overflow: hidden;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: 50% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #FFF;
   
-
-      }
-     
-      .background2{
-        width: 100%;
-        height: 50vh;
-        background-image: url('https://sll-cdn.azureedge.net/2018/03/construction-volunteers-feature.jpg');
-        background-repeat: no-repeat;
-        background-position: 50% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #FFF;
-      }
-
-      .background3{
-        width: 100%;
-        height: 70vh;
-        background-image: url('https://images.unsplash.com/photo-1491772135384-20292e4b5ea1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=111ee66d6a3cf0d92fb1bb9db9e1486d&auto=format&fit=crop&w=1568&q=80');
-        background-repeat: no-repeat;
-        background-position: 50% 0%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #FFF;
-      }
-
-      .overlay {
-          position: absolute;
-          width: 100%;
-          height: 30vh;
-          background: #000;
-          opacity: 0.3;
-          transition: all 0.2s ease-out;
-          margin-top: 32vh;
-      }
-      .overlay1 {
-          position: absolute;
-          width: 100%;
-          height: 50vh;
-          background: #000;
-          opacity: 0.5;
-          transition: all 0.2s ease-out;
-       
-      }
-
-      .background1 p, .background2 p{
-        border-radius: 10px;
-        font-size: 3.3rem;
-        font-weight: 400;
-        line-height: 1.5;
-        
-      }
-
-      .a{
-        height: 500px;
-      }
-
-      .carous{
-        width: auto;
-        height: 400px;
-        max-height: 400px;
-        overflow:hidden;
-      }
-
-    .has-cards{
-      
-
-    position: relative;
-
-    overflow: hidden;
-
-    margin-top: -420px;
-    padding-top: 500px;
-
-    pointer-events: none; 
-
-    background: transparent;
+  #search_button{
+    border: 2px solid #000;
+    border-left: none;
+    
+  }
 
 
-}
 
-.has-cards:before
-{
-    position: absolute;
-    top: 800px;
-    right: 0;
-    left: 0;
-    height: 2000px;
-
-    content: '';
-    transform: skew(0, -8deg); 
-
-
-  background: #A1FFCE;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-}
-   
-
-      /* Responsive */
-     @media only screen and (max-width: 768px) {
-     .background1 p, .background2 p{
-       font-size: 6vw;
-        
-      }
-        
-      #slogan {
-       font-size: 6vw;
-        
-      }
-}
-
-
-/* Animation */
-
-@keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-@-webkit-keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-.animated {
-    animation-duration: 2s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-fill-mode: both
-}
-
-.fadeInUp {
-    opacity: 0;
-    animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;
-}
-
-</style>
-
-</head>
-<style>
 #map {
     min-height: 20rem;
     height: 100%;
@@ -205,32 +28,15 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
 </style>
 
 
+
      <!-- Vix added background here -->
-         <%# <div class="background1"><p>BUILDING COMMUNITIES, LEAVING AN IMPACT</p></div> %>
-         
          <div class="background1">
             <div class="animated fadeInUp text-center" id="slogan">
                <p class="text-white mb-0">BUILDING COMMUNITIES</p>
                <p class="text-white mb-0">LEAVING AN IMPACT</p>
-                <!-- #Hiding it, don't know what to do# div class="row">
-                  <div class="col-md-8 mx-auto">
-                    <div class="form-group ml-4" >
-                      <%= form_with(url:card_projects_path, remote: true, method: :get)  do |form| %>
-                        <div class="input-group mb-4">
-                          <%= form.text_field :query,value:params[:query], class: "form-control",style:"border-radius: 50px 0 0 50px;", placeholder: "Search a Project" %>
-                            <%= form.button :submit, name: nil,id:"search_button" do %>
-                                 <i class="fas fa-search"></i>
-                           <% end %>
-                        </div>
-                      <% end %>
-                    </div>
-                  </div>
-                </div -->
+              
             </div>
         </div>
-  
-                                 
-
              
   <!-- Intro -->
     <section class="section pb-0 section-components">
@@ -242,22 +48,22 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
         </div>
         <div class="row text-center mt-3">
           <div class="col-md-4">
-            <%= image_tag "landing/help1.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
-            <h4 class="text-black font-weight-light">Volunteer</h4>
-            <p class="text-black font-weight-light">Lend us your strengths and skills, contribute to the community!</p>
-            <%= button_tag "Be a Volunteer", class: "btn btn-1 btn-outline-primary" %>
+            <%= image_tag "landing/help1.png", alt: "Circle image", class: "img-fluid rounded shadow-lg mb-3", style:"width: 200px;"%>
+            <h4 class="text-dark heading-title">Volunteer</h4>
+            <p class="text-dark">Lend us your strength and skill, contribute to the community!</p>
+            <%= button_tag "Be a Volunteer", class: "btn btn-1 btn-outline-bantu" %>
           </div>
           <div class="col-md-4">
-            <%= image_tag "landing/help2.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
-            <h4 class="text-black font-weight-light">Donation</h4>
-            <p class="text-black font-weight-light">Support our project financially, and help those in need!</p>
-            <%= button_tag "Donate to Project", class: "btn btn-1 btn-outline-info"%>
+            <%= image_tag "landing/help2.png", alt: "Circle image", class: "img-fluid rounded shadow-lg mb-3", style:"width: 200px;"%>
+            <h4 class="text-dark heading-title">Crowd Funding</h4>
+            <p class="text-dark">Support our project financial and help those needed!</p>
+            <%= button_tag "Donate to Project", class: "btn btn-1 btn-outline-bantu"%>
           </div>
           <div class="col-md-4">
-            <%= image_tag "landing/help3.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
-            <h4 class="text-black font-weight-light">Partner</h4>
-            <p class="text-black font-weight-light">Create a project to help your organization to find volunteers and funds!</p>
-            <%= button_tag "Host a Project!", class: "btn btn-1 btn-outline-danger"%>
+            <%= image_tag "landing/help3.png", alt: "Circle image", class: "img-fluid rounded shadow-lg mb-3", style:"width: 200px;"%>
+            <h4 class="text-dark heading-title">Partner With Us</h4>
+            <p class="text-dark">Want to help your organization? Create your project.</p>
+            <%= button_tag "Host a Project!", class: "btn btn-1 btn-outline-bantu"%>
           </div>
         </div>
       </div>
@@ -268,8 +74,7 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
  
            
   
- <div class="position-relative">
-                      
+
       <!-- shape Hero -->
       <section class="section section-lg section-shaped pb-250">
         <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
@@ -289,10 +94,10 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
       
       <!-- Cards for volunteer -->
     <section class="section section-lg pt-lg-0 mt--200">
-      <div class="container mt-2">
+      <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-12">
-            <div class="row row-grid card-deck">
+            <div class="row row-grid">
 
 
           <!-- Card 1 -->
@@ -306,7 +111,7 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
                     <p class="description mt-3">Calvaryland Social Care Centre Papaya Plantation. Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
                   </div>
                 </div>
-
+              </div>
 
           <!-- Card 2 -->
 
@@ -331,16 +136,60 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
                     
                   </div>
                 </div>
- 
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Volunteer bg  -->
-      
-    <!-- -->
+
+
+
+    <section class="section pb-0 section-components has-cards">
+        <div class="container py-md">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-5 mb-5 mb-lg-0">
+            <div class="rounded shadow-lg overflow-hidden">
+              <div id="carousel_example" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel_example" data-slide-to="1"></li>
+                </ol>
+                  <div class="carousel-inner">
+                    <div class="carous">
+                    <div class="carousel-item active">
+                      <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: auto;"%>
+                    </div>
+                    <div class="carousel-item">
+                      <%= image_tag "https://scontent.fkul8-1.fna.fbcdn.net/v/t1.0-9/42319585_1253288171480050_6140791940280483840_n.jpg?_nc_cat=108&oh=503398df5d0cf65a5f028a9a9509bf8b&oe=5C608268", class: "img-fluid", alt: "Second slide" ,style:"width: 100%; height: auto;"%>
+                    </div>
+                  </div>
+               </div>
+                <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_example" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-lg-auto">
+            <h2 class="text-black font-weight-light">Volunteer Testimony</h2>
+            <p class="blockquote text-weight-light display-4"><em>Nessa Lee Ni Xuan, volunteer at Bandar Sunway Gospel Centre Free English Tuition for Disadvantaged Kids:</em></p>
+            <p class="blockquote text-weight-light display-6"><em>"It was a great experience to volunteer via GoBantu. The sessions were conducted in an organised manner and the teaching materials were all well-prepared. More importantly, it is truly fulfilling to be able to put a smile on the face of the children. Every step, however small, does make a difference. I would really recommend this programme to my friends."</em></p>
+          </div>
+        </div>
+      </div>
+   
+</section>
+
+
+
+  <!-- our projects -->
       <section class="section section-shaped">
     <div class="shape shape-style-1 shape-dark">
     </div>
@@ -387,46 +236,156 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
       </section>
     </div>
     <!-- -->
-   
-  
 
-    <section class="section pb-0 section-components has-cards">
-        <div class="container py-md">
-        <div class="row justify-content-between align-items-center">
-          <div class="col-lg-5 mb-5 mb-lg-0">
-            <div class="rounded shadow-lg overflow-hidden">
-              <div id="carousel_example" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel_example" data-slide-to="1"></li>
-                </ol>
-                  <div class="carousel-inner">
-                    <div class="carous">
-                    <div class="carousel-item active">
-                      <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: auto;"%>
-                    </div>
-                    <div class="carousel-item">
-                      <%= image_tag "https://scontent.fkul8-1.fna.fbcdn.net/v/t1.0-9/42319585_1253288171480050_6140791940280483840_n.jpg?_nc_cat=108&oh=503398df5d0cf65a5f028a9a9509bf8b&oe=5C608268", class: "img-fluid", alt: "Second slide" ,style:"width: 100%; height: auto;"%>
-                    </div>
-                  </div>
-               </div>
-                <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel_example" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
+
+
+    <!-- what we do -->
+     
+     <section class="section section-lg pb-0 mb-lg bg-gradient-neutral">
+      <div class="container">
+        <div class="row row-grid align-items-center">
+
+        <!--To right -->
+          <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="position-relative pl-md-5">
+              <img src="https://images.unsplash.com/photo-1493689485253-f07fcbfc731b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ebe5bb8654d3816c9d934ff455abffb2&auto=format&fit=crop&w=733&q=80" class="img-center rounded rounded img-fluid">
             </div>
           </div>
-          <div class="col-lg-6 mb-lg-auto">
-            <h2 class="text-black font-weight-light">Volunteer Testimony</h2>
-            <p class="blockquote text-weight-light display-4"><em>Nessa Lee Ni Xuan, volunteer at Bandar Sunway Gospel Centre Free English Tuition for Disadvantaged Kids:</em></p>
-            <p class="blockquote text-weight-light display-6"><em>"It was a great experience to volunteer via GoBantu. The sessions were conducted in an organised manner and the teaching materials were all well-prepared. More importantly, it is truly fulfilling to be able to put a smile on the face of the children. Every step, however small, does make a difference. I would really recommend this programme to my friends."</em></p>
-          </div>
+          
+        <!--To left -->
+          <div class="col-lg-6 order-lg-1">
+
+            <div class="d-flex px-3">
+              <div>
+                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-bantu">
+                 <i class="fas fa-users"></i>
+                </div>
+              </div>
+              <div class="pl-4">
+                <h4 class="display-3 text-default">WHAT WE DO</h4>
+                <p class="text-body">We provide an end-to-end platform for welfare home management.</p>
+              </div>
+            </div> <!-- flex -->
+
+
+
+            <div class="card shadow shadow-lg--hover mt-5 mb-lg">
+              <div class="card-body">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                      <i class="ni ni-satisfied"></i>                      
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title font-weight-bold text-info ">COMMUNITY DEVELOPMENT</h5>
+                    <p class="text-dark">With our organization’s mission always in mind, we strive to find new strategies for dealing with this challenge. This is something that we take very seriously, and our team is working each and every day to make a positive impact. Contact us to learn more about our commitment to this cause.</p>
+                 
+                  </div>
+
+                </div> <!-- d-flex -->
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+
+    
+        </div> <!-- -->
+      </div> <!-- -->
+
+
+    <div class="container pb-100">
+      <div class="row row-grid align-items-center">
+        <!--To right -->
+        
+        <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="card shadow shadow-lg mt-5">
+              <div class="card-body">
+                <div class="position-relative">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-danger rounded-circle text-white">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title font-weight-bold text-danger">SUPPORT SERVICES</h5>
+                    <p class="text-dark">With this initiative, our goal is to promote great opportunities for those in need. With access to the right resources, people can become empowered by their own abilities and gain the confidence to fulfill their potential. Learn more about our work by getting in touch with our team today.</p>
+            
+                  </div>
+
+                 </div> <!-- d-flex -->
+                  </div>
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+            
+
+          <div class="col-lg-6 order-lg-1">
+          
+              <div class="d-flex px-3">
+                <div class="pr-4">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e6daa4b6ab26a89c93cd9b84fee487fe&auto=format&fit=crop&w=750&q=80" class="img-center rounded img-fluid mb-lg">
+                </div>
+              </div>
+            </div>
+         
+
         </div>
+      </div> 
+
+ <div class="container">
+        <div class="row row-grid align-items-center">
+
+        <!--To right -->
+          <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="position-relative pl-md-5 mb-5">
+                    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0a0b46d0f432568224e6d1017a005b18&auto=format&fit=crop&w=750&q=80" class="img-center rounded img-fluid">
+            </div>
+          </div>
+          
+        <!--To left -->
+          <div class="col-lg-6 order-lg-1">
+
+
+            <div class="card shadow shadow-lg--hover mt-5">
+              <div class="card-body">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                       <i class="ni ni-books"></i>
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title font-weight-bold text-success">EDUCATION & OUTREACH</h5>
+                        <p class="text-dark">At GoBantu, we are dedicated to stepping up our efforts in addressing this issue. This is by no means an easy feat, but through cooperation and community empowerment we believe we can facilitate progress in this area. We are always striving to make a difference, and invite you to learn more and lend your support.</p>               
+                  </div>
+
+                </div> <!-- d-flex -->
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+
+    
+        </div> <!-- -->
+      </div> <!-- -->
+
+    <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+
+
       </div>
    
-</section>
+    
+            
+
+             
+           
+

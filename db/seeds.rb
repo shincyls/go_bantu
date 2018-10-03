@@ -6,6 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# For Omniauth
+AuthenticationProvider.create(name: 'facebook')
+AuthenticationProvider.create(name: 'twitter')
+AuthenticationProvider.create(name: 'gplus')
+AuthenticationProvider.create(name: 'google')
+AuthenticationProvider.create(name: 'linked')
+
+
 # ####################################################
 # 1.0 User Tables and related role/access
 # ####################################################
@@ -394,7 +402,5 @@ ProjectProfessionJoin.create!([
     {project_id: 16, profession_id: 3, remarks: "Farmer / Agriculturist / Consultant"},
     {project_id: 17, profession_id: 27, remarks: "Digital Marketing"}
 ])
-
-
 
 

@@ -1,0 +1,112 @@
+
+    <!-- Tabs -->
+<section class="section">
+      <div class="container" style="max-width: 1150px;">
+          <div class="card shadow mt--500 mb--500">
+            <div class="px-4">
+                      <div class="nav-wrapper">
+                          <ul class="nav nav-pills nav-fill flex-column flex-md-row" id="tabs-icons-text" role="tablist">
+                              <li class="nav-item">
+                                  <a class="nav-link mb-sm-3 mb-md-0 active" id="tabs-icons-text-1-tab" data-toggle="tab" href="#tabs-icons-text-1" role="tab" aria-controls="tabs-icons-text-1" aria-selected="true"><i class="ni ni-badge mr-2"></i>Profile</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-2-tab" data-toggle="tab" href="#tabs-icons-text-2" role="tab" aria-controls="tabs-icons-text-2" aria-selected="false"><i class="ni ni-paper-diploma mr-2"></i>Projects</a>
+                              </li>
+                              <li class="nav-item">
+                                  <a class="nav-link mb-sm-3 mb-md-0" id="tabs-icons-text-3-tab" data-toggle="tab" href="#tabs-icons-text-3" role="tab" aria-controls="tabs-icons-text-3" aria-selected="false"><i class="ni ni-collection mr-2"></i>Volunteered</a>
+                              </li>
+                          </ul>
+                      </div>
+                    
+                  <div class="card-body">
+                      <div class="tab-content" id="myTabContent">
+                      
+                          <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+                            <% if @user.volunteer.nil? %>
+                               <span class="badge badge-pill badge-primary text-uppercase">Primary</span>
+                                <span class="badge badge-pill badge-success text-uppercase">Success</span>
+                                <span class="badge badge-pill badge-danger text-uppercase">Danger</span>
+                                <span class="badge badge-pill badge-warning text-uppercase">Warning</span>
+                                <span class="badge badge-pill badge-info text-uppercase">Info</span>
+                            
+                            <% else %>
+                           <div class="text-center">
+                                   <h1>Skills</h1>
+                          </div>
+                                <% @user.volunteer.skills.each do |skill| %>
+                                   <span class="text-danger text-uppercase"><%= skill.name %></span>
+                                   <br>
+                                <% end %>
+                            <% end %>
+                                
+                        </div>
+
+                               
+                            
+
+
+                    <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+                        <div class="col-lg-12">
+                            <div class="row row-grid">
+                                    
+                            <!-- Card 1 -->
+                          <div class="col-lg-4 img_box">
+                            <div class="box">
+                              <div class="overlay">
+                                   <div class="text">
+                                      <a href="#">Nadal Nets 50th 'Big Title' In Career Haul Of 80 | ATP World Tour ...
+                                      </a>
+                                  </div>
+                              </div>
+                                  <%= image_tag "theme/team-4-800x800.jpg", class: "image img-fluid rounded shadow"%>
+                            </div>
+                        </div>
+
+                                
+                     
+                                   
+                             
+                                 
+                                <!-- Card 2 -->
+                            <div class="col-lg-4 img_box">
+                             <div class="box">
+                                  <%= image_tag "landing/help2.png", class: "image img-fluid rounded shadow"%>
+                                 
+                              <div class="overlay">
+                                    <div class="text text-truncate">
+                                      <a href="#">Roger Federer Strengthens 'Big Titles' Lead With Slam No. 20 | ATP ...
+                                      </a>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                                 
+                                
+                                       
+                                <!-- Card 3 -->
+                            <div class="col-lg-4 img_box">
+                              <div class="box">
+                                <div class="overlay">
+                                    <div class="text">
+                                      <a href="#">Roger Federer Strengthens 'Big Titles' Lead With Slam No. 20 | ATP ...  
+                                      </a>
+                                  </div>
+                                </div>
+                                      <%= image_tag "https://images.unsplash.com/photo-1491772135384-20292e4b5ea1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=111ee66d6a3cf0d92fb1bb9db9e1486d&auto=format&fit=crop&w=1568&q=80", class: "image img-fluid rounded shadow"%>
+                              </div>
+                            </div>
+                      </div>
+                    </div> 
+                </div>
+                            <div class="tab-pane fade" id="tabs-icons-text-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+                                <p class="description">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.</p>
+                            </div>
+                        
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+      </section>      
