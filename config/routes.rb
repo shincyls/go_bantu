@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   ########## causing errors on db:create #########################
   # devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
   
-  # RIP DONT REPEAT URSELF
-  # resources :users do
-  #   get :show
-  # end
+  # RIP DONT REPEAT URSELF 
+  #*** without this in place this error undefined method `user_path for any links to volunteers,donors,users ***
+  resources :users do
+    get :show
+  end
 
   devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations'}
   get 'users/profile/:id' => 'users#show' , :as => "user_profile"
