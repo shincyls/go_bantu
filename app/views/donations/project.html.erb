@@ -20,7 +20,7 @@
             <td>$<%= sprintf( "%0.02f",donation.amount) %></td>
             <td><%= donation.created_at.strftime("%d/%m/%y") %></td>
             
-            <% if donation.submitted? %><td class='text-warning font-weight-bold text-uppercase blink'>
+            <% if donation.received? %><td class='text-info font-weight-bold text-uppercase blink'>
             <% else %>
               <td class='text-success font-weight-bold text-uppercase'>
             <%end%>
