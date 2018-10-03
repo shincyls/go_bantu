@@ -287,17 +287,17 @@ Donation.create!([
 
 # For Searching or Matching
 
-UserCauseJoin.create!([
-    {user_id: 1, cause_id: 1},
-    {user_id: 3, cause_id: 2},
-    {user_id: 3, cause_id: 3},
-    {user_id: 4, cause_id: 4},
-    {user_id: 4, cause_id: 5},
-    {user_id: 4, cause_id: 6},
-    {user_id: 5, cause_id: 7},
-    {user_id: 5, cause_id: 8},
-    {user_id: 5, cause_id: 9},
-    {user_id: 18, cause_id: 1}
+VolunteerCauseJoin.create!([
+    {volunteer_id: 1, cause_id: 1},
+    {volunteer_id: 6, cause_id: 2},
+    {volunteer_id: 6, cause_id: 3},
+    {volunteer_id: 7, cause_id: 4},
+    {volunteer_id: 7, cause_id: 5},
+    {volunteer_id: 9, cause_id: 6},
+    {volunteer_id: 10, cause_id: 7},
+    {volunteer_id: 10, cause_id: 8},
+    {volunteer_id: 10, cause_id: 9},
+    {volunteer_id: 11, cause_id: 1}
 ])
 
 # Volunteer

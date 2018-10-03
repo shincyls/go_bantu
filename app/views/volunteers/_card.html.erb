@@ -30,10 +30,11 @@
                         <span class="badge badge-pill badge-info"><%= p.name %></span>
                         <% end %></div>
                         </p>
-                        <!-- p class="display-6"><span class="badge badge-pill badge-secondary">Causes</span>
-                        <div><% v.user.causes.each do |c| %>
-                        <span class="badge badge-pill badge-default"><%= c.name %></span>
-                        <% end %></div -->
+                        <span class="badge badge-pill badge-secondary">Causes:</span>
+                        <p class="display-6">
+                        <% v.causes.each do |c| %>
+                            <span class="badge badge-pill badge-default"><%= c.name %></span>
+                        <% end %>
                         </p>
                     </div>
                 </div>

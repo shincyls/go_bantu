@@ -27,8 +27,7 @@ class User < ApplicationRecord
     has_one :organizer
     has_one :volunteer
     has_one :donor
-    has_many :user_cause_joins
-    has_many :causes, through: :user_cause_joins
+ 
 
     # gecode required to set latitude and logitude
     geocoded_by :address
