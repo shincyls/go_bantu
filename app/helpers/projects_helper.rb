@@ -138,23 +138,14 @@ module ProjectsHelper
   def project_matched_cause(project)
     @matched_volunteers = []
     matched_cause = []
-    #find users with matched causes
+
     project.causes.each do |project_cause|
-      Volunteer.joins(:causes).where("causes.id = ?", project_cause.id).each do |volunteer|
-        @matched_volunteers << volunteer.id
+      Cause.find_by(id: project_cause.id).volunteers.each do |volunteer|
+          matched_cause << volunteer.id
       end
     end
 
-    if @matched_volunteers.count > 0
-      potentials = Volunteer.where(:id => @matched_volunteers)
-      #narrow to those that are volunteers
-      potentials.each do |x|
-        if x.volunteer
-          matched_cause << x.volunteer.id
-        else
-          @matched_volunteers = []
-        end  
-      end
+    if matched_cause.count > 0
       @matched_volunteers = Volunteer.where(:id => matched_cause)
     else
       @matched_volunteers = []

@@ -61,7 +61,7 @@
                 <%= link_to 'Start a Project', new_project_path, class: "dropdown-item" %>
                 <% end %>
                 <div class="dropdown-divider"></div>
-                <%= link_to 'Logout as ' + current_user.username, destroy_user_session_path, method: :delete ,class: "dropdown-item" %>
+                <%= link_to 'Sign out', destroy_user_session_path,  method: :delete ,class: "dropdown-item" %>
               </div>
             </li>
           <% end %>
