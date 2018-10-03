@@ -14,6 +14,10 @@ class OrganizersController < ApplicationController
         end
     end
 
+    def show
+        @organizer = Organizer.find(params[:id])
+    end
+
     private
 
     def organizer_params

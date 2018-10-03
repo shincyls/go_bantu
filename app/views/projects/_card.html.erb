@@ -35,7 +35,7 @@
                             <div class="progress">
                                 <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= p.volunteer_progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= p.volunteer_progress %>%;"></div>
                             </div>
-                            <div class="criteria">
+                            <div class="criteria small">
                                 <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
                                 <% p.skills.each do |s| %>
                                     <span class="badge badge-pill badge-skill"><%= s.name %></span>
@@ -81,11 +81,32 @@
                         </div>
                     </div>
                     <% end %>
+                </div>
+            </div>
 
-                    <% if p.organizers %>
-                        <p>By: <%=p.organizers.first.company_name%></p>
+            <div id="owner-profile" class="card-footer">
+                <div class="small">
+                    <% if p.organizers.first.logo? %>
+                    <%= image_tag(p.organizers.first.logo_url, class: "img-fluid rounded-circle", style: "width:1.8rem;height:1.8rem") %><br>
+                    <% else %>
+                    <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle", style: "width:1.8rem;height:1.8rem" %>
                     <% end %>
-
+                    <%= link_to p.organizers.first.company_name, organizer_path(p.organizers.first.id), target:"_blank" %>
+                    <% if p.organizers.first.website_link.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.website_link %>"> <i class="fas fa-globe"></i></a>
+                    <% end %>
+                    <% if p.organizers.first.facebook_link.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.facebook_link %>"> <i class="fa fa-facebook"></i></a>
+                    <% end %>
+                    <% if p.organizers.first.instagram_link.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.instagram_link %>"> <i class="fa fa-instagram"></i></a>
+                    <% end %>
+                    <% if p.organizers.first.twitter_link.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.twitter_link %>"> <i class="fa fa-twitter"></i></a>
+                    <% end %>
+                    <% if p.organizers.first.linkedin_link.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.linkedin_link %>"> <i class="fa fa-linkedin"></i></a>
+                    <% end %>
                 </div>
             </div>
         </div>
