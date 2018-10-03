@@ -24,8 +24,12 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    #verify project is approved
+    check_status
+
+    #automatch feature
     matched_volunteers(@project.id)
-        # set percent match for user
+    # set percent match for user
     if @hundred
       @matched_volunteers
       @match_percent = "100%"
@@ -99,6 +103,12 @@ class ProjectsController < ApplicationController
       redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
     end
 
+  end
+
+  def check_status
+    unless @project.approved? || signed_in? && (current_user.admin? || current_user == @project.organizers.first.user)
+        redirect_to root_path
+    end
   end
 
   private
