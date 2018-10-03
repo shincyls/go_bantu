@@ -8,80 +8,133 @@
       </section>
 
       <section class="section section-lg" style="background-color:whitesmoke;">
-      <div class="container p-4 shadow rounded mb-5">
+      <div class="container p-4 shadow rounded">
         <div class="row justify-content-center">
+          <p class="muted-text">Kindly fill in your project detail carefully, some information cannot be change once submited.</p>
           <div class="col-lg-12">
-
               <%= form_for(@project) do |f| %>
-                <h4>Project Information</h4>
-                <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
-                <%= f.text_area :project_desc, placeholder: "Description", class: "form-control" %>
-                <%= f.text_area :requirement_desc, placeholder: "Requirement", class: "form-control" %>
-                <h4>Upload Project Image</h4>
-                <%= f.file_field :image, class: "form-control" %>
+                <h4 class="text-primary">Project Information</h4>
+                <div class="row">
+                    <div class="col-md-2"><h6 class="mt-2">Title*</h6></div>
+                    <div class="col-md-10"><%= f.text_field :title, placeholder: "Title (Mandatory)", class: "form-control mt-2" %></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><h6 class="mt-2">Description*</h6></div>
+                    <div class="col-md-10"><%= f.text_area :project_desc, placeholder: "Project Description (Mandatory)", class: "form-control mt-2" %></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"><h6 class="mt-2">Upload Project Image</h6></div>
+                    <div class="col-md-8"><%= f.file_field :image, class: "mt-2" %></div>
+                </div>
 
-                <h4>Project Date</h4>
-                <%= f.text_field :start_date, value: "Start Date", class: "form-control datepicker" %>
-                <%= f.text_field :end_date, value: "End Date", class: "form-control datepicker" %>
+                <br>
 
-                <h4>Contact Information</h4>
-                <%= f.text_field :contact_person_1, placeholder: "Contact 1" %>
-                <%= f.text_field :contact_number_1, placeholder: "Phone Number 1" %>
-                <%= f.text_field :contact_person_2, placeholder: "Contact 2" %>
-                <%= f.text_field :contact_number_2, placeholder: "Phone Number 2" %>
+                <h4 class="text-primary">Project Date</h4>
+                <div class="input-daterange datepicker row align-items-center">
+                    <div class="col-md-1"><h6 class="mt-2">Start*</h6></div>
+                    <div class="col-md-5">
+                        <%= f.text_field :start_date, value: "Start Date", class: "form-control mt-2" %>
+                    </div>
+                    <div class="col-md-1"><h6 class="mt-2">End*</h6></div>
+                    <div class="col-md-5">
+                        <%= f.text_field :end_date, value: "End Date", class: "form-control mt-2" %>
+                    </div>
+                </div>
+                
+                <br>
 
-                <h4>Location Information</h4>
-                <%= f.text_field :address_1, placeholder: "Address 1" %>
-                <%= f.text_field :address_2, placeholder: "Address 2" %>
-                <%= f.text_field :postcode, placeholder: "Postcode" %>
-                <%= f.text_field :city, placeholder: "City" %>
-                <%= f.text_field :state, placeholder: "State" %>
-                <%= f.text_field :country, placeholder: "Country" %>
+                <h4 class="text-primary">Contact Information</h4>
+                <div class="row">
+                    <div class="col-md-2"><h6 class="mt-2">Name*</h6></div>
+                    <div class="col-md-4"><%= f.text_field :contact_person_1, placeholder: "Name 1", class: "form-control mt-2" %></div>
+                    <div class="col-md-2"><h6 class="mt-2">Phone Number*</h6></div>
+                    <div class="col-md-4"><%= f.text_field :contact_number_1, placeholder: "Phone Number 1", class: "form-control mt-2" %></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><h6 class="mt-2">Name</h6></div>
+                    <div class="col-md-4"><%= f.text_field :contact_person_2, placeholder: "Name 2", class: "form-control mt-2" %></div>
+                    <div class="col-md-2"><h6 class="mt-2">Phone Number</h6></div>
+                    <div class="col-md-4"><%= f.text_field :contact_number_2, placeholder: "Phone Number 2", class: "form-control mt-2" %></div>
+                </div>
 
-                <h4>Fund Requirement (Maximum: 5000)</h4>
-                <%= f.text_field :fund_amount, placeholder: "Number of Fund Needed" %>
+                <br>
 
-                <h4>Volunteer Requirement (Maximum: 10)</h4>
-                <%= f.text_field :volunteer_number, placeholder: "Number of Volunteer Needed" %>
+                <h4 class="text-primary">Location Information</h4>
+                <div class="row">
+                    <div class="col-md-2"><h6 class="mt-2">Address 1</h6></div>
+                    <div class="col-md-10"><%= f.text_field :address_1, placeholder: "Address 1", class: "form-control mt-2" %></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"><h6 class="mt-2">Address 2</h6></div>
+                    <div class="col-md-10"><%= f.text_field :address_2, placeholder: "Address 2", class: "form-control mt-2" %></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1"><h6 class="mt-3">Postcode</h6></div>
+                    <div class="col-md-2"><%= f.text_field :postcode, placeholder: "43000", class: "form-control mt-2" %></div>
+                    <div class="col-md-1"><h6 class="mt-3">City</h6></div>
+                    <div class="col-md-2"><%= f.text_field :city, placeholder: "Petaling Jaya", class: "form-control mt-2" %></div>
+                    <div class="col-md-1"><h6 class="mt-3">State</h6></div>
+                    <div class="col-md-2"><%= f.text_field :state, placeholder: "Selangor", class: "form-control mt-2" %></div>
+                    <div class="col-md-1"><h6 class="mt-3">Country</h6></div>
+                    <div class="col-md-2"><%= f.text_field :country, placeholder: "Malaysia", class: "form-control mt-2" %></div>
+                </div>
+    
+                <br>
 
-                <h4>Skills Requirement</h4>
+                <h4 class="text-primary">Needs Requirement</h4>
+                <h6 class="mt-2">Fund Requirement (Maximum: MYR5000, if not required set as 0.0)</h6>
+                <%= f.text_field :fund_amount, class: "form-control mb-2" %>
+
+                <h6 class="mt-2">Volunteer Requirement (Maximum: 10 Volutunteers, if not required set as 0)</h6>
+                <%= f.text_field :volunteer_number, class: "form-control mb-2" %>
+
+                <br>
+
+                <h4 class="text-primary">Skills Requirement</h4>
                 <div class="row">
                   <% Skill.all.each_with_index do |skill, index| %>
-                  <div class="col-3">
+                  <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                   <%= check_box_tag "project[project_skill_joins_attributes][#{index}][skill_id]", skill.id, @project.skills.include?(skill), id: dom_id(skill) %>
                   <%= label_tag dom_id(skill), skill.name %>
                   </div>
                   <% end %>
                 </div>
 
-                <h4>Professions Requirement</h4>
+                <br>
+
+                <h4 class="text-primary">Professions Requirement</h4>
                 <div class="row">
                   <% Profession.all.each_with_index do |profession, index| %>
-                  <div class="col-3">
+                  <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <%= check_box_tag "profession[project_profession_joins_attributes][#{index}][profession_id]", profession.id, @project.professions.include?(profession), id: dom_id(profession) %>
                   <%= label_tag dom_id(profession), profession.name %>
                   </div>
                   <% end %>
                 </div>
 
-                <h4>Causes of Projects</h4>
+                <br>
+
+                <h4 class="text-primary">Causes of Projects</h4>
                 <div class="row">
                   <% Cause.all.each_with_index do |cause, index| %>
-                  <div class="col-3">
+                  <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <%= check_box_tag "cause[project_cause_joins_attributes][#{index}][cause_id]", cause.id, @project.causes.include?(cause), id: dom_id(cause) %>
                   <%= label_tag dom_id(cause), cause.name %>
                   </div>
                   <% end %>
                 </div>
 
-                <div class="mx-auto">
-                  <%= f.submit "Submit", class: "btn btn-primary" %>
-                </div>
-              <% end %>
+                <br>
 
-              <p class="muted-text">Once submitted, kindly wait for our staff to review and approve.</p>
-            
+                <div class="row justify-content-center">
+                  <%= f.submit "Submit New Project", class: "btn btn-primary" %>
+                </div>
+
+                <br>
+        
+            <% end %>
           </div>
+          <p class="muted-text">Kindly wait for our staff to review and approve within 5 working days.</p>
         </div>
       </div>
     </section>
