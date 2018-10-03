@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'braintree/new'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'statics#index'
@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   # path to pass params to braintree payment
   get 'projects/:id/donations/transaction' => "braintree#new", as: :make_donation
   #braintree system
-  get 'braintree/new'
+  get 'braintree/checkout'
   post 'braintree/checkout'
 
 
