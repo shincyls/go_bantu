@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="card-body-area">
                     <div>
-                        <%= link_to v.user.username, user_path(v.user.id), target:"_blank" %>
+                        <%= link_to v.user.username, user_profile_path(v.user), target:"_blank" %>
                         <p class="small"><%= v.user.email %></p>
                         <p class="small"><%= v.user.city %>Subang, Selangor<%= v.user.state %></p>
                     </div>

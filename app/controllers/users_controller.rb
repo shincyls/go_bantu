@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   
   # GET /users/:id
   def show
-    
+    set_user
     # from ProjectsHelper for automatching projects
     matched_projects(@user.id)
 
