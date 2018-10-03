@@ -15,7 +15,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval of projects within 5 days.' }
+      OrganizerProjectJoin.new(organizer_id: current_user.organizer.id, project_id: project.id, status: 0).save
+      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval within 5 working days.' }
     else
       redirect_to new_project_path, flash: { danger: @project.errors.full_messages[0] }
     end
