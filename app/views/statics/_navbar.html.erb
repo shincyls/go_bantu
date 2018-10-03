@@ -23,20 +23,23 @@
           </div>
           <ul class="navbar-nav ml-lg-auto navbar-nav-hover">
             <li class="nav-item">
-              <%= link_to 'Projects', projects_path, class: "nav-link font-weight-bold" %>
+              <%= link_to 'Projects', projects_path, class: "nav-link" %>
             </li>
             <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to 'Talents', volunteers_path, class: "nav-link" %>
             </li>
+            <li class="nav-item">
+              
+            </li>
             <% if current_user.admin? %>
             <li class="nav-item">
-              <%= link_to 'Admin', rails_admin_path, class: "nav-link font-weight-bold" %>
+              <%= link_to 'Admin', rails_admin_path, class: "nav-link" %>
             </li>
             <% end %>
             <% else %>
             <li class="nav-item">
-              <a class="nav-link font-weight-bold" data-toggle="modal" data-target="#modal-form" style="cursor: pointer;";>Login</a>
+              <a class="nav-link" data-toggle="modal" data-target="#modal-form" style="cursor: pointer;";>Login</a>
             </li>     
             <% end %>
 

@@ -398,8 +398,3 @@ ProjectProfessionJoin.create!([
 
 
 
-AuthenticationProvider.create(name: 'facebook')
-AuthenticationProvider.create(name: 'twitter')
-AuthenticationProvider.create(name: 'gplus')
-AuthenticationProvider.create(name: 'google')
-AuthenticationProvider.create(name: 'linked')

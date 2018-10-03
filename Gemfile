@@ -27,11 +27,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Vix Added Here!
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
-gem 'friendly_id', '~> 5.2', '>= 5.2.4'
-
-# Omniauth
-gem 'omniauth', '~> 1.8', '>= 1.8.1'
-gem 'omniauth-facebook', '~> 5.0'
 
 # Shin Added Here !!
 # Use ActiveModel has_secure_password
