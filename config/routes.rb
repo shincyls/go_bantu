@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 
   root 'statics#index'
 
-
-  devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
+  ########## causing errors on db:create #########################
+  # devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
   
   # RIP DONT REPEAT URSELF
   # resources :users do
@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations'}
   get 'users/profile/:id' => 'users#show' , :as => "user_profile"
 
-
-  get 'users/profile/:id' => 'users#show' , :as => "user_profile"
   # resources :sessions
 
   resources :projects do
