@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, flash: { success: 'Project was successfully created.' }
+      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval of projects within 5 days.' }
     else
-      redirect_to root_url, flash: { danger: @project.errors.full_messages[0] }
+      redirect_to new_project_path, flash: { danger: @project.errors.full_messages[0] }
     end
   end
 
@@ -38,21 +38,59 @@ class ProjectsController < ApplicationController
       # for empty array to pass message on user show
       @matched_volunteers
     end
-
+    if signed_in?
+    @verify_organizers = @project.organizers.where(user_id: current_user.id).exists?
+    end
   end
 
   def card
     respond_to :html, :js
     @projects = Array.new
     if params[:query].empty? || params[:query] == "all"
-      @projects = Project.all.order("created_at desc")
+      @projects = Project.all.where(status: 2).order("created_at desc")
     else
-      result = PgSearch.multisearch(params[:query])
-      result.each do |r|
-        @projects << Project.find(r.searchable_id)
-      end
+      @projects = Project.search_projects(params[:query])
     end
+    # Checkbox to filter volunteer and donation
+    @projects = @projects.where(volunteer_number: 0) if !params[:volunteer] # if empty, don't want show volunteer > 0 or select only volunteer = 0
+    @projects = @projects.where(fund_amount: 0) if !params[:donate] # if empty, don't want show fund > 0 or select only fund = 0
+
+    # Final Result
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
+  end
+
+  def confirmations
+    @projects = Project.where(status: 'pending')
+  end
+
+  def status_change
+    @project = Project.find(params[:id])
+
+    if @project.pending?
+      @project.status = 'approved'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Project was approved.'
+    else
+      @project.status = 'pending'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
+    end
+
+  end
+
+  def status_deny
+    @project = Project.find(params[:id])
+
+    if @project.pending?
+      @project.status = 'rejected'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Project was denied.'
+    else
+      @project.status = 'pending'
+      @project.save
+      redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
+    end
+
   end
 
   private

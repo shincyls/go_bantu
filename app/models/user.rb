@@ -19,8 +19,8 @@ include OmniauthAttributesConcern
     validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
     validate :validate_username
 	# validates :username, uniqueness: {message: ": Username already exists!"}, presence: {message: ": Please enter your username."}
- #    validates :first_name, presence: {message: ": Please enter your first name."}
- #    validates :last_name, presence: {message: ": Please enter your last name."}
+    validates :first_name, presence: {message: ": Please enter your first name."}
+    validates :last_name, presence: {message: ": Please enter your last name."}
 
     enum role: ["admin", "user"]
 

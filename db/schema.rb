@@ -86,14 +86,22 @@ ActiveRecord::Schema.define(version: 2018_10_02_144616) do
     t.bigint "user_id"
     t.string "company_name"
     t.string "email"
+    t.string "description"
     t.string "phone_number1"
     t.string "phone_number2"
+    t.integer "type"
+    t.string "website_link"
+    t.string "facebook_link"
+    t.string "instagram_link"
+    t.string "twitter_link"
+    t.string "linkedin_link"
     t.string "address_1", limit: 32
     t.string "address_2", limit: 32
     t.string "postcode", limit: 5
     t.string "city"
     t.string "state"
     t.string "country"
+    t.string "logo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_organizers_on_user_id"
@@ -171,6 +179,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_144616) do
     t.string "country"
     t.float "latitude"
     t.float "longitude"
+    t.string "image"
     t.date "start_date", default: "2018-01-01"
     t.date "end_date", default: "2020-12-31"
     t.integer "status", default: 0

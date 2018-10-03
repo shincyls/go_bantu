@@ -1,6 +1,9 @@
 class VolunteersController < ApplicationController
 
     def index
+        respond_to :html, :js
+        @volunteers = Volunteer.all.order("created_at desc")
+        @volunteers = @volunteers.paginate(:page => params[:page], :per_page => 8)
     end
 
     def new
@@ -17,6 +20,16 @@ class VolunteersController < ApplicationController
         end
     end
 
+    def card
+        respond_to :html, :js
+        @volunteers = Array.new
+        if params[:query].empty? || params[:query] == "all"
+          @volunteers = Volunteer.all.order("created_at desc")
+        else
+          @volunteers = Volunteer.search_volunteers(params[:query])
+        end
+        @volunteers = @volunteers.paginate(:page => params[:page], :per_page => 6)
+    end
 
     private
 

@@ -39,8 +39,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       ## Images
       t.string :images
-      
-      ## Avatar
       t.string :avatar
 
       ## Trackable

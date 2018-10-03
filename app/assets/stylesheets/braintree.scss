@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.mt-100 {
+  margin-top: 100px;
+}
+.border-success {
+    border-color: #2dce8973 !important;
+}
 
 .hosted-field {
   height: 50px;

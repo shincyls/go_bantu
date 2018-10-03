@@ -22,9 +22,6 @@
           </div>
       </div>
 
-        
-            
-
        <div class="col-lg-4 order-lg-1">
                     <div class="card-profile-stats d-flex justify-content-center">
 
@@ -48,6 +45,8 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
 
                       
     <div class="text-center mt-5">
@@ -84,10 +83,64 @@
         <div class="col-lg-9">
           <p><%= @user.full_name %></p>
         </div>
+
+        <div class="card-body">
+          <div class="tab-content" id="myTabContent">
+            <!-- Card 1 Volunteer-->
+            <div class="tab-pane fade show active" id="profile-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
+              <% if @user.volunteer.present? %>
+                <h6>Volunteer Criterias</h6>
+                <div class="criteria">
+                  <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
+                    <% @user.volunteer.skills.each do |s| %>
+                      <span class="badge badge-pill badge-primary"><%= s.name %></span>
+                    <% end %>
+                  </p>
+                  <p class="display-6"><span class="badge badge-pill badge-secondary">Professions</span>
+                    <% @user.volunteer.professions.each do |p| %>
+                      <span class="badge badge-pill badge-info"><%= p.name %></span>
+                    <% end %>
+                  </p>
+                  <p class="display-6"><span class="badge badge-pill badge-secondary">Causes</span>
+                    <% @user.causes.each do |c| %>
+                    <span class="badge badge-pill badge-default"><%= c.name %></span>
+                    <% end %>
+                  </p>
+                </div>
+                <!-- Display my matching projects-->
+                <% if current_user.id == @user.id %>
+                <h6>Matching Projects</h6>
+                <%= render partial: "matching" %>
+                <% end %>
+              <% end %>
+            </div>
+            <!-- Card 2 Project -->
+            <div class="tab-pane fade" id="profile-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
+              <% if @user.organizer.present? %>
+                  <% @user.organizer.projects.each do |p| %>
+                    <p class="badge badge-pill badge-default"><%= p.title %></p>
+                  <% end %>
+              <% end %>
+            </div>
+            <!-- Card 3 Donation -->
+            <div class="tab-pane fade" id="profile-3" role="tabpanel" aria-labelledby="tabs-icons-text-3-tab">
+              <% if @user.donor.present? %>
+                  <% @user.donor.donations.each do |d| %>
+                      <h6><%=d.project.title%> : <%=d.amount%> : <%=d.status%> : <%=time_ago_in_words(d.created_at)%> ago</h6>
+                  <% end %>
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
  </div>
 </div>
-                    
+
+
+
+
 
 

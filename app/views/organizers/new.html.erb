@@ -2,12 +2,33 @@
 <%= form_for(@organizer) do |f| %>
 
   <br><br><br><br><br>
-  <h4>Organizer Information</h4>
-  <%= f.text_field :user_id, placeholder: "will be hidden_field current_user.id" %>
-  <%= f.text_field :company_name, placeholder: "Company Name" %>
-  <%= f.text_field :email, placeholder: "Email" %>
+
+  <h4>Organization Information</h4>
+
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.text_field :company_name, placeholder: "Organization Name" %>
+  <%= f.text_field :email, placeholder: "Organization Email" %>
+  <%= f.text_field :type, placeholder: "Organization Type" %>
+  <%= f.text_area :description, placeholder: "Organization Descripton" %>
+
+  <p>Organization Logo</p>
+  <%= f.file_field :logo %>
+
   <%= f.text_field :phone_number1, placeholder: "Phone Number 1" %>
   <%= f.text_field :phone_number2, placeholder: "Phone Number 2" %>
+
+  <%= f.text_field :address_1, placeholder: "Address 1" %>
+  <%= f.text_field :address_2, placeholder: "Address 2" %>
+  <%= f.text_field :postcode, placeholder: "Postcode" %>
+  <%= f.text_field :city, placeholder: "City" %>
+  <%= f.text_field :state, placeholder: "State" %>
+  <%= f.text_field :country, placeholder: "Country" %>
+
+  <%= f.text_field :website_link, placeholder: "Website URL (Optional)" %>
+  <%= f.text_field :facebook_link, placeholder: "Facebook URL (Optional)" %>
+  <%= f.text_field :instagram_link, placeholder: "Instagram URL (Optional)" %>
+  <%= f.text_field :twitter_link, placeholder: "Twitter URL (Optional)" %>
+  <%= f.text_field :linkedin_link, placeholder: "Linkedin URL (Optional)" %>
   
   <div class="mx-auto">
     <%= f.submit "Submit", class: "btn btn-bantu" %>

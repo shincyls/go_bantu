@@ -20,11 +20,13 @@ class BraintreeController < ApplicationController
 	   )
 
 	  if result.success?
-	  	if !current_user.donor
-	  		donor = Donor.new(user_id: current_user.id)
-	  		donor.save
+	  	if current_user.donor.nil?
+	  		@donor = Donor.new(user_id: current_user.id)
+	  		@donor.save
+	  	else
+	  		@donor = Donor.find_by(user_id: current_user.id)
 	  	end
-	  	donation = Donation.new(donor_id: current_user.donor.id, project_id: project_id, amount: donation_amount)
+	  	donation = Donation.new(donor_id: @donor.id, project_id: project_id, amount: donation_amount)
 	  	donation.save
 
 	    redirect_to project_url(project_id), :flash => { :notice => "Transaction successful!" }

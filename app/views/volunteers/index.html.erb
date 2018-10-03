@@ -1,25 +1,61 @@
-<p id="notice"><%= notice %></p>
+<style>
+.btn-yellow{
+    margin-left: -20px;
+    color: #f8ca23;;
+}
+.btn {
+    font-size: 1.25rem!important;
+    height: 45.5px!important;
+    margin-top: .5px!important;
+    padding-top: 7px!important;
+}
+</style>
+  <main>
+    <div class="position-relative">
+      <section class="section section-lg section-shaped pb-250">
+        <div class="shape shape-style-1 shape-primary">
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-10 text-center" id="slogan">
+            <h1 class="text-white display-1">Find a volunteer for your project!</h1>
+              <div class="row">
+                <div class="col-md-8 mx-auto">
+                  <div class="form-group ml-4 mr-4">
+                    <%= form_tag card_volunteers_path, remote: true, method: 'get' do %>
+                      <div class="input-group mb-4">
+                        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Volunteer (eg: skills, professions, locations)" %>
+            
+                        <button class="btn btn-yellow" type="submit">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
-<h1>Volunteers</h1>
+    <section class="section section-lg pt-lg-0 mt--200">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="row row-grid" id="search">
+              <%= render partial: 'card' %>
+            </div>
+            <% if @volunteers == [] %>
+              <h2>No Result is Found</h2>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <div class="row justify-content-center" id="load-more">
+        <%= link_to 'Click To Load More', volunteers_path(:page => @volunteers.next_page), class: "btn btn-outline-primary btn-lg mt-5", :remote => true %>
+      </div>
 
-  <tbody>
-    <% @volunteers.each do |volunteer| %>
-      <tr>
-        <td><%= link_to 'Show', volunteer %></td>
-        <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
-        <td><%= link_to 'Destroy', volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    </section>
 
-<br>
-
-<%= link_to 'New Volunteer', new_volunteer_path %>
+  </main>

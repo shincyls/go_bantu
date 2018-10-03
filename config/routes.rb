@@ -9,15 +9,28 @@ Rails.application.routes.draw do
   get 'users/profile/:id' => 'users#show' , :as => "user_profile"
 
 
-
+  resources :users do
+    get :show
+  end
   # resources :sessions
+
   resources :projects do
+    collection do
+      get :card
+      get :confirmations
+      post :status_deny
+      post :status_change
+    end
+  end
+  post '/projects/status_deny/:id' => "projects#status_deny", as: :status_rejected
+  post '/projects/status_change/:id' => "projects#status_change", as: :status_approve
+  
+  resources :volunteers do
     collection do
       get :card
     end
   end
 
-  resources :volunteers 
   resources :organizers
   resources :donations
   get 'projects/:id/donations' => "donations#project", as: :project_donations
