@@ -181,16 +181,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_cause_joins", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "cause_id"
-    t.string "remarks"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cause_id"], name: "index_user_cause_joins_on_cause_id"
-    t.index ["user_id"], name: "index_user_cause_joins_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
@@ -217,6 +207,16 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "volunteer_cause_joins", force: :cascade do |t|
+    t.bigint "volunteer_id"
+    t.bigint "cause_id"
+    t.string "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cause_id"], name: "index_volunteer_cause_joins_on_cause_id"
+    t.index ["volunteer_id"], name: "index_volunteer_cause_joins_on_volunteer_id"
   end
 
   create_table "volunteer_profession_joins", force: :cascade do |t|
