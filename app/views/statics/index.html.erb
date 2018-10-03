@@ -5,10 +5,10 @@
     <script type="text/javascript">
     $(window).scroll(function(){
       $('.background1').bgscroll({direction: 'top'});
-      $('.background2').bgscroll({direction: 'top'});
     })
     </script>
     
+
     <style media="screen">
 
        
@@ -118,76 +118,13 @@
 
 }
 
-.has-cards:before
-{
-    position: absolute;
-    top: 800px;
-    right: 0;
-    left: 0;
-    height: 2000px;
-
-    content: '';
-    transform: skew(0, -8deg); 
-
-
-  background: #A1FFCE;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FAFFD1, #A1FFCE);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-}
-   
-
-      /* Responsive */
-     @media only screen and (max-width: 768px) {
-     .background1 p, .background2 p{
-       font-size: 6vw;
-        
-      }
-        
-      #slogan {
-       font-size: 6vw;
-        
-      }
-}
-
-
-/* Animation */
-
-@keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-@-webkit-keyframes fadeInUp {
-    from {
-        transform: translate3d(0,40px,0)
-    }
-
-    to {
-        transform: translate3d(0,0,0);
-        opacity: 1
-    }
-}
-
-.animated {
-    animation-duration: 2s;
-    animation-fill-mode: both;
-    -webkit-animation-duration: 2s;
-    -webkit-animation-fill-mode: both
-}
-
-.fadeInUp {
-    opacity: 0;
-    animation-name: fadeInUp;
-    -webkit-animation-name: fadeInUp;
-}
+  
+  #search_button{
+    border: 2px solid #ffe121;
+    border-left: none;
+    
+  }
+  
 
 </style>
 
@@ -230,16 +167,22 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
         </div>
   
                                  
+<!-- Intro title heading -->
+        
+               
+    
+
 
              
   <!-- Intro -->
-    <section class="section pb-0 section-components">
-      <div class="container">
+    <section class="section pb-0 pt-100 section-components">
+    <div class="container">
         <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="text-black font-weight-light">Welcome to GoBantu Malaysia!</h2>
+          <div class="col-lg-12 text-center pb-3">
+            <h2 class="display-3 text-default">Welcome to GoBantu Malaysia!</h2>
           </div>
         </div>
+      <div class="container">
         <div class="row text-center mt-3">
           <div class="col-md-4">
             <%= image_tag "landing/help1.png", alt: "Circle image", class: "img-fluid rounded shadow mb-3", style:"width: 200px;"%>
@@ -269,10 +212,30 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
            
   
  <div class="position-relative">
-                      
       <!-- shape Hero -->
-      <section class="section section-lg section-shaped pb-250">
+      <section class="section section-lg section-shaped pb-300 pt-4">
+       <div class="container ">
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+              <h5 class="heading-title text-white pb-3">Our Past Projects</h5>
+          </div>
+        </div>
+        </div>
+
+           
+           
+              
+           
+ 
+
+   
+            
         <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
+            <span></span>
+          <span></span>
+    
+          <span></span>
+          
         </div>
 
 
@@ -296,37 +259,38 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
 
 
           <!-- Card 1 -->
-
-                <div class="card card-lift--hover shadow border-0 col-lg-4">
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0 h-100">
                   <div class="card-body">
                     <div class="card-profile-image rounded-circle mb-4">
                       <%= image_tag "https://scontent.fkul13-1.fna.fbcdn.net/v/t1.0-9/42770975_1257972507678283_27658219291672576_n.jpg?_nc_cat=108&oh=5b2274986cc3c553cc61bc918e03bbf4&oe=5C59A466", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);",alt: "First slide" %>
                     </div>
-                    <h6 class="text-success font-weight-bold text-uppercase">First Volunteering project at Calvaryland</h6>
+                    <h6 class="text-default font-weight-bold text-uppercase">First Volunteering project at Calvaryland</h6>
                     <p class="description mt-3">Calvaryland Social Care Centre Papaya Plantation. Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
                   </div>
                 </div>
 
 
           <!-- Card 2 -->
-
-                <div class="card card-lift--hover shadow border-0 col-lg-4">
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0 h-100">
                   <div class="card-body">
                     <div class="card-profile-image rounded-circle mb-4">
                       <%= image_tag "landing/team1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
                     </div>
-                    <h6 class="text-success font-weight-bold text-uppercase">THE GOBANTU FOUNDERS</h6>
+                    <h6 class="text-default font-weight-bold text-uppercase">THE GOBANTU FOUNDERS</h6>
                     <p class="description mt-3"> Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
                     
                   </div>
                 </div>
-
-                <div class="card card-lift--hover shadow border-0 col-lg-4">
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0 h-100">
                   <div class="card-body">
                    <div class="card-profile-image rounded-circle mb-4">
                       <%= image_tag "landing/event1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
                     </div>
-                    <h6 class="text-success font-weight-bold text-uppercase">INTERVIEW WITH WELFARE HOME MALAYSIA</h6>
+                    <h6 class="text-default font-weight-bold text-uppercase">INTERVIEW WITH WELFARE HOME MALAYSIA</h6>
                     <p class="description mt-3"> Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
                     
                   </div>
@@ -387,29 +351,29 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
       </section>
     </div>
     <!-- -->
-   
-  
 
-    <section class="section pb-0 section-components has-cards">
+
+    <!-- Volunteer bg  -->
+    <section class="section section-components pb-lg bg-gradient-secondary">
         <div class="container py-md">
         <div class="row justify-content-between align-items-center">
           <div class="col-lg-5 mb-5 mb-lg-0">
-            <div class="rounded shadow-lg overflow-hidden">
+            <div class="rounded shadow-lg">
               <div id="carousel_example" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
                   <li data-target="#carousel_example" data-slide-to="1"></li>
                 </ol>
                   <div class="carousel-inner">
-                    <div class="carous">
+                 
                     <div class="carousel-item active">
-                      <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: auto;"%>
+                      <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: 400px;"%>
                     </div>
                     <div class="carousel-item">
-                      <%= image_tag "https://scontent.fkul8-1.fna.fbcdn.net/v/t1.0-9/42319585_1253288171480050_6140791940280483840_n.jpg?_nc_cat=108&oh=503398df5d0cf65a5f028a9a9509bf8b&oe=5C608268", class: "img-fluid", alt: "Second slide" ,style:"width: 100%; height: auto;"%>
+                      <%= image_tag "https://scontent.fkul8-1.fna.fbcdn.net/v/t1.0-9/42319585_1253288171480050_6140791940280483840_n.jpg?_nc_cat=108&oh=503398df5d0cf65a5f028a9a9509bf8b&oe=5C608268", class: "img-fluid", alt: "Second slide" ,style:"width: 100%; height: 400px;"%>
                     </div>
                   </div>
-               </div>
+             
                 <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
@@ -422,11 +386,167 @@ background: linear-gradient(to right, #FAFFD1, #A1FFCE); /* W3C, IE 10+/ Edge, F
             </div>
           </div>
           <div class="col-lg-6 mb-lg-auto">
-            <h2 class="text-black font-weight-light">Volunteer Testimony</h2>
-            <p class="blockquote text-weight-light display-4"><em>Nessa Lee Ni Xuan, volunteer at Bandar Sunway Gospel Centre Free English Tuition for Disadvantaged Kids:</em></p>
-            <p class="blockquote text-weight-light display-6"><em>"It was a great experience to volunteer via GoBantu. The sessions were conducted in an organised manner and the teaching materials were all well-prepared. More importantly, it is truly fulfilling to be able to put a smile on the face of the children. Every step, however small, does make a difference. I would really recommend this programme to my friends."</em></p>
+            <div class="card shadow border-0 p-5">
+              <h3 class="heading-title text-darker text-center">Volunteer Testimony</h3><hr class="mt-1">
+              <p class="text-dark font-weight-bold"><strong class="text-primary">Nessa Lee Ni Xuan</strong>, volunteer at Bandar Sunway Gospel Centre Free English Tuition for Disadvantaged Kids"</p>
+              <p class="text-default font-weight-bold">'It was a great experience to volunteer via GoBantu. The sessions were conducted in an organised manner and the teaching materials were all well-prepared. More importantly, it is truly fulfilling to be able to put a smile on the face of the children. Every step, however small, does make a difference. I would really recommend this programme to my friends.'</p>
+            </div>
           </div>
         </div>
       </div>
    
 </section>
+
+
+
+
+
+    <!-- what we do -->
+     
+     <section class="section section-lg pb-0 mb-lg bg-gradient-neutral">
+      <div class="container">
+        <div class="row row-grid align-items-center">
+
+        <!--To right -->
+          <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="position-relative pl-md-5">
+              <img src="https://images.unsplash.com/photo-1493689485253-f07fcbfc731b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ebe5bb8654d3816c9d934ff455abffb2&auto=format&fit=crop&w=733&q=80" class="img-center rounded rounded img-fluid">
+            </div>
+          </div>
+          
+        <!--To left -->
+          <div class="col-lg-6 order-lg-1">
+
+            <div class="d-flex px-3">
+              <div>
+                <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-bantu">
+                 <i class="fas fa-users"></i>
+                </div>
+              </div>
+              <div class="pl-4">
+                <h4 class="display-3 text-default">WHAT WE DO</h4>
+                <p class="text-body">We provide an end-to-end platform for welfare home management.</p>
+              </div>
+            </div> <!-- flex -->
+
+
+
+            <div class="card shadow shadow-lg--hover mt-5 mb-lg">
+              <div class="card-body">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-info rounded-circle text-white">
+                      <i class="ni ni-satisfied"></i>                      
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title font-weight-bold text-info ">COMMUNITY DEVELOPMENT</h5>
+                    <p class="text-dark">With our organization’s mission always in mind, we strive to find new strategies for dealing with this challenge. This is something that we take very seriously, and our team is working each and every day to make a positive impact. Contact us to learn more about our commitment to this cause.</p>
+                 
+                  </div>
+
+                </div> <!-- d-flex -->
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+
+    
+        </div> <!-- -->
+      </div> <!-- -->
+
+
+    <div class="container pb-100">
+      <div class="row row-grid align-items-center">
+        <!--To right -->
+        
+        <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="card shadow shadow-lg mt-5">
+              <div class="card-body">
+                <div class="position-relative">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-danger rounded-circle text-white">
+                      <i class="fas fa-heart"></i>
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title font-weight-bold text-danger">SUPPORT SERVICES</h5>
+                    <p class="text-dark">With this initiative, our goal is to promote great opportunities for those in need. With access to the right resources, people can become empowered by their own abilities and gain the confidence to fulfill their potential. Learn more about our work by getting in touch with our team today.</p>
+            
+                  </div>
+
+                 </div> <!-- d-flex -->
+                  </div>
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+            
+
+          <div class="col-lg-6 order-lg-1">
+          
+              <div class="d-flex px-3">
+                <div class="pr-4">
+                    <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e6daa4b6ab26a89c93cd9b84fee487fe&auto=format&fit=crop&w=750&q=80" class="img-center rounded img-fluid mb-lg">
+                </div>
+              </div>
+            </div>
+         
+
+        </div>
+      </div> 
+
+ <div class="container">
+        <div class="row row-grid align-items-center">
+
+        <!--To right -->
+          <div class="col-md-6 order-lg-2 ml-lg-auto">
+            <div class="position-relative pl-md-5 mb-5">
+                    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0a0b46d0f432568224e6d1017a005b18&auto=format&fit=crop&w=750&q=80" class="img-center rounded img-fluid">
+            </div>
+          </div>
+          
+        <!--To left -->
+          <div class="col-lg-6 order-lg-1">
+
+
+            <div class="card shadow shadow-lg--hover mt-5">
+              <div class="card-body">
+                <div class="d-flex px-3">
+
+                  <div>
+                    <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
+                       <i class="ni ni-books"></i>
+                    </div>
+                  </div>
+                  <div class="pl-4">
+                    <h5 class="title font-weight-bold text-success">EDUCATION & OUTREACH</h5>
+                        <p class="text-dark">At GoBantu, we are dedicated to stepping up our efforts in addressing this issue. This is by no means an easy feat, but through cooperation and community empowerment we believe we can facilitate progress in this area. We are always striving to make a difference, and invite you to learn more and lend your support.</p>               
+                  </div>
+
+                </div> <!-- d-flex -->
+              </div> <!--card body -->
+            </div> <!--card shadow -->
+          </div> <!-- col-6 -->
+
+    
+        </div> <!-- -->
+      </div> <!-- -->
+
+    <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+
+
+      </div>
+   
+    
+            
+
+             
+           

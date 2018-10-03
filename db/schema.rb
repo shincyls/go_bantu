@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_27_042047) do
+ActiveRecord::Schema.define(version: 2018_10_02_144616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "authentication_providers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_name_on_authentication_providers"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -49,6 +56,18 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_donors_on_user_id"
+  end
+
+  create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
   create_table "organizer_project_joins", force: :cascade do |t|
@@ -181,6 +200,30 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "social_accounts", force: :cascade do |t|
+    t.string "token"
+    t.string "secret"
+    t.bigint "user_id"
+    t.bigint "authentication_provider_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authentication_provider_id"], name: "index_social_accounts_on_authentication_provider_id"
+    t.index ["user_id"], name: "index_social_accounts_on_user_id"
+  end
+
+  create_table "user_authentications", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "authentication_provider_id"
+    t.string "uid"
+    t.string "token"
+    t.datetime "token_expires_at"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["authentication_provider_id"], name: "index_user_authentications_on_authentication_provider_id"
+    t.index ["user_id"], name: "index_user_authentications_on_user_id"
+  end
+
   create_table "user_cause_joins", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "cause_id"
@@ -199,6 +242,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "last_name", limit: 64
     t.string "phone_number", limit: 16
     t.date "birthday"
+    t.string "slug"
     t.string "address_1", limit: 64
     t.string "address_2", limit: 64
     t.string "postcode", limit: 5
@@ -211,6 +255,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "images"
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -260,4 +305,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.index ["user_id"], name: "index_volunteers_on_user_id"
   end
 
+  add_foreign_key "social_accounts", "authentication_providers"
+  add_foreign_key "social_accounts", "users"
 end
