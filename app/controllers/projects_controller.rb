@@ -61,6 +61,11 @@ class ProjectsController < ApplicationController
   end
 
   def confirmations
+    if signed_in? 
+      unless current_user.admin?
+        redirect_to root_path
+      end
+    end
     @projects = Project.where(status: 'pending')
   end
 
