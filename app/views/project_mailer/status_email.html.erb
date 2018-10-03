@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	
+		<div>
+			<h5><%= @user.first_name %> <%= @user.last_name %></h5>
+		    <p>Your project, <%= @project.title %> has been reviewed by our staff and after thorough consideration, we are
+		    <% if @project.approved? %> 
+		    	pleased to inform you that you project has been approved.</p><br>
+		    <h5 class="text-muted">You can now view your new project in the link below.</h5> 
+			<%= link_to 'My Project', project_url(@project.id), class: "btn btn-primary" %>  
+		    <% else %> 
+				sorry to inform you that your project has been denied to be hosted on our platform.<br>
+				If you feel this decision was made in error feel free to contact us at gobantu2018@gmail.com</p>
+
+			<% end %>
+			
+		</div>
+	
+  </body>
+</html>

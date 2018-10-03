@@ -65,10 +65,11 @@ class ProjectsController < ApplicationController
 
   def status_change
     @project = Project.find(params[:id])
-
+    organizer = @project.organizers.first.user
     if @project.pending?
       @project.status = 'approved'
       @project.save
+      ProjectMailer.status_email(organizer,@project).deliver
       redirect_to confirmations_projects_path, notice: 'Project was approved.'
     else
       @project.status = 'pending'
@@ -80,10 +81,11 @@ class ProjectsController < ApplicationController
 
   def status_deny
     @project = Project.find(params[:id])
-
+    organizer = @project.organizers.first.user
     if @project.pending?
       @project.status = 'rejected'
       @project.save
+      ProjectMailer.status_email(organizer,@project).deliver
       redirect_to confirmations_projects_path, notice: 'Project was denied.'
     else
       @project.status = 'pending'
