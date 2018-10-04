@@ -28,20 +28,20 @@
                     <div class="col-8">
                         <h6>Project Owner</h6>
                         <p><%= link_to p.organizers.first.company_name, organizer_path(p.organizers.first.id), target:"_blank" %></p>
-                        <% if p.organizers.first.website_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.website_link %>"><i class="fas fa-globe"></i></a>
+                        <% if p.organizers.first.website_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.website_url %>"><i class="fas fa-globe"></i></a>
                         <% end %>
-                        <% if p.organizers.first.facebook_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.facebook_link %>"><i class="fa fa-facebook"></i></a>
+                        <% if p.organizers.first.facebook_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.facebook_url %>"><i class="fa fa-facebook"></i></a>
                         <% end %>
-                        <% if p.organizers.first.instagram_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.instagram_link %>"><i class="fa fa-instagram"></i></a>
+                        <% if p.organizers.first.instagram_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.instagram_url %>"><i class="fa fa-instagram"></i></a>
                         <% end %>
-                        <% if p.organizers.first.twitter_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.twitter_link %>"><i class="fa fa-twitter"></i></a>
+                        <% if p.organizers.first.twitter_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.twitter_url %>"><i class="fa fa-twitter"></i></a>
                         <% end %>
-                        <% if p.organizers.first.linkedin_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.linkedin_link %>"><i class="fa fa-linkedin"></i></a>
+                        <% if p.organizers.first.linkedin_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.linkedin_url %>"><i class="fa fa-linkedin"></i></a>
                         <% end %>
                         <% if signed_in? %>
                         <% if @verify_organizers && p.donations.any? %>

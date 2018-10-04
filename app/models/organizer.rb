@@ -1,4 +1,6 @@
 class Organizer < ApplicationRecord
+    include OrganizersHelper
+
     #General Association
     belongs_to :user
 
@@ -18,4 +20,31 @@ class Organizer < ApplicationRecord
     def custom_label
         "#{self.company_name}"
     end
+
+    def url_protocol
+
+        unless !self.website_url.blank? && (self.website_url[/\Ahttp:\/\//] || self.website_url[/\Ahttps:\/\//])
+            self.website_url = "https://#{self.website_url}"
+        end
+        
+        unless !self.facebook_url.blank? && (self.facebook_url[/\Ahttp:\/\//] || self.facebook_url[/\Ahttps:\/\//])
+            self.facebook_url = "https://#{self.facebook_url}"
+        end
+
+        unless !self.instagram_url.blank? && (self.instagram_url[/\Ahttp:\/\//] || self.instagram_url[/\Ahttps:\/\//])
+            self.instagram_url = "https://#{self.instagram_url}"
+        end
+
+        unless !self.twitter_url.blank? && (self.twitter_url[/\Ahttp:\/\//] || self.twitter_url[/\Ahttps:\/\//])
+            self.twitter_url = "https://#{self.twitter_url}"
+        end
+
+        unless !self.linkedin_url.blank? && (self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//])
+            self.linkedin_url = "https://#{self.linkedin_url}"
+        end
+
+        return self
+
+    end
+
 end
