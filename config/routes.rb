@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'braintree/new'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'statics#index'
+
 
   devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
   
@@ -11,6 +12,10 @@ Rails.application.routes.draw do
   # resources :users do
   #   get :show
   # end
+
+  devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations'}
+  get 'users/profile/:id' => 'users#show' , :as => "user_profile"
+
 
   get 'users/profile/:id' => 'users#show' , :as => "user_profile"
   # resources :sessions
@@ -42,7 +47,7 @@ Rails.application.routes.draw do
   # path to pass params to braintree payment
   get 'projects/:id/donations/transaction' => "braintree#new", as: :make_donation
   #braintree system
-  get 'braintree/new'
+  get 'braintree/checkout'
   post 'braintree/checkout'
 
 

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	
+		<div>
+			<h5><%= @user.first_name %> <%= @user.last_name %></h5>
+		    <p> We are pleased to inform you that you donation in the amount of $<%= sprintf( "%0.02f",@amount) %> for project <%= @project.title %> has beend recieved. </p><br>
+		    <h5 class="text-muted">You can view donations you have made in the link below.</h5> 
+			<%= link_to 'My Donations', donor_donations_url(@user.id), class: "btn btn-primary" %>  
+		    
+			
+		</div>
+	
+  </body>
+</html>

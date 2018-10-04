@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserAuthenticationTest < ActiveSupport::TestCase
+class DonationMailerTest < ActionMailer::TestCase
   # test "the truth" do
   #   assert true
   # end
