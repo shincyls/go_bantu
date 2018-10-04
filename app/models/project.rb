@@ -39,13 +39,13 @@ class Project < ApplicationRecord
     
     # Gem pg_search for searhable columns
     include PgSearch
-    pg_search_scope :search_projects, against: [:title, :project_desc, :requirement_desc],
+    pg_search_scope :search_projects, against: [:title, :project_desc, :requirement_desc, :city, :state, :country],
     associated_against: { 
         skills: [:name, :description],
         professions: [:name, :description],
         causes: [:name, :description],
         categories: [:name, :description]},
-    using: [:tsearch]
+        using: [:tsearch]
 
     # Ge will_paginate for infiniate scrolling
     self.per_page = 8

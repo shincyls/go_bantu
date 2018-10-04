@@ -9,7 +9,6 @@ class OrganizersController < ApplicationController
     def create
         # respond_to :html, :js
         @organizer = Organizer.new(organizer_params).url_protocol
-
         if @organizer.save
             redirect_to @organizer, flash: { success: 'Organization was successfully created.' }
         else
