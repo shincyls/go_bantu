@@ -28,20 +28,20 @@
                     <div class="col-8">
                         <h6>Project Owner</h6>
                         <p><%= link_to p.organizers.first.company_name, organizer_path(p.organizers.first.id), target:"_blank" %></p>
-                        <% if p.organizers.first.website_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.website_link %>"><i class="fas fa-globe"></i></a>
+                        <% if p.organizers.first.website_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.website_url %>"><i class="fas fa-globe"></i></a>
                         <% end %>
-                        <% if p.organizers.first.facebook_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.facebook_link %>"><i class="fa fa-facebook"></i></a>
+                        <% if p.organizers.first.facebook_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.facebook_url %>"><i class="fa fa-facebook"></i></a>
                         <% end %>
-                        <% if p.organizers.first.instagram_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.instagram_link %>"><i class="fa fa-instagram"></i></a>
+                        <% if p.organizers.first.instagram_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.instagram_url %>"><i class="fa fa-instagram"></i></a>
                         <% end %>
-                        <% if p.organizers.first.twitter_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.twitter_link %>"><i class="fa fa-twitter"></i></a>
+                        <% if p.organizers.first.twitter_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.twitter_url %>"><i class="fa fa-twitter"></i></a>
                         <% end %>
-                        <% if p.organizers.first.linkedin_link.present? %>
-                        <a target="_blank" href="<%= p.organizers.first.linkedin_link %>"><i class="fa fa-linkedin"></i></a>
+                        <% if p.organizers.first.linkedin_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.linkedin_url %>"><i class="fa fa-linkedin"></i></a>
                         <% end %>
                         <% if signed_in? %>
                         <% if @verify_organizers && p.donations.any? %>
@@ -49,8 +49,6 @@
                         <% end %><% end %>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="col-md-6 p-4 shadow rounded">
@@ -58,23 +56,33 @@
                     <div class="card-body-area">
                         <%= link_to p.title, project_path(p.id), target:"_blank" %>
                         <p class="small"><%= p.project_desc %></p>
-                        
-
-                        <h6>Project Information</h6>
+                        <% p.categories.each do |c| %>
+                            <span class="badge badge-pill badge-gobantu small mb-3"><%= c.name %></span>
+                        <% end %>
+                      
+                        <h4>Project Information</h4>
                         <div>   
-                            <span class="badge badge-pill badge-secondary">Address</span> 
+                            <span class="badge badge-pill badge-info">Phone Number</span> 
+                            <span class="small"><%= p.contact_person_1 %> <%= p.contact_number_1 %>
+                                <% if p.contact_number_2 %>
+                                <%= " / " + p.contact_person_2 + " " + p.contact_number_2  %>
+                                <% end %>
+                            </span> 
+                        </div>
+                        <div>   
+                            <span class="badge badge-pill badge-info">Address</span> 
                             <span class="small"><%= p.address_1 %> <%= p.address_2 %></span> 
                         </div>
                         <div>
-                            <span class="badge badge-pill badge-secondary">Location</span> 
+                            <span class="badge badge-pill badge-info">Location</span> 
                             <span class="small"><%= p.city %>, <%= p.state %></span> 
                         </div>
                         <div>
-                            <span class="badge badge-pill badge-secondary">Date</span> 
+                            <span class="badge badge-pill badge-info">Date</span> 
                             <span class="small"><%= p.start_date %> <span class="small">until</span> <%= p.end_date %> <span class="small">(<%=distance_of_time_in_words(p.end_date, DateTime.now)%> to go)</span></span> 
                         </div>
                         <br>
-                        <h6>Project Needs</h6>
+                        <h4>Project Needs</h4>
                         <% if p.volunteer && p.volunteer_number != 0 %>
                         <div id="volunteer-section">
 
@@ -85,9 +93,11 @@
                                 <% else %>
                                  <!-- working on this  -->
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= link_to "Be a Volunteer" + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, volunteer_interest_path, target: "_blank", class: "badge badge-primary"%>
+
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
+
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.count.to_s%> / <%=p.volunteer_number.to_s%></span>
                                     <% end %>

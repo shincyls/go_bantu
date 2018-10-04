@@ -70,4 +70,8 @@ Rails.application.configure do
    :authentication       => "plain",
   :enable_starttls_auto => true
   }
+
+  # Auto adding https:// to url if not found
+  # config.action_controller.default_url_options[:protocol] = 'https'
+
 end

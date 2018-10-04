@@ -20,9 +20,9 @@
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.count.to_s%> / <%=p.volunteer_number.to_s%></span>
                                     <% end %>
@@ -65,7 +65,7 @@
                                     <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                 <% else %>
                                     <% if signed_in? %>
-                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-primary", target: "_blank" %>
+                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-gobantu", target: "_blank" %>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Donate">Raised RM <%=p.donations.sum(:amount).round.to_s%> / RM <%=p.fund_amount.round.to_s%> </span>
                                     <% end %>
@@ -92,20 +92,20 @@
                     <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle", style: "width:1.8rem;height:1.8rem" %>
                     <% end %>
                     <%= link_to p.organizers.first.company_name, organizer_path(p.organizers.first.id), target:"_blank" %>
-                    <% if p.organizers.first.website_link.present? %>
-                    <a target="_blank" href="<%= p.organizers.first.website_link %>"> <i class="fas fa-globe"></i></a>
+                    <% if p.organizers.first.website_url.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.website_url %>"> <i class="fas fa-globe"></i></a>
                     <% end %>
-                    <% if p.organizers.first.facebook_link.present? %>
-                    <a target="_blank" href="<%= p.organizers.first.facebook_link %>"> <i class="fa fa-facebook"></i></a>
+                    <% if p.organizers.first.facebook_url.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.facebook_url %>"> <i class="fa fa-facebook"></i></a>
                     <% end %>
-                    <% if p.organizers.first.instagram_link.present? %>
-                    <a target="_blank" href="<%= p.organizers.first.instagram_link %>"> <i class="fa fa-instagram"></i></a>
+                    <% if p.organizers.first.instagram_url.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.instagram_url %>"> <i class="fa fa-instagram"></i></a>
                     <% end %>
-                    <% if p.organizers.first.twitter_link.present? %>
-                    <a target="_blank" href="<%= p.organizers.first.twitter_link %>"> <i class="fa fa-twitter"></i></a>
+                    <% if p.organizers.first.twitter_url.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.twitter_url %>"> <i class="fa fa-twitter"></i></a>
                     <% end %>
-                    <% if p.organizers.first.linkedin_link.present? %>
-                    <a target="_blank" href="<%= p.organizers.first.linkedin_link %>"> <i class="fa fa-linkedin"></i></a>
+                    <% if p.organizers.first.linkedin_url.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.linkedin_url %>"> <i class="fa fa-linkedin"></i></a>
                     <% end %>
                 </div>
             </div>

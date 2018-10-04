@@ -42,7 +42,7 @@
                   <div class="col-md-8"><%= f.text_field :linked_in_url, placeholder: "Linkedin URL", class: "form-control form-linkedin fab mt-2" %></div>
                 </div>
 
-                <h4 class="text-primary">Causes of Projects</h4>
+                <h4 class="text-primary">Volunteer Causes</h4>
                 <div class="row">
                   <% Cause.all.each_with_index do |cause, index| %>
                   <div class="col-6 col-sm-6 col-md-4 col-lg-3">
@@ -54,7 +54,7 @@
 
                 <br>
 
-                <h4 class="text-primary">Skills Requirement</h4>
+                <h4 class="text-primary">Volunteer Skills</h4>
                 <div class="row">
                   <% Skill.all.each_with_index do |skill, index| %>
                   <div class="col-3">
@@ -66,7 +66,7 @@
 
                 <br>
 
-                <h4 class="text-primary">Professions Requirement</h4>
+                <h4 class="text-primary">Volunteer Professions</h4>
                 <div class="row">
                   <% Profession.all.each_with_index do |profession, index| %>
                   <div class="col-3">
@@ -86,7 +86,7 @@
         
             <% end %>
           </div>
-          <p class="muted-text">Thanks you for to be part of us!</p>
+          <p class="muted-text">Thanks you to be part of us!</p>
         </div>
       </div>
     </section>
