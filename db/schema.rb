@@ -90,13 +90,13 @@ ActiveRecord::Schema.define(version: 2018_10_02_144616) do
     t.string "phone_number1"
     t.string "phone_number2"
     t.integer "type"
-    t.string "website_link"
-    t.string "facebook_link"
-    t.string "instagram_link"
-    t.string "twitter_link"
-    t.string "linkedin_link"
-    t.string "address_1", limit: 32
-    t.string "address_2", limit: 32
+    t.string "website_url"
+    t.string "facebook_url"
+    t.string "instagram_url"
+    t.string "twitter_url"
+    t.string "linkedin_url"
+    t.string "address_1", limit: 64
+    t.string "address_2", limit: 64
     t.string "postcode", limit: 5
     t.string "city"
     t.string "state"
@@ -299,7 +299,7 @@ ActiveRecord::Schema.define(version: 2018_10_02_144616) do
   create_table "volunteers", force: :cascade do |t|
     t.bigint "user_id"
     t.string "cv_file"
-    t.string "linked_in_url"
+    t.string "linkedin_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_volunteers_on_user_id"

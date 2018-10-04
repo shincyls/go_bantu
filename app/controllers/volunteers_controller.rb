@@ -12,7 +12,8 @@ class VolunteersController < ApplicationController
 
     def create
         #respond_to :html, :js
-        @volunteer = Volunteer.new(volunteer_params)
+        @volunteer = Volunteer.new(volunteer_params).url_protocol
+        
         if @volunteer.save
             redirect_to new_volunteer_path, flash: { success: 'Volunteer was successfully created.' }
         else

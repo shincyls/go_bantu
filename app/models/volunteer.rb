@@ -1,4 +1,6 @@
 class Volunteer < ApplicationRecord
+    include VolunteersHelper
+
     validates :user_id, uniqueness: {message: "is already a volunteer!"}
     #General Association
     belongs_to :user
@@ -32,4 +34,14 @@ class Volunteer < ApplicationRecord
     def custom_label
         "#{self.user.username}"
     end
+
+    def url_protocol
+        if self.linkedin_url != ""
+            unless self.linkedin_url.present? && (self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//])
+                self.linkedin_url = "https://#{self.linkedin_url}"
+            end
+        end
+        return self
+    end
+
 end
