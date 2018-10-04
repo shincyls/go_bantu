@@ -1,7 +1,7 @@
 class OrganizersController < ApplicationController
     # Not organizer only can create new organization
     before_action :not_organizer!, only: [:new, :create]
-
+    include OrganizersHelper
     def new
         @organizer = Organizer.new
     end
@@ -18,6 +18,47 @@ class OrganizersController < ApplicationController
 
     def show
         @organizer = Organizer.find(params[:id])
+    end
+
+    def pending_volunteers
+        unless current_user.id = params[:id]
+          redirect_to root_path
+        end
+        project_volunteers
+        approved_volunteers
+    end
+
+
+    def volunteer_change
+        @interest = VolunteerProjectJoin.find(params[:id])
+        organizer = @interest.project.organizers.first.user
+        if @interest.interested?
+          @interest.status = 'approved'
+          @interest.save
+          # ProjectMailer.status_email(organizer,@project).deliver
+          redirect_to volunteer_approvals_path(organizer.id), notice: 'Volunteer was approved.'
+        else
+          @interest.status = 'interested'
+          @interest.save
+          redirect_to volunteer_approvals_path(organizer.id), notice: 'Status changed to interested.'
+        end
+
+    end
+
+    def volunteer_deny
+        @interest = Project.find(params[:id])
+        organizer = @interest.organizers.first.user
+        if @interest.interested?
+          @interest.status = 'rejected'
+          @interest.save
+          # ProjectMailer.status_email(organizer,@project).deliver
+          redirect_to volunteer_approvals_path(organizer.id), notice: 'Volunteer was denied.'
+        else
+          @interest.status = 'interested'
+          @interest.save
+          redirect_to volunteer_approvals_path(organizer.id), notice: 'Status changed to interested.'
+        end
+
     end
 
     private
