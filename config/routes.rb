@@ -35,7 +35,13 @@ Rails.application.routes.draw do
 
   resources :organizers
   resources :donations
-  resources :volunteer_project_joins
+
+  resources :volunteer_project_joins do
+    collection do
+      post :interested
+    end
+  end
+
   get 'organizers/:id/approvals' => "organizers#pending_volunteers", as: :volunteer_approvals
   post '/organizers/volunteer_deny/:id' => "organizers#volunteer_deny", as: :volunteer_rejected
   post '/organizers/volunteer_change/:id' => "organizers#volunteer_change", as: :volunteer_approve
