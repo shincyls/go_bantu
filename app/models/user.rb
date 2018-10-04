@@ -11,14 +11,14 @@ class User < ApplicationRecord
 
     #Validate The Format and Presence of Required Information
     validates :email, uniqueness: {message: "Account already exists!"}, format: {with: /.+@.+\..+/, message: ": Please enter a valid email address."}, presence: {message: ": Please enter your email address."}
+    
     validates :username, presence: :true, uniqueness: { case_sensitive: false }
     validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
-    validate :validate_username
+    
 
     validates :first_name, presence: {message: ": Please enter your first name."}
     validates :last_name, presence: {message: ": Please enter your last name."}
-	# validates :username, uniqueness: {message: ": Username already exists!"}, presence: {message: ": Please enter your username."}
-
+	
     enum role: ["admin", "user"]
 
     mount_uploader :avatar, AvatarUploader
@@ -27,8 +27,7 @@ class User < ApplicationRecord
     has_one :organizer
     has_one :volunteer
     has_one :donor
-    has_many :user_cause_joins
-    has_many :causes, through: :user_cause_joins
+ 
 
     # gecode required to set latitude and logitude
     geocoded_by :address

@@ -68,6 +68,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
     
     def after_sign_out_path_for(resource)
+      byebug
      root_path
     end
   

@@ -6,12 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+########## causing errors on db:seed #########################
 # For Omniauth
-AuthenticationProvider.create(name: 'facebook')
-AuthenticationProvider.create(name: 'twitter')
-AuthenticationProvider.create(name: 'gplus')
-AuthenticationProvider.create(name: 'google')
-AuthenticationProvider.create(name: 'linked')
+# AuthenticationProvider.create(name: 'facebook')
+# AuthenticationProvider.create(name: 'twitter')
+# AuthenticationProvider.create(name: 'gplus')
+# AuthenticationProvider.create(name: 'google')
+# AuthenticationProvider.create(name: 'linked')
 
 
 # ####################################################
@@ -111,7 +113,7 @@ Category.create!([
 
 # 2.2 User Section and Role
 Project.create!([
-    {title: "Home Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 11111 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 1000, status: 2},
+    {title: "Home Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 11111 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 1000, status: 2, website_link: "www.google.com", facebook_link: "www.google.com", instagram_link: "www.google.com", twitter_link: "www.google.com", linkedin_link: "www.google.com" },
     {title: "Home Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 22222 for bbbbb", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 0, status: 2},
     {title: "Community Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 33333 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 300, status: 2},
     {title: "Community Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 44444 for ddddd", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 200, status: 2},
@@ -125,10 +127,10 @@ Project.create!([
     {title: "Organization Project 4", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 20202 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 1},
     {title: "Organization Project 5", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 0},
     # ID 14-17 are actual projects
-    {title: "English Tutor for Children", project_desc: "Bandar Sunway Gospel Centre is looking 2 English Tutor", requirement_desc: "We need english tutor 2h for every saturday", volunteer_number: 2, city: "Subang", state: "Selangor", country: "Malaysia", status: 2},
-    {title: "Auditor for KALSOM Movement", project_desc: "KALSOM Movement is looking for Auditor/Accountant", requirement_desc: "We need an Auditor/Accountant to help audit our account", volunteer_number: 1, city: "Subang", state: "Selangor", country: "Malaysia", status: 2},
-    {title: "Calvalry Land", project_desc: "Looking for Agriculture Expert to cultivate our land", requirement_desc: "We need a Agriculture Expert for consultation", volunteer_number: 1, city: "Sepang", state: "Selangor", country: "Malaysia", status: 2},
-    {title: "Digital Marketer Shelter Home", project_desc: "We are looking for Digital Marketer to help us promote our goal and mission", requirement_desc: "We are looking for peoples to improve", volunteer_number: 2, city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 2}
+    {title: "English Tutor for Children", project_desc: "Bandar Sunway Gospel Centre is looking 2 English Tutor", requirement_desc: "We need english tutor 2h for every saturday", volunteer_number: 2, city: "Subang", state: "Selangor", country: "Malaysia", status: 2, website_link: "www.google.com", facebook_link: "www.google.com", instagram_link: "www.google.com", twitter_link: "www.google.com", linkedin_link: "www.google.com"},
+    {title: "Auditor for KALSOM Movement", project_desc: "KALSOM Movement is looking for Auditor/Accountant", requirement_desc: "We need an Auditor/Accountant to help audit our account", volunteer_number: 1, city: "Subang", state: "Selangor", country: "Malaysia", status: 2, website_link: "www.google.com", facebook_link: "www.google.com", linkedin_link: "www.google.com"},
+    {title: "Calvalry Land", project_desc: "Looking for Agriculture Expert to cultivate our land", requirement_desc: "We need a Agriculture Expert for consultation", volunteer_number: 1, city: "Sepang", state: "Selangor", country: "Malaysia", status: 2, website_link: "www.google.com", facebook_link: "www.google.com"},
+    {title: "Digital Marketer Shelter Home", project_desc: "We are looking for Digital Marketer to help us promote our goal and mission", requirement_desc: "We are looking for peoples to improve", volunteer_number: 2, city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 2, website_link: "www.google.com", facebook_link: "www.google.com", instagram_link: "www.google.com", twitter_link: "www.google.com", linkedin_link: "www.google.com"}
 ])
 
 # ####################################################
@@ -285,17 +287,17 @@ Donation.create!([
 
 # For Searching or Matching
 
-UserCauseJoin.create!([
-    {user_id: 1, cause_id: 1},
-    {user_id: 3, cause_id: 2},
-    {user_id: 3, cause_id: 3},
-    {user_id: 4, cause_id: 4},
-    {user_id: 4, cause_id: 5},
-    {user_id: 4, cause_id: 6},
-    {user_id: 5, cause_id: 7},
-    {user_id: 5, cause_id: 8},
-    {user_id: 5, cause_id: 9},
-    {user_id: 18, cause_id: 1}
+VolunteerCauseJoin.create!([
+    {volunteer_id: 1, cause_id: 1},
+    {volunteer_id: 6, cause_id: 2},
+    {volunteer_id: 6, cause_id: 3},
+    {volunteer_id: 7, cause_id: 4},
+    {volunteer_id: 7, cause_id: 5},
+    {volunteer_id: 9, cause_id: 6},
+    {volunteer_id: 10, cause_id: 7},
+    {volunteer_id: 10, cause_id: 8},
+    {volunteer_id: 10, cause_id: 9},
+    {volunteer_id: 11, cause_id: 1}
 ])
 
 # Volunteer

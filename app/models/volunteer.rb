@@ -10,9 +10,12 @@ class Volunteer < ApplicationRecord
     has_many :skills, through: :volunteer_skill_joins
     has_many :volunteer_profession_joins
     has_many :professions, through: :volunteer_profession_joins
+    has_many :volunteer_cause_joins
+    has_many :causes, through: :volunteer_cause_joins
 
     accepts_nested_attributes_for :volunteer_skill_joins, allow_destroy: true
     accepts_nested_attributes_for :volunteer_profession_joins, allow_destroy: true
+    accepts_nested_attributes_for :volunteer_cause_joins, allow_destroy: true
 
     # CarrierWave Uploader
     mount_uploader :cv_file, AttachmentUploader
@@ -21,7 +24,8 @@ class Volunteer < ApplicationRecord
     pg_search_scope :search_volunteers, associated_against: { 
         user: [:username, :first_name, :last_name, :email, :city, :state, :country],
         skills: [:name, :description],
-        professions: [:name, :description]},
+        professions: [:name, :description],
+        causes: [:name, :description]},
         using: [:tsearch]
 
 

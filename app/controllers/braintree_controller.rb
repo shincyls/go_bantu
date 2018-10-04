@@ -1,6 +1,9 @@
 class BraintreeController < ApplicationController
  
   def new
+  unless signed_in?
+  	redirect_to root_url 
+  end
   @project = Project.find(params[:id])
   @client_token = Braintree::ClientToken.generate
   end
