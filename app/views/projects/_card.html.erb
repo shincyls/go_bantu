@@ -20,12 +20,7 @@
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= simple_form_for(@project_volunteer) do |f| %>
-                                    <%= f.hidden_field :volunteer_id, value: current_user.volunteer.id %>
-                                    <%= f.hidden_field :project_id, value: @project.id %>
-                                    <%= f.hidden_field :status, value: "interested" %>      
-                                    <button class="badge badge-gobantu" type="submit">Volunteer <%= p.volunteer_project_joins.where(status: 'approved').count.to_s %> / <%= p.volunteer_number.to_s %></button>
-                                    <% end %>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, interested_volunteer_project_joins_path(volunteer: current_user.volunteer.id, project: p.id), method: "post", remote: true, id: "project#{p.id}", class: "badge badge-gobantu"%>
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
                                     <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
                                     <% else %>

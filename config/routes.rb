@@ -35,7 +35,12 @@ Rails.application.routes.draw do
 
   resources :organizers
   resources :donations
-  resources :volunteer_project_joins
+  resources :volunteer_project_joins do
+    collection do
+      post :interested
+    end
+  end
+
   get 'projects/:id/donations' => "donations#project", as: :project_donations
   get 'users/:id/donations' => "donations#donor", as: :donor_donations
 
