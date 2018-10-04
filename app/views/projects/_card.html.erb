@@ -97,8 +97,8 @@
                     <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle", style: "width:1.8rem;height:1.8rem" %>
                     <% end %>
                     <%= link_to p.organizers.first.company_name, organizer_path(p.organizers.first.id), target:"_blank" %>
-                    <% if p.organizers.first.website_url.present? %>
-                    <a target="_blank" href="<%= p.organizers.first.website_url %>"> <i class="fas fa-globe"></i></a>
+                    <% if p.organizers.first.website_link.present? %>
+                    <a target="_blank" href="<%= p.organizers.first.website_link %>"> <i class="fas fa-globe"></i></a>
                     <% end %>
                     <% if p.organizers.first.facebook_url.present? %>
                     <a target="_blank" href="<%= p.organizers.first.facebook_url %>"> <i class="fa fa-facebook"></i></a>
