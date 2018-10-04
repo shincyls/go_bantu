@@ -52,12 +52,14 @@
               
             </li>
             <% if !current_user.organizer.nil? %>
-            <li>
               <% if project_volunteers.count > 0 %>
-              <span class="badge badge-pill badge-notify" style="float:right;margin-bottom:-5px;"><%= project_volunteers.count %></span> 
+                <li>
+                  
+                  <span class="badge badge-pill badge-notify" style="float:right;margin-bottom:-5px;"><%= project_volunteers.count %></span> 
+                  
+                  <%= link_to 'Requests', volunteer_approvals_path(current_user.organizer.id), class: "nav-link" %>
+                </li>
               <% end %>
-              <%= link_to 'Requests', volunteer_approvals_path(current_user.organizer.id), class: "nav-link" %>
-            </li>
             <% end %>
 
             <% if current_user.admin? %>
