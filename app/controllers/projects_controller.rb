@@ -15,7 +15,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval of projects within 5 days.' }
+      OrganizerProjectJoin.new(organizer_id: current_user.organizer.id, project_id: project.id, status: 0).save
+      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval within 5 working days.' }
     else
       redirect_to new_project_path, flash: { danger: @project.errors.full_messages[0] }
     end
@@ -23,8 +24,12 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    #verify project is approved
+    check_status
+
+    #automatch feature
     matched_volunteers(@project.id)
-        # set percent match for user
+    # set percent match for user
     if @hundred
       @matched_volunteers
       @match_percent = "100%"
@@ -60,15 +65,21 @@ class ProjectsController < ApplicationController
   end
 
   def confirmations
+    if signed_in? 
+      unless current_user.admin?
+        redirect_to root_path
+      end
+    end
     @projects = Project.where(status: 'pending')
   end
 
   def status_change
     @project = Project.find(params[:id])
-
+    organizer = @project.organizers.first.user
     if @project.pending?
       @project.status = 'approved'
       @project.save
+      ProjectMailer.status_email(organizer,@project).deliver
       redirect_to confirmations_projects_path, notice: 'Project was approved.'
     else
       @project.status = 'pending'
@@ -80,10 +91,11 @@ class ProjectsController < ApplicationController
 
   def status_deny
     @project = Project.find(params[:id])
-
+    organizer = @project.organizers.first.user
     if @project.pending?
       @project.status = 'rejected'
       @project.save
+      ProjectMailer.status_email(organizer,@project).deliver
       redirect_to confirmations_projects_path, notice: 'Project was denied.'
     else
       @project.status = 'pending'
@@ -91,6 +103,12 @@ class ProjectsController < ApplicationController
       redirect_to confirmations_projects_path, notice: 'Status changed to pending.'
     end
 
+  end
+
+  def check_status
+    unless @project.approved? || signed_in? && (current_user.admin? || current_user == @project.organizers.first.user)
+        redirect_to root_path
+    end
   end
 
   private

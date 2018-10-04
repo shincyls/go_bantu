@@ -8,16 +8,16 @@ RailsAdmin.config do |config|
   # config.current_user_method(&:current_user)
 
   # uncomment this section
-  # config.parent_controller = "::ApplicationController"
+  config.parent_controller = "::ApplicationController"
 
-  # config.authorize_with do |controller|
-  #   unless current_user && current_user.admin?
-  #     redirect_to(
-  #       main_app.root_path,
-  #       flash: {alert: "You are not permitted to view this page"}
-  #     )
-  #   end
-  # end
+  config.authorize_with do |controller|
+    unless current_user && current_user.admin?
+      redirect_to(
+        main_app.root_path,
+        flash: {alert: "You are not permitted to view this page"}
+      )
+    end
+  end
 
 
 
@@ -52,7 +52,7 @@ RailsAdmin.config do |config|
   end
 
     ######## remove models from navigation pane #######
-  exclusions = ['ProjectCauseJoin','ProjectProfessionJoin','ProjectSkillJoin','OrganizerProjectJoin','VolunteerSkillJoin','VolunteerProjectJoin','VolunteerProfessionJoin','UserCauseJoin','ProjectCategoryJoin']  
+  exclusions = ['ProjectCauseJoin','ProjectProfessionJoin','ProjectSkillJoin','OrganizerProjectJoin','VolunteerSkillJoin','VolunteerProjectJoin','VolunteerProfessionJoin','VolunteerCauseJoin','ProjectCategoryJoin']  
   exclusions.each do |x|
   config.excluded_models << x
   end
@@ -153,8 +153,8 @@ end
   # config.model ProjectCategoryJoin do
   #   navigation_label 'Joins Tables'
   # end
-  #   ######## config user_cause_join model ##########
-  # config.model UserCauseJoin do
+  #   ######## config volunteer_cause_join model ##########
+  # config.model VolunteerCauseJoin do
   #   navigation_label 'Joins Tables'
   # end
   #   ######## config volunteer_profession_join model ##########
