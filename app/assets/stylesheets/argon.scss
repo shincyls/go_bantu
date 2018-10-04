@@ -101,6 +101,10 @@ section
     font-family: 'Raleway', sans-serif;
 }
 
+.black{
+    background-color:black;
+}
+
 @media (min-width: 768px)
 {
    #edit_form{
@@ -3572,6 +3576,7 @@ fieldset:disabled a.btn
 {
     color: black;
     border-color: #ffe121; 
+    // background-color: transparent;
     background-color: rgba(254, 211, 48,0.2);
     background-image: none;
 }
