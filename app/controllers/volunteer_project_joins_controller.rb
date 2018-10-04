@@ -18,6 +18,8 @@ class VolunteerProjectJoinsController < ApplicationController
         @project_volunteer = VolunteerProjectJoin.find(params[:id])
     end
 
+
+
     private
 
     def organizer_params

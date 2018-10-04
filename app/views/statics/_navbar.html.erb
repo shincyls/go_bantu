@@ -61,7 +61,7 @@
               <% if project_volunteers.count > 0 %>
               <span class="badge badge-pill badge-notify" style="float:right;margin-bottom:-5px;"><%= project_volunteers.count %></span> 
               <% end %>
-              <%= link_to 'Approvals', confirmations_projects_path, class: "nav-link" %>
+              <%= link_to 'Requests', volunteer_approvals_path(current_user.organizer.id), class: "nav-link" %>
             </li>
             <% end %>
 
