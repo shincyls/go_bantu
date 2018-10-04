@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  # only organizer can create new project
+  before_action :is_organizer!, only: [:new, :create]
+  
   include ProjectsHelper
   require 'will_paginate/array'
 
@@ -124,6 +127,18 @@ class ProjectsController < ApplicationController
       project_cause_joins_attributes: [:project_id, :cause_id],
       project_category_joins_attributes: [:project_id, :category_id]
     )
+  end
+
+  def authenticate_user!
+    if current_user.id != @user.id
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def not_organizer!
+    if !current_user.organizer
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 end

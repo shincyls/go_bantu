@@ -1,4 +1,6 @@
 class OrganizersController < ApplicationController
+    # Not organizer only can create new organization
+    before_action :not_organizer!, only: [:new, :create]
 
     def new
         @organizer = Organizer.new
@@ -27,7 +29,11 @@ class OrganizersController < ApplicationController
             :address_1, :address_2, :postcode, :city, :state, :country, :logo)
     end
 
-    
+    def not_organizer!
+        if current_user.organizer
+          redirect_back(fallback_location: root_path)
+        end
+    end
 
 end
 
