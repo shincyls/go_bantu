@@ -111,6 +111,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def project_interests
+    @project = Project.find(params[:id])
+    
+  end
+
   private
 
   def project_params

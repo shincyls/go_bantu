@@ -83,8 +83,9 @@
                                 <% if p.volunteer_progress >= 100 %>
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
+                                 <!-- working on this  -->
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <%= link_to "Be a Volunteer" + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, volunteer_interest_path, target: "_blank", class: "badge badge-primary"%>
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
                                     <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
                                     <% else %>
