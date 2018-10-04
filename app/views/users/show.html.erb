@@ -93,6 +93,8 @@
                                     <% @user.donor.donations.each do |d| %>
                                         <h6><%=d.project.title%> : <%=d.amount%> : <%=d.status%> : <%=time_ago_in_words(d.created_at)%> ago</h6>
                                     <% end %>
+                                    <% else %>
+                                    
                                 <% end %>
                             </div>
                         
