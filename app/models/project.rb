@@ -59,7 +59,7 @@ class Project < ApplicationRecord
     end
 
     def volunteer_progress
-        progress = (self.volunteer_project_joins.count.to_f / self.volunteer_number.to_f) * 100
+        progress = (self.volunteer_project_joins.where(status: 'approved').count.to_f / self.volunteer_number.to_f) * 100
     end
 
 

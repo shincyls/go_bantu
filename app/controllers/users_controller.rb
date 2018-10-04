@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   
   # GET /users/:id
   def show
+    @project_volunteer = VolunteerProjectJoin.new
     set_user
     # from ProjectsHelper for automatching projects
     matched_projects(@user.id)
