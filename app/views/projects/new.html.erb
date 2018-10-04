@@ -14,17 +14,26 @@
           <div class="col-lg-12">
               <%= form_for(@project) do |f| %>
                 <h4 class="text-primary">Project Information</h4>
-                <div class="row">
-                    <div class="col-md-2"><h6 class="mt-2">Title*</h6></div>
-                    <div class="col-md-10"><%= f.text_field :title, placeholder: "Title (Mandatory)", class: "form-control mt-2" %></div>
+                <div class="row mt-2">
+                    <div class="col-md-2"><h6>Title*</h6></div>
+                    <div class="col-md-10"><%= f.text_field :title, placeholder: "Title (Mandatory)", class: "form-control" %></div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2"><h6 class="mt-2">Description*</h6></div>
-                    <div class="col-md-10"><%= f.text_area :project_desc, placeholder: "Project Description (Mandatory)", class: "form-control mt-2" %></div>
+                <div class="row mt-2">
+                    <div class="col-md-2"><h6>Description*</h6></div>
+                    <div class="col-md-10"><%= f.text_area :project_desc, placeholder: "Project Description (Mandatory)", class: "form-control" %></div>
                 </div>
-                <div class="row">
+                <div class="row mt-2">
+                    <div class="col-md-2"><h6>Category</h6></div>
+                    <% Category.all.each_with_index do |category, index| %>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <%= check_box_tag "project[project_category_joins_attributes][#{index}][category_id]", category.id, @project.categories.include?(category), id: dom_id(category) %>
+                    <%= label_tag dom_id(category), category.name %>
+                    </div>
+                    <% end %>
+                </div>
+                <div class="row mt-2">
                     <div class="col-md-4"><h6 class="mt-2">Upload Project Image</h6></div>
-                    <div class="col-md-8"><%= f.file_field :image, class: "mt-2" %></div>
+                    <div class="col-md-8"><%= f.file_field :image %></div>
                 </div>
 
                 <br>
@@ -44,39 +53,39 @@
                 <br>
 
                 <h4 class="text-primary">Contact Information</h4>
-                <div class="row">
-                    <div class="col-md-2"><h6 class="mt-2">Name*</h6></div>
-                    <div class="col-md-4"><%= f.text_field :contact_person_1, placeholder: "Name 1", class: "form-control mt-2" %></div>
-                    <div class="col-md-2"><h6 class="mt-2">Phone Number*</h6></div>
-                    <div class="col-md-4"><%= f.text_field :contact_number_1, placeholder: "Phone Number 1", class: "form-control mt-2" %></div>
+                <div class="row mt-2">
+                    <div class="col-md-2"><h6>Name*</h6></div>
+                    <div class="col-md-4"><%= f.text_field :contact_person_1, placeholder: "Name 1", class: "form-control" %></div>
+                    <div class="col-md-2"><h6>Phone Number*</h6></div>
+                    <div class="col-md-4"><%= f.text_field :contact_number_1, placeholder: "Phone Number 1", class: "form-control" %></div>
                 </div>
                 <div class="row">
                     <div class="col-md-2"><h6 class="mt-2">Name</h6></div>
-                    <div class="col-md-4"><%= f.text_field :contact_person_2, placeholder: "Name 2", class: "form-control mt-2" %></div>
+                    <div class="col-md-4"><%= f.text_field :contact_person_2, placeholder: "Name 2", class: "form-control" %></div>
                     <div class="col-md-2"><h6 class="mt-2">Phone Number</h6></div>
-                    <div class="col-md-4"><%= f.text_field :contact_number_2, placeholder: "Phone Number 2", class: "form-control mt-2" %></div>
+                    <div class="col-md-4"><%= f.text_field :contact_number_2, placeholder: "Phone Number 2", class: "form-control" %></div>
                 </div>
 
                 <br>
 
                 <h4 class="text-primary">Location Information</h4>
-                <div class="row">
-                    <div class="col-md-2"><h6 class="mt-2">Address 1</h6></div>
-                    <div class="col-md-10"><%= f.text_field :address_1, placeholder: "Address 1", class: "form-control mt-2" %></div>
+                <div class="row mt-2">
+                    <div class="col-md-2"><h6>Address 1</h6></div>
+                    <div class="col-md-10"><%= f.text_field :address_1, placeholder: "Address 1", class: "form-control" %></div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2"><h6 class="mt-2">Address 2</h6></div>
-                    <div class="col-md-10"><%= f.text_field :address_2, placeholder: "Address 2", class: "form-control mt-2" %></div>
+                <div class="row mt-2">
+                    <div class="col-md-2"><h6>Address 2</h6></div>
+                    <div class="col-md-10"><%= f.text_field :address_2, placeholder: "Address 2", class: "form-control" %></div>
                 </div>
-                <div class="row">
-                    <div class="col-md-1"><h6 class="mt-3">Postcode</h6></div>
-                    <div class="col-md-2"><%= f.text_field :postcode, placeholder: "43000", class: "form-control mt-2" %></div>
-                    <div class="col-md-1"><h6 class="mt-3">City</h6></div>
-                    <div class="col-md-2"><%= f.text_field :city, placeholder: "Petaling Jaya", class: "form-control mt-2" %></div>
-                    <div class="col-md-1"><h6 class="mt-3">State</h6></div>
-                    <div class="col-md-2"><%= f.text_field :state, placeholder: "Selangor", class: "form-control mt-2" %></div>
-                    <div class="col-md-1"><h6 class="mt-3">Country</h6></div>
-                    <div class="col-md-2"><%= f.text_field :country, placeholder: "Malaysia", class: "form-control mt-2" %></div>
+                <div class="row mt-2">
+                    <div class="col-md-1"><h6>Postcode</h6></div>
+                    <div class="col-md-2"><%= f.text_field :postcode, placeholder: "43000", class: "form-control" %></div>
+                    <div class="col-md-1"><h6>City</h6></div>
+                    <div class="col-md-2"><%= f.text_field :city, placeholder: "Petaling Jaya", class: "form-control" %></div>
+                    <div class="col-md-1"><h6>State</h6></div>
+                    <div class="col-md-2"><%= f.text_field :state, placeholder: "Selangor", class: "form-control" %></div>
+                    <div class="col-md-1"><h6>Country</h6></div>
+                    <div class="col-md-2"><%= f.text_field :country, placeholder: "Malaysia", class: "form-control" %></div>
                 </div>
     
                 <br>
@@ -91,7 +100,7 @@
                 <br>
 
                 <h4 class="text-primary">Skills Requirement</h4>
-                <div class="row">
+                <div class="row mt-2">
                   <% Skill.all.each_with_index do |skill, index| %>
                   <div class="col-xs-6 col-sm-6 col-md-4 col-lg-3">
                   <%= check_box_tag "project[project_skill_joins_attributes][#{index}][skill_id]", skill.id, @project.skills.include?(skill), id: dom_id(skill) %>
@@ -103,7 +112,7 @@
                 <br>
 
                 <h4 class="text-primary">Professions Requirement</h4>
-                <div class="row">
+                <div class="row mt-2">
                   <% Profession.all.each_with_index do |profession, index| %>
                   <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <%= check_box_tag "profession[project_profession_joins_attributes][#{index}][profession_id]", profession.id, @project.professions.include?(profession), id: dom_id(profession) %>
@@ -115,7 +124,7 @@
                 <br>
 
                 <h4 class="text-primary">Causes of Projects</h4>
-                <div class="row">
+                <div class="row mt-2">
                   <% Cause.all.each_with_index do |cause, index| %>
                   <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                   <%= check_box_tag "cause[project_cause_joins_attributes][#{index}][cause_id]", cause.id, @project.causes.include?(cause), id: dom_id(cause) %>

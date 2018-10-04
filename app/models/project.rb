@@ -71,7 +71,7 @@ class Project < ApplicationRecord
 
     # create string from form inputs to use with geocode
     def address
-        [address_1, city, state, country].compact.join(', ')
+        [address_1, address_2, city, state, country].compact.join(', ')
     end
 
     # if address changed update geocode

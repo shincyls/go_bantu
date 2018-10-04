@@ -36,8 +36,10 @@ class Volunteer < ApplicationRecord
     end
 
     def url_protocol
-        unless self.linkedin_url.present? && (self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//])
-            self.linkedin_url = "https://#{self.linkedin_url}"
+        if self.linkedin_url != ""
+            unless self.linkedin_url.present? && (self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//])
+                self.linkedin_url = "https://#{self.linkedin_url}"
+            end
         end
         return self
     end

@@ -26,7 +26,7 @@
                         <h4><%= o.company_name %></h4>
                         
                         <p class="small"><%= o.description %></p>
-                        <span>Know us more on! </span>
+                        <span>Know us more! </span>
                         <% if o.website_url.present? %>
                         <a target="_blank" href="<%= o.website_url %>"><i class="fas fa-globe"></i></a>
                         <% end %>
@@ -45,7 +45,7 @@
 
                         <h4 class="mt-3">Host Information</h4>
                         <div>   
-                            <span class="badge badge-pill badge-gobantu">Phone Number</span> 
+                            <span class="badge badge-pill badge-info">Phone Number</span> 
                             <span class="small"><%= o.phone_number1 %>
                                 <% if o.phone_number2 %>
                                 <%= " / " + o.phone_number2  %>
@@ -53,15 +53,15 @@
                             </span> 
                         </div>
                         <div>   
-                            <span class="badge badge-pill badge-gobantu">Email</span> 
+                            <span class="badge badge-pill badge-info">Email</span> 
                             <span class="small"><%= o.email %></span> 
                         </div>
                         <div>   
-                            <span class="badge badge-pill badge-gobantu">Address</span> 
+                            <span class="badge badge-pill badge-info">Address</span> 
                             <span class="small"><%= o.address_1 %> <%= o.address_2 %></span> 
                         </div>
                         <div>
-                            <span class="badge badge-pill badge-gobantu">Location</span> 
+                            <span class="badge badge-pill badge-info">Location</span> 
                             <span class="small"><%= o.city %>, <%= o.state %></span> 
                         </div>
                     </div>
