@@ -145,4 +145,10 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def is_organizer!
+    unless current_user.organizer
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
 end
