@@ -37,7 +37,7 @@
           <tr>
             <td><%= link_to project.title, project %></td>
             <td><%= link_to project.organizers.first.user.first_name, project.organizers.first %></td>
-            <td><%= project.organizers.first.email %></td>
+            <td><a href="mailto:<%= project.organizers.first.email %>"><%= project.organizers.first.email %></a></td>
             <td><%= project.created_at.strftime("%d/%m/%y") %></td>
             
             <% if project.pending? %><td class='text-warning font-weight-bold text-uppercase blink'>

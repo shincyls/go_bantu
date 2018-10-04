@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :organizers
   resources :donations
-  
+  resources :volunteer_project_joins
   get 'projects/:id/donations' => "donations#project", as: :project_donations
   get 'users/:id/donations' => "donations#donor", as: :donor_donations
 

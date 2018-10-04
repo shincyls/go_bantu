@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     respond_to :html, :js
     @projects = Project.where(status: 2).order("created_at desc")
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
+    @project_volunteer = VolunteerProjectJoin.new
   end
 
   def new
@@ -24,6 +25,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @project_volunteer = VolunteerProjectJoin.new
     #verify project is approved
     check_status
 
@@ -46,6 +48,7 @@ class ProjectsController < ApplicationController
     if signed_in?
     @verify_organizers = @project.organizers.where(user_id: current_user.id).exists?
     end
+
   end
 
   def card
@@ -110,6 +113,7 @@ class ProjectsController < ApplicationController
         redirect_to root_path
     end
   end
+
 
   private
 

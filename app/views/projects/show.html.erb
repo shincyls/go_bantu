@@ -91,12 +91,21 @@
                                 <% if p.volunteer_progress >= 100 %>
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
+                                 <!-- Volutneer now button  -->
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
+                                    <%= simple_form_for(@project_volunteer) do |f| %>
+                                    <%= f.hidden_field :volunteer_id, value: current_user.volunteer.id %>
+                                    <%= f.hidden_field :project_id, value: @project.id %>
+                                    <%= f.hidden_field :status, value: "interested" %>
+                                    
+                                    <button class="badge badge-gobantu" type="submit">Volunteered <%= p.volunteer_project_joins.where(status: 'approved').count.to_s %> / <%= p.volunteer_number.to_s %></button>
+                                    
+                                    <% end %>
+
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
                                     <% else %>
-                                    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.count.to_s%> / <%=p.volunteer_number.to_s%></span>
+                                    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.where(status: 'approved').count.to_s%> / <%=p.volunteer_number.to_s%></span>
                                     <% end %>
                                 <% end %>
                                 </div>
