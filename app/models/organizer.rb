@@ -22,25 +22,35 @@ class Organizer < ApplicationRecord
     end
 
     def url_protocol
-
-        unless !self.website_url.blank? && (self.website_url[/\Ahttp:\/\//] || self.website_url[/\Ahttps:\/\//])
-            self.website_url = "https://#{self.website_url}"
+        
+        if self.website_url != ""
+            unless self.website_url[/\Ahttp:\/\//] || self.website_url[/\Ahttps:\/\//]
+                self.website_url = "https://#{self.website_url}" 
+            end
         end
         
-        unless !self.facebook_url.blank? && (self.facebook_url[/\Ahttp:\/\//] || self.facebook_url[/\Ahttps:\/\//])
-            self.facebook_url = "https://#{self.facebook_url}"
+        if self.facebook_url != ""
+            unless self.facebook_url[/\Ahttp:\/\//] || self.facebook_url[/\Ahttps:\/\//]
+                self.facebook_url = "https://#{self.facebook_url}"
+            end
         end
 
-        unless !self.instagram_url.blank? && (self.instagram_url[/\Ahttp:\/\//] || self.instagram_url[/\Ahttps:\/\//])
-            self.instagram_url = "https://#{self.instagram_url}"
+        if self.instagram_url != ""
+            unless self.instagram_url[/\Ahttp:\/\//] || self.instagram_url[/\Ahttps:\/\//]
+                self.instagram_url = "https://#{self.instagram_url}"
+            end
         end
 
-        unless !self.twitter_url.blank? && (self.twitter_url[/\Ahttp:\/\//] || self.twitter_url[/\Ahttps:\/\//])
-            self.twitter_url = "https://#{self.twitter_url}"
+        if self.twitter_url != ""
+            unless self.twitter_url[/\Ahttp:\/\//] || self.twitter_url[/\Ahttps:\/\//]
+                self.twitter_url = "https://#{self.twitter_url}"
+            end
         end
 
-        unless !self.linkedin_url.blank? && (self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//])
-            self.linkedin_url = "https://#{self.linkedin_url}"
+        if self.linkedin_url != ""
+            unless self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//]
+                self.linkedin_url = "https://#{self.linkedin_url}"
+            end
         end
 
         return self

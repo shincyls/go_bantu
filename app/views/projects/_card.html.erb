@@ -20,9 +20,9 @@
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-primary"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.count.to_s%> / <%=p.volunteer_number.to_s%></span>
                                     <% end %>
@@ -65,7 +65,7 @@
                                     <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                 <% else %>
                                     <% if signed_in? %>
-                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-primary", target: "_blank" %>
+                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-gobantu", target: "_blank" %>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Donate">Raised RM <%=p.donations.sum(:amount).round.to_s%> / RM <%=p.fund_amount.round.to_s%> </span>
                                     <% end %>
