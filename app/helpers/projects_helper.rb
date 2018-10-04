@@ -215,6 +215,11 @@ module ProjectsHelper
       @seventy_five = true # 75% match
     end
   end
+
+  # pending projects count for navbar
+  def pending_projects
+    Project.where(status: 'pending').count
+  end
 end
 
 
