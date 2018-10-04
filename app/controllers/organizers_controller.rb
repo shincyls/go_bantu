@@ -5,10 +5,11 @@ class OrganizersController < ApplicationController
     end
 
     def create
-        #respond_to :html, :js
-        @organizer = Organizer.new(organizer_params)
+        # respond_to :html, :js
+        @organizer = Organizer.new(organizer_params).url_protocol
+
         if @organizer.save
-            redirect_to new_organizer_path, flash: { success: 'Organization was successfully created.' }
+            redirect_to @organizer, flash: { success: 'Organization was successfully created.' }
         else
             redirect_to new_organizer_path, flash: { danger: @organizer.errors.full_messages[0] }
         end
@@ -22,9 +23,11 @@ class OrganizersController < ApplicationController
 
     def organizer_params
         params.require(:organizer).permit(:user_id, :company_name, :email, :description, :phone_number1, :phone_number2, 
-            :website_link, :facebook_link, :instagram_link, :twitter_link, :linkedin_link, 
+            :website_url, :facebook_url, :instagram_url, :twitter_url, :linkedin_url, 
             :address_1, :address_2, :postcode, :city, :state, :country, :logo)
     end
+
+    
 
 end
 

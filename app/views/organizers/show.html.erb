@@ -9,7 +9,7 @@
     </section>
 
     <div class="container p-4 shadow rounded mt-5 mb-5">
-        <h3 class="mt-3 mb-3">Organization Profile</h3>
+        <h3 class="mt-3 mb-3">Host Profile</h3>
         <div class="row">
 
             <div class="col-md-6">
@@ -24,34 +24,44 @@
                 <div class="card-body">
                     <div class="card-body-area">
                         <h4><%= o.company_name %></h4>
-                        <p class="small"><%= o.description %></p>
-                        <% if o.website_link.present? %>
-                        <a target="_blank" href="<%= o.website_link %>"><i class="fas fa-globe"></i></a>
-                        <% end %>
-                        <% if o.facebook_link.present? %>
-                        <a target="_blank" href="<%= o.facebook_link %>"><i class="fa fa-facebook"></i></a>
-                        <% end %>
-                        <% if o.instagram_link.present? %>
-                        <a target="_blank" href="<%= o.instagram_link %>"><i class="fa fa-instagram"></i></a>
-                        <% end %>
-                        <% if o.twitter_link.present? %>
-                        <a target="_blank" href="<%= o.twitter_link %>"><i class="fa fa-twitter"></i></a>
-                        <% end %>
-                        <% if o.linkedin_link.present? %>
-                        <a target="_blank" href="<%= o.linkedin_link %>"><i class="fa fa-linkedin"></i></a>
-                        <% end %>
                         
-                        <h6>Organization Information</h6>
+                        <p class="small"><%= o.description %></p>
+                        <span>Know us more on! </span>
+                        <% if o.website_url.present? %>
+                        <a target="_blank" href="<%= o.website_url %>"><i class="fas fa-globe"></i></a>
+                        <% end %>
+                        <% if o.facebook_url.present? %>
+                        <a target="_blank" href="<%= o.facebook_url %>"><i class="fa fa-facebook"></i></a>
+                        <% end %>
+                        <% if o.instagram_url.present? %>
+                        <a target="_blank" href="<%= o.instagram_url %>"><i class="fa fa-instagram"></i></a>
+                        <% end %>
+                        <% if o.twitter_url.present? %>
+                        <a target="_blank" href="<%= o.twitter_url %>"><i class="fa fa-twitter"></i></a>
+                        <% end %>
+                        <% if o.linkedin_url.present? %>
+                        <a target="_blank" href="<%= o.linkedin_url %>"><i class="fa fa-linkedin"></i></a>
+                        <% end %>
+
+                        <h4 class="mt-3">Host Information</h4>
                         <div>   
-                            <span class="badge badge-pill badge-secondary">Email</span> 
+                            <span class="badge badge-pill badge-gobantu">Phone Number</span> 
+                            <span class="small"><%= o.phone_number1 %>
+                                <% if o.phone_number2 %>
+                                <%= " / " + o.phone_number2  %>
+                                <% end %>
+                            </span> 
+                        </div>
+                        <div>   
+                            <span class="badge badge-pill badge-gobantu">Email</span> 
                             <span class="small"><%= o.email %></span> 
                         </div>
                         <div>   
-                            <span class="badge badge-pill badge-secondary">Address</span> 
+                            <span class="badge badge-pill badge-gobantu">Address</span> 
                             <span class="small"><%= o.address_1 %> <%= o.address_2 %></span> 
                         </div>
                         <div>
-                            <span class="badge badge-pill badge-secondary">Location</span> 
+                            <span class="badge badge-pill badge-gobantu">Location</span> 
                             <span class="small"><%= o.city %>, <%= o.state %></span> 
                         </div>
                     </div>
@@ -61,7 +71,10 @@
         
         
         <% @projects = o.projects %>
-        <h3 class="mt-3 mb-3">Organization Hosted Projects</h3>
+        <h3 class="mt-3 mb-3">Hosted Projects</h3>
+        <% if @projects.count == 0 %>
+            <p>None project is hosted</p>
+        <% end %>
         <div class="row">
             <%= render partial: 'projects/card' %>
         </div>
