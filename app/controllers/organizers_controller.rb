@@ -1,4 +1,6 @@
 class OrganizersController < ApplicationController
+    # Not organizer only can create new organization
+    before_action :not_organizer!, only: [:new, :create]
 
     def new
         @organizer = Organizer.new
@@ -7,7 +9,6 @@ class OrganizersController < ApplicationController
     def create
         # respond_to :html, :js
         @organizer = Organizer.new(organizer_params).url_protocol
-
         if @organizer.save
             redirect_to @organizer, flash: { success: 'Organization was successfully created.' }
         else
@@ -27,7 +28,11 @@ class OrganizersController < ApplicationController
             :address_1, :address_2, :postcode, :city, :state, :country, :logo)
     end
 
-    
+    def not_organizer!
+        if current_user.organizer
+          redirect_back(fallback_location: root_path)
+        end
+    end
 
 end
 
