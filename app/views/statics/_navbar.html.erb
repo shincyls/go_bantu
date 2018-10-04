@@ -15,6 +15,12 @@
 }
 
 </style>
+
+
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
+
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--not-bottom headroom--pinned headroom--not-top">
       <div class="container">
@@ -38,6 +44,7 @@
               </div>
             </div>
           </div>
+          
           <ul class="navbar-nav ml-lg-auto navbar-nav-hover">
             <li class="nav-item">
               <%= link_to 'Projects', projects_path, class: "nav-link" %>
@@ -67,30 +74,33 @@
             </li>     
             <% end %>
 
-          <% if user_signed_in? %>
+          
             <li class="nav-item dropdown">
-              <!-- can be removed if we dont like -->
+              <% if user_signed_in? %>
+
               <% if current_user.avatar? %>
-                <%= link_to image_tag(current_user.avatar_url,class: 'rounded-circle nav-img',width: '30', height: '30'), current_user, class: "nav-link", id: "navbar-primary_dropdown_1", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
-              <% else %>
-                <%= link_to current_user.first_name, current_user, class: "nav-link", id: "navbar-primary_dropdown_1", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}%>
+                  <%= link_to image_tag(current_user.avatar_url, class: 'rounded-circle nav-img', width: '30', height: '30'), current_user, class: "nav-link", id: "navbar-dropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
+                <% else %>
+                  <%= link_to current_user.first_name, "navbar-dropdown", class: "nav-link", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}, role: "button", id: "navbar-dropdown"%>
+                </a>
               <% end %>
               
-              <!-- <a class="nav-link" href="#" id="navbar-primary_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Started</a> -->
-
-              <div class="dropdown-menu dropdown-menu-right row" aria-labelledby="navbar-primary_dropdown_1">
+              <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+                <span class="badge badge-pill badge-secondary">User</span>
                 <%= link_to 'Profile', user_profile_path(current_user), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
+                <span class="badge badge-pill badge-secondary">Volunteer</span>
                 <% if !current_user.volunteer.present? %>
                 <%= link_to 'Be a Volunteer', new_volunteer_path, class: "dropdown-item" %>
                 <% else %>
                 <%= link_to 'Find a Project', projects_path, class: "dropdown-item" %>
                 <% end %>
                 <div class="dropdown-divider"></div>
+                <span class="badge badge-pill badge-secondary">Organizer</span>
                 <% if !current_user.organizer.present? %>
                 <%= link_to 'Be an Organizer', new_organizer_path, class: "dropdown-item" %>
                 <% else %>
-                <%= link_to 'View My Organization', organizer_path(current_user.organizer.id), class: "dropdown-item" %>
+                <%= link_to 'My Organization', organizer_path(current_user.organizer.id), class: "dropdown-item" %>
                 <%= link_to 'Start a Project', new_project_path, class: "dropdown-item" %>
                 <% end %>
                 <div class="dropdown-divider"></div>
