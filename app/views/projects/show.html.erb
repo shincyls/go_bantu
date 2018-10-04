@@ -95,7 +95,7 @@
                                     <% if signed_in? && current_user.volunteer.present? %>
                                     <%= simple_form_for(@project_volunteer) do |f| %>
                                     <%= f.hidden_field :volunteer_id, value: current_user.volunteer.id %>
-                                    <%= f.hidden_field :project_id, value: @project.id %>
+                                    <%= f.hidden_field :project_id, value: p.id %>
                                     <%= f.hidden_field :status, value: "interested" %>
                                     
                                     <button class="badge badge-gobantu" type="submit">Volunteered <%= p.volunteer_project_joins.where(status: 'approved').count.to_s %> / <%= p.volunteer_number.to_s %></button>
