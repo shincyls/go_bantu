@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  default_url_options :host => "gobantu.herokuapp.com"
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'statics#index'
