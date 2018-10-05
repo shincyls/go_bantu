@@ -17,7 +17,7 @@
                     <div>
                         <%= link_to v.user.username, user_profile_path(v.user), target:"_blank" %>
                         <p class="small"><%= v.user.email %></p>
-                        <p class="small"><%= v.user.city %>Subang, Selangor<%= v.user.state %></p>
+                        <p class="small"><%= v.user.city %> <%= ", " + v.user.state %></p>
                     </div>
                     <div class="criteria">
                         <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
