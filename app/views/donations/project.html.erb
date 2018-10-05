@@ -17,10 +17,10 @@
           <tr>
             <td><%= link_to @project.title, @project %></td>
             <td><%= link_to donation.donor.user.first_name, donation.donor.user %></td>
-            <td><%= donation.amount %> RM</td>
+            <td>$<%= sprintf( "%0.02f",donation.amount) %></td>
             <td><%= donation.created_at.strftime("%d/%m/%y") %></td>
             
-            <% if donation.submitted? %><td class='text-warning font-weight-bold text-uppercase blink'>
+            <% if donation.received? %><td class='text-info font-weight-bold text-uppercase blink'>
             <% else %>
               <td class='text-success font-weight-bold text-uppercase'>
             <%end%>

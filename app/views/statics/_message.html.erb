@@ -1,17 +1,13 @@
-<% flash.each do |type, message| %>
-    <div class="alert alert-<%bootstrap_class_for(type) %> alert-dismissible fade show" role="alert">
-    <span class="alert-inner--text"> <% message %> </span>
-    
-    </div>
-<% end %>
-
-
 <!-- Devise Info -->
 
 <% if flash.present? %>
     <% flash.each do |type, message| %>
         <% if type == "notice" %>
+<<<<<<< HEAD
         <div class="alert alert-info alert-dismissible fade show text-center mb-5" role="alert">
+=======
+        <div class="alert alert-info alert-dismissible fade show text-center" style="position:fixed;top:0;" role="alert">
+>>>>>>> db58cbfea6c5931c84f3e78c0566196d5998f1bc
         <% elsif type == "alert" %>
             <div class="alert alert-danger alert-dismissible fade show text-center mb-5" role="alert">
         <% else %>                              

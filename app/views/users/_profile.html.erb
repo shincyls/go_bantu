@@ -19,6 +19,12 @@
         <% if current_user.id == @user.id %>
             <%= link_to "Edit Profile", edit_user_registration_path(@user.id), class: "btn btn-sm btn-info ml-5" %>
         <% end %>
+        <br>
+        <%if signed_in? && current_user == @user %>
+          <% if  !@user.donor.nil? && @user.donor.donations.any? %>
+              <%= link_to " Donations ", donor_donations_path(@user.id), class: "btn btn-sm btn-success mt-1 mr-2" %>
+          <% end %>
+        <% end %>
           </div>
       </div>
 
@@ -81,5 +87,4 @@
     </div>
  </div>
 </div>
-
 

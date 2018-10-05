@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
 
-  get 'braintree/new'
+  default_url_options :host => "gobantu.herokuapp.com"
+  
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'statics#index'
 
-  devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
-  
-  # RIP DONT REPEAT URSELF
-  # resources :users do
-  #   get :show
-  # end
-
+  ########## causing errors on db:create #########################
+  # devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
+  devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations'}
   get 'users/profile/:id' => 'users#show' , :as => "user_profile"
-  # resources :sessions
+
+  #*** without this in place this error undefined method `user_path for any links to volunteers,donors,users ***
+  resources :users do
+    get :show
+  end 
 
   resources :projects do
     collection do
@@ -35,14 +36,24 @@ Rails.application.routes.draw do
 
   resources :organizers
   resources :donations
-  
+
+  resources :volunteer_project_joins do
+    collection do
+      post :interested
+    end
+  end
+
+  get 'organizers/:id/approvals' => "organizers#pending_volunteers", as: :volunteer_approvals
+  post '/organizers/volunteer_deny/:id' => "organizers#volunteer_deny", as: :volunteer_rejected
+  post '/organizers/volunteer_change/:id' => "organizers#volunteer_change", as: :volunteer_approve
+
   get 'projects/:id/donations' => "donations#project", as: :project_donations
   get 'users/:id/donations' => "donations#donor", as: :donor_donations
 
   # path to pass params to braintree payment
   get 'projects/:id/donations/transaction' => "braintree#new", as: :make_donation
   #braintree system
-  get 'braintree/new'
+  get 'braintree/checkout'
   post 'braintree/checkout'
 
 
