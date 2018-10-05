@@ -21,11 +21,12 @@ class OrganizersController < ApplicationController
     end
 
     def pending_volunteers
-        unless current_user.id = params[:id]
-          redirect_to root_path
-        end
-        project_volunteers
-        approved_volunteers
+  
+      project_volunteers
+      approved_volunteers
+      unless current_user.id = params[:id]
+        redirect_to root_path
+      end
     end
 
 
@@ -35,7 +36,7 @@ class OrganizersController < ApplicationController
         if @interest.interested?
           @interest.status = 'approved'
           @interest.save
-          # ProjectMailer.status_email(organizer,@project).deliver
+          VolunteerMailer.volunteer_email(@interest).deliver
           redirect_to volunteer_approvals_path(organizer.id), notice: 'Volunteer was approved.'
         else
           @interest.status = 'interested'
@@ -46,12 +47,14 @@ class OrganizersController < ApplicationController
     end
 
     def volunteer_deny
-        @interest = Project.find(params[:id])
-        organizer = @interest.organizers.first.user
-        if @interest.interested?
+        @interest = VolunteerProjectJoin.find(params[:id])
+        organizer = @interest.project.organizers.first.user
+        if @interest.interested? || @interest.approved?
           @interest.status = 'rejected'
           @interest.save
-          # ProjectMailer.status_email(organizer,@project).deliver
+
+          VolunteerMailer.volunteer_email(@interest).deliver
+          byebug
           redirect_to volunteer_approvals_path(organizer.id), notice: 'Volunteer was denied.'
         else
           @interest.status = 'interested'
