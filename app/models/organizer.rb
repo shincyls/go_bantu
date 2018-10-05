@@ -23,34 +23,24 @@ class Organizer < ApplicationRecord
 
     def url_protocol
         
-        if self.website_url != ""
-            unless self.website_url[/\Ahttp:\/\//] || self.website_url[/\Ahttps:\/\//]
-                self.website_url = "https://#{self.website_url}" 
-            end
+        unless self.website_url[/\Ahttp:\/\//] || self.website_url[/\Ahttps:\/\//]
+            self.website_url = "https://#{self.website_url}" if self.website_url
         end
         
-        if self.facebook_url != ""
-            unless self.facebook_url[/\Ahttp:\/\//] || self.facebook_url[/\Ahttps:\/\//]
-                self.facebook_url = "https://#{self.facebook_url}"
-            end
+        unless self.facebook_url[/\Ahttp:\/\//] || self.facebook_url[/\Ahttps:\/\//]
+            self.facebook_url = "https://#{self.facebook_url}" if self.facebook_url
         end
 
-        if self.instagram_url != ""
-            unless self.instagram_url[/\Ahttp:\/\//] || self.instagram_url[/\Ahttps:\/\//]
-                self.instagram_url = "https://#{self.instagram_url}"
-            end
+        unless self.instagram_url[/\Ahttp:\/\//] || self.instagram_url[/\Ahttps:\/\//]
+            self.instagram_url = "https://#{self.instagram_url}" if self.instagram_url
         end
 
-        if self.twitter_url != ""
-            unless self.twitter_url[/\Ahttp:\/\//] || self.twitter_url[/\Ahttps:\/\//]
-                self.twitter_url = "https://#{self.twitter_url}"
-            end
+        unless self.twitter_url[/\Ahttp:\/\//] || self.twitter_url[/\Ahttps:\/\//]
+            self.twitter_url = "https://#{self.twitter_url}" if self.twitter_url
         end
 
-        if self.linkedin_url != ""
-            unless self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//]
-                self.linkedin_url = "https://#{self.linkedin_url}"
-            end
+        unless self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//]
+            self.linkedin_url = "https://#{self.linkedin_url}" if self.linkedin_url
         end
 
         return self

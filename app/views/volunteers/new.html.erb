@@ -34,44 +34,48 @@
                 <%= f.hidden_field :user_id, value: current_user.id %>
                 <h4 class="text-primary">Volunteer Information</h4>
                 <div class="row">
-                    <div class="col-md-4"><h6 class="mt-2">Upload CV File</h6></div>
-                    <div class="col-md-8"><%= f.file_field :cv_file, class: "mt-2" %></div>
+                    <div class="col-md-3"><h6 class="mt-2">Description</h6></div>
+                    <div class="col-md-9"><%= f.text_area :description, placeholder: "Describe briefly about yourself", class: "form-control mt-2" %></div>
                 </div>
                 <div class="row">
-                  <div class="col-md-4"><h6 class="mt-2">Linked <i class="fab fa-linkedin-in"></i></h6></div>
-                  <div class="col-md-8"><%= f.text_field :linkedin_url, placeholder: "Linkedin URL", class: "form-control form-linkedin fab mt-2" %></div>
+                    <div class="col-md-3"><h6 class="mt-2">Upload CV File</h6></div>
+                    <div class="col-md-9"><%= f.file_field :cv_file, class: "mt-2" %></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3"><h6 class="mt-2">Linked <i class="fab fa-linkedin-in"></i></h6></div>
+                  <div class="col-md-9"><%= f.text_field :linkedin_url, placeholder: "Linkedin URL (Optional)", class: "form-control form-linkedin fab mt-2" %></div>
                 </div>
 
-                <h4 class="text-primary">Volunteer Causes</h4>
+                <h4 class="text-primary">Volunteer Causes</h4><h3 class="small">What areas that you are interested to help?</h3>
                 <div class="row">
-                  <% Cause.all.each_with_index do |cause, index| %>
+                  <% Cause.all.each_with_index do |c, i| %>
                   <div class="col-6 col-sm-6 col-md-4 col-lg-3">
-                  <%= check_box_tag "cause[volunteer_cause_joins_attributes][#{index}][cause_id]", cause.id, @volunteer.causes.include?(cause), id: dom_id(cause) %>
-                  <%= label_tag dom_id(cause), cause.name %>
+                  <%= check_box_tag "volunteer[volunteer_cause_joins_attributes][#{i}][cause_id]", c.id, @volunteer.causes.include?(c), id: dom_id(c) %>
+                  <%= label_tag dom_id(c), c.name %>
                   </div>
                   <% end %>
                 </div>
 
                 <br>
 
-                <h4 class="text-primary">Volunteer Skills</h4>
+                <h4 class="text-primary">Volunteer Skills</h4><h3 class="small">What are skills that you have for volunteering?</h3>
                 <div class="row">
-                  <% Skill.all.each_with_index do |skill, index| %>
-                  <div class="col-3">
-                  <%= check_box_tag "volunteer[volunteer_skill_joins_attributes][#{index}][skill_id]", skill.id, @volunteer.skills.include?(skill), id: dom_id(skill) %>
-                  <%= label_tag dom_id(skill), skill.name %>
+                  <% Skill.all.each_with_index do |s, i| %>
+                  <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                  <%= check_box_tag "volunteer[volunteer_skill_joins_attributes][#{i}][skill_id]", s.id, @volunteer.skills.include?(s), id: dom_id(s) %>
+                  <%= label_tag dom_id(s), s.name %>
                   </div>
                   <% end %>
                 </div>
 
                 <br>
 
-                <h4 class="text-primary">Volunteer Professions</h4>
+                <h4 class="text-primary">Volunteer Professions</h4><h3 class="small">What are your profession?</h3>
                 <div class="row">
-                  <% Profession.all.each_with_index do |profession, index| %>
-                  <div class="col-3">
-                  <%= check_box_tag "profession[volunteer_profession_joins_attributes][#{index}][profession_id]", profession.id, @volunteer.professions.include?(profession), id: dom_id(profession) %>
-                  <%= label_tag dom_id(profession), profession.name %>
+                  <% Profession.all.each_with_index do |p, i| %>
+                  <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+                  <%= check_box_tag "volunteer[[volunteer_profession_joins_attributes][#{i}][profession_id]", p.id, @volunteer.professions.include?(p), id: dom_id(p) %>
+                  <%= label_tag dom_id(p), p.name %>
                   </div>
                   <% end %>
                 </div>
@@ -79,7 +83,7 @@
                 <br>
 
                 <div class="row justify-content-center">
-                  <%= f.submit "Submit New Project", class: "btn btn-primary" %>
+                  <%= f.submit "Submit New Volunteer", class: "btn btn-primary" %>
                 </div>
 
                 <br>
