@@ -13,6 +13,8 @@ class Organizer < ApplicationRecord
     validates :email, presence: true
     # validates :phone_number1, presence: true
 
+    enum type: ["Home", "Community", "Non-Profit Organization", "Others"]
+
     #carrierwave uploader
     mount_uploader :logo, LogoUploader
 

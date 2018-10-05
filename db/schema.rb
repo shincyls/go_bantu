@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
     t.float "latitude"
     t.float "longitude"
     t.integer "role", default: 1
+    t.string "slug"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
