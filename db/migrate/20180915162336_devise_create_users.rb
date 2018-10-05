@@ -26,6 +26,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       ## Website Role Admin/User
       t.integer :role, default: 1
+
+      # friendly_id
+      t.string :slug, unique: true
       
       ## Recoverable
       t.string   :reset_password_token

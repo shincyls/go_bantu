@@ -2,6 +2,7 @@ class OrganizersController < ApplicationController
     # Not organizer only can create new organization
     before_action :not_organizer!, only: [:new, :create]
     include OrganizersHelper
+    
     def new
         @organizer = Organizer.new
     end

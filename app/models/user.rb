@@ -2,19 +2,18 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-    # Include default devise modules. Others available are:
-    # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-    
-    devise :database_authenticatable, :registerable,
-           :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
+         #  for username and email login
+         attr_writer :login
+ 
     #Validate The Format and Presence of Required Information
     validates :email, uniqueness: {message: "Account already exists!"}, format: {with: /.+@.+\..+/, message: ": Please enter a valid email address."}, presence: {message: ": Please enter your email address."}
     
     validates :username, presence: :true, uniqueness: { case_sensitive: false }
     validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
-    
+    validate :validate_username #checking database for username
+
 
     validates :first_name, presence: {message: ": Please enter your first name."}
     validates :last_name, presence: {message: ": Please enter your last name."}
@@ -29,6 +28,12 @@ class User < ApplicationRecord
     has_one :donor
  
 
+
+     #  for friendly id
+    # extend FriendlyId
+    # friendly_id :full_name, use: :slugged
+    
+        
     # gecode required to set latitude and logitude
     geocoded_by :address
     after_validation :geocode, :if => :address_changed?
@@ -53,4 +58,30 @@ class User < ApplicationRecord
         first_name + " " + last_name
     end
         
+    # using username and email
+    def login
+        @login || self.username || self.email
+    end
+    
+    # login username and email
+    def self.find_first_by_auth_conditions(warden_conditions)
+        conditions = warden_conditions.dup
+        if login = conditions.delete(:login)
+            where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+        else
+            if conditions[:username].nil?
+             where(conditions).first
+            else
+             where(username: conditions[:username]).first
+            end
+        end
+    end
+
+    def validate_username
+        if User.where(email: username).exists?
+            errors.add(:username, :invalid)
+        end
+    end
+      
+     
 end
