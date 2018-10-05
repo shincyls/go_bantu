@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   root 'statics#index'
+  devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations'}
+  get 'users/profile/:id' => 'users#show' , :as => "user_profile"
+  ########## must keep on top #########################
 
   ########## causing errors on db:create #########################
   # devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations',omniauth_callbacks: 'users/omniauth_callbacks'}
-  devise_for :users, controllers: { sessions: 'users/sessions',registrations:'users/registrations'}
-  get 'users/profile/:id' => 'users#show' , :as => "user_profile"
 
   #*** without this in place this error undefined method `user_path for any links to volunteers,donors,users ***
   resources :users do
