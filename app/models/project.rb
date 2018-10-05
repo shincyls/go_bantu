@@ -39,13 +39,13 @@ class Project < ApplicationRecord
     
     # Gem pg_search for searhable columns
     include PgSearch
-    pg_search_scope :search_projects, against: [:title, :project_desc, :requirement_desc],
+    pg_search_scope :search_projects, against: [:title, :project_desc, :requirement_desc, :city, :state, :country],
     associated_against: { 
         skills: [:name, :description],
         professions: [:name, :description],
         causes: [:name, :description],
         categories: [:name, :description]},
-    using: [:tsearch]
+        using: [:tsearch]
 
     # Ge will_paginate for infiniate scrolling
     self.per_page = 8
@@ -59,7 +59,7 @@ class Project < ApplicationRecord
     end
 
     def volunteer_progress
-        progress = (self.volunteer_project_joins.count.to_f / self.volunteer_number.to_f) * 100
+        progress = (self.volunteer_project_joins.where(status: 'approved').count.to_f / self.volunteer_number.to_f) * 100
     end
 
 
@@ -71,13 +71,14 @@ class Project < ApplicationRecord
 
     # create string from form inputs to use with geocode
     def address
-        [address_1, city, state, country].compact.join(', ')
+        [address_1, address_2, city, state, country].compact.join(', ')
     end
 
     # if address changed update geocode
     def address_changed?
         address_1? || city_changed? || state_changed? || country_changed?
     end
+
 
 
 end

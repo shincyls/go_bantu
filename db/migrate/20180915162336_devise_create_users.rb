@@ -13,9 +13,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name, limit: 64
       t.string :phone_number, limit: 16
       t.date :birthday
-    
-      # friendly_id
-      t.string :slug, unique: true
 
       ## Location (temporary allow to key anything)
       t.string :address_1, limit: 64
@@ -37,8 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Rememberable
       t.datetime :remember_created_at
 
-      ## Images
-      t.string :images
+      ## avatar
       t.string :avatar
 
       ## Trackable

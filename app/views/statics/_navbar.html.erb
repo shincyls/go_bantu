@@ -1,3 +1,21 @@
+<style>
+/*can be removed if we dont like*/
+.navbar-nav .nav-item .nav-link:hover {
+      color: #f8ca23de;
+      -webkit-text-stroke-width: .5px;
+      -webkit-text-stroke-color: #00000047;
+  }
+.dropdown-item:hover, .dropdown-item:focus{
+  background-color: #f8ca23b8;
+  /*color: #f8ca23de*/
+}
+.badge-notify {
+    color: white;
+    background-color: #ffc10794;
+}
+
+</style>
+
 <header class="header-global">
     <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--not-bottom headroom--pinned headroom--not-top">
       <div class="container">
@@ -21,45 +39,80 @@
               </div>
             </div>
           </div>
+          
           <ul class="navbar-nav ml-lg-auto navbar-nav-hover">
             <li class="nav-item">
-              <%= link_to 'Projects', projects_path, class: "nav-link font-weight-bold" %>
+              <%= link_to 'Projects', projects_path, class: "nav-link" %>
             </li>
             <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to 'Talents', volunteers_path, class: "nav-link" %>
             </li>
+            <li class="nav-item">
+              
+            </li>
+            <% if !current_user.organizer.nil? %>
+              <% if project_volunteers.count > 0 %>
+                <li>
+                  
+                  <span class="badge badge-pill badge-notify" style="float:right;margin-bottom:-5px;"><%= project_volunteers.count %></span> 
+                  
+                  <%= link_to 'Requests', volunteer_approvals_path(current_user.organizer.id), class: "nav-link" %>
+                </li>
+              <% end %>
+            <% end %>
+
             <% if current_user.admin? %>
             <li class="nav-item">
-              <%= link_to 'Admin', rails_admin_path, class: "nav-link font-weight-bold" %>
+              <% if pending_projects > 0 %>
+              <span class="badge badge-pill badge-notify" style="float:right;margin-bottom:-5px;"><%= pending_projects %></span> 
+              <% end %>
+              <%= link_to 'Approvals', confirmations_projects_path, class: "nav-link" %>
+
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Admin', rails_admin_path, class: "nav-link" %>
             </li>
             <% end %>
             <% else %>
             <li class="nav-item">
-              <a class="nav-link font-weight-bold" data-toggle="modal" data-target="#modal-form" style="cursor: pointer;";>Login</a>
+              <a class="nav-link" data-toggle="modal" data-target="#modal-form" style="cursor: pointer;">Login</a>
             </li>     
             <% end %>
 
-          <% if user_signed_in? %>
+          
             <li class="nav-item dropdown">
-              <a class="nav-link" href="#" id="navbar-primary_dropdown_1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Started</a>
-              <div class="dropdown-menu dropdown-menu-right row" aria-labelledby="navbar-primary_dropdown_1">
+              <% if user_signed_in? %>
+
+              <% if current_user.avatar? %>
+                  <%= link_to image_tag(current_user.avatar_url, class: 'rounded-circle nav-img', width: '30', height: '30'), current_user, class: "nav-link", id: "navbar-dropdown", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
+                <% else %>
+                  <%= link_to current_user.first_name, "navbar-dropdown", class: "nav-link", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"}, role: "button", id: "navbar-dropdown"%>
+                </a>
+              <% end %>
+              
+              <div class="dropdown-menu" aria-labelledby="navbar-dropdown">
+                <span class="badge badge-pill badge-secondary">User</span>
                 <%= link_to 'Profile', user_profile_path(current_user), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>
+                <span class="badge badge-pill badge-secondary">Volunteer</span>
                 <% if !current_user.volunteer.present? %>
                 <%= link_to 'Be a Volunteer', new_volunteer_path, class: "dropdown-item" %>
                 <% else %>
                 <%= link_to 'Find a Project', projects_path, class: "dropdown-item" %>
                 <% end %>
                 <div class="dropdown-divider"></div>
+                <span class="badge badge-pill badge-secondary">Organizer</span>
                 <% if !current_user.organizer.present? %>
                 <%= link_to 'Be an Organizer', new_organizer_path, class: "dropdown-item" %>
                 <% else %>
+                <%= link_to 'My Organization', organizer_path(current_user.organizer.id), class: "dropdown-item" %>
                 <%= link_to 'Start a Project', new_project_path, class: "dropdown-item" %>
                 <% end %>
                 <div class="dropdown-divider"></div>
-                <%= link_to 'Logout as ' + current_user.username, destroy_user_session_path, method: :delete ,class: "dropdown-item" %>
+                <%= link_to 'Sign out', destroy_user_session_path,  method: :delete ,class: "dropdown-item" %>
               </div>
+
             </li>
           <% end %>
 

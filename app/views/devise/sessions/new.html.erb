@@ -3,12 +3,20 @@
 <h2 class="heading-title text-darker text-center mt-5">Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<<<<<<< HEAD
 
   <div class="form-group">
     <%= f.input :login,
                 required: false,
                 autofocus: true,
                 input_html: {class: "form-control border-black mb-4",placeholder:"Username OR Email"}, label: false%>
+=======
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+>>>>>>> db58cbfea6c5931c84f3e78c0566196d5998f1bc
     <%= f.input :password,
                 required: false,
                 input_html: { autocomplete: "current-password", class: "form-control border-black mb-4",placeholder:"Password"},
