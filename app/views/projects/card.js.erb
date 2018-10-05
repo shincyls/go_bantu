@@ -1,7 +1,7 @@
 $('#search').html("<%= j (render 'card') %>");
 $('.pagination a').attr('data-remote', 'true');
 <% if @projects.next_page %>
-    $('#load-more').html('<%= link_to 'Click To Load More', projects_path(:page => @projects.next_page), class: "btn btn-outline-bantu btn-lg", remote: true %>');
+    $('#load-more').html('<%= link_to 'Click To Load More', projects_path(:page => @projects.next_page), class: "btn btn-outline-bantu btn-xl", remote: true %>');
 <% else %>
     $('#load-more').html('<div class="alert alert-primary alert-dismissible fade show text-center mt-5" role="alert">No More Records, This Is The Bottom of Search!</div>');
 <% end %>

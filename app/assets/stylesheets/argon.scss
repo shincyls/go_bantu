@@ -4084,10 +4084,19 @@ fieldset:disabled a.btn
 {
     font-size: 1.25rem;
     line-height: 1.5;
-
+    
     padding: .875rem 1rem;
-
+    
     border-radius: .3rem;
+}
+
+.btn-xl,
+.btn-group-xl > .btn
+{
+    font-size: 1.25rem!important;
+    height: 45.5px!important;
+    margin-top: .5px!important;
+    padding-top: 7px!important;
 }
 
 .btn-sm,

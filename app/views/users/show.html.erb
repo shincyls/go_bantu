@@ -44,7 +44,7 @@
                     <br>
                     <!-- message notifiying user of currently matched/unmatched projects -->
                     <h6 class="text-uppercase text-bold text-center">
-                      <% if signed_in? && current_user == @user %>
+                      <% if user_signed_in? && current_user == @user %>
                         <% if @projects == [] %>
                           There are currently no projects matching your criteria.<br>
                           Please try updating your profile or try again later.

@@ -1,15 +1,7 @@
 <!-- Added in argon.css -->
 <!-- affect the rest -->
 
-<style>
 
-.btn {
-    font-size: 1.25rem!important;
-    height: 45.5px!important;
-    margin-top: .5px!important;
-    padding-top: 7px!important;
-}
-</style>
 
   <main>
     <div class="position-relative">
@@ -26,7 +18,7 @@
                     <%= form_tag card_projects_path, remote: true, method: 'get' do %>
                       <div class="input-group mb-4">
                         <%= text_field_tag :query, params[:query], class: "form-control",id:"rounded-form", placeholder: "Search a Project (eg: skills, professions, locations)" %>
-                        <button class="btn" id="search_button" type="submit">
+                        <button class="btn-xl" id="search_button" type="submit">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
@@ -63,7 +55,7 @@
       </div>
 
       <div class="row justify-content-center" id="load-more">
-        <%= link_to 'Click To Load More', projects_path(:page => @projects.next_page), class: "btn btn-outline-primary btn-lg mt-5", :remote => true %>
+        <%= link_to 'Click To Load More', projects_path(:page => @projects.next_page), class: "btn btn-outline-primary btn-xl mt-5", :remote => true %>
       </div>
 
     </section>
