@@ -152,9 +152,12 @@ class ProjectsController < ApplicationController
   end
 
   def is_organizer!
-   unless current_user.organizer
-      redirect_back(fallback_location: root_path)
-    end
+    if !current_user
+           redirect_to new_user_session_path, flash: { warning: "Login to host a project after become a organizer!" }
+    elsif  unless current_user.organizer
+          redirect_back(fallback_location: root_path)
+        end
+      end
   end
 
 end
