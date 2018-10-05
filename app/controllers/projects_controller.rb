@@ -13,8 +13,14 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    if current_user && current_user.organizer.present? 
+      @project = Project.new
+    else
+        redirect_to new_user_session_path, flash: { warning: "Login to host a project after become a organizer!" }
+    end
   end
+
+
 
   def create
     @project = Project.new(project_params)
@@ -146,7 +152,7 @@ class ProjectsController < ApplicationController
   end
 
   def is_organizer!
-    unless current_user.organizer
+   if current_user && current_user.organizer
       redirect_back(fallback_location: root_path)
     end
   end

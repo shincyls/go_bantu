@@ -7,8 +7,14 @@ class VolunteersController < ApplicationController
     end
 
     def new
-        @volunteer = Volunteer.new
+         # add validation
+        if current_user
+            @volunteer = Volunteer.new
+        else
+            redirect_to new_user_session_path, flash: { warning: "Login to become a volunteer!" }
+        end
     end
+
 
     def create
         #respond_to :html, :js
