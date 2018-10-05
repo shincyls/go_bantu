@@ -23,11 +23,12 @@ class Volunteer < ApplicationRecord
     mount_uploader :cv_file, AttachmentUploader
 
     include PgSearch
-    pg_search_scope :search_volunteers, associated_against: { 
-        user: [:username, :first_name, :last_name, :email, :city, :state, :country],
-        skills: [:name, :description],
-        professions: [:name, :description],
-        causes: [:name, :description]},
+    pg_search_scope :search_volunteers, against: [:description],
+        associated_against: { 
+            user: [:username, :first_name, :last_name, :email, :city, :state, :country],
+            skills: [:name, :description],
+            professions: [:name, :description],
+            causes: [:name, :description]},
         using: [:tsearch]
 
 
@@ -36,10 +37,10 @@ class Volunteer < ApplicationRecord
     end
 
     def url_protocol
-        if self.linkedin_url != ""
-            unless self.linkedin_url.present? && (self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//])
-                self.linkedin_url = "https://#{self.linkedin_url}"
-            end
+        if self.linkedin_url.present?
+        unless self.linkedin_url[/\Ahttp:\/\//] || self.linkedin_url[/\Ahttps:\/\//]
+            self.linkedin_url = "https://#{self.linkedin_url}" 
+        end
         end
         return self
     end

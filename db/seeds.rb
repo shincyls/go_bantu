@@ -70,24 +70,24 @@ Organizer.create!([
 
 # 1.3 When User Volunteered a project, he/she become volunteer
 Volunteer.create!([
-    {user_id: 1, linkedin_url: "www.google.com"}, #volunteer_id: 1
-    {user_id: 6, linkedin_url: "www.google.com"}, #volunteer_id: 2
-    {user_id: 7, linkedin_url: "www.google.com"}, #volunteer_id: 3
-    {user_id: 9, linkedin_url: "www.google.com"}, #volunteer_id: 4
+    {user_id: 1, description: "Nice to meet you", linkedin_url: "www.google.com"}, #volunteer_id: 1
+    {user_id: 6, description: "Nice to meet you", linkedin_url: "www.google.com"}, #volunteer_id: 2
+    {user_id: 7, description: "Nice to meet you", linkedin_url: "www.google.com"}, #volunteer_id: 3
+    {user_id: 9, description: "Nice to meet you", linkedin_url: "www.google.com"}, #volunteer_id: 4
     # ID: 5 - 17 are actual volunteers
-    {user_id: 10, linkedin_url: "www.google.com"},
-    {user_id: 11, linkedin_url: "www.google.com"},
-    {user_id: 12, linkedin_url: "www.google.com"},
-    {user_id: 13, linkedin_url: "www.google.com"},
-    {user_id: 14, linkedin_url: "www.google.com"},
-    {user_id: 15, linkedin_url: "www.google.com"},
-    {user_id: 16, linkedin_url: "www.google.com"},
-    {user_id: 17, linkedin_url: "www.google.com"},
-    {user_id: 18, linkedin_url: "www.google.com"},
-    {user_id: 19, linkedin_url: "www.google.com"},
-    {user_id: 20, linkedin_url: "www.google.com"},
-    {user_id: 21, linkedin_url: "www.google.com"},
-    {user_id: 22, linkedin_url: "www.google.com"}
+    {user_id: 10, description: "Nice to meet you", linkedin_url: "www.google.com"},
+    {user_id: 11, description: "Nice to meet you", linkedin_url: "www.google.com"},
+    {user_id: 12, description: "Nice to meet you", linkedin_url: "www.google.com"},
+    {user_id: 13, description: "Nice to meet you", linkedin_url: "www.google.com"},
+    {user_id: 14, description: "Nice to meet you", linkedin_url: "www.google.com"},
+    {user_id: 15, description: "Nice to meet you", linkedin_url: "www.google.com"},
+    {user_id: 16, description: "I'm Chong, I'm student from XXX, let me know if my skill able to help you", linkedin_url: "www.google.com"},
+    {user_id: 17, description: "I'm Aishah, nice to meet you", linkedin_url: "www.google.com"},
+    {user_id: 18, description: "I'm Dayvenn, i have experience with agriculture.", linkedin_url: "www.google.com"},
+    {user_id: 19, description: "Bernadette here, my pleasure to be able to help you", linkedin_url: "www.google.com"},
+    {user_id: 20, description: "This platform is good, contact me as long as i can help,", linkedin_url: "www.google.com"},
+    {user_id: 21, description: "My name is Maple, I'd happy to be able to help", linkedin_url: "www.google.com"},
+    {user_id: 22, description: "I'm Gabrielly, nice to meet you", linkedin_url: "www.google.com"}
 ])
   
 # 1.4 When User Donate a project, he/she become donor

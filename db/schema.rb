@@ -253,6 +253,7 @@ ActiveRecord::Schema.define(version: 2018_09_27_042047) do
 
   create_table "volunteers", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "description"
     t.string "cv_file"
     t.string "linkedin_url"
     t.datetime "created_at", null: false
