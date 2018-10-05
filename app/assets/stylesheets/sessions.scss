@@ -63,14 +63,31 @@
 }
 
 
-
 // index of static HOME page
 
 #rounded-form{
   border-radius: 50px 0 0 50px;
 
 }
+#border-box{
+  border: 2px solid black;
+  padding: 25px;
+  
+}
 
+.border-black{
+  border: 1px solid black;
+  
+}
+
+
+a.btn-white:hover,
+a.btn-white:focus,
+button.btn-white:hover,
+button.btn-white:focus
+{
+  border: 1px solid black;
+}
   
     #search_button{
       border: 2px solid #ffe121;

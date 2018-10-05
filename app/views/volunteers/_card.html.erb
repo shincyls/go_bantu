@@ -22,19 +22,18 @@
                     <div class="criteria">
                         <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
                         <div><% v.skills.each do |s| %>
-                        <span class="badge badge-pill badge-skill"><%= s.name %></span>
+                        <span class="badge badge-pill badge-primary"><%= s.name %></span>
                         <% end %></div>
                         </p>
                         <p class="display-6"><span class="badge badge-pill badge-secondary">Professions</span>
                         <div><% v.professions.each do |p| %>
-                        <span class="badge badge-pill badge-profession"><%= p.name %></span>
+                        <span class="badge badge-pill badge-info"><%= p.name %></span>
                         <% end %></div>
                         </p>
-                        <span class="badge badge-pill badge-secondary">Causes:</span>
-                        <p class="display-6">
-                        <% v.causes.each do |c| %>
-                            <span class="badge badge-pill badge-cause"><%= c.name %></span>
-                        <% end %>
+                        <!-- p class="display-6"><span class="badge badge-pill badge-secondary">Causes</span>
+                        <div><% v.user.causes.each do |c| %>
+                        <span class="badge badge-pill badge-default"><%= c.name %></span>
+                        <% end %></div -->
                         </p>
                     </div>
                 </div>

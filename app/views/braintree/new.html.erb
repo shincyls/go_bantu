@@ -15,7 +15,7 @@
         <%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "cardForm"} do |form| %>
         <h5 class="text-center text-uppercase">Donor Info</h5>
           Donation Amount
-          <%= form.text_field "amount", placeholder: "$50.00", type: "number", min: "10.00", max: "1000.00", step: ".25", label: "Donation Amount", class:"text-center form-control amount-field", style: "color: green;", value: "0.00" %>           
+          <%= form.text_field "amount", placeholder: "$50.00", type: "number", min: "10.00", max: "1000.00", step: ".25", label: "Donation Amount", class:"text-center form-control amount-field", style: "color: green;" %>           
           Email Address 
           <%= form.text_field "Email", class: "hosted-field form-control pt-1" %>
           First Name 

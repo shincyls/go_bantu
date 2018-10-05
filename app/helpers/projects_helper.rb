@@ -40,7 +40,7 @@ module ProjectsHelper
   # creates an array of matched projects that are approved based on cause
   def matched_cause(volunteer)
     matched_cause = []
-    volunteer.causes.each do |volunteer_cause|
+    volunteer.user.causes.each do |volunteer_cause|
       Cause.find_by(id: volunteer_cause.id).projects.where(status: 'approved').each do |project|
           matched_cause << project.id
       end
@@ -136,16 +136,25 @@ module ProjectsHelper
 
   # narrows array of matched volunteers based on cause
   def project_matched_cause(project)
-    @matched_volunteers = []
+    matched_users = []
     matched_cause = []
-
+    #find users with matched causes
     project.causes.each do |project_cause|
-      Cause.find_by(id: project_cause.id).volunteers.each do |volunteer|
-          matched_cause << volunteer.id
+      User.joins(:causes).where("causes.id = ?", project_cause.id).each do |user|
+        matched_users << user.id
       end
     end
 
-    if matched_cause.count > 0
+    if matched_users.count > 0
+      potentials = User.where(:id => matched_users)
+      #narrow to those that are volunteers
+      potentials.each do |x|
+        if x.volunteer
+          matched_cause << x.volunteer.id
+        else
+          @matched_volunteers = []
+        end  
+      end
       @matched_volunteers = Volunteer.where(:id => matched_cause)
     else
       @matched_volunteers = []
@@ -200,7 +209,7 @@ module ProjectsHelper
     @hundred = false    
     users = []
     volunteers.each do |volunteer|
-      users << volunteer.id
+      users << volunteer.user.id
     end
     # finde users geolacation to compare
     users = User.where(:id => users)
@@ -214,11 +223,6 @@ module ProjectsHelper
     else
       @seventy_five = true # 75% match
     end
-  end
-
-  # pending projects count for navbar
-  def pending_projects
-    Project.where(status: 'pending').count
   end
 end
 
