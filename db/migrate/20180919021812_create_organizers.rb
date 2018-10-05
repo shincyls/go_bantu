@@ -11,15 +11,15 @@ class CreateOrganizers < ActiveRecord::Migration[5.2]
       t.integer :type #community, home, organization
 
       ## Organization Link (if any)
-      t.string :website_url
-      t.string :facebook_url
-      t.string :instagram_url
-      t.string :twitter_url
-      t.string :linkedin_url
+      t.string :website_link
+      t.string :facebook_link
+      t.string :instagram_link
+      t.string :twitter_link
+      t.string :linkedin_link
 
       ## Location (temporary allow to key anything)
-      t.string :address_1, limit: 64
-      t.string :address_2, limit: 64
+      t.string :address_1, limit: 32
+      t.string :address_2, limit: 32
       t.string :postcode, limit: 5
       t.string :city #free to key-in
       t.string :state #select option

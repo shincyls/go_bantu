@@ -1,3 +1,16 @@
+<!-- message notifiying user of currently matched/unmatched projects -->
+<% if signed_in? %>
+  <% if current_user == @user %>
+    <center>
+      <h4 class="text-uppercase text-bold">
+        <% if @projects == [] %>
+          There are currently no projects matching your criteria. Please try updating your profile or try again later.
+        <% else %>
+          You have projects matching <%= @match_percent %> of your criteria.
+        <% end %>
+      </h4>
+    </center>
+
     <!-- 100% projects match  -->
     <% if !@hundred.nil? && @hundred != false %>
       <section class="section section-lg pt-lg-0">
@@ -80,3 +93,5 @@
         </div>
       </section>
     <% end %>
+   <% end %>
+  <% end %>

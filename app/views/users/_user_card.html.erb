@@ -28,6 +28,12 @@
                         <% end %>
                         </p>
 
+                        <span class="badge badge-pill badge-secondary">Causes:</span>
+                        <p class="display-6">
+                        <% v.user.causes.each do |c| %>
+                            <span class="badge badge-pill badge-default"><%= c.name %></span>
+                        <% end %>
+                        </p>
                     </div>
                 </div>
             </div>

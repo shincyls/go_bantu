@@ -1,4 +1,15 @@
-
+<style>
+.btn-yellow{
+    margin-left: -20px;
+    color: #f8ca23;;
+}
+.btn {
+    font-size: 1.25rem!important;
+    height: 45.5px!important;
+    margin-top: .5px!important;
+    padding-top: 7px!important;
+}
+</style>
   <main>
     <div class="position-relative">
       <section class="section section-lg section-shaped pb-250">
@@ -12,9 +23,9 @@
                   <div class="form-group ml-4 mr-4">
                     <%= form_tag card_volunteers_path, remote: true, method: 'get' do %>
                       <div class="input-group mb-4">
-                        <%= text_field_tag :query, params[:query], class: "form-control", id:"rounded-form",placeholder: "Search a Volunteer (eg: skills, professions, locations)" %>
+                        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search a Volunteer (eg: skills, professions, locations)" %>
             
-                        <button class="btn btn-yellow" id="search_button" type="submit">
+                        <button class="btn btn-yellow" type="submit">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>

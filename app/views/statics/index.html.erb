@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 $(window).scroll(function(){
   $('.background1').bgscroll({direction: 'top'});
@@ -5,12 +6,16 @@ $(window).scroll(function(){
 </script>
     
 <style media="screen">
+
   
   #search_button{
     border: 2px solid #000;
     border-left: none;
     
   }
+
+
+
 #map {
     min-height: 20rem;
     height: 100%;
@@ -70,92 +75,104 @@ $(window).scroll(function(){
       <br><br><br>
     </section>
 
+      
+      <!-- Our team -->
+    <section class="section section-lg pt-lg-0">
+   <div class="container " id="border-box">   
 
- 
-           
-  
-      <!-- shape Hero -->
-      <section class="section section-lg section-shaped pb-300 pt-4">
-       <div class="container ">
-        <div class="row text-center justify-content-center">
-          <div class="col-lg-10">
-              <h5 class="heading-title text-white pb-3"></h5>
+      <div class="row">
+          <div class="col-lg-12 text-center pb-3">
+              <h5 class="heading-title text-darker">Tech Players</h5>
+                <hr class="mt-1 mb-0 black" width="120px">                    
+              <p class="title text-dark">Our Technology Partners: Shin, Vix and Robert are graduates from Next Academy. With a heart for community projects, they have decided to hop on board with us as our tech partners!</p>
+              <p class="text-primary font-weight-bold">In programming and coding part</p>
           </div>
         </div>
-        </div>
 
-           
-           
-              
-           
- 
-
-   
-            
-        <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
-            <span></span>
-          <span></span>
-    
-          <span></span>
-          
-        </div>
-
-
-         <!-- SVG separator -->
-        <div class="separator separator-bottom separator-skew">
-          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
-          </svg>
-        </div>
-      </section>
-    </div>
-      <!-- Cards -->
-
-      
-      <!-- Cards for volunteer -->
-    <section class="section section-lg pt-lg-0 mt--200">
-      <div class="container">
         <div class="row justify-content-center">
+
+
+
+
           <div class="col-lg-12">
             <div class="row row-grid">
-
-
           <!-- Card 1 -->
               <div class="col-lg-4">
                 <div class="card card-lift--hover shadow border-0 h-100">
-                  <div class="card-body">
-                    <div class="card-profile-image rounded-circle mb-4">
-                      <%= image_tag "https://scontent.fkul13-1.fna.fbcdn.net/v/t1.0-9/42770975_1257972507678283_27658219291672576_n.jpg?_nc_cat=108&oh=5b2274986cc3c553cc61bc918e03bbf4&oe=5C59A466", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);",alt: "First slide" %>
+                   <div class="card-image mb-4">
+                      <%= image_tag "landing/robert.jpg", class: "img-fluid", alt: "Raised circle image" %>
                     </div>
-                    <h6 class="text-default font-weight-bold text-uppercase">First Volunteering project at Calvaryland</h6>
-                    <p class="description mt-3">Calvaryland Social Care Centre Papaya Plantation. Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
+                  <div class="card-body">
+                      <h6 class="text-darker font-weight-bold text-uppercase text-center">Robert</h6>
+                      <hr class="mt-1 mb-0 black" width="114px">                    
+                      <p class="text-body mt-3">Give me some gibberish , btw this is a bit gay</p>
                   </div>
+                     <div class="text-center mb-3 btn-wrapper">
+                          <a target="_blank" href="https://www.instagram.com/gobantu" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Follow Me">
+                            <i class="fa fa-instagram"></i>
+                          </a>
+                          <a target="_blank" href="https://www.facebook.com/gobantu.my" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Chat Me">
+                          <i class="fa fa-facebook"></i>
+                          </a>
+                          <a target="_blank" href="https://www.linkedin.com/company/gobantu-my" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Hire Me!">
+                            <i class="fa fa-linkedin"></i>
+                          </a>
+                        </div>
                 </div>
               </div>
+                 
+            
+             
+             
 
           <!-- Card 2 -->
               <div class="col-lg-4">
                 <div class="card card-lift--hover shadow border-0 h-100">
-                  <div class="card-body">
-                    <div class="card-profile-image rounded-circle mb-4">
-                      <%= image_tag "landing/team1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
-                    </div>
-                    <h6 class="text-default font-weight-bold text-uppercase">THE GOBANTU FOUNDERS</h6>
-                    <p class="description mt-3"> Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
-                    
+                    <div class="card-image mb-4 p-0">
+                      <%= image_tag "landing/shin.jpg", class: "img-fluid", alt: "Raised circle image" %>
                   </div>
+                   <div class="card-body">
+                    <h6 class="text-darker font-weight-bold text-uppercase text-center">Shin and his Wife</h6>
+                    <hr class="mt-1 mb-0 black" width="114px">                    
+                    <p class="text-body mt-3">Give me some gibberish</p>
+                  </div>
+                       <div class="text-center mb-3 btn-wrapper">
+                          <a target="_blank" href="https://www.instagram.com/gobantu" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Follow Me">
+                            <i class="fa fa-instagram"></i>
+                          </a>
+                          <a target="_blank" href="https://www.facebook.com/gobantu.my" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Chat Me">
+                          <i class="fa fa-facebook"></i>
+                          </a>
+                          <a target="_blank" href="https://www.linkedin.com/company/gobantu-my" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Hire Me!">
+                            <i class="fa fa-linkedin"></i>
+                          </a>
+                        </div>
                 </div>
               </div>
+                  
+                    
+          <!-- Card 3 -->
               <div class="col-lg-4">
                 <div class="card card-lift--hover shadow border-0 h-100">
-                  <div class="card-body">
-                   <div class="card-profile-image rounded-circle mb-4">
-                      <%= image_tag "landing/event1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
+                    <div class="card-image mb-1 p-0">
+                      <%= image_tag "landing/vix.jpeg", class: "img-fluid",alt: "First slide" %>
                     </div>
-                    <h6 class="text-default font-weight-bold text-uppercase">INTERVIEW WITH WELFARE HOME MALAYSIA</h6>
-                    <p class="description mt-3"> Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
-                    
+                  <div class="card-body text-center">
+                    <h6 class="text-darker font-weight-bold text-uppercase">Vixtrum Choo</h6>
+                    <hr class="mt-1 mb-0 black" width="114px">                    
+                    <p class="text-body mt-3">UI UX Web Developer</p>
                   </div>
+                       <div class="text-center mb-3 btn-wrapper">
+                          <a target="_blank" href="https://www.instagram.com/gobantu" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Follow Me">
+                            <i class="fa fa-instagram"></i>
+                          </a>
+                          <a target="_blank" href="https://www.facebook.com/gobantu.my" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Chat Me">
+                          <i class="fa fa-facebook"></i>
+                          </a>
+                          <a target="_blank" href="https://www.linkedin.com/in/vix-trum-689394171/" class="btn btn-white btn-icon-only rounded-circle m-2" data-toggle="tooltip" data-original-title="Hire Me!">
+                            <i class="fa fa-linkedin"></i>
+                          </a>
+                        </div>
                 </div>
               </div>
             </div>
@@ -163,102 +180,7 @@ $(window).scroll(function(){
         </div>
       </div>
     </section>
-
-
-
-
-    <!-- Volunteer bg  -->
-    <section class="section section-components pb-lg bg-gradient-secondary">
-        <div class="container py-md">
-        <div class="row justify-content-between align-items-center">
-          <div class="col-lg-5 mb-5 mb-lg-0">
-            <div class="rounded shadow-lg">
-              <div id="carousel_example" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel_example" data-slide-to="1"></li>
-                </ol>
-                  <div class="carousel-inner">
-                 
-                    <div class="carousel-item active">
-                      <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: 400px;"%>
-                    </div>
-                    <div class="carousel-item">
-                      <%= image_tag "https://scontent.fkul8-1.fna.fbcdn.net/v/t1.0-9/42319585_1253288171480050_6140791940280483840_n.jpg?_nc_cat=108&oh=503398df5d0cf65a5f028a9a9509bf8b&oe=5C608268", class: "img-fluid", alt: "Second slide" ,style:"width: 100%; height: 400px;"%>
-                    </div>
-                  </div>
-             
-                <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel_example" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 mb-lg-auto">
-            <div class="card shadow border-0 p-5">
-              <h3 class="heading-title text-darker text-center">Volunteer Testimony</h3><hr class="mt-1">
-              <p class="text-dark font-weight-bold"><strong class="text-primary">Nessa Lee Ni Xuan</strong>, volunteer at Bandar Sunway Gospel Centre Free English Tuition for Disadvantaged Kids"</p>
-              <p class="text-default font-weight-bold">'It was a great experience to volunteer via GoBantu. The sessions were conducted in an organised manner and the teaching materials were all well-prepared. More importantly, it is truly fulfilling to be able to put a smile on the face of the children. Every step, however small, does make a difference. I would really recommend this programme to my friends.'</p>
-            </div>
-          </div>
-        </div>
-      </div>
-   
-</section>
-
-
-  <!-- our projects -->
-      <section class="section section-shaped">
-    <div class="shape shape-style-1 shape-dark">
-    </div>
-      <div class="container py-md">
-        <div class="row justify-content-between align-items-center">
-          <div class="col-lg-6 mb-lg-0">
-            <h1 class="text-white font-weight-light">Our Projects</h1>
-            <h4 class="lead text-white mt-4">We provide a wide range of volunteering opportunities - from providing tuition, to accounting, digital marketing, and even papaya farming. Register your skills and expertise with us, and we will match you to the perfect beneficiary!</h4>
-          </div>
-
-          <div class="col-lg-6 mb-lg-auto">
-            <div class="rounded shadow-lg overflow-hidden">
-              <div id="carousel" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel_example" data-slide-to="1"></li>
-                  <li data-target="#carousel_example" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <%= image_tag "brand/carousel1.png", class: "img-fluid", alt: "Raised circle image" %>
-                  </div>
-                  <div class="carousel-item">
-                    <%= image_tag "brand/carousel2.png", class: "img-fluid", alt: "Second slide" %>
-                  </div>
-                  <div class="carousel-item">
-                    <%= image_tag "brand/carousel3.png", class: "img-fluid", alt: "third slide" %>
-                  </div>
-                </div>
-                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-      </section>
-    </div>
-    <!-- -->
+            
 
 
 
@@ -405,3 +327,192 @@ $(window).scroll(function(){
 
 
       </div>
+
+
+    <!-- Volunteer bg  -->
+    <section class="section section-components pb-lg bg-gradient-secondary">
+        <div class="container py-md">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-5 mb-5 mb-lg-0">
+            <div class="rounded shadow-lg">
+              <div id="carousel_example" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel_example" data-slide-to="1"></li>
+                </ol>
+                  <div class="carousel-inner">
+                 
+                    <div class="carousel-item active">
+                      <%= image_tag "landing/testimonial1.png", class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: 400px;"%>
+                    </div>
+                    <div class="carousel-item p-5">
+                      <%= image_tag "https://scontent.fkul8-1.fna.fbcdn.net/v/t1.0-9/42319585_1253288171480050_6140791940280483840_n.jpg?_nc_cat=108&oh=503398df5d0cf65a5f028a9a9509bf8b&oe=5C608268", class: "img-fluid", alt: "Second slide" ,style:"width: 100%; height: 400px;"%>
+                    </div>
+                  </div>
+             
+                <a class="carousel-control-prev" href="#carousel_example" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel_example" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-lg-auto">
+            <div class="card shadow border-0 p-5">
+              <h3 class="heading-title text-darker text-center">Volunteer Testimony</h3><hr class="mt-1">
+              <p class="text-dark font-weight-bold"><strong class="text-primary">Nessa Lee Ni Xuan</strong>, volunteer at Bandar Sunway Gospel Centre Free English Tuition for Disadvantaged Kids"</p>
+              <p class="text-default font-weight-bold">'It was a great experience to volunteer via GoBantu. The sessions were conducted in an organised manner and the teaching materials were all well-prepared. More importantly, it is truly fulfilling to be able to put a smile on the face of the children. Every step, however small, does make a difference. I would really recommend this programme to my friends.'</p>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+</section>
+
+           
+  
+      <!-- shape Hero -->
+      <section class="section section-lg section-shaped pb-300 pt-4">
+       <div class="container ">
+        <div class="row text-center justify-content-center">
+          <div class="col-lg-10">
+              <h5 class="heading-title text-white pb-3">Our Past Projects</h5>
+          </div>
+        </div>
+        </div>
+
+           
+        <div class="shape shape-style-1 shape-default" style="background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);">
+            <span></span>
+          <span></span>
+    
+          <span></span>
+          
+        </div>
+
+
+         <!-- SVG separator -->
+        <div class="separator separator-bottom separator-skew">
+          <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+          </svg>
+        </div>
+      </section>
+    </div>
+      <!-- Cards -->
+
+      
+      <!-- Cards for volunteer -->
+    <section class="section section-lg pt-lg-0 mt--200">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="row row-grid">
+
+
+          <!-- Card 1 -->
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0 h-100">
+                  <div class="card-body">
+                    <div class="card-profile-image rounded-circle mb-4">
+                      <%= image_tag "https://scontent.fkul13-1.fna.fbcdn.net/v/t1.0-9/42770975_1257972507678283_27658219291672576_n.jpg?_nc_cat=108&oh=5b2274986cc3c553cc61bc918e03bbf4&oe=5C59A466", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);",alt: "First slide" %>
+                    </div>
+                    <h6 class="text-default font-weight-bold text-uppercase">First Volunteering project at Calvaryland</h6>
+                    <p class="description mt-3">Calvaryland Social Care Centre Papaya Plantation. Do join us for our next Talent contribution to the Homes in need. #GoBantu</p>
+                  </div>
+                </div>
+              </div>
+
+          <!-- Card 2 -->
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0 h-100">
+                  <div class="card-body">
+                    <div class="card-profile-image rounded-circle mb-4">
+                      <%= image_tag "landing/team1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
+                    </div>
+                    <h6 class="text-default font-weight-bold text-uppercase">THE GOBANTU FOUNDERS</h6>
+                    <p class="description mt-3"> We are a team of 4 strangers from different walks of life, who came together under the Youth Leadership Academy by McKinsey & Company. With the help of our mentors from McKinsey & Company as well as Google Malaysia, we embarked on this journey of establishing GoBantu.</p>
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="card card-lift--hover shadow border-0 h-100">
+                  <div class="card-body">
+                   <div class="card-profile-image rounded-circle mb-4">
+                      <%= image_tag "landing/event1.png", class: "img-fluid rounded-circle", style:"margin-top: -20vh;  box-shadow: 10px 16px 24px 3px rgba(0, 0, 0, 0.20), 0 6px 30px 5px rgba(0, 0, 0, 0.22), 0 8px 10px -5px rgba(0, 0, 0, 0.32);", alt: "Raised circle image" %>
+                    </div>
+                    <h6 class="text-default font-weight-bold text-uppercase">INTERVIEW WITH WELFARE HOME MALAYSIA</h6>
+                    <p class="description mt-3">Shelter Home Malaysia was one of the many homes we interviewed. These interviews allowed us to identify several problems faced by homes: the lack of long-term and skilled volunteers, as well as the lack of unrestricted funding. GoBantu was hence established to serve as an end-to-end platform to target these pertinent administrative problems faced by welfare homes.</p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+  <!-- our projects -->
+      <section class="section section-shaped">
+    <div class="shape shape-style-1 shape-dark">
+    </div>
+      <div class="container py-md">
+        <div class="row justify-content-between align-items-center">
+          <div class="col-lg-6 mb-lg-0">
+            <h1 class="text-white font-weight-light">Our Projects</h1>
+            <h4 class="lead text-white mt-4">We provide a wide range of volunteering opportunities - from providing tuition, to accounting, digital marketing, and even papaya farming. Register your skills and expertise with us, and we will match you to the perfect beneficiary!
+ </h4>
+          </div>
+
+          <div class="col-lg-6 mb-lg-auto">
+            <div class="rounded shadow-lg overflow-hidden">
+              <div id="carousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel_example" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel_example" data-slide-to="1"></li>
+                  <li data-target="#carousel_example" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner h-100">
+                  <div class="carousel-item active p-2 pb-0">
+                    <%= image_tag "landing/google.png" , class: "img-fluid", alt: "First slide" ,style:"width: 100%;height: 346px;"%>
+                  </div>
+                  <div class="carousel-item">
+                    <%= image_tag "landing/magic.png", class: "img-fluid", alt: "Second slide" %>
+                  </div>
+                  <div class="carousel-item">
+                    <%= image_tag "brand/carousel3.png", class: "img-fluid", alt: "third slide" %>
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </section>
+    </div>
+    <!-- -->
+
+   
+    
+            
+
+             
+           
