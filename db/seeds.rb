@@ -65,7 +65,7 @@ Organizer.create!([
     {user_id: 23, company_name: "Sunway Gospel", email: "orgnizer1@gobantu.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"},
     {user_id: 24, company_name: "KALSOM Movement", email: "orgnizer2@gobantu.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"},
     {user_id: 25, company_name: "Calvalry Land", email: "orgnizer3@gobantu.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", linkedin_url: "www.google.com"},
-    {user_id: 26, company_name: "Shelter", email: "orgnizer4@gobantu.com",  address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com"}
+    {user_id: 26, company_name: "Shelter", email: "orgnizer4@gobantu.com",  description: "Former residents – left shelter home 2 & 3 – college? Jobs? 11 of them – 100% scholarship, based on merits, partial scholarship, PTPTN loan, shelter will fill in the gap. ", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com"}
 ])
 
 # 1.3 When User Volunteered a project, he/she become volunteer
@@ -336,12 +336,13 @@ VolunteerSkillJoin.create!([
     {volunteer_id: 9, skill_id: 1, remarks: "Accounting and Auditor"},
     {volunteer_id: 10, skill_id: 17, remarks: "Motivational Speech"},
     {volunteer_id: 11, skill_id: 17, remarks: "English, Strategy Development"},
-    {volunteer_id: 12, skill_id: 2, remarks: "Common plantations and Agriculture consultant"},
-    {volunteer_id: 13, skill_id: 17, remarks: "Teacher"},
+    {volunteer_id: 12, skill_id: 13, remarks: "Common plantations and Agriculture consultant"},
+    {volunteer_id: 13, skill_id: 2, remarks: "Teacher"},
     {volunteer_id: 14, skill_id: 19, remarks: "Digital Marketing Facebook, Ad Words, etc"},
     {volunteer_id: 15, skill_id: 8, remarks: "Physiotheraphy"},
     {volunteer_id: 15, skill_id: 12, remarks: "Physiotheraphy"},
-    {volunteer_id: 16, skill_id: 17, remarks: "Languages and Mathematics"}
+    {volunteer_id: 16, skill_id: 17, remarks: "Languages and Mathematics"},
+    {volunteer_id: 17, skill_id: 12, remarks: "Languages and Mathematics"}
 
 ])
 
@@ -359,8 +360,8 @@ VolunteerProfessionJoin.create!([
     {volunteer_id: 9, profession_id: 4, remarks: "Accounting"},
     {volunteer_id: 10, profession_id: 24, remarks: "Civil Engineering"},
     {volunteer_id: 11, profession_id: 7, remarks: "Strategy Consultant"},
-    {volunteer_id: 12, profession_id: 3, remarks: "Agriculturist"},
-    {volunteer_id: 13, profession_id: 16, remarks: "Lawyer"},
+    {volunteer_id: 12, profession_id: 3, remarks: "Lawyer"},
+    {volunteer_id: 13, profession_id: 2, remarks: "Agriculturist"},
     {volunteer_id: 14, profession_id: 16, remarks: "Lawyer"},
     {volunteer_id: 15, profession_id: 27, remarks: "Digital Marketer"},
     {volunteer_id: 16, profession_id: 21, remarks: "Physiotheraphy"},

@@ -10,9 +10,12 @@
                 <div class="card-body-area">
                     <%= link_to p.title, project_path(p.id), target:"_blank" %>
                     <p class="small"><%= p.project_desc %></p>
+                    <% p.categories.each do |c| %>
+                        <span class="badge badge-pill badge-info"><%= c.name %></span>
+                    <% end %>
 
                     <% if p.volunteer && p.volunteer_number != 0 %>
-                    <div id="donation-section">
+                    <div class="volunteer-section">
                         <div class="progress-wrapper">
                             <div class="progress-info">
                                 <div>
@@ -20,9 +23,9 @@
                                     <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, interested_volunteer_project_joins_path(volunteer: current_user.volunteer.id, project: p.id), method: "post", remote: true, id: "project#{p.id}", class: "badge badge-gobantu"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, interested_volunteer_project_joins_path(volunteer: current_user.volunteer.id, project: p.id), method: "post", remote: true, id: "project#{p.id}", class: "badge badge-gobantu", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Volunteer to this project"%>
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Be a volunteer"%>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.where(status: 'approved').count.to_s%> / <%=p.volunteer_number.to_s%></span>
                                     <% end %>
@@ -57,7 +60,7 @@
                     <% end %>
                     
                     <% if p.finance_donate && p.fund_amount != 0 %>
-                    <div id="donation-section">
+                    <div class="donation-section">
                         <div class="progress-wrapper">
                             <div class="progress-info">
                                 <div>
@@ -65,7 +68,7 @@
                                     <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                 <% else %>
                                     <% if signed_in? %>
-                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-gobantu", target: "_blank" %>
+                                    <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-gobantu", target: "_blank", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Donate to this project" %>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Donate">Raised RM <%=p.donations.sum(:amount).round.to_s%> / RM <%=p.fund_amount.round.to_s%> </span>
                                     <% end %>

@@ -84,8 +84,7 @@
                         <br>
                         <h4>Project Needs</h4>
                         <% if p.volunteer && p.volunteer_number != 0 %>
-                        <div id="volunteer-section">
-
+                        <div class="volunteer-section">
                             <div class="progress-wrapper">
                                 <div class="progress-info">
                                 <% if p.volunteer_progress >= 100 %>
@@ -93,9 +92,9 @@
                                 <% else %>
                                  <!-- Volutneer now button  -->
                                     <% if signed_in? && current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, interested_volunteer_project_joins_path(volunteer: current_user.volunteer.id, project: p.id), method: "post", remote: true, id: "project#{p.id}", class: "badge badge-gobantu"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, interested_volunteer_project_joins_path(volunteer: current_user.volunteer.id, project: p.id), method: "post", remote: true, id: "project#{p.id}", class: "badge badge-gobantu", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Volunteer to this project"%>
                                     <% elsif signed_in? && !current_user.volunteer.present? %>
-                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Be a Volunteer"%>
                                     <% else %>
                                     <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.where(status: 'approved').count.to_s%> / <%=p.volunteer_number.to_s%></span>
                                     <% end %>
@@ -132,14 +131,14 @@
                         <% end %>
                         
                         <% if p.finance_donate && p.fund_amount != 0 %>
-                        <div id="donation-section">
+                        <div class="donation-section">
                             <div class="progress-wrapper">
                                 <div class="progress-info">
                                     <% if p.fund_progress >= 100 %>
                                         <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
                                     <% else %>
                                         <% if signed_in? %>
-                                        <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-gobantu display-4 large", target: "_blank", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Donate Now" %>
+                                        <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-gobantu display-4 large", target: "_blank", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Donate to this project" %>
                                         <% else %>
                                         <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Donate">Raised RM <%=p.donations.sum(:amount).round.to_s%> / RM <%=p.fund_amount.round.to_s%> </span>
                                         <% end %>
@@ -161,55 +160,37 @@
                 </div>
             </div>
         </div>
-
-        <div class="row">
-            <% if signed_in? %>
-                <% if @verify_organizers %>
-
-                    <% if !@hundred.nil? && @hundred != false %>
-                    <section class="section section-lg pt-lg-0">
-                        <div class="container">
-                            <center>
-                                <h5 class="text-uppercase font-weight-bold">
-                                Volunteers with a 100% match for your project.
-                                </h5>
-                            </center>
-                            <div class="row justify-content-center mt-4">
-                                <div class="col-lg-12">
-                                    <div class="row row-grid" id="search">
-                                        <%= render partial: 'users/user_card' %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <% end %>
-
-                    <% @matched_volunteers = @volunteers_seventy_five %>
-                    <% if !@matched_volunteers.nil? && @matched_volunteers.count > 0 %>
-                    <section class="section section-lg pt-lg-0">
-                        <div class="container">
-                            <center>
-                                <h5 class="text-uppercase font-weight-bold">
-                                Volunteers with a 75% match for your project.
-                                </h5>
-                            </center>
-                            <div class="row justify-content-center mt-4">
-                                <div class="col-lg-12">
-                                    <div class="row row-grid" id="search">
-                                        <%= render partial: 'users/user_card' %>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <% end %>
-
-                <% end %>
-            <% end %>
-        </div>
-
     </div>
+
+    <% if signed_in? %>
+    <div class="container p-4 shadow rounded mb-3">
+        <% if @verify_organizers %>
+
+            <% if !@hundred.nil? && @hundred != false %>
+                <% @volunteers = @hundred %>
+                <div class="row">
+                    <h4 class="d-block">Volunteer Matched 100%</h4>
+                </div>
+                <div class="row">
+                    <%= render partial: 'volunteers/card' %>
+                </div>
+            <% end %>
+
+            <% @volunteers = @volunteers_seventy_five %>
+            <% if !@volunteers.nil? && @matched_volunteers.count > 0 %>
+                <div class="row">
+                    <h4 class="d-block">Volunteer Matched with 75%</h4>
+                </div>
+                <div class="row">
+                    <%= render partial: 'volunteers/card' %>
+                </div>
+            <% end %>
+
+        <% end %>
+    </div>
+    <% end %>
+
+    
 
 
   </main>
