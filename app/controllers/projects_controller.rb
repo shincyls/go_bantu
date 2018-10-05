@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    if current_user && current_user.organizer
+    if current_user && current_user.organizer.present?
       @project = Project.new
     else
         redirect_to new_user_session_path, flash: { warning: "Login to host a project after become a organizer!" }
