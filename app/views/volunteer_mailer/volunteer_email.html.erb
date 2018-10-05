@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  	
+		<div>
+			<h5><%= @user.first_name %> <%= @user.last_name %></h5>
+		    <p>Your request to be a volunteer for project, <%= @project.title %> has been reviewed by our staff and after thorough consideration, we are
+		    <% if @interest.approved? %> 
+		    	pleased to inform that you been approved.</p><br>
+		    <h5 class="text-muted">You can now view information on your new project in the link below.</h5> 
+			<%= link_to 'My Project', project_url(@project.id), class: "btn btn-primary" %>  
+		    <% else %> 
+				sorry to inform you that this projects volunteer positions have been filled. <br>
+				</p>
+				<h5 class="text-muted">You can find projects that meet your criteria in the link below.</h5> 
+				<%= link_to 'GoBantu Projects', projects_url, class: "btn btn-primary" %> 
+			<% end %>
+			
+		</div>
+	
+  </body>
+</html>

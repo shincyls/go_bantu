@@ -1,120 +1,215 @@
-<div class="card card-highlight--hover shadow mb-3", id="project-<%=@project.id%>">
-    <% if @project.image_url %>
-        <%= image_tag(@project.image_url, class: "img-fluid rounded shadow") %>
-    <% else %>
-        <%= image_tag("brand/coverphoto.svg") %>
-    <% end %>
-    <div class="card-body">
-        <div class="card-body-area">
-            <%= link_to @project.title, project_path(@project.id), target:"_blank" %>
-            <p class="small"><%= @project.project_desc %></p>
+  <main>
+    <% p = @project %>
+    <div class="position-relative">
+    <section class="section section-lg section-shaped">
+        <div class="shape shape-style-1 shape-primary"></div>
+        <div class="row justify-content-center">
+            <h2 class="text-white display-1"><%=p.title%></h2>
+        </div>
+    </section>
 
-            <% if @project.volunteer && @project.volunteer_number != 0 %>
-                <div id="donation-section">
-                    <div class="progress-wrapper">
-                        <div class="progress-info">
-                            <div>
-                            <% if @project.volunteer_progress >= 100 %>
-                                <span class="badge badge-success">Successfully Volunteered! <%=@project.volunteer_number%></span>
-                            <% else %>
-                                <%= link_to "Volunteer " + @project.volunteer_project_joins.count.to_s + " / " + @project.volunteer_number.to_s, "#", class: "badge badge-primary"%>
-                            <% end %>
-                            </div>
-                            <div class="progress-percentage">
-                                <span><%=@project.volunteer_progress.round%>%</span>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= @project.volunteer_progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @project.volunteer_progress %>%;"></div>
-                        </div>
-                        <div class="criteria">
-                            <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
-                                <% @project.skills.each do |s| %>
-                                    <span class="badge badge-pill badge-primary"><%= s.name %></span>
+    <div class="container mt-3 mb-3">
+        <div class="row">
+            <div class="col-md-6 p-4 shadow rounded">
+                <% if p.image_url %>
+                <%= image_tag(p.image_url, class: "card-img-top") %>
+                <% else %>
+                <%= image_tag("brand/carousel" + rand(1..3).to_s + ".png", style: "width:100%;", class: "card-img-top") %>
+                <% end %>
+
+                <div id="owner-profile" class="row mt-3 ml-3">
+                    <div class="col-4">
+                        <% if p.organizers.first.logo? %>
+                        <%= image_tag(p.organizers.first.logo_url, class: "img-fluid rounded-circle", style: "width:4rem;height:4rem") %><br>
+                        <% else %>
+                        <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle", style: "width:4rem;height:4rem" %>
+                        <% end %>
+                    </div>
+                    <div class="col-8">
+                        <h6>Project Owner</h6>
+                        <p><%= link_to p.organizers.first.company_name, organizer_path(p.organizers.first.id), target:"_blank" %></p>
+                        <% if p.organizers.first.website_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.website_url %>"><i class="fas fa-globe"></i></a>
+                        <% end %>
+                        <% if p.organizers.first.facebook_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.facebook_url %>"><i class="fa fa-facebook"></i></a>
+                        <% end %>
+                        <% if p.organizers.first.instagram_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.instagram_url %>"><i class="fa fa-instagram"></i></a>
+                        <% end %>
+                        <% if p.organizers.first.twitter_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.twitter_url %>"><i class="fa fa-twitter"></i></a>
+                        <% end %>
+                        <% if p.organizers.first.linkedin_url.present? %>
+                        <a target="_blank" href="<%= p.organizers.first.linkedin_url %>"><i class="fa fa-linkedin"></i></a>
+                        <% end %>
+                        <% if signed_in? %>
+                        <% if @verify_organizers && p.donations.any? %>
+                        <%= link_to " Donations ", project_donations_path(p.id), class: "btn btn-sm btn-success mt-1 mr-2" %>
+                        <% end %><% end %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 p-4 shadow rounded">
+                <div class="card-body">
+                    <div class="card-body-area">
+                        <%= link_to p.title, project_path(p.id), target:"_blank" %>
+                        <p class="small"><%= p.project_desc %></p>
+                        <% p.categories.each do |c| %>
+                            <span class="badge badge-pill badge-gobantu small mb-3"><%= c.name %></span>
+                        <% end %>
+                      
+                        <h4>Project Information</h4>
+                        <div>   
+                            <span class="badge badge-pill badge-info">Phone Number</span> 
+                            <span class="small"><%= p.contact_person_1 %> <%= p.contact_number_1 %>
+                                <% if p.contact_number_2 %>
+                                <%= " / " + p.contact_person_2 + " " + p.contact_number_2  %>
                                 <% end %>
-                            </p>
-                            <p class="display-6"><span class="badge badge-pill badge-secondary">Professions</span>
-                            <% @project.professions.each do |p| %>
-                                <span class="badge badge-pill badge-info"><%= p.name %></span>
-                            <% end %>
-                            </p>
-                            <p class="display-6"><span class="badge badge-pill badge-secondary">Causes</span>
-                            <% @project.causes.each do |c| %>
-                                <span class="badge badge-pill badge-default"><%= c.name %></span>
-                            <% end %>
-                            </p>
+                            </span> 
                         </div>
-                    </div>
-                </div>
-            <% end %>
+                        <div>   
+                            <span class="badge badge-pill badge-info">Address</span> 
+                            <span class="small"><%= p.address_1 %> <%= p.address_2 %></span> 
+                        </div>
+                        <div>
+                            <span class="badge badge-pill badge-info">Location</span> 
+                            <span class="small"><%= p.city %>, <%= p.state %></span> 
+                        </div>
+                        <div>
+                            <span class="badge badge-pill badge-info">Date</span> 
+                            <span class="small"><%= p.start_date %> <span class="small">until</span> <%= p.end_date %> <span class="small">(<%=distance_of_time_in_words(p.end_date, DateTime.now)%> to go)</span></span> 
+                        </div>
+                        <br>
+                        <h4>Project Needs</h4>
+                        <% if p.volunteer && p.volunteer_number != 0 %>
+                        <div id="volunteer-section">
 
-            <% if @project.finance_donate && @project.fund_amount != 0 %>
-                <div id="donation-section">
-                    <div class="progress-wrapper">
-                        <div class="progress-info">
-                            <div>
-                            <% if @project.fund_progress >= 100 %>
-                                <span class="badge badge-success">Successfully raised! RM<%=@project.fund_amount.round%></span>
-                            <% else %>
-                                <p class="text-uppercase font-weight-bold">Raised RM<%= @project.donations.sum(:amount).round.to_s %>/ RM <%= @project.fund_amount.round.to_s %></p>
-                                <% if signed_in? %>
-                                <%= link_to "Donate Now", make_donation_url, class: "btn btn-danger"%>
+                            <div class="progress-wrapper">
+                                <div class="progress-info">
+                                <% if p.volunteer_progress >= 100 %>
+                                    <span class="badge badge-success">Successfully Volunteered! <%=p.volunteer_number%></span>
                                 <% else %>
-                                <button class="btn btn-danger">Sign in to Donate</button>
-                                <%end %>
-                            <% end %>
+                                 <!-- Volutneer now button  -->
+                                    <% if signed_in? && current_user.volunteer.present? %>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, interested_volunteer_project_joins_path(volunteer: current_user.volunteer.id, project: p.id), method: "post", remote: true, id: "project#{p.id}", class: "badge badge-gobantu"%>
+                                    <% elsif signed_in? && !current_user.volunteer.present? %>
+                                    <%= link_to "Volunteered " + p.volunteer_project_joins.where(status: 'approved').count.to_s + " / " + p.volunteer_number.to_s, new_volunteer_path, target: "_blank", class: "badge badge-gobantu"%>
+                                    <% else %>
+                                    <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Volunteer">Volunteered <%=p.volunteer_project_joins.where(status: 'approved').count.to_s%> / <%=p.volunteer_number.to_s%></span>
+                                    <% end %>
+                                <% end %>
+                                </div>
+                                <div class="progress-percentage">
+                                    <span><%=p.volunteer_progress.round%>%</span>
+                                </div>
                             </div>
-                            <div class="progress-percentage">
-                                <span><%=@project.fund_progress.round%>%</span>
+
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= p.volunteer_progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= p.volunteer_progress %>%;"></div>
+                            </div>
+
+                            <div class="criteria">
+                                <p class="display-6"><span class="badge badge-pill badge-secondary">Skills</span>
+                                <% p.skills.each do |s| %>
+                                    <span class="badge badge-pill badge-skill"><%= s.name %></span>
+                                <% end %>
+                                </p>
+                                <p class="display-6"><span class="badge badge-pill badge-secondary">Professions</span>
+                                <% p.professions.each do |p| %>
+                                    <span class="badge badge-pill badge-profession"><%= p.name %></span>
+                                <% end %>
+                                </p>
+                                <p class="display-6"><span class="badge badge-pill badge-secondary">Causes</span>
+                                <% p.causes.each do |c| %>
+                                    <span class="badge badge-pill badge-cause"><%= c.name %></span>
+                                <% end %>
+                                </p>
+                            </div>
+
+                        </div>
+                        <% end %>
+                        
+                        <% if p.finance_donate && p.fund_amount != 0 %>
+                        <div id="donation-section">
+                            <div class="progress-wrapper">
+                                <div class="progress-info">
+                                    <% if p.fund_progress >= 100 %>
+                                        <span class="badge badge-success">Successfully raised! RM<%=p.fund_amount.round%></span>
+                                    <% else %>
+                                        <% if signed_in? %>
+                                        <%= link_to "Raised RM" + p.donations.sum(:amount).round.to_s + " / RM" + p.fund_amount.round.to_s, make_donation_url(p.id), class: "badge badge-gobantu display-4 large", target: "_blank", "data-toggle" => "tooltip", "data-placement"=>"top", title: "Donate Now" %>
+                                        <% else %>
+                                        <span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="Sign In to Donate">Raised RM <%=p.donations.sum(:amount).round.to_s%> / RM <%=p.fund_amount.round.to_s%> </span>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                                <div class="progress-percentage">
+                                    <span><%=p.fund_progress.round%>%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= p.fund_progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= p.fund_progress %>%;"></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="<%= @project.fund_progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @project.fund_progress %>%;"></div>
-                        </div>
+                        <% end %>
+
+                        <br>
+
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <% if signed_in? %>
+                <% if @verify_organizers %>
+
+                    <% if !@hundred.nil? && @hundred != false %>
+                    <section class="section section-lg pt-lg-0">
+                        <div class="container">
+                            <center>
+                                <h5 class="text-uppercase font-weight-bold">
+                                Volunteers with a 100% match for your project.
+                                </h5>
+                            </center>
+                            <div class="row justify-content-center mt-4">
+                                <div class="col-lg-12">
+                                    <div class="row row-grid" id="search">
+                                        <%= render partial: 'users/user_card' %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <% end %>
+
+                    <% @matched_volunteers = @volunteers_seventy_five %>
+                    <% if !@matched_volunteers.nil? && @matched_volunteers.count > 0 %>
+                    <section class="section section-lg pt-lg-0">
+                        <div class="container">
+                            <center>
+                                <h5 class="text-uppercase font-weight-bold">
+                                Volunteers with a 75% match for your project.
+                                </h5>
+                            </center>
+                            <div class="row justify-content-center mt-4">
+                                <div class="col-lg-12">
+                                    <div class="row row-grid" id="search">
+                                        <%= render partial: 'users/user_card' %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <% end %>
+
+                <% end %>
             <% end %>
         </div>
+
     </div>
-</div>
-<% if signed_in? %>
-    <% if @verify_organizers %>
-        <% if !@hundred.nil? && @hundred != false %>
-        <section class="section section-lg pt-lg-0">
-            <div class="container">
-                <center>
-                    <h5 class="text-uppercase font-weight-bold">
-                      Volunteers with a 100% match for your project.
-                    </h5>
-                </center>
-                <div class="row justify-content-center mt-4">
-                    <div class="col-lg-12">
-                      <div class="row row-grid" id="search">
-                        <%= render partial: 'users/user_card' %>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <% end %>
-        <% @matched_volunteers = @volunteers_seventy_five %>
-        <% if !@matched_volunteers.nil? && @matched_volunteers.count > 0 %>
-        <section class="section section-lg pt-lg-0">
-            <div class="container">
-                <center>
-                    <h5 class="text-uppercase font-weight-bold">
-                      Volunteers with a 75% match for your project.
-                    </h5>
-                </center>
-                <div class="row justify-content-center mt-4">
-                    <div class="col-lg-12">
-                      <div class="row row-grid" id="search">
-                        <%= render partial: 'users/user_card' %>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <% end %>
-    <% end %>
-<% end %>
+
+
+  </main>

@@ -6,12 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+########## causing errors on db:seed #########################
 # For Omniauth
-AuthenticationProvider.create(name: 'facebook')
-AuthenticationProvider.create(name: 'twitter')
-AuthenticationProvider.create(name: 'gplus')
-AuthenticationProvider.create(name: 'google')
-AuthenticationProvider.create(name: 'linked')
+# AuthenticationProvider.create(name: 'facebook')
+# AuthenticationProvider.create(name: 'twitter')
+# AuthenticationProvider.create(name: 'gplus')
+# AuthenticationProvider.create(name: 'google')
+# AuthenticationProvider.create(name: 'linked')
 
 
 # ####################################################
@@ -55,37 +57,37 @@ User.create!([
 
 # 1.2 When User hosted a project, he/she become organizer
 Organizer.create!([
-    {user_id: 4, company_name: "Let's Do It", email: "company1@gmail.com"}, #organizer_id: 1
-    {user_id: 6, company_name: "Saving Environment", email: "company2@gmail.com"}, #organizer_id: 2
-    {user_id: 8, company_name: "Helpful People", email: "company3@gmail.com"}, #organizer_id: 3
-    {user_id: 9, company_name: "Helpful Charity", email: "company4@gmail.com"}, #organizer_id: 4
+    {user_id: 4, company_name: "Let's Do It", email: "company1@gmail.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"}, #organizer_id: 1
+    {user_id: 6, company_name: "Saving Environment", email: "company2@gmail.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"}, #organizer_id: 2
+    {user_id: 8, company_name: "Chi Ji Association", email: "company3@gmail.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"}, #organizer_id: 3
+    {user_id: 9, company_name: "Mercy Charity", email: "company4@gmail.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"}, #organizer_id: 4
     # ID: 5-8 are actual organizers
-    {user_id: 23, company_name: "Sunway Gospel", email: "orgnizer1@gobantu.com"},
-    {user_id: 24, company_name: "KALSOM Movement", email: "orgnizer2@gobantu.com"},
-    {user_id: 25, company_name: "Calvalry Land", email: "orgnizer3@gobantu.com"},
-    {user_id: 26, company_name: "Shelter", email: "orgnizer4@gobantu.com"}
+    {user_id: 23, company_name: "Sunway Gospel", email: "orgnizer1@gobantu.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"},
+    {user_id: 24, company_name: "KALSOM Movement", email: "orgnizer2@gobantu.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", twitter_url: "www.google.com", linkedin_url: "www.google.com"},
+    {user_id: 25, company_name: "Calvalry Land", email: "orgnizer3@gobantu.com", address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", linkedin_url: "www.google.com"},
+    {user_id: 26, company_name: "Shelter", email: "orgnizer4@gobantu.com",  address_1: "20, Jalan ABC 12/2,", address_2: "Kawasan Perindustrian, Jalan Besar", postcode: "43000", city: "Subang", state: "Selangor", country: "Malaysia", website_url: "www.google.com", facebook_url: "www.google.com", instagram_url: "www.google.com", twitter_url: "www.google.com"}
 ])
 
 # 1.3 When User Volunteered a project, he/she become volunteer
 Volunteer.create!([
-    {user_id: 1, linked_in_url: "www.google.com"}, #volunteer_id: 1
-    {user_id: 6, linked_in_url: "www.google.com"}, #volunteer_id: 2
-    {user_id: 7, linked_in_url: "www.google.com"}, #volunteer_id: 3
-    {user_id: 9, linked_in_url: "www.google.com"}, #volunteer_id: 4
+    {user_id: 1, linkedin_url: "www.google.com"}, #volunteer_id: 1
+    {user_id: 6, linkedin_url: "www.google.com"}, #volunteer_id: 2
+    {user_id: 7, linkedin_url: "www.google.com"}, #volunteer_id: 3
+    {user_id: 9, linkedin_url: "www.google.com"}, #volunteer_id: 4
     # ID: 5 - 17 are actual volunteers
-    {user_id: 10, linked_in_url: "www.google.com"},
-    {user_id: 11, linked_in_url: "www.google.com"},
-    {user_id: 12, linked_in_url: "www.google.com"},
-    {user_id: 13, linked_in_url: "www.google.com"},
-    {user_id: 14, linked_in_url: "www.google.com"},
-    {user_id: 15, linked_in_url: "www.google.com"},
-    {user_id: 16, linked_in_url: "www.google.com"},
-    {user_id: 17, linked_in_url: "www.google.com"},
-    {user_id: 18, linked_in_url: "www.google.com"},
-    {user_id: 19, linked_in_url: "www.google.com"},
-    {user_id: 20, linked_in_url: "www.google.com"},
-    {user_id: 21, linked_in_url: "www.google.com"},
-    {user_id: 22, linked_in_url: "www.google.com"}
+    {user_id: 10, linkedin_url: "www.google.com"},
+    {user_id: 11, linkedin_url: "www.google.com"},
+    {user_id: 12, linkedin_url: "www.google.com"},
+    {user_id: 13, linkedin_url: "www.google.com"},
+    {user_id: 14, linkedin_url: "www.google.com"},
+    {user_id: 15, linkedin_url: "www.google.com"},
+    {user_id: 16, linkedin_url: "www.google.com"},
+    {user_id: 17, linkedin_url: "www.google.com"},
+    {user_id: 18, linkedin_url: "www.google.com"},
+    {user_id: 19, linkedin_url: "www.google.com"},
+    {user_id: 20, linkedin_url: "www.google.com"},
+    {user_id: 21, linkedin_url: "www.google.com"},
+    {user_id: 22, linkedin_url: "www.google.com"}
 ])
   
 # 1.4 When User Donate a project, he/she become donor
@@ -111,19 +113,19 @@ Category.create!([
 
 # 2.2 User Section and Role
 Project.create!([
-    {title: "Home Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 11111 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 1000, status: 2},
-    {title: "Home Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 22222 for bbbbb", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 0, status: 2},
-    {title: "Community Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 33333 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 300, status: 2},
-    {title: "Community Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 44444 for ddddd", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 200, status: 2},
-    {title: "Organization Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 55555 for eeeee", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 500, status: 2},
-    {title: "Organization Project 2", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 66666 for fffff", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 900, status: 2},
-    {title: "Home Project 3", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 77777 for ggggg", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 800, status: 2},
-    {title: "Home Project 4", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 88888 for hhhhh", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 600, status: 2},
-    {title: "Community Project 1", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 99999 for iiiii", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 500, status: 2},
-    {title: "Community Project 2",  project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 00000 for jjjjj", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 2000, status: 2},
-    {title: "Organization Project 3", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 10101 for kkkkk", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 1200, status: 2},
-    {title: "Organization Project 4", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 20202 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 1},
-    {title: "Organization Project 5", project_desc: "This is home project 1, bla bla bla", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 0},
+    {title: "Home Project 1", project_desc: "This is home project 1, we are helping under priviledge persons, at the moment we need abc with xyc, kindly support us", requirement_desc: "We need 11111 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 1000, status: 2},
+    {title: "Home Project 2", project_desc: "This is home project 2, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 22222 for bbbbb", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 0, status: 2},
+    {title: "Community Project 1", project_desc: "This is home project 1, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 33333 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 300, status: 2},
+    {title: "Community Project 2", project_desc: "This is home project 2, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 44444 for ddddd", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 200, status: 2},
+    {title: "Organization Project 1", project_desc: "This is home project 1, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 55555 for eeeee", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 500, status: 2},
+    {title: "Organization Project 2", project_desc: "This is home project 2, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 66666 for fffff", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 900, status: 2},
+    {title: "Home Project 3", project_desc: "This is home project 3, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 77777 for ggggg", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 800, status: 2},
+    {title: "Home Project 4", project_desc: "This is home project 4, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 88888 for hhhhh", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 600, status: 2},
+    {title: "Community Project 3", project_desc: "This is home project 3, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 99999 for iiiii", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 500, status: 2},
+    {title: "Community Project 4",  project_desc: "This is home project 4, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 00000 for jjjjj", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 2, fund_amount: 2000, status: 2},
+    {title: "Organization Project 3", project_desc: "This is home project 3, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 10101 for kkkkk", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", volunteer_number: 1, fund_amount: 1200, status: 2},
+    {title: "Organization Project 4", project_desc: "This is home project 4, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 20202 for aaaaa", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 1},
+    {title: "Organization Project 5", project_desc: "This is home project 5, we are helping under priviledge persons, at the moment we need def with rtc, kindly support us", requirement_desc: "We need 30303 for ccccc", city: "Petaling Jaya", state: "Selangor", country: "Malaysia", status: 0},
     # ID 14-17 are actual projects
     {title: "English Tutor for Children", project_desc: "Bandar Sunway Gospel Centre is looking 2 English Tutor", requirement_desc: "We need english tutor 2h for every saturday", volunteer_number: 2, city: "Subang", state: "Selangor", country: "Malaysia", status: 2},
     {title: "Auditor for KALSOM Movement", project_desc: "KALSOM Movement is looking for Auditor/Accountant", requirement_desc: "We need an Auditor/Accountant to help audit our account", volunteer_number: 1, city: "Subang", state: "Selangor", country: "Malaysia", status: 2},
@@ -285,17 +287,28 @@ Donation.create!([
 
 # For Searching or Matching
 
-UserCauseJoin.create!([
-    {user_id: 1, cause_id: 1},
-    {user_id: 3, cause_id: 2},
-    {user_id: 3, cause_id: 3},
-    {user_id: 4, cause_id: 4},
-    {user_id: 4, cause_id: 5},
-    {user_id: 4, cause_id: 6},
-    {user_id: 5, cause_id: 7},
-    {user_id: 5, cause_id: 8},
-    {user_id: 5, cause_id: 9},
-    {user_id: 18, cause_id: 1}
+VolunteerCauseJoin.create!([
+    {volunteer_id: 1, cause_id: 1},
+    {volunteer_id: 2, cause_id: 2},
+    {volunteer_id: 3, cause_id: 3},
+    {volunteer_id: 4, cause_id: 4},
+    {volunteer_id: 5, cause_id: 5},
+    {volunteer_id: 6, cause_id: 6},
+    {volunteer_id: 7, cause_id: 7},
+    {volunteer_id: 8, cause_id: 8},
+    {volunteer_id: 9, cause_id: 9},
+    {volunteer_id: 10, cause_id: 1},
+    {volunteer_id: 10, cause_id: 6},
+    {volunteer_id: 11, cause_id: 5},
+    {volunteer_id: 11, cause_id: 8},
+    {volunteer_id: 12, cause_id: 6},
+    {volunteer_id: 13, cause_id: 7},
+    {volunteer_id: 14, cause_id: 8},
+    {volunteer_id: 15, cause_id: 9},
+    {volunteer_id: 16, cause_id: 1},
+    {volunteer_id: 16, cause_id: 2},
+    {volunteer_id: 16, cause_id: 3},
+    {volunteer_id: 17, cause_id: 1}
 ])
 
 # Volunteer
@@ -402,6 +415,5 @@ ProjectProfessionJoin.create!([
     {project_id: 16, profession_id: 3, remarks: "Farmer / Agriculturist / Consultant"},
     {project_id: 17, profession_id: 27, remarks: "Digital Marketing"}
 ])
-
 
 

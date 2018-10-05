@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+  # only organizer can create new project
+  before_action :is_organizer!, only: [:new, :create]
+  
   include ProjectsHelper
   require 'will_paginate/array'
 
@@ -6,6 +9,7 @@ class ProjectsController < ApplicationController
     respond_to :html, :js
     @projects = Project.where(status: 2).order("created_at desc")
     @projects = @projects.paginate(:page => params[:page], :per_page => 6)
+    @project_volunteer = VolunteerProjectJoin.new
   end
 
   def new
@@ -15,7 +19,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval of projects within 5 days.' }
+      OrganizerProjectJoin.new(organizer_id: current_user.organizer.id, project_id: project.id, status: 0).save
+      redirect_to @project, flash: { success: 'Project was successfully created, please wait for review and approval within 5 working days.' }
     else
       redirect_to new_project_path, flash: { danger: @project.errors.full_messages[0] }
     end
@@ -23,8 +28,13 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @project_volunteer = VolunteerProjectJoin.new
+    #verify project is approved
+    check_status
+
+    #automatch feature
     matched_volunteers(@project.id)
-        # set percent match for user
+    # set percent match for user
     if @hundred
       @matched_volunteers
       @match_percent = "100%"
@@ -41,6 +51,7 @@ class ProjectsController < ApplicationController
     if signed_in?
     @verify_organizers = @project.organizers.where(user_id: current_user.id).exists?
     end
+
   end
 
   def card
@@ -60,15 +71,21 @@ class ProjectsController < ApplicationController
   end
 
   def confirmations
+    if signed_in? 
+      unless current_user.admin?
+        redirect_to root_path
+      end
+    end
     @projects = Project.where(status: 'pending')
   end
 
   def status_change
     @project = Project.find(params[:id])
-
+    organizer = @project.organizers.first.user
     if @project.pending?
       @project.status = 'approved'
       @project.save
+      ProjectMailer.status_email(organizer,@project).deliver
       redirect_to confirmations_projects_path, notice: 'Project was approved.'
     else
       @project.status = 'pending'
@@ -80,10 +97,11 @@ class ProjectsController < ApplicationController
 
   def status_deny
     @project = Project.find(params[:id])
-
+    organizer = @project.organizers.first.user
     if @project.pending?
       @project.status = 'rejected'
       @project.save
+      ProjectMailer.status_email(organizer,@project).deliver
       redirect_to confirmations_projects_path, notice: 'Project was denied.'
     else
       @project.status = 'pending'
@@ -92,6 +110,13 @@ class ProjectsController < ApplicationController
     end
 
   end
+
+  def check_status
+    unless @project.approved? || signed_in? && (current_user.admin? || current_user == @project.organizers.first.user)
+        redirect_to root_path
+    end
+  end
+
 
   private
 
@@ -106,6 +131,24 @@ class ProjectsController < ApplicationController
       project_cause_joins_attributes: [:project_id, :cause_id],
       project_category_joins_attributes: [:project_id, :category_id]
     )
+  end
+
+  def authenticate_user!
+    if current_user.id != @user.id
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def not_organizer!
+    if !current_user.organizer
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def is_organizer!
+    unless current_user.organizer
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 end
