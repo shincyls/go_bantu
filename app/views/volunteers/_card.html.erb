@@ -5,9 +5,10 @@
             <div class="card-body-area row">
                 <div class="mx-auto mt-3">
                     <% if v.user.avatar? %>
-                    <%= image_tag(v.user.avatar_url, class: "img-fluid rounded-circle", style: "width:6rem;height:6rem") %>
+                    <%= image_tag(v.user.avatar_url, class: "img-fluid rounded-circle", style: "width:7rem;height:7rem;top:50%;left 50%;") %>
+                    
                     <% else %>
-                    <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle", style: "width:6rem;height:6rem" %>
+                    <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle", style: "width:7rem;height:7rem" %>
                     <% end %>
                 </div>
             </div>

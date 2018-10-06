@@ -21,7 +21,7 @@ class VolunteersController < ApplicationController
         @volunteer = Volunteer.new(volunteer_params).url_protocol
         
         if @volunteer.save
-            redirect_to user_profile_path(@volunteer.user.id), flash: { success: 'Volunteer was successfully created.' }
+            redirect_to edit_user_registration_path(@volunteer.user.id), flash: { success: 'Thank You! Volunteer have been successfully registered, kindly updated profile photo and location' }
         else
             redirect_to new_volunteer_path, flash: { danger: @volunteer.errors.full_messages[0] }
         end

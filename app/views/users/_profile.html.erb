@@ -6,7 +6,7 @@
         <div class="card-profile-image">
           <a href="#">
           <% if @user.avatar? %>
-            <%= image_tag(@user.avatar_url, class: "img-fluid rounded-circle") %>
+            <%= image_tag(@user.avatar_url, class: "img-fluid rounded-circle", style:"width:10rem;height:10rem;overflow:hidden;") %>
           <% else %>
             <%= image_tag "theme/default.jpg", class: "img-fluid rounded-circle" %>
           <% end %>
