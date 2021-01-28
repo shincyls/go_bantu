@@ -53,7 +53,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 # Important features search and admin
 gem 'pg_search', '~> 2.1', '>= 2.1.2'
-gem 'rails_admin', '~> 1.4', '>= 1.4.1'
+gem 'rails_admin', '~> 1.4'
 gem 'devise', '~> 4.5'
 gem 'rails-erd', '~> 1.5', '>= 1.5.2'
 
