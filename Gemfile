@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'popper_js', '~> 1.14', '>= 1.14.3'
 
 # Vix Added Here!
-gem 'simple_form', '~> 4.0', '>= 4.0.1'
+gem 'simple_form', '~> 5.0'
 # gem 'friendly_id', '~> 5.2', '>= 5.2.4'
 
 # Shin Added Here !!
